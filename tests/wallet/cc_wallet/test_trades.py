@@ -1,5 +1,4 @@
 import asyncio
-import time
 from pathlib import Path
 from secrets import token_bytes
 
@@ -12,25 +11,14 @@ from mogua.wallet.cc_wallet.cc_wallet import CCWallet
 from mogua.wallet.trade_manager import TradeManager
 from mogua.wallet.trading.trade_status import TradeStatus
 from tests.setup_nodes import setup_simulators_and_wallets
+from tests.time_out_assert import time_out_assert
+from tests.wallet.sync.test_wallet_sync import wallet_height_at_least
 
 
 @pytest.fixture(scope="module")
 def event_loop():
     loop = asyncio.get_event_loop()
     yield loop
-
-
-async def time_out_assert(timeout: int, function, value, arg=None):
-    start = time.time()
-    while time.time() - start < timeout:
-        if arg is None:
-            function_result = await function()
-        else:
-            function_result = await function(arg)
-        if value == function_result:
-            return None
-        await asyncio.sleep(2)
-    assert False
 
 
 @pytest.fixture(scope="module")
@@ -86,7 +74,7 @@ class TestCCTrades:
 
         for i in range(1, buffer_blocks):
             await full_node.farm_new_transaction_block(FarmNewBlockProtocol(token_bytes()))
-
+        await time_out_assert(15, wallet_height_at_least, True, wallet_node_0, 27)
         await time_out_assert(15, cc_wallet.get_confirmed_balance, 100)
         await time_out_assert(15, cc_wallet.get_unconfirmed_balance, 100)
 
@@ -101,13 +89,14 @@ class TestCCTrades:
 
         for i in range(0, buffer_blocks):
             await full_node.farm_new_transaction_block(FarmNewBlockProtocol(token_bytes()))
-
+        await time_out_assert(15, wallet_height_at_least, True, wallet_node_0, 31)
         # send cc_wallet 2 a coin
         cc_hash = await cc_wallet_2.get_new_inner_hash()
         tx_record = await cc_wallet.generate_signed_transaction([uint64(1)], [cc_hash])
         await wallet_0.wallet_state_manager.add_pending_transaction(tx_record)
         for i in range(0, buffer_blocks):
             await full_node.farm_new_transaction_block(FarmNewBlockProtocol(token_bytes()))
+        await time_out_assert(15, wallet_height_at_least, True, wallet_node_0, 35)
 
         trade_manager_0 = wallet_node_0.wallet_state_manager.trade_manager
         trade_manager_1 = wallet_node_1.wallet_state_manager.trade_manager
@@ -141,6 +130,7 @@ class TestCCTrades:
         for i in range(0, buffer_blocks):
             await full_node.farm_new_transaction_block(FarmNewBlockProtocol(token_bytes()))
 
+        await time_out_assert(15, wallet_height_at_least, True, wallet_node_0, 39)
         await time_out_assert(15, cc_wallet_2.get_confirmed_balance, 31)
         await time_out_assert(15, cc_wallet_2.get_unconfirmed_balance, 31)
         trade_2 = await trade_manager_0.get_trade_by_id(trade_offer.trade_id)
@@ -375,20 +365,20 @@ class TestCCTrades:
         if file_path.exists():
             file_path.unlink()
 
-        spendable_mogua = await wallet_a.get_spendable_balance()
+        spendable_greendoge = await wallet_a.get_spendable_balance()
 
         offer_dict = {1: 10, 2: -30, 3: 30}
 
         success, trade_offer, error = await trade_manager_a.create_offer_for_ids(offer_dict, file)
 
-        spendable_mogua_after = await wallet_a.get_spendable_balance()
+        spendable_greendoge_after = await wallet_a.get_spendable_balance()
 
         locked_coin = await trade_manager_a.get_locked_coins(wallet_a.id())
         locked_sum = 0
         for name, record in locked_coin.items():
             locked_sum += record.coin.amount
 
-        assert spendable_mogua == spendable_mogua_after + locked_sum
+        assert spendable_greendoge == spendable_greendoge_after + locked_sum
         assert success is True
         assert trade_offer is not None
 
@@ -397,7 +387,7 @@ class TestCCTrades:
         spendable_after_cancel_1 = await wallet_a.get_spendable_balance()
 
         # Spendable should be the same as it was before making offer 1
-        assert spendable_mogua == spendable_after_cancel_1
+        assert spendable_greendoge == spendable_after_cancel_1
 
         trade_a = await trade_manager_a.get_trade_by_id(trade_offer.trade_id)
         assert trade_a is not None
@@ -421,20 +411,20 @@ class TestCCTrades:
         if file_path.exists():
             file_path.unlink()
 
-        spendable_mogua = await wallet_a.get_spendable_balance()
+        spendable_greendoge = await wallet_a.get_spendable_balance()
 
         offer_dict = {1: 10, 2: -30, 3: 30}
 
         success, trade_offer, error = await trade_manager_a.create_offer_for_ids(offer_dict, file)
 
-        spendable_mogua_after = await wallet_a.get_spendable_balance()
+        spendable_greendoge_after = await wallet_a.get_spendable_balance()
 
         locked_coin = await trade_manager_a.get_locked_coins(wallet_a.id())
         locked_sum = 0
         for name, record in locked_coin.items():
             locked_sum += record.coin.amount
 
-        assert spendable_mogua == spendable_mogua_after + locked_sum
+        assert spendable_greendoge == spendable_greendoge_after + locked_sum
         assert success is True
         assert trade_offer is not None
 
@@ -444,7 +434,7 @@ class TestCCTrades:
         for i in range(0, buffer_blocks):
             await full_node.farm_new_transaction_block(FarmNewBlockProtocol(token_bytes()))
 
-        await time_out_assert(15, wallet_a.get_spendable_balance, spendable_mogua)
+        await time_out_assert(15, wallet_a.get_spendable_balance, spendable_greendoge)
 
         # Spendable should be the same as it was before making offer 1
 

@@ -3,7 +3,7 @@ min_mainnet_k_size: 32
 # Send a ping to all peers after ping_interval seconds
 ping_interval: 120
 self_hostname: &self_hostname "localhost"
-daemon_port: 56600
+daemon_port: 53500
 inbound_rate_limit_percent: 100
 outbound_rate_limit_percent: 30
 
@@ -11,23 +11,32 @@ network_overrides: &network_overrides
   constants:
     mainnet:
       NETWORK_TYPE: 0
-      GENESIS_CHALLENGE: 9b9ffca948750d8b41ac755da213461e9d2253ec7bfce80695d78f7fe7d55112
-      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "e8e245e2e6536e17fd7cbc2e3bd90de06f55362ee3c84cea5a68391e5bad7ef6"
-      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "e8e245e2e6536e17fd7cbc2e3bd90de06f55362ee3c84cea5a68391e5bad7ef6"
+      GENESIS_CHALLENGE: eb92c7d03986dc221ba5032cf9664f896666012b8b78bc8909089b30938862dd
+      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "7b4cf0a5211765ab98718b523b16e811010bf242d312b227ccb338a65874be8b"
+      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "432acc92b1dfa1d48869c2524d0ca88828f15c9c5a551ca3a321e3cc6b299af8"
     testnet0:
-      GENESIS_CHALLENGE: 28a206a22e7e2060230c88ad149d81cc8e74bcf5e8e74aafcce8b8efe6181dbb
+      GENESIS_CHALLENGE: 70a9c8de517035f10609a00c3bf73a7292979f66cdb9b7c6eb0c10e8aca7125d
       NETWORK_TYPE: 1
-      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "e8e245e2e6536e17fd7cbc2e3bd90de06f55362ee3c84cea5a68391e5bad7ef6"
-      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "e8e245e2e6536e17fd7cbc2e3bd90de06f55362ee3c84cea5a68391e5bad7ef6"
+      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
+      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
+    testnet1:
+      GENESIS_CHALLENGE: 70a9c8de517035f10609a00c3bf73a7292979f66cdb9b7c6eb0c10e8aca7125d
+      NETWORK_TYPE: 1
+      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
+      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
+    
   config:
     mainnet:
-      address_prefix: "xfx"
+      address_prefix: "gdog"
+      default_full_node_port: 6544
     testnet0:
-      address_prefix: "txfx"
+      address_prefix: "tgdog"
+    testnet1:
+      address_prefix: "tgdog"
 
 selected_network: &selected_network "mainnet"
-ALERTS_URL: https://download.moguanetwork.org/notify/mainnet_alert.txt
-MOGUA_ALERTS_PUBKEY: a88dc9b53e21088dcd53347eda53b533aec7cd5ff267c3968b1dfc0dc132e39575cf401f0d6bc9952404dbbfc30731c5
+ALERTS_URL: https://download.mogua.gua/notify/mainnet_alert.txt
+GREENDOGE_ALERTS_PUBKEY: a9555c79d2cf30e16c4ad1eeb72e4fd9194515522437f865e71794dfff407394328ce9b13c1884301ff1f3ac5e6065fa
 
 # public ssl ca is included in source code
 # Private ssl ca is used for trusted connections between machines user owns
@@ -35,9 +44,9 @@ private_ssl_ca:
   crt: "config/ssl/ca/private_ca.crt"
   key: "config/ssl/ca/private_ca.key"
 
-mogua_ssl_ca:
-  crt: "config/ssl/ca/mogua_ca.crt"
-  key: "config/ssl/ca/mogua_ca.key"
+greendoge_ssl_ca:
+  crt: "config/ssl/ca/greendoge_ca.crt"
+  key: "config/ssl/ca/greendoge_ca.key"
 
 
 daemon_ssl:
@@ -51,17 +60,20 @@ logging: &logging
   log_filename: "log/debug.log"
   log_level: "WARNING"  # Can be CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
   log_maxfilesrotation: 7 #  Max files in rotation. Default value 7 if the key is not set
+  log_syslog: False  # If True, outputs to SysLog host and port specified
+  log_syslog_host: "localhost"  # Send logging messages to a remote or local Unix syslog
+  log_syslog_port: 514  # UDP port of the remote or local Unix syslog
 
 harvester:
   # The harvester server (if run) will run on this port
-  port: 6884
+  port: 6548
   farmer_peer:
     host: *self_hostname
-    port: 6885
+    port: 6547
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
-  rpc_port: 6760
+  rpc_port: 6660
   num_threads: 30
   plot_loading_frequency_seconds: 120
 
@@ -80,13 +92,13 @@ harvester:
     crt: "config/ssl/ca/private_ca.crt"
     key: "config/ssl/ca/private_ca.key"
 
-  mogua_ssl_ca:
-    crt: "config/ssl/ca/mogua_ca.crt"
-    key: "config/ssl/ca/mogua_ca.key"
+  greendoge_ssl_ca:
+    crt: "config/ssl/ca/greendoge_ca.crt"
+    key: "config/ssl/ca/greendoge_ca.key"
 
 pool:
   # Replace this with a real puzzle hash
-  # xfx_target_address: txfx102gkhhzs60grx7cfnpng5n6rjecr89r86l5s8xux2za8k820cxsq64ssdg
+  # gdog_target_address: tgdog102gkhhzs60grx7cfnpng5n6rjecr89r86l5s8xux2za8k820cxsq64ssdg
   logging: *logging
   network_overrides: *network_overrides
   selected_network: *selected_network
@@ -94,23 +106,23 @@ pool:
 
 farmer:
   # The farmer server (if run) will run on this port
-  port: 6885
+  port: 6547
   # The farmer will attempt to connect to this full node and harvester
   full_node_peer:
     host: *self_hostname
-    port: 6888
+    port: 6544
   harvester_peer:
     host: *self_hostname
-    port: 6884
+    port: 6548
 
   pool_public_keys: []
 
   # Replace this with a real puzzle hash
-  # xfx_target_address: txfx102gkhhzs60grx7cfnpng5n6rjecr89r86l5s8xux2za8k820cxsq64ssdg
+  # gdog_target_address: tgdog102gkhhzs60grx7cfnpng5n6rjecr89r86l5s8xux2za8k820cxsq64ssdg
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
-  rpc_port: 6759
+  rpc_port: 6659
 
   # To send a share to a pool, a proof of space must have required_iters less than this number
   pool_share_threshold: 1000
@@ -127,7 +139,7 @@ farmer:
 # Don't run this unless you want to run VDF clients on the local machine.
 timelord_launcher:
   # The server where the VDF clients will connect to.
-  port: 6600
+  port: 6100
   # Number of VDF client processes to keep alive in the local machine.
   process_count: 3
   logging: *logging
@@ -135,7 +147,7 @@ timelord_launcher:
 
 timelord:
   # The timelord server (if run) will run on this port
-  port: 6886
+  port: 6546
   # Provides a list of VDF clients expected to connect to this timelord.
   # For each client, an IP is provided, together with the estimated iterations per second.
   vdf_clients:
@@ -147,13 +159,13 @@ timelord:
       - 150000
   full_node_peer:
       host: *self_hostname
-      port: 6888
+      port: 6544
   # Maximum number of seconds allowed for a client to reconnect to the server.
   max_connection_time: 60
   # The ip and port where the TCP clients will connect.
   vdf_server:
     host: *self_hostname
-    port: 6600
+    port: 6100
   logging: *logging
   network_overrides: *network_overrides
   selected_network: *selected_network
@@ -182,7 +194,7 @@ timelord:
 
 full_node:
   # The full node server (if run) will run on this port
-  port: 6888
+  port: 6544
 
   # Run multiple nodes with different databases by changing the database_path
   database_path: db/blockchain_v1_CHALLENGE.sqlite
@@ -192,7 +204,7 @@ full_node:
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
-  rpc_port: 6755
+  rpc_port: 6655
 
   # Use UPnP to attempt to allow other full nodes to reach your node behind a gateway
   enable_upnp: True
@@ -219,7 +231,7 @@ full_node:
   # Only connect to peers who we have heard about in the last recent_peer_threshold seconds
   recent_peer_threshold: 6000
 
-  # Send to a Bluebox (sanitizing timelord) uncompact blocks once every
+  # Send to a Bluebox (sanatizing timelord) uncompact blocks once every
   # 'send_uncompact_interval' seconds. Set to 0 if you don't use this feature.
   send_uncompact_interval: 0
   # At every 'send_uncompact_interval' seconds, send blueboxes 'target_uncompact_proofs' proofs to be normalized.
@@ -237,19 +249,19 @@ full_node:
   # List of trusted DNS seeders to bootstrap from.
   # If you modify this, please change the hardcode as well from FullNode.set_server()
   dns_servers:
-    - "dns-introducer.moguanetwork.org"
+    - "dns-introducer.mogua.gua"
   farmer_peer:
       host: *self_hostname
-      port: 6885
+      port: 6547
   timelord_peer:
       host: *self_hostname
-      port: 6886
+      port: 6546
   introducer_peer:
-      host: introducer.moguanetwork.org  # Mogua AWS introducer IPv4/IPv6
-      port: 6888
+      host: introducer.mogua.gua  # Mogua AWS introducer IPv4/IPv6
+      port: 6545
   wallet_peer:
     host: *self_hostname
-    port: 6883
+    port: 6549
   logging: *logging
   network_overrides: *network_overrides
   selected_network: *selected_network
@@ -262,10 +274,10 @@ full_node:
 
 ui:
    # The ui node server (if run) will run on this port
-  port: 6222
+  port: 6322
 
   # Which port to use to communicate with the full node
-  rpc_port: 6755
+  rpc_port: 6655
 
   # This SSH key is for the ui SSH server
   ssh_filename: config/ssh_host_key
@@ -276,14 +288,14 @@ ui:
   # this is where the electron UI will find its daemon
   # defaults to the one running locally with its private keys
   daemon_host: *self_hostname
-  daemon_port: 56600
+  daemon_port: 53500
   daemon_ssl:
     private_crt: config/ssl/daemon/private_daemon.crt
     private_key: config/ssl/daemon/private_daemon.key
 
 introducer:
   host: *self_hostname
-  port: 6887
+  port: 6545
   max_peers_to_send: 20
   # The introducer will only return peers who it has seen in the last
   # recent_peer_threshold seconds
@@ -297,8 +309,10 @@ introducer:
     public_key:  "config/ssl/full_node/public_full_node.key"
 
 wallet:
-  port: 6883
-  rpc_port: 6761
+  port: 6549
+  rpc_port: 7356
+
+  enable_profiler: False
 
   # The minimum height that we care about for our transactions. Set to zero
   # If we are restoring from private key and don't know the height.
@@ -310,7 +324,7 @@ wallet:
 
   full_node_peer:
     host: *self_hostname
-    port: 6888
+    port: 6544
 
   testing: False
   database_path: wallet/db/blockchain_wallet_v1_CHALLENGE_KEY.sqlite
@@ -327,8 +341,8 @@ wallet:
   recent_peer_threshold: 6000
 
   introducer_peer:
-    host: introducer.moguanetwork.org # Mogua AWS introducer IPv4/IPv6
-    port: 6888
+    host: introducer.mogua.gua # Mogua AWS introducer IPv4/IPv6
+    port: 6545
 
   ssl:
     private_crt:  "config/ssl/wallet/private_wallet.crt"
@@ -338,3 +352,5 @@ wallet:
 
   trusted_peers:
     trusted_node_1: "config/ssl/full_node/public_full_node.crt"
+
+  short_sync_blocks_behind_threshold: 20

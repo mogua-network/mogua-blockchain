@@ -2,11 +2,11 @@ from setuptools import setup
 
 dependencies = [
     "blspy==1.0.2",  # Signature library
-    "chiavdf==1.0.1",  # timelord and vdf verification
+    "chiavdf==1.0.2",  # timelord and vdf verification
     "chiabip158==1.0",  # bip158-style wallet filters
-    "chiapos==1.0.2",  # proof of space
-    "clvm==0.9.6",
-    "clvm_rs==0.1.7",
+    "chiapos==1.0.3",  # proof of space
+    "clvm==0.9.7",
+    "clvm_rs==0.1.8",
     "clvm_tools==0.4.3",
     "aiohttp==3.7.4",  # HTTP server for full node rpc
     "aiosqlite==0.17.0",  # asyncio wrapper for sqlite, to store blocks
@@ -27,7 +27,7 @@ dependencies = [
 ]
 
 upnp_dependencies = [
-    "miniupnpc==2.1",  # Allows users to open ports on their router
+    "miniupnpc==2.2.2",  # Allows users to open ports on their router
 ]
 
 dev_dependencies = [
@@ -42,10 +42,10 @@ dev_dependencies = [
 
 kwargs = dict(
     name="mogua-blockchain",
-    author="Mariano Sorgente",
-    author_email="mariano@moguanetwork.org",
+    author="Lion Ethan",
+    author_email="ethan@mogua.gua",
     description="Mogua blockchain full node, farmer, timelord, and wallet.",
-    url="https://moguanetwork.org/",
+    url="https://mogua.gua/",
     license="Apache License",
     python_requires=">=3.7, <4",
     keywords="mogua blockchain node",
@@ -60,6 +60,7 @@ kwargs = dict(
         "build_scripts",
         "mogua",
         "mogua.cmds",
+        "mogua.clvm",
         "mogua.consensus",
         "mogua.daemon",
         "mogua.full_node",
@@ -68,6 +69,7 @@ kwargs = dict(
         "mogua.harvester",
         "mogua.introducer",
         "mogua.plotting",
+        "mogua.pools",
         "mogua.protocols",
         "mogua.rpc",
         "mogua.server",
@@ -89,21 +91,21 @@ kwargs = dict(
     entry_points={
         "console_scripts": [
             "mogua = mogua.cmds.mogua:main",
-            "mogua_wallet = mogua.server.start_wallet:main",
-            "mogua_full_node = mogua.server.start_full_node:main",
-            "mogua_harvester = mogua.server.start_harvester:main",
-            "mogua_farmer = mogua.server.start_farmer:main",
-            "mogua_introducer = mogua.server.start_introducer:main",
-            "mogua_timelord = mogua.server.start_timelord:main",
-            "mogua_timelord_launcher = mogua.timelord.timelord_launcher:main",
-            "mogua_full_node_simulator = mogua.simulator.start_simulator:main",
+            "greendoge_wallet = mogua.server.start_wallet:main",
+            "greendoge_full_node = mogua.server.start_full_node:main",
+            "greendoge_harvester = mogua.server.start_harvester:main",
+            "greendoge_farmer = mogua.server.start_farmer:main",
+            "greendoge_introducer = mogua.server.start_introducer:main",
+            "greendoge_timelord = mogua.server.start_timelord:main",
+            "greendoge_timelord_launcher = mogua.timelord.timelord_launcher:main",
+            "greendoge_full_node_simulator = mogua.simulator.start_simulator:main",
         ]
     },
     package_data={
         "mogua": ["pyinstaller.spec"],
         "mogua.wallet.puzzles": ["*.clvm", "*.clvm.hex"],
         "mogua.util": ["initial-*.yaml", "english.txt"],
-        "mogua.ssl": ["mogua_ca.crt", "mogua_ca.key", "dst_root_ca.pem"],
+        "mogua.ssl": ["greendoge_ca.crt", "greendoge_ca.key", "dst_root_ca.pem"],
         "mozilla-ca": ["cacert.pem"],
     },
     use_scm_version={"fallback_version": "unknown-no-.git-directory"},

@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional
 
 from aiohttp import WSCloseCode, WSMessage, WSMsgType
 
-from mogua.cmds.init_funcs import mogua_full_version_str
+from mogua.cmds.init_funcs import greendoge_full_version_str
 from mogua.protocols.protocol_message_types import ProtocolMessageTypes
 from mogua.protocols.shared_protocol import Capability, Handshake
 from mogua.server.outbound_message import Message, NodeType, make_msg
@@ -23,7 +23,7 @@ from mogua.util.network import class_for_type, is_localhost
 LENGTH_BYTES: int = 4
 
 
-class WSMoguaConnection:
+class WSGreenDogeConnection:
     """
     Represents a connection to another node. Local host and port are ours, while peer host and
     port are the host and port of the peer that we are connected to. Node_id and connection_type are
@@ -69,7 +69,7 @@ class WSMoguaConnection:
         self.is_outbound = is_outbound
         self.is_feeler = is_feeler
 
-        # MoguaConnection metrics
+        # GreenDogeConnection metrics
         self.creation_time = time.time()
         self.bytes_read = 0
         self.bytes_written = 0
@@ -108,9 +108,9 @@ class WSMoguaConnection:
             outbound_handshake = make_msg(
                 ProtocolMessageTypes.handshake,
                 Handshake(
-                    'mogua-' + network_id,
+                    network_id,
                     protocol_version,
-                    mogua_full_version_str(),
+                    greendoge_full_version_str(),
                     uint16(server_port),
                     uint8(local_type.value),
                     [(uint16(Capability.BASE.value), "1")],
@@ -122,9 +122,17 @@ class WSMoguaConnection:
             if inbound_handshake_msg is None:
                 raise ProtocolError(Err.INVALID_HANDSHAKE)
             inbound_handshake = Handshake.from_bytes(inbound_handshake_msg.data)
-            if ProtocolMessageTypes(inbound_handshake_msg.type) != ProtocolMessageTypes.handshake:
+
+            # Handle case of invalid ProtocolMessageType
+            try:
+                message_type: ProtocolMessageTypes = ProtocolMessageTypes(inbound_handshake_msg.type)
+            except Exception:
                 raise ProtocolError(Err.INVALID_HANDSHAKE)
-            if inbound_handshake.network_id != 'mogua-' + network_id:
+
+            if message_type != ProtocolMessageTypes.handshake:
+                raise ProtocolError(Err.INVALID_HANDSHAKE)
+
+            if inbound_handshake.network_id != network_id:
                 raise ProtocolError(Err.INCOMPATIBLE_NETWORK_ID)
 
             self.peer_server_port = inbound_handshake.server_port
@@ -138,17 +146,25 @@ class WSMoguaConnection:
 
             if message is None:
                 raise ProtocolError(Err.INVALID_HANDSHAKE)
-            inbound_handshake = Handshake.from_bytes(message.data)
-            if ProtocolMessageTypes(message.type) != ProtocolMessageTypes.handshake:
+
+            # Handle case of invalid ProtocolMessageType
+            try:
+                message_type = ProtocolMessageTypes(message.type)
+            except Exception:
                 raise ProtocolError(Err.INVALID_HANDSHAKE)
-            if inbound_handshake.network_id != 'mogua-' + network_id:
+
+            if message_type != ProtocolMessageTypes.handshake:
+                raise ProtocolError(Err.INVALID_HANDSHAKE)
+
+            inbound_handshake = Handshake.from_bytes(message.data)
+            if inbound_handshake.network_id != network_id:
                 raise ProtocolError(Err.INCOMPATIBLE_NETWORK_ID)
             outbound_handshake = make_msg(
                 ProtocolMessageTypes.handshake,
                 Handshake(
-                    'mogua-' + network_id,
+                    network_id,
                     protocol_version,
-                    mogua_full_version_str(),
+                    greendoge_full_version_str(),
                     uint16(server_port),
                     uint8(local_type.value),
                     [(uint16(Capability.BASE.value), "1")],

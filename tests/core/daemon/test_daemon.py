@@ -6,7 +6,7 @@ import pytest
 from mogua.server.outbound_message import NodeType
 from mogua.server.server import ssl_context_for_server
 from mogua.types.peer_info import PeerInfo
-from mogua.util.block_tools import BlockTools
+from tests.block_tools import BlockTools
 from mogua.util.ints import uint16
 from mogua.util.ws_message import create_payload
 from tests.core.node_height import node_height_at_least
@@ -90,7 +90,7 @@ class TestDaemon:
 
         read_handler = asyncio.create_task(reader(ws, message_queue))
         data = {}
-        payload = create_payload("get_blockchain_state", data, service_name, "mogua_full_node")
+        payload = create_payload("get_blockchain_state", data, service_name, "greendoge_full_node")
         await ws.send_str(payload)
 
         await asyncio.sleep(5)

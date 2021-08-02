@@ -18,7 +18,7 @@ from mogua.simulator.start_simulator import service_kwargs_for_full_node_simulat
 from mogua.timelord.timelord_launcher import kill_processes, spawn_process
 from mogua.types.peer_info import PeerInfo
 from mogua.util.bech32m import encode_puzzle_hash
-from mogua.util.block_tools import BlockTools, test_constants
+from tests.block_tools import BlockTools, test_constants
 from mogua.util.hash import std_hash
 from mogua.util.ints import uint16, uint32
 from mogua.util.keychain import Keychain, bytes_to_mnemonic
@@ -207,10 +207,10 @@ async def setup_farmer(
     config = bt.config["farmer"]
     config_pool = bt.config["pool"]
 
-    config["xfx_target_address"] = encode_puzzle_hash(b_tools.farmer_ph, "xfx")
+    config["gdog_target_address"] = encode_puzzle_hash(b_tools.farmer_ph, "gdog")
     config["pool_public_keys"] = [bytes(pk).hex() for pk in b_tools.pool_pubkeys]
     config["port"] = port
-    config_pool["xfx_target_address"] = encode_puzzle_hash(b_tools.pool_ph, "xfx")
+    config_pool["gdog_target_address"] = encode_puzzle_hash(b_tools.pool_ph, "gdog")
 
     if full_node_port:
         config["full_node_peer"]["host"] = self_hostname

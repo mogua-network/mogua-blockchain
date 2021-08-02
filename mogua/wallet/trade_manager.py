@@ -34,8 +34,6 @@ from mogua.wallet.util.wallet_types import WalletType
 from mogua.wallet.wallet import Wallet
 from mogua.wallet.wallet_coin_record import WalletCoinRecord
 
-# from mogua.wallet.cc_wallet.debug_spend_bundle import debug_spend_bundle
-
 
 class TradeManager:
     wallet_state_manager: Any
@@ -153,7 +151,7 @@ class TradeManager:
                     self.log.warning(f"Trade with id: {trade.trade_id} failed at height: {height}")
 
     async def get_locked_coins(self, wallet_id: int = None) -> Dict[bytes32, WalletCoinRecord]:
-        """ Returns a dictionary of confirmed coins that are locked by a trade. """
+        """Returns a dictionary of confirmed coins that are locked by a trade."""
         all_pending = []
         pending_accept = await self.get_offers_with_status(TradeStatus.PENDING_ACCEPT)
         pending_confirm = await self.get_offers_with_status(TradeStatus.PENDING_CONFIRM)
@@ -185,7 +183,7 @@ class TradeManager:
         return record
 
     async def get_locked_coins_in_spend_bundle(self, bundle: SpendBundle) -> Dict[bytes32, WalletCoinRecord]:
-        """ Returns a list of coin records that are used in this SpendBundle"""
+        """Returns a list of coin records that are used in this SpendBundle"""
         result = {}
         removals = bundle.removals()
         for coin in removals:
@@ -199,7 +197,7 @@ class TradeManager:
         await self.trade_store.set_status(trade_id, TradeStatus.CANCELED, False)
 
     async def cancel_pending_offer_safely(self, trade_id: bytes32):
-        """ This will create a transaction that includes coins that were offered"""
+        """This will create a transaction that includes coins that were offered"""
         self.log.info(f"Secure-Cancel pending offer with id trade_id {trade_id.hex()}")
         trade = await self.trade_store.get_trade_record(trade_id)
         if trade is None:
@@ -280,7 +278,7 @@ class TradeManager:
                         to_exclude = []
                     else:
                         to_exclude = spend_bundle.removals()
-                    new_spend_bundle = await wallet.create_spend_bundle_relative_mogua(amount, to_exclude)
+                    new_spend_bundle = await wallet.create_spend_bundle_relative_greendoge(amount, to_exclude)
                 else:
                     return False, None, "unsupported wallet type"
                 if new_spend_bundle is None or new_spend_bundle.removals() == []:
@@ -366,7 +364,7 @@ class TradeManager:
         cc_coinsol_outamounts: Dict[bytes32, List[Tuple[CoinSolution, int]]] = dict()
         aggsig = offer_spend_bundle.aggregated_signature
         cc_discrepancies: Dict[bytes32, int] = dict()
-        mogua_discrepancy = None
+        greendoge_discrepancy = None
         wallets: Dict[bytes32, Any] = dict()  # colour to wallet dict
 
         for coinsol in offer_spend_bundle.coin_solutions:
@@ -403,20 +401,20 @@ class TradeManager:
                 unspent = await self.wallet_state_manager.get_spendable_coins_for_wallet(1)
                 if coinsol.coin in [record.coin for record in unspent]:
                     return False, None, "can't respond to own offer"
-                if mogua_discrepancy is None:
-                    mogua_discrepancy = get_output_discrepancy_for_puzzle_and_solution(coinsol.coin, puzzle, solution)
+                if greendoge_discrepancy is None:
+                    greendoge_discrepancy = get_output_discrepancy_for_puzzle_and_solution(coinsol.coin, puzzle, solution)
                 else:
-                    mogua_discrepancy += get_output_discrepancy_for_puzzle_and_solution(coinsol.coin, puzzle, solution)
+                    greendoge_discrepancy += get_output_discrepancy_for_puzzle_and_solution(coinsol.coin, puzzle, solution)
                 coinsols.append(coinsol)
 
-        mogua_spend_bundle: Optional[SpendBundle] = None
-        if mogua_discrepancy is not None:
-            mogua_spend_bundle = await self.wallet_state_manager.main_wallet.create_spend_bundle_relative_mogua(
-                mogua_discrepancy, []
+        greendoge_spend_bundle: Optional[SpendBundle] = None
+        if greendoge_discrepancy is not None:
+            greendoge_spend_bundle = await self.wallet_state_manager.main_wallet.create_spend_bundle_relative_greendoge(
+                greendoge_discrepancy, []
             )
-            if mogua_spend_bundle is not None:
+            if greendoge_spend_bundle is not None:
                 for coinsol in coinsols:
-                    mogua_spend_bundle.coin_solutions.append(coinsol)
+                    greendoge_spend_bundle.coin_solutions.append(coinsol)
 
         zero_spend_list: List[SpendBundle] = []
         spend_bundle = None
@@ -426,10 +424,10 @@ class TradeManager:
             if cc_discrepancies[colour] < 0:
                 my_cc_spends = await wallets[colour].select_coins(abs(cc_discrepancies[colour]))
             else:
-                if mogua_spend_bundle is None:
+                if greendoge_spend_bundle is None:
                     to_exclude: List = []
                 else:
-                    to_exclude = mogua_spend_bundle.removals()
+                    to_exclude = greendoge_spend_bundle.removals()
                 my_cc_spends = await wallets[colour].select_coins(0)
                 if my_cc_spends is None or my_cc_spends == set():
                     zero_spend_bundle: SpendBundle = await wallets[colour].generate_zero_val_coin(False, to_exclude)
@@ -531,50 +529,49 @@ class TradeManager:
 
         # Add transaction history for this trade
         now = uint64(int(time.time()))
-        if mogua_spend_bundle is not None:
-            spend_bundle = SpendBundle.aggregate([spend_bundle, mogua_spend_bundle])
-            # debug_spend_bundle(spend_bundle)
-            if mogua_discrepancy < 0:
+        if greendoge_spend_bundle is not None:
+            spend_bundle = SpendBundle.aggregate([spend_bundle, greendoge_spend_bundle])
+            if greendoge_discrepancy < 0:
                 tx_record = TransactionRecord(
                     confirmed_at_height=uint32(0),
                     created_at_time=now,
                     to_puzzle_hash=token_bytes(),
-                    amount=uint64(abs(mogua_discrepancy)),
+                    amount=uint64(abs(greendoge_discrepancy)),
                     fee_amount=uint64(0),
                     confirmed=False,
                     sent=uint32(10),
-                    spend_bundle=mogua_spend_bundle,
-                    additions=mogua_spend_bundle.additions(),
-                    removals=mogua_spend_bundle.removals(),
+                    spend_bundle=greendoge_spend_bundle,
+                    additions=greendoge_spend_bundle.additions(),
+                    removals=greendoge_spend_bundle.removals(),
                     wallet_id=uint32(1),
                     sent_to=[],
                     trade_id=std_hash(spend_bundle.name() + bytes(now)),
                     type=uint32(TransactionType.OUTGOING_TRADE.value),
-                    name=mogua_spend_bundle.name(),
+                    name=greendoge_spend_bundle.name(),
                 )
             else:
                 tx_record = TransactionRecord(
                     confirmed_at_height=uint32(0),
                     created_at_time=uint64(int(time.time())),
                     to_puzzle_hash=token_bytes(),
-                    amount=uint64(abs(mogua_discrepancy)),
+                    amount=uint64(abs(greendoge_discrepancy)),
                     fee_amount=uint64(0),
                     confirmed=False,
                     sent=uint32(10),
-                    spend_bundle=mogua_spend_bundle,
-                    additions=mogua_spend_bundle.additions(),
-                    removals=mogua_spend_bundle.removals(),
+                    spend_bundle=greendoge_spend_bundle,
+                    additions=greendoge_spend_bundle.additions(),
+                    removals=greendoge_spend_bundle.removals(),
                     wallet_id=uint32(1),
                     sent_to=[],
                     trade_id=std_hash(spend_bundle.name() + bytes(now)),
                     type=uint32(TransactionType.INCOMING_TRADE.value),
-                    name=mogua_spend_bundle.name(),
+                    name=greendoge_spend_bundle.name(),
                 )
             my_tx_records.append(tx_record)
 
         for colour, amount in cc_discrepancies.items():
             wallet = wallets[colour]
-            if mogua_discrepancy > 0:
+            if greendoge_discrepancy > 0:
                 tx_record = TransactionRecord(
                     confirmed_at_height=uint32(0),
                     created_at_time=uint64(int(time.time())),

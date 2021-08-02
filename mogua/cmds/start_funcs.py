@@ -11,7 +11,7 @@ from mogua.util.service_groups import services_for_groups
 
 
 def launch_start_daemon(root_path: Path) -> subprocess.Popen:
-    os.environ["MOGUA_ROOT"] = str(root_path)
+    os.environ["GREENDOGE_ROOT"] = str(root_path)
     # TODO: use startupinfo=subprocess.DETACHED_PROCESS on windows
     mogua = sys.argv[0]
     process = subprocess.Popen(f"{mogua} run_daemon".split(), stdout=subprocess.PIPE)

@@ -1,6 +1,6 @@
 from mogua.protocols import full_node_protocol, introducer_protocol, wallet_protocol
 from mogua.server.outbound_message import NodeType
-from mogua.server.ws_connection import WSMoguaConnection
+from mogua.server.ws_connection import WSGreenDogeConnection
 from mogua.types.mempool_inclusion_status import MempoolInclusionStatus
 from mogua.util.api_decorators import api_request, peer_required, execute_task
 from mogua.util.errors import Err
@@ -23,10 +23,10 @@ class WalletNodeAPI:
 
     @peer_required
     @api_request
-    async def respond_removals(self, response: wallet_protocol.RespondRemovals, peer: WSMoguaConnection):
+    async def respond_removals(self, response: wallet_protocol.RespondRemovals, peer: WSGreenDogeConnection):
         pass
 
-    async def reject_removals_request(self, response: wallet_protocol.RejectRemovalsRequest, peer: WSMoguaConnection):
+    async def reject_removals_request(self, response: wallet_protocol.RejectRemovalsRequest, peer: WSGreenDogeConnection):
         """
         The full node has rejected our request for removals.
         """
@@ -42,7 +42,7 @@ class WalletNodeAPI:
     @execute_task
     @peer_required
     @api_request
-    async def new_peak_wallet(self, peak: wallet_protocol.NewPeakWallet, peer: WSMoguaConnection):
+    async def new_peak_wallet(self, peak: wallet_protocol.NewPeakWallet, peer: WSGreenDogeConnection):
         """
         The full node sent as a new peak
         """
@@ -61,7 +61,7 @@ class WalletNodeAPI:
 
     @peer_required
     @api_request
-    async def respond_additions(self, response: wallet_protocol.RespondAdditions, peer: WSMoguaConnection):
+    async def respond_additions(self, response: wallet_protocol.RespondAdditions, peer: WSGreenDogeConnection):
         pass
 
     @api_request
@@ -70,7 +70,7 @@ class WalletNodeAPI:
 
     @peer_required
     @api_request
-    async def transaction_ack(self, ack: wallet_protocol.TransactionAck, peer: WSMoguaConnection):
+    async def transaction_ack(self, ack: wallet_protocol.TransactionAck, peer: WSGreenDogeConnection):
         """
         This is an ack for our previous SendTransaction call. This removes the transaction from
         the send queue if we have sent it to enough nodes.
@@ -94,7 +94,7 @@ class WalletNodeAPI:
     @peer_required
     @api_request
     async def respond_peers_introducer(
-        self, request: introducer_protocol.RespondPeersIntroducer, peer: WSMoguaConnection
+        self, request: introducer_protocol.RespondPeersIntroducer, peer: WSGreenDogeConnection
     ):
         if not self.wallet_node.has_full_node():
             await self.wallet_node.wallet_peers.respond_peers(request, peer.get_peer_info(), False)
@@ -106,7 +106,7 @@ class WalletNodeAPI:
 
     @peer_required
     @api_request
-    async def respond_peers(self, request: full_node_protocol.RespondPeers, peer: WSMoguaConnection):
+    async def respond_peers(self, request: full_node_protocol.RespondPeers, peer: WSGreenDogeConnection):
         if not self.wallet_node.has_full_node():
             self.log.info(f"Wallet received {len(request.peer_list)} peers.")
             await self.wallet_node.wallet_peers.respond_peers(request, peer.get_peer_info(), True)
@@ -124,7 +124,6 @@ class WalletNodeAPI:
     @api_request
     async def reject_puzzle_solution(self, request: wallet_protocol.RejectPuzzleSolution):
         self.log.warning(f"Reject puzzle solution: {request}")
-        pass
 
     @api_request
     async def respond_header_blocks(self, request: wallet_protocol.RespondHeaderBlocks):
@@ -133,4 +132,3 @@ class WalletNodeAPI:
     @api_request
     async def reject_header_blocks(self, request: wallet_protocol.RejectHeaderBlocks):
         self.log.warning(f"Reject header blocks: {request}")
-        pass

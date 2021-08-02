@@ -13,6 +13,7 @@ from mogua.util.ints import uint16
 from mogua.wallet.util.wallet_types import WalletType
 from tests.setup_nodes import self_hostname, setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert
+from tests.wallet.sync.test_wallet_sync import wallet_height_at_least
 
 
 @pytest.fixture(scope="module")
@@ -112,7 +113,7 @@ class TestRLWallet:
 
         await time_out_assert(15, check_balance, 100, api_user, user_wallet_id)
         receiving_wallet = wallet_node_2.wallet_state_manager.main_wallet
-        address = encode_puzzle_hash(await receiving_wallet.get_new_puzzlehash(), "xfx")
+        address = encode_puzzle_hash(await receiving_wallet.get_new_puzzlehash(), "gdog")
         assert await receiving_wallet.get_spendable_balance() == 0
         val = await api_user.send_transaction({"wallet_id": user_wallet_id, "amount": 3, "fee": 2, "address": address})
         assert "transaction_id" in val
@@ -143,7 +144,7 @@ class TestRLWallet:
         await time_out_assert(15, check_balance, 195, api_user, user_wallet_id)
 
         # test spending
-        puzzle_hash = encode_puzzle_hash(await receiving_wallet.get_new_puzzlehash(), "xfx")
+        puzzle_hash = encode_puzzle_hash(await receiving_wallet.get_new_puzzlehash(), "gdog")
         val = await api_user.send_transaction(
             {
                 "wallet_id": user_wallet_id,
@@ -157,7 +158,7 @@ class TestRLWallet:
             await full_node_api.farm_new_transaction_block(FarmNewBlockProtocol(32 * b"\0"))
         await time_out_assert(15, check_balance, 90, api_user, user_wallet_id)
         await time_out_assert(15, receiving_wallet.get_spendable_balance, 108)
-
+        await time_out_assert(15, wallet_height_at_least, True, wallet_node, 72)
         val = await api_admin.send_clawback_transaction({"wallet_id": admin_wallet_id, "fee": 11})
         await time_out_assert(15, is_transaction_in_mempool, True, api_admin, val["transaction_id"])
         for i in range(0, num_blocks):

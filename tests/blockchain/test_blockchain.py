@@ -10,31 +10,31 @@ import pytest
 from blspy import AugSchemeMPL, G2Element
 from clvm.casts import int_to_bytes
 
-frommogua.consensus.block_rewards import calculate_base_farmer_reward
-frommogua.consensus.blockchain import ReceiveBlockResult
-frommogua.consensus.coinbase import create_farmer_coin
-frommogua.consensus.pot_iterations import is_overflow_block
-frommogua.full_node.bundle_tools import detect_potential_template_generator
-frommogua.types.blockchain_format.classgroup import ClassgroupElement
-frommogua.types.blockchain_format.coin import Coin
-frommogua.types.blockchain_format.foliage import TransactionsInfo
-frommogua.types.blockchain_format.program import SerializedProgram
-frommogua.types.blockchain_format.sized_bytes import bytes32
-frommogua.types.blockchain_format.slots import InfusedChallengeChainSubSlot
-frommogua.types.blockchain_format.vdf import VDFInfo, VDFProof
-frommogua.types.condition_opcodes import ConditionOpcode
-frommogua.types.condition_with_args import ConditionWithArgs
-frommogua.types.end_of_slot_bundle import EndOfSubSlotBundle
-frommogua.types.full_block import FullBlock
-frommogua.types.spend_bundle import SpendBundle
-frommogua.types.unfinished_block import UnfinishedBlock
-frommogua.util.block_tools import BlockTools, get_vdf_info_and_proof
-frommogua.util.errors import Err
-frommogua.util.hash import std_hash
-frommogua.util.ints import uint8, uint64, uint32
-frommogua.util.merkle_set import MerkleSet
-frommogua.util.recursive_replace import recursive_replace
-frommogua.util.wallet_tools import WalletTool
+from mogua.consensus.block_rewards import calculate_base_farmer_reward
+from mogua.consensus.blockchain import ReceiveBlockResult
+from mogua.consensus.coinbase import create_farmer_coin
+from mogua.consensus.pot_iterations import is_overflow_block
+from mogua.full_node.bundle_tools import detect_potential_template_generator
+from mogua.types.blockchain_format.classgroup import ClassgroupElement
+from mogua.types.blockchain_format.coin import Coin
+from mogua.types.blockchain_format.foliage import TransactionsInfo
+from mogua.types.blockchain_format.program import SerializedProgram
+from mogua.types.blockchain_format.sized_bytes import bytes32
+from mogua.types.blockchain_format.slots import InfusedChallengeChainSubSlot
+from mogua.types.blockchain_format.vdf import VDFInfo, VDFProof
+from mogua.types.condition_opcodes import ConditionOpcode
+from mogua.types.condition_with_args import ConditionWithArgs
+from mogua.types.end_of_slot_bundle import EndOfSubSlotBundle
+from mogua.types.full_block import FullBlock
+from mogua.types.spend_bundle import SpendBundle
+from mogua.types.unfinished_block import UnfinishedBlock
+from tests.block_tools import BlockTools, get_vdf_info_and_proof
+from mogua.util.errors import Err
+from mogua.util.hash import std_hash
+from mogua.util.ints import uint8, uint64, uint32
+from mogua.util.merkle_set import MerkleSet
+from mogua.util.recursive_replace import recursive_replace
+from tests.wallet_tools import WalletTool
 from tests.core.fixtures import default_400_blocks  # noqa: F401; noqa: F401
 from tests.core.fixtures import default_1000_blocks  # noqa: F401
 from tests.core.fixtures import default_10000_blocks  # noqa: F401
@@ -1947,7 +1947,7 @@ class TestBodyValidation:
         blocks = bt.get_consecutive_blocks(
             1, block_list_input=blocks, guarantee_transaction_block=True, transaction_data=tx
         )
-        assert (await b.receive_block(blocks[-1]))[1] == Err.BLOCK_COST_EXCEEDS_MAX
+        assert (await b.receive_block(blocks[-1]))[1] == Err.INVALID_BLOCK_COST
 
     @pytest.mark.asyncio
     async def test_clvm_must_not_fail(self, empty_blockchain):
@@ -2006,7 +2006,7 @@ class TestBodyValidation:
         new_fsb_sig = bt.get_plot_signature(new_m, block.reward_chain_block.proof_of_space.plot_public_key)
         block_2 = recursive_replace(block_2, "foliage.foliage_transaction_block_signature", new_fsb_sig)
         err = (await b.receive_block(block_2))[1]
-        assert err == Err.GENERATOR_RUNTIME_ERROR
+        assert err == Err.INVALID_BLOCK_COST
 
         # too high
         block_2: FullBlock = recursive_replace(block, "transactions_info.cost", uint64(1000000))
@@ -2021,7 +2021,9 @@ class TestBodyValidation:
         block_2 = recursive_replace(block_2, "foliage.foliage_transaction_block_signature", new_fsb_sig)
 
         err = (await b.receive_block(block_2))[1]
-        assert err == Err.INVALID_BLOCK_COST
+        # when the CLVM program exceeds cost during execution, it will fail with
+        # a general runtime error
+        assert err == Err.GENERATOR_RUNTIME_ERROR
 
         err = (await b.receive_block(block))[1]
         assert err is None

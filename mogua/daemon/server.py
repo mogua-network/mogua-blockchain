@@ -16,11 +16,11 @@ from typing import Any, Dict, List, Optional, TextIO, Tuple, cast
 
 from websockets import ConnectionClosedOK, WebSocketException, WebSocketServerProtocol, serve
 
-from mogua.cmds.init_funcs import mogua_init
+from mogua.cmds.init_funcs import greendoge_init
 from mogua.daemon.windows_signal import kill
 from mogua.server.server import ssl_context_for_root, ssl_context_for_server
-from mogua.ssl.create_ssl import get_mozzila_ca_crt
-from mogua.util.mogua_logging import initialize_logging
+from mogua.ssl.create_ssl import get_mozilla_ca_crt
+from mogua.util.greendoge_logging import initialize_logging
 from mogua.util.config import load_config
 from mogua.util.json_util import dict_to_json_str
 from mogua.util.path import mkdir
@@ -51,8 +51,8 @@ service_plotter = "mogua plots create"
 async def fetch(url: str):
     async with ClientSession() as session:
         try:
-            mozzila_root = get_mozzila_ca_crt()
-            ssl_context = ssl_context_for_root(mozzila_root)
+            mozilla_root = get_mozilla_ca_crt()
+            ssl_context = ssl_context_for_root(mozilla_root)
             response = await session.get(url, ssl=ssl_context)
             if not response.ok:
                 log.warning("Response not OK.")
@@ -79,14 +79,14 @@ class PlotEvent(str, Enum):
 if getattr(sys, "frozen", False):
     name_map = {
         "mogua": "mogua",
-        "mogua_wallet": "start_wallet",
-        "mogua_full_node": "start_full_node",
-        "mogua_harvester": "start_harvester",
-        "mogua_farmer": "start_farmer",
-        "mogua_introducer": "start_introducer",
-        "mogua_timelord": "start_timelord",
-        "mogua_timelord_launcher": "timelord_launcher",
-        "mogua_full_node_simulator": "start_simulator",
+        "greendoge_wallet": "start_wallet",
+        "greendoge_full_node": "start_full_node",
+        "greendoge_harvester": "start_harvester",
+        "greendoge_farmer": "start_farmer",
+        "greendoge_introducer": "start_introducer",
+        "greendoge_timelord": "start_timelord",
+        "greendoge_timelord_launcher": "timelord_launcher",
+        "greendoge_full_node_simulator": "start_simulator",
     }
 
     def executable_for_service(service_name: str) -> str:
@@ -396,6 +396,9 @@ class WebSocketServer:
         b = request["b"]
         u = request["u"]
         r = request["r"]
+        f = request.get("f")
+        p = request.get("p")
+        c = request.get("c")
         a = request.get("a")
         e = request["e"]
         x = request["x"]
@@ -414,6 +417,15 @@ class WebSocketServer:
 
         if a is not None:
             command_args.append(f"-a{a}")
+
+        if f is not None:
+            command_args.append(f"-f{f}")
+
+        if p is not None:
+            command_args.append(f"-p{p}")
+
+        if c is not None:
+            command_args.append(f"-c{c}")
 
         if e is True:
             command_args.append("-e")
@@ -517,6 +529,14 @@ class WebSocketServer:
         size = request.get("k")
         count = request.get("n", 1)
         queue = request.get("queue", "default")
+
+        if ("p" in request) and ("c" in request):
+            response = {
+                "success": False,
+                "service_name": service_name,
+                "error": "Choose one of pool_contract_address and pool_public_key",
+            }
+            return response
 
         for k in range(count):
             id = str(uuid.uuid4())
@@ -729,8 +749,8 @@ def plotter_log_path(root_path: Path, id: str):
 
 
 def launch_plotter(root_path: Path, service_name: str, service_array: List[str], id: str):
-    # we need to pass on the possibly altered MOGUA_ROOT
-    os.environ["MOGUA_ROOT"] = str(root_path)
+    # we need to pass on the possibly altered GREENDOGE_ROOT
+    os.environ["GREENDOGE_ROOT"] = str(root_path)
     service_executable = executable_for_service(service_array[0])
 
     # Swap service name with name of executable
@@ -739,6 +759,13 @@ def launch_plotter(root_path: Path, service_name: str, service_array: List[str],
     if os.name == "nt":
         startupinfo = subprocess.STARTUPINFO()  # type: ignore
         startupinfo.dwFlags |= subprocess.STARTF_USESHOWWINDOW  # type: ignore
+
+    # Windows-specific.
+    # If the current process group is used, CTRL_C_EVENT will kill the parent and everyone in the group!
+    try:
+        creationflags: int = subprocess.CREATE_NEW_PROCESS_GROUP  # type: ignore
+    except AttributeError:  # Not on Windows.
+        creationflags = 0
 
     plotter_path = plotter_log_path(root_path, id)
 
@@ -749,7 +776,14 @@ def launch_plotter(root_path: Path, service_name: str, service_array: List[str],
         mkdir(plotter_path.parent)
     outfile = open(plotter_path.resolve(), "w")
     log.info(f"Service array: {service_array}")
-    process = subprocess.Popen(service_array, shell=False, stderr=outfile, stdout=outfile, startupinfo=startupinfo)
+    process = subprocess.Popen(
+        service_array,
+        shell=False,
+        stderr=outfile,
+        stdout=outfile,
+        startupinfo=startupinfo,
+        creationflags=creationflags,
+    )
 
     pid_path = pid_path_for_service(root_path, service_name, id)
     try:
@@ -765,19 +799,14 @@ def launch_service(root_path: Path, service_command) -> Tuple[subprocess.Popen, 
     """
     Launch a child process.
     """
-    # set up MOGUA_ROOT
+    # set up GREENDOGE_ROOT
     # invoke correct script
     # save away PID
 
-    # we need to pass on the possibly altered MOGUA_ROOT
-    os.environ["MOGUA_ROOT"] = str(root_path)
+    # we need to pass on the possibly altered GREENDOGE_ROOT
+    os.environ["GREENDOGE_ROOT"] = str(root_path)
 
-    log.debug(f"Launching service with MOGUA_ROOT: {os.environ['MOGUA_ROOT']}")
-
-    lockfile = singleton(service_launch_lock_path(root_path, service_command))
-    if lockfile is None:
-        logging.error(f"{service_command}: already running")
-        raise subprocess.SubprocessError
+    log.debug(f"Launching service with GREENDOGE_ROOT: {os.environ['GREENDOGE_ROOT']}")
 
     # Insert proper e
     service_array = service_command.split()
@@ -946,9 +975,9 @@ def singleton(lockfile: Path, text: str = "semaphore") -> Optional[TextIO]:
 
 
 async def async_run_daemon(root_path: Path) -> int:
-    mogua_init(root_path)
+    greendoge_init(root_path)
     config = load_config(root_path, "config.yaml")
-    setproctitle("mogua_daemon")
+    setproctitle("greendoge_daemon")
     initialize_logging("daemon", config["logging"], root_path)
     lockfile = singleton(daemon_launch_lock_path(root_path))
     crt_path = root_path / config["daemon_ssl"]["private_crt"]
