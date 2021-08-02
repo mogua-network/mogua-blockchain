@@ -16,14 +16,14 @@ function getInstallerConfig () {
   return Promise.resolve({
     appDirectory: path.join(rootPath, 'Mogua-win32-x64'),
     authors: 'Mogua Network',
-    version: process.env.MOGUA_INSTALLER_VERSION,
+    version: process.env.MGUA_INSTALLER_VERSION,
     noMsi: true,
     iconUrl: 'https://raw.githubusercontent.com/Mogua-Network/mogua-blockchain/master/electron-react/src/assets/img/mogua.ico',
     outputDirectory: path.join(outPath, 'windows-installer'),
     certificateFile: 'win_code_sign_cert.p12',
     certificatePassword: process.env.WIN_CODE_SIGN_PASS,
     exe: 'Mogua.exe',
-    setupExe: 'MoguaSetup-' + process.env.MOGUA_INSTALLER_VERSION + '.exe',
+    setupExe: 'MguaSetup-' + process.env.MGUA_INSTALLER_VERSION + '.exe',
     setupIcon: path.join(rootPath, 'src', 'assets', 'img', 'mogua.ico')
   })
 }

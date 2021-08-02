@@ -741,7 +741,7 @@ msgstr "Coltiva"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:211
 msgid "Farmer Public Key"
-msgstr "Moguave pubblica del farmer"
+msgstr "Mguave pubblica del farmer"
 
 #: src/components/block/Block.jsx:267
 msgid "Farmer Puzzle Hash"
@@ -811,7 +811,7 @@ msgid "Fee"
 msgstr "Costo della commissione"
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
-#~ msgid "Fee (TGDOG)"
+#~ msgid "Fee (TMGA)"
 #~ msgstr ""
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
@@ -1032,7 +1032,7 @@ msgstr "Dimensione-K"
 
 #: src/components/dashboard/DashboardSideBar.tsx:66
 msgid "Keys"
-msgstr "Moguavi"
+msgstr "Mguavi"
 
 #: src/components/farm/FarmFullNodeConnections.tsx:64
 #: src/components/farm/FarmYourHarvesterNetwork.tsx:64
@@ -1257,7 +1257,7 @@ msgid "Not found Plots"
 msgstr "Plot non trovati"
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:184
-msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25GDOG reward for pooling plots."
+msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25MGA reward for pooling plots."
 msgstr ""
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:120
@@ -1424,7 +1424,7 @@ msgstr "Id Plot"
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:75
 msgid "Plot Key"
-msgstr "Moguave Plot"
+msgstr "Mguave Plot"
 
 #: src/components/pool/PoolOverview.tsx:40
 msgid "Plot NFT"
@@ -1441,7 +1441,7 @@ msgstr ""
 
 #: src/components/block/Block.jsx:259
 msgid "Plot Public Key"
-msgstr "Moguave Pubblica del Plot"
+msgstr "Mguave Pubblica del Plot"
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:49
 #~ msgid "Plot Seed"
@@ -1521,7 +1521,7 @@ msgstr ""
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:81
 msgid "Pool Key"
-msgstr "Moguave Pool"
+msgstr "Mguave Pool"
 
 #: src/components/plotNFT/PlotNFTGetPoolLoginLinkDialog.tsx:77
 msgid "Pool Login Link"
@@ -1535,7 +1535,7 @@ msgstr ""
 #: src/components/block/Block.jsx:263
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:222
 msgid "Pool Public Key"
-msgstr "Moguave Pubblica Pool"
+msgstr "Mguave Pubblica Pool"
 
 #: src/components/block/Block.jsx:283
 msgid "Pool Puzzle Hash"
@@ -1618,15 +1618,15 @@ msgstr "Hash Header Precedente"
 
 #: src/components/selectKey/SelectKey.tsx:136
 msgid "Private key with public fingerprint {fingerprint}"
-msgstr "Moguave privata con impronta pubblica {fingerprint}"
+msgstr "Mguave privata con impronta pubblica {fingerprint}"
 
 #: src/middleware/middleware_api.jsx:249
 msgid "Private key {0}"
-msgstr "Moguave privata {0}"
+msgstr "Mguave privata {0}"
 
 #: src/middleware/middleware_api.jsx:259
 msgid "Private key:"
-msgstr "Moguave privata:"
+msgstr "Mguave privata:"
 
 #: src/components/block/Block.jsx:251
 msgid "Proof of Space Size"
@@ -1646,7 +1646,7 @@ msgstr "Pubkey"
 
 #: src/middleware/middleware_api.jsx:267
 msgid "Public key:"
-msgstr "Moguave pubblica:"
+msgstr "Mguave pubblica:"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:162
 msgid "Queue Name"
@@ -1779,7 +1779,7 @@ msgstr "Selezione Cartella Finale"
 
 #: src/components/selectKey/SelectKey.tsx:104
 msgid "Select Key"
-msgstr "Selezione Moguave"
+msgstr "Selezione Mguave"
 
 #: src/components/trading/ViewOffer.jsx:37
 msgid "Select Offer"
@@ -1991,23 +1991,23 @@ msgstr "Sincronizzazione <0/>/<1/>"
 #~ msgstr "Syncing {progress}/{tip}"
 
 #: src/components/farm/card/FarmCardBlockRewards.tsx:15
-#~ msgid "TGDOG Block Rewards"
+#~ msgid "TMGA Block Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardCoinbaseRewards.tsx:12
-#~ msgid "TGDOG Farming Rewards"
+#~ msgid "TMGA Farming Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardFeesReward.tsx:12
-#~ msgid "TGDOG Fees Collected"
+#~ msgid "TMGA Fees Collected"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardUserFees.tsx:12
-#~ msgid "TGDOG User Fees"
-#~ msgstr "TGDOG User Fees"
+#~ msgid "TMGA User Fees"
+#~ msgstr "TMGA User Fees"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:15
-#~ msgid "TGDOG User Transaction Fees"
+#~ msgid "TMGA User Transaction Fees"
 #~ msgstr ""
 
 #: src/components/pool/PoolInfo.tsx:37
@@ -2198,7 +2198,7 @@ msgstr "A"
 msgid "Total Balance"
 msgstr "Bilancio Totale"
 
-#: src/components/farm/card/FarmCardTotalMoguaFarmed.tsx:15
+#: src/components/farm/card/FarmCardTotalMguaFarmed.tsx:15
 #~ msgid "Total Mogua Farmed"
 #~ msgstr ""
 
@@ -2583,7 +2583,7 @@ msgstr ""
 msgid "{currencyCode} Block Rewards"
 msgstr "{currencyCode} Ricompense Blocco"
 
-#: src/components/farm/card/FarmCardTotalMoguaFarmed.tsx:29
+#: src/components/farm/card/FarmCardTotalMguaFarmed.tsx:29
 msgid "{currencyCode} Total Mogua Farmed"
 msgstr "{currencyCode} Mogua Farmati in Totale"
 
@@ -2592,5 +2592,5 @@ msgid "{currencyCode} User Transaction Fees"
 msgstr "{currencyCode} Tasse Transazione Utente"
 
 #: src/components/core/components/Amount/Amount.tsx:82
-msgid "{gua, plural, one {gua} other {dogs}}"
+msgid "{gua, plural, one {gua} other {guas}}"
 msgstr ""

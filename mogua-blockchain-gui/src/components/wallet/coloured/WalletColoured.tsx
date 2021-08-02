@@ -21,8 +21,8 @@ import {
   rename_cc_wallet,
 } from '../../../modules/message';
 import {
-  dog_to_colouredcoin_string,
-  colouredcoin_to_dog,
+  gua_to_colouredcoin_string,
+  colouredcoin_to_gua,
 } from '../../../util/mogua';
 import { openDialog } from '../../../modules/dialog';
 import { get_transaction_result } from '../../../util/transaction_result';
@@ -290,7 +290,7 @@ function BalanceCardSubSection(props: BalanceCardSubSectionProps) {
         </Box>
         <Box>
           <Typography variant="subtitle1">
-            {dog_to_colouredcoin_string(props.balance)} {cc_unit}
+            {gua_to_colouredcoin_string(props.balance)} {cc_unit}
           </Typography>
         </Box>
       </Box>
@@ -346,9 +346,9 @@ function BalanceCard(props: BalanceCardProps) {
   const balancebox_unit = ` ${cc_unit}`;
   const balancebox_hline =
     "<tr><td colspan='2' style='text-align:center'><hr width='50%'></td></tr>";
-  const balance_ptotal_mogua = dog_to_colouredcoin_string(balance_ptotal);
-  const balance_pending_mogua = dog_to_colouredcoin_string(balance_pending);
-  const balance_change_mogua = dog_to_colouredcoin_string(balance_change);
+  const balance_ptotal_mogua = gua_to_colouredcoin_string(balance_ptotal);
+  const balance_pending_mogua = gua_to_colouredcoin_string(balance_pending);
+  const balance_change_mogua = gua_to_colouredcoin_string(balance_change);
   const acc_content =
     balancebox_1 +
     balancebox_2 +
@@ -486,8 +486,8 @@ function SendCard(props: SendCardProps) {
       return;
     }
 
-    const amount = colouredcoin_to_dog(amount_input.value);
-    const fee = colouredcoin_to_dog(fee_input.value);
+    const amount = colouredcoin_to_gua(amount_input.value);
+    const fee = colouredcoin_to_gua(fee_input.value);
 
     if (address.includes('mogua_addr') || address.includes('colour_desc')) {
       dispatch(

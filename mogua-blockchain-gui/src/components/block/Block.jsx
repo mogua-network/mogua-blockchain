@@ -27,7 +27,7 @@ import {
   sha256,
 } from '../../util/utils';
 import { getBlockRecord, getBlock } from '../../modules/fullnodeMessages';
-import { dog_to_mogua } from '../../util/mogua';
+import { gua_to_mogua } from '../../util/mogua';
 import {
   calculatePoolReward,
   calculateBaseFarmerReward,
@@ -171,13 +171,13 @@ export default function Block() {
       ? blockRecord.weight - prevBlockRecord.weight
       : blockRecord?.weight ?? 0;
 
-  const poolReward = dog_to_mogua(calculatePoolReward(blockRecord.height));
-  const baseFarmerReward = dog_to_mogua(
+  const poolReward = gua_to_mogua(calculatePoolReward(blockRecord.height));
+  const baseFarmerReward = gua_to_mogua(
     calculateBaseFarmerReward(blockRecord.height),
   );
 
   const moguaFees = blockRecord.fees
-    ? dog_to_mogua(BigInt(blockRecord.fees))
+    ? gua_to_mogua(BigInt(blockRecord.fees))
     : '';
 
   const rows = [

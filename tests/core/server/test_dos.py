@@ -12,7 +12,7 @@ from mogua.protocols.shared_protocol import Handshake
 from mogua.server.outbound_message import make_msg, Message
 from mogua.server.rate_limits import RateLimiter
 from mogua.server.server import ssl_context_for_client
-from mogua.server.ws_connection import WSMoguaConnection
+from mogua.server.ws_connection import WSMguaConnection
 from mogua.types.peer_info import PeerInfo
 from mogua.util.ints import uint16, uint64
 from mogua.util.errors import Err
@@ -188,8 +188,8 @@ class TestDos:
 
         assert len(server_1.all_connections) == 1
 
-        ws_con: WSMoguaConnection = list(server_1.all_connections.values())[0]
-        ws_con_2: WSMoguaConnection = list(server_2.all_connections.values())[0]
+        ws_con: WSMguaConnection = list(server_1.all_connections.values())[0]
+        ws_con_2: WSMguaConnection = list(server_2.all_connections.values())[0]
 
         ws_con.peer_host = "1.2.3.4"
         ws_con_2.peer_host = "1.2.3.4"
@@ -241,8 +241,8 @@ class TestDos:
 
         assert len(server_1.all_connections) == 1
 
-        ws_con: WSMoguaConnection = list(server_1.all_connections.values())[0]
-        ws_con_2: WSMoguaConnection = list(server_2.all_connections.values())[0]
+        ws_con: WSMguaConnection = list(server_1.all_connections.values())[0]
+        ws_con_2: WSMguaConnection = list(server_2.all_connections.values())[0]
 
         ws_con.peer_host = "1.2.3.4"
         ws_con_2.peer_host = "1.2.3.4"
@@ -290,8 +290,8 @@ class TestDos:
 
         assert len(server_1.all_connections) == 1
 
-        ws_con: WSMoguaConnection = list(server_1.all_connections.values())[0]
-        ws_con_2: WSMoguaConnection = list(server_2.all_connections.values())[0]
+        ws_con: WSMguaConnection = list(server_1.all_connections.values())[0]
+        ws_con_2: WSMguaConnection = list(server_2.all_connections.values())[0]
 
         ws_con.peer_host = "1.2.3.4"
         ws_con_2.peer_host = "1.2.3.4"

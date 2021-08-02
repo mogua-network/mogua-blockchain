@@ -5,7 +5,7 @@ import WalletGraph from '../WalletGraph';
 import FarmCard from '../../farm/card/FarmCard';
 import useWallet from '../../../hooks/useWallet';
 import useCurrencyCode from '../../../hooks/useCurrencyCode';
-import { dog_to_mogua_string } from '../../../util/mogua';
+import { gua_to_mogua_string } from '../../../util/mogua';
 
 const StyledGraphContainer = styled.div`
   margin-left: -1rem;
@@ -39,7 +39,7 @@ export default function WalletCardTotalBalance(props: Props) {
       }
       value={
         <>
-          {dog_to_mogua_string(value)} {currencyCode}
+          {gua_to_mogua_string(value)} {currencyCode}
         </>
       }
       description={

@@ -83,32 +83,32 @@ mogua_formatter.setFiat = (currency, rate, display = null) => {
   units.setUnit(currency, 1 / rate, display);
 };
 
-export const dog_to_mogua = (gua) => {
+export const gua_to_mogua = (gua) => {
   return mogua_formatter(Number.parseInt(gua), 'gua').to('mogua').value();
 };
 
-export const mogua_to_dog = (mogua) => {
+export const mogua_to_gua = (mogua) => {
   return mogua_formatter(Number.parseFloat(Number(mogua)), 'mogua')
     .to('gua')
     .value();
 };
 
-export const dog_to_mogua_string = (gua) => {
+export const gua_to_mogua_string = (gua) => {
   return mogua_formatter(Number(gua), 'gua').to('mogua').toString();
 };
 
-export const dog_to_colouredcoin = (gua) => {
+export const gua_to_colouredcoin = (gua) => {
   return mogua_formatter(Number.parseInt(gua), 'gua')
     .to('colouredcoin')
     .value();
 };
 
-export const colouredcoin_to_dog = (colouredcoin) => {
+export const colouredcoin_to_gua = (colouredcoin) => {
   return mogua_formatter(Number.parseFloat(Number(colouredcoin)), 'colouredcoin')
     .to('gua')
     .value();
 };
 
-export const dog_to_colouredcoin_string = (gua) => {
+export const gua_to_colouredcoin_string = (gua) => {
   return mogua_formatter(Number(gua), 'gua').to('colouredcoin').toString();
 };

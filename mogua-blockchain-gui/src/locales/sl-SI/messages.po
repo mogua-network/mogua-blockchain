@@ -811,7 +811,7 @@ msgid "Fee"
 msgstr "Provizija"
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
-#~ msgid "Fee (TGDOG)"
+#~ msgid "Fee (TMGA)"
 #~ msgstr ""
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
@@ -1249,7 +1249,7 @@ msgid "Not found Plots"
 msgstr ""
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:186
-msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25GDOG reward for pooling plots."
+msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25MGA reward for pooling plots."
 msgstr ""
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:115
@@ -1982,23 +1982,23 @@ msgstr ""
 #~ msgstr "Syncing {progress}/{tip}"
 
 #: src/components/farm/card/FarmCardBlockRewards.tsx:15
-#~ msgid "TGDOG Block Rewards"
+#~ msgid "TMGA Block Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardCoinbaseRewards.tsx:12
-#~ msgid "TGDOG Farming Rewards"
+#~ msgid "TMGA Farming Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardFeesReward.tsx:12
-#~ msgid "TGDOG Fees Collected"
+#~ msgid "TMGA Fees Collected"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardUserFees.tsx:12
-#~ msgid "TGDOG User Fees"
-#~ msgstr "TGDOG User Fees"
+#~ msgid "TMGA User Fees"
+#~ msgstr "TMGA User Fees"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:15
-#~ msgid "TGDOG User Transaction Fees"
+#~ msgid "TMGA User Transaction Fees"
 #~ msgstr ""
 
 #: src/components/pool/PoolInfo.tsx:37
@@ -2185,7 +2185,7 @@ msgstr "Za"
 msgid "Total Balance"
 msgstr "Skupna bilanca"
 
-#: src/components/farm/card/FarmCardTotalMoguaFarmed.tsx:15
+#: src/components/farm/card/FarmCardTotalMguaFarmed.tsx:15
 #~ msgid "Total Mogua Farmed"
 #~ msgstr ""
 
@@ -2571,7 +2571,7 @@ msgstr ""
 msgid "{currencyCode} Block Rewards"
 msgstr "{currencyCode} Nagrade blokov"
 
-#: src/components/farm/card/FarmCardTotalMoguaFarmed.tsx:29
+#: src/components/farm/card/FarmCardTotalMguaFarmed.tsx:29
 msgid "{currencyCode} Total Mogua Farmed"
 msgstr "{currencyCode} skupaj Chie"
 
@@ -2580,6 +2580,6 @@ msgid "{currencyCode} User Transaction Fees"
 msgstr "{currencyCode} Provizije za transakcije"
 
 #: src/components/core/components/Amount/Amount.tsx:52
-msgid "{gua, plural, one {gua} other {dogs}}"
+msgid "{gua, plural, one {gua} other {guas}}"
 msgstr ""
 

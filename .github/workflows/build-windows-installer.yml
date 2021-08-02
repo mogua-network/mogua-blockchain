@@ -91,9 +91,9 @@ jobs:
         python -m venv ..\venv
         . ..\venv\Scripts\Activate.ps1
         pip3 install setuptools_scm
-        $env:MOGUA_INSTALLER_VERSION = python .\build_scripts\installer-version.py -win
-        echo "$env:MOGUA_INSTALLER_VERSION"
-        echo "::set-output name=MOGUA_INSTALLER_VERSION::$env:MOGUA_INSTALLER_VERSION"
+        $env:MGUA_INSTALLER_VERSION = python .\build_scripts\installer-version.py -win
+        echo "$env:MGUA_INSTALLER_VERSION"
+        echo "::set-output name=MGUA_INSTALLER_VERSION::$env:MGUA_INSTALLER_VERSION"
         deactivate
 
     - name: Build Windows installer with build_scripts\build_windows.ps1
@@ -121,9 +121,9 @@ jobs:
     - name: Create Checksums
       if: startsWith(github.ref, 'refs/tags/')
       env:
-        MOGUA_INSTALLER_VERSION: ${{ steps.version_number.outputs.MOGUA_INSTALLER_VERSION }}
+        MGUA_INSTALLER_VERSION: ${{ steps.version_number.outputs.MGUA_INSTALLER_VERSION }}
       run: |
-         certutil.exe -hashfile ${{ github.workspace }}\mogua-blockchain-gui\release-builds\windows-installer\MoguaSetup-${{ steps.version_number.outputs.MOGUA_INSTALLER_VERSION }}.exe SHA256 > ${{ github.workspace }}\mogua-blockchain-gui\release-builds\windows-installer\MoguaSetup-${{ steps.version_number.outputs.MOGUA_INSTALLER_VERSION }}.exe.checksum
+         certutil.exe -hashfile ${{ github.workspace }}\mogua-blockchain-gui\release-builds\windows-installer\MguaSetup-${{ steps.version_number.outputs.MGUA_INSTALLER_VERSION }}.exe SHA256 > ${{ github.workspace }}\mogua-blockchain-gui\release-builds\windows-installer\MguaSetup-${{ steps.version_number.outputs.MGUA_INSTALLER_VERSION }}.exe.checksum
          ls ${{ github.workspace }}\mogua-blockchain-gui\release-builds\windows-installer\
 
     - name: Get tag name

@@ -223,7 +223,7 @@ if (!handleSquirrelEvent()) {
       app.applicationMenu = createMenu();
       // if the daemon isn't local we aren't going to try to start/stop it
       if (moguaConfig.manageDaemonLifetime()) {
-        moguaEnvironment.startMoguaDaemon();
+        moguaEnvironment.startMguaDaemon();
       }
     };
 
@@ -406,7 +406,7 @@ if (!handleSquirrelEvent()) {
           {
             label: i18n._(/* i18n */ { id: 'Follow on Twitter' }),
             click: () => {
-              openExternal('https://twitter.com/green_dogecoin');
+              openExternal('https://twitter.com/green_guaecoin');
             },
           },
         ],

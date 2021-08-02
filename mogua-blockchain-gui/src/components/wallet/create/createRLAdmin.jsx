@@ -20,7 +20,7 @@ import {
 } from '../../../modules/createWallet';
 import { useStyles } from './WalletCreate';
 import { create_rl_admin_action } from '../../../modules/message';
-import { mogua_to_dog } from '../../../util/mogua';
+import { mogua_to_gua } from '../../../util/mogua';
 import { openDialog } from '../../../modules/dialog';
 
 export const customStyles = makeStyles((theme) => ({
@@ -156,12 +156,12 @@ export const CreateRLAdminWallet = () => {
     dispatch(createState(true, true));
     const interval = interval_input.value;
     const interval_value = Number.parseInt(Number(interval));
-    const moguaper = mogua_to_dog(moguaper_input.value);
+    const moguaper = mogua_to_gua(moguaper_input.value);
     const moguaper_value = Number.parseInt(Number(moguaper));
     const userpubkey = userpubkey_input.value;
-    const amount = mogua_to_dog(amount_input.value);
+    const amount = mogua_to_gua(amount_input.value);
     const amount_value = Number.parseInt(Number(amount));
-    // var fee = mogua_to_dog(fee_input.value);
+    // var fee = mogua_to_gua(fee_input.value);
     // TODO(lipa): send fee to server
     // const fee_value = parseInt(Number(fee));
     dispatch(

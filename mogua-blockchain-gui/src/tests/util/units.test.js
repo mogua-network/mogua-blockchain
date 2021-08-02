@@ -112,14 +112,14 @@ describe('units', () => {
     });
     it('updates an existing display', () => {
       units.setDisplay('mogua', {
-        format: '{amount} TGDOG',
+        format: '{amount} TMGA',
         fractionDigits: 0,
       });
 
       const result = units.getDisplay('mogua');
 
       expect(result).toEqual({
-        format: '{amount} TGDOG',
+        format: '{amount} TMGA',
         fractionDigits: 0,
       });
     });

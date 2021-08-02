@@ -9,7 +9,7 @@ This repo includes the code for the Mogua GUI in electron/react and TypeScript.
 It is an input to the [mogua-blockchain](https://github.com/Mogua-Network/mogua-blockchain) repository which also includes a verifiable delay function implementation that it imports from the [chiavdf repo](https://github.com/Mogua-Network/chiavdf) (in c/c++), and a proof of space implementation that it imports from the [chiapos repo](https://github.com/Mogua-Network/chiapos). BLS signatures are imported from the [bls-signatures repo](https://github.com/Mogua-Network/bls-signatures) as blspy. There is an additional dependency on the [chiabip158 repo](https://github.com/Mogua-Network/chiabip158).
 For major platforms, binary and source wheels are shipped to PyPI from each dependent repo and then mogua-blockchain can pip install those from PyPI or they can be prepackaged as is done for the Windows and MacOS installer. On unsupported platforms, pip will fall back to the source distributions to be compiled locally.
 
-If you want to learn more about this project, read the [wiki](https://github.com/Mogua-Network/mogua-blockchain/wiki), or check out the [green paper](https://www.mogua.gua/assets/MoguaPaper.pdf).
+If you want to learn more about this project, read the [wiki](https://github.com/Mogua-Network/mogua-blockchain/wiki), or check out the [green paper](https://www.mogua.gua/assets/MguaPaper.pdf).
 
 ## Contributions
 

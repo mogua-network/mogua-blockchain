@@ -5,7 +5,7 @@ import {
   Amount,
   Fee,
   Form,
-  TextField as MoguaTextField,
+  TextField as MguaTextField,
   AlertDialog,
   CopyToClipboard,
   Flex,
@@ -42,7 +42,7 @@ import {
   send_transaction,
   farm_block,
 } from '../../../modules/message';
-import { /* dog_to_mogua_string, */ mogua_to_dog } from '../../../util/mogua';
+import { /* gua_to_mogua_string, */ mogua_to_gua } from '../../../util/mogua';
 import { openDialog } from '../../../modules/dialog';
 import { get_transaction_result } from '../../../util/transaction_result';
 import config from '../../../config/config';
@@ -238,7 +238,7 @@ function BalanceCardSubSection(props: BalanceCardSubSectionProps) {
         </Box>
         <Box>
           <Typography variant="subtitle1">
-            {dog_to_mogua_string(props.balance)} {currencyCode}
+            {gua_to_mogua_string(props.balance)} {currencyCode}
           </Typography>
         </Box>
       </Box>
@@ -470,8 +470,8 @@ function SendCard(props: SendCardProps) {
       address = address.slice(2);
     }
 
-    const amountValue = Number.parseFloat(mogua_to_dog(amount));
-    const feeValue = Number.parseFloat(mogua_to_dog(fee));
+    const amountValue = Number.parseFloat(mogua_to_gua(amount));
+    const feeValue = Number.parseFloat(mogua_to_gua(fee));
 
     dispatch(send_transaction(wallet_id, amountValue, feeValue, address));
 
@@ -494,7 +494,7 @@ function SendCard(props: SendCardProps) {
       <Form methods={methods} onSubmit={handleSubmit}>
         <Grid spacing={2} container>
           <Grid xs={12} item>
-            <MoguaTextField
+            <MguaTextField
               name="address"
               variant="filled"
               color="secondary"

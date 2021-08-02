@@ -20,7 +20,7 @@ from mogua.protocols.shared_protocol import protocol_version
 from mogua.server.introducer_peers import IntroducerPeers
 from mogua.server.outbound_message import Message, NodeType
 from mogua.server.ssl_context import private_ssl_paths, public_ssl_paths
-from mogua.server.ws_connection import WSMoguaConnection
+from mogua.server.ws_connection import WSMguaConnection
 from mogua.types.blockchain_format.sized_bytes import bytes32
 from mogua.types.peer_info import PeerInfo
 from mogua.util.errors import Err, ProtocolError
@@ -58,7 +58,7 @@ def ssl_context_for_client(
     return ssl_context
 
 
-class MoguaServer:
+class MguaServer:
     def __init__(
         self,
         port: int,
@@ -78,10 +78,10 @@ class MoguaServer:
     ):
         # Keeps track of all connections to and from this node.
         logging.basicConfig(level=logging.DEBUG)
-        self.all_connections: Dict[bytes32, WSMoguaConnection] = {}
+        self.all_connections: Dict[bytes32, WSMguaConnection] = {}
         self.tasks: Set[asyncio.Task] = set()
 
-        self.connection_by_type: Dict[NodeType, Dict[bytes32, WSMoguaConnection]] = {
+        self.connection_by_type: Dict[NodeType, Dict[bytes32, WSMguaConnection]] = {
             NodeType.FULL_NODE: {},
             NodeType.WALLET: {},
             NodeType.HARVESTER: {},
@@ -166,7 +166,7 @@ class MoguaServer:
         """
         while True:
             await asyncio.sleep(600)
-            to_remove: List[WSMoguaConnection] = []
+            to_remove: List[WSMguaConnection] = []
             for connection in self.all_connections.values():
                 if self._local_type == NodeType.FULL_NODE and connection.connection_type == NodeType.FULL_NODE:
                     if time.time() - connection.last_message_time > 1800:
@@ -227,9 +227,9 @@ class MoguaServer:
         peer_id = bytes32(der_cert.fingerprint(hashes.SHA256()))
         if peer_id == self.node_id:
             return ws
-        connection: Optional[WSMoguaConnection] = None
+        connection: Optional[WSMguaConnection] = None
         try:
-            connection = WSMoguaConnection(
+            connection = WSMguaConnection(
                 self._local_type,
                 ws,
                 self._port,
@@ -288,7 +288,7 @@ class MoguaServer:
         await close_event.wait()
         return ws
 
-    async def connection_added(self, connection: WSMoguaConnection, on_connect=None):
+    async def connection_added(self, connection: WSMguaConnection, on_connect=None):
         # If we already had a connection to this peer_id, close the old one. This is secure because peer_ids are based
         # on TLS public keys
         if connection.peer_node_id in self.all_connections:
@@ -340,7 +340,7 @@ class MoguaServer:
                 self.mogua_ca_crt_path, self.mogua_ca_key_path, self.p2p_crt_path, self.p2p_key_path
             )
         session = None
-        connection: Optional[WSMoguaConnection] = None
+        connection: Optional[WSMguaConnection] = None
         try:
             timeout = ClientTimeout(total=30)
             session = ClientSession(timeout=timeout)
@@ -374,7 +374,7 @@ class MoguaServer:
             if peer_id == self.node_id:
                 raise RuntimeError(f"Trying to connect to a peer ({target_node}) with the same peer_id: {peer_id}")
 
-            connection = WSMoguaConnection(
+            connection = WSMguaConnection(
                 self._local_type,
                 ws,
                 self._port,
@@ -432,7 +432,7 @@ class MoguaServer:
 
         return False
 
-    def connection_closed(self, connection: WSMoguaConnection, ban_time: int):
+    def connection_closed(self, connection: WSMguaConnection, ban_time: int):
         if is_localhost(connection.peer_host) and ban_time != 0:
             self.log.warning(f"Trying to ban localhost for {ban_time}, but will not ban")
             ban_time = 0
@@ -481,7 +481,7 @@ class MoguaServer:
             if payload_inc is None or connection_inc is None:
                 continue
 
-            async def api_call(full_message: Message, connection: WSMoguaConnection, task_id):
+            async def api_call(full_message: Message, connection: WSMguaConnection, task_id):
                 start_time = time.time()
                 try:
                     if self.received_message_callback is not None:
@@ -568,7 +568,7 @@ class MoguaServer:
         self,
         messages: List[Message],
         node_type: NodeType,
-        origin_peer: WSMoguaConnection,
+        origin_peer: WSMguaConnection,
     ):
         for node_id, connection in self.all_connections.items():
             if node_id == origin_peer.peer_node_id:
@@ -595,7 +595,7 @@ class MoguaServer:
             for message in messages:
                 await connection.send_message(message)
 
-    def get_outgoing_connections(self) -> List[WSMoguaConnection]:
+    def get_outgoing_connections(self) -> List[WSMguaConnection]:
         result = []
         for _, connection in self.all_connections.items():
             if connection.is_outbound:
@@ -603,7 +603,7 @@ class MoguaServer:
 
         return result
 
-    def get_full_node_outgoing_connections(self) -> List[WSMoguaConnection]:
+    def get_full_node_outgoing_connections(self) -> List[WSMguaConnection]:
         result = []
         connections = self.get_full_node_connections()
         for connection in connections:
@@ -611,10 +611,10 @@ class MoguaServer:
                 result.append(connection)
         return result
 
-    def get_full_node_connections(self) -> List[WSMoguaConnection]:
+    def get_full_node_connections(self) -> List[WSMguaConnection]:
         return list(self.connection_by_type[NodeType.FULL_NODE].values())
 
-    def get_connections(self) -> List[WSMoguaConnection]:
+    def get_connections(self) -> List[WSMguaConnection]:
         result = []
         for _, connection in self.all_connections.items():
             result.append(connection)
@@ -686,7 +686,7 @@ class MoguaServer:
             return inbound_count < self.config["max_inbound_timelord"]
         return True
 
-    def is_trusted_peer(self, peer: WSMoguaConnection, trusted_peers: Dict) -> bool:
+    def is_trusted_peer(self, peer: WSMguaConnection, trusted_peers: Dict) -> bool:
         if trusted_peers is None:
             return False
         for trusted_peer in trusted_peers:

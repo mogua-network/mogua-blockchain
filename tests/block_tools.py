@@ -223,7 +223,7 @@ class BlockTools:
             )
             # Create more plots, but to a pool address instead of public key
             args.pool_public_key = None
-            args.pool_contract_address = encode_puzzle_hash(self.pool_ph, "gdog")
+            args.pool_contract_address = encode_puzzle_hash(self.pool_ph, "mga")
             args.num = num_pool_address_plots
             create_plots(
                 args,
@@ -1219,7 +1219,7 @@ def get_challenges(
 
 
 def get_plot_dir() -> Path:
-    cache_path = Path(os.path.expanduser(os.getenv("MOGUA_ROOT", "~/.mogua/"))) / "test-plots"
+    cache_path = Path(os.path.expanduser(os.getenv("MGUA_ROOT", "~/.mogua/"))) / "test-plots"
     mkdir(cache_path)
     return cache_path
 

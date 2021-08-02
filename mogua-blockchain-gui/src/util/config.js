@@ -12,10 +12,10 @@ global.key_path = 'config/ssl/daemon/private_daemon.key';
 
 function loadConfig(net) {
   try {
-    // check if MOGUA_ROOT is set. it overrides 'net'
+    // check if MGUA_ROOT is set. it overrides 'net'
     const config_root_dir =
-      'MOGUA_ROOT' in process.env
-        ? process.env.MOGUA_ROOT
+      'MGUA_ROOT' in process.env
+        ? process.env.MGUA_ROOT
         : path.join(os.homedir(), '.mogua', net);
     const config = yaml.load(
       fs.readFileSync(path.join(config_root_dir, 'config/config.yaml'), 'utf8'),

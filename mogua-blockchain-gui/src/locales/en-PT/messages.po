@@ -40,7 +40,7 @@ msgstr "128 buckets be good fer many"
 
 #: src/components/farm/FarmYourHarvesterNetwork.tsx:98
 msgid "A harvester is a service running on a machine where plot(s) are actually stored. A farmer and harvester talk to a full node to see the state of the chain. View your network of connected harvesters below Learn more"
-msgstr "A tender be a vessel where crewdogs are actually at. A plunderer 'n tender coordinate wit' a capt'n t' see the state o' the chain. View yer connected tenders below Learn more"
+msgstr "A tender be a vessel where crewguas are actually at. A plunderer 'n tender coordinate wit' a capt'n t' see the state o' the chain. View yer connected tenders below Learn more"
 
 #: src/electron/main.tsx:422
 #: src/electron/main.tsx:509
@@ -78,7 +78,7 @@ msgstr "Add Crew Room"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:70
 msgid "Add Plot to Queue"
-msgstr "Add Crewdog t' Queue"
+msgstr "Add Crewgua t' Queue"
 
 #: src/components/wallet/Wallets.tsx:88
 #~ msgid "Add Wallet"
@@ -91,7 +91,7 @@ msgstr "Add Crewdog t' Queue"
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:232
 #: src/components/plotNFT/PlotNFTCard.tsx:271
 msgid "Add a Plot"
-msgstr "Add a Crewdog"
+msgstr "Add a Crewgua"
 
 #: src/components/plotNFT/PlotNFTAdd.tsx:51
 msgid "Add a Plot NFT"
@@ -99,7 +99,7 @@ msgstr ""
 
 #: src/components/plot/PlotAddDirectoryDialog.tsx:68
 msgid "Add a plot"
-msgstr "Add a crewdog"
+msgstr "Add a crewgua"
 
 #: src/components/plot/PlotAddDirectoryDialog.tsx:107
 msgid "Add plot directory"
@@ -141,7 +141,7 @@ msgstr "Amount Fer First Dubloon"
 #: src/components/plot/PlotAction.tsx:30
 #: src/components/plot/queue/PlotQueueActions.tsx:46
 msgid "Are you sure you want to delete the plot? The plot cannot be recovered."
-msgstr "Be ye sure ye want to let the crewdog go o'er board? Th' scurvy gua cannot be rescued as soon as ye do so."
+msgstr "Be ye sure ye want to let the crewgua go o'er board? Th' scurvy gua cannot be rescued as soon as ye do so."
 
 #: src/components/plotNFT/PlotNFTCard.tsx:122
 #: src/components/wallet/standard/WalletStandard.tsx:632
@@ -284,7 +284,7 @@ msgstr "Abandon 'n Squander"
 
 #: src/components/plot/PlotsNotFound.tsx:39
 msgid "Caution, deleting these plots will delete them forever. Check that the storage devices are properly connected."
-msgstr "YO, maroonin' these crewdogs will let 'em be gone forever. Check that the storage devices are properly connected."
+msgstr "YO, maroonin' these crewguas will let 'em be gone forever. Check that the storage devices are properly connected."
 
 #: src/components/farm/FarmLastAttemptedProof.tsx:16
 msgid "Challenge"
@@ -322,11 +322,11 @@ msgstr "Mogua Treasure Chest"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:36
 msgid "Choose Number of Plots"
-msgstr "Choose Number o' Crewdogs"
+msgstr "Choose Number o' Crewguas"
 
 #: src/components/plot/add/PlotAddChooseSize.tsx:61
 msgid "Choose Plot Size"
-msgstr "Choose Strength o' Crewdog"
+msgstr "Choose Strength o' Crewgua"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:372
 #: src/components/pool/PoolOverview.tsx:92
@@ -602,7 +602,7 @@ msgstr "Maroon"
 #: src/components/plot/PlotAction.tsx:26
 #: src/components/plot/queue/PlotQueueActions.tsx:42
 msgid "Delete Plot"
-msgstr "Maroon Crewdog"
+msgstr "Maroon Crewgua"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:314
 #: src/components/wallet/standard/WalletStandard.tsx:663
@@ -666,7 +666,7 @@ msgstr "Distributed Identity Voodoo"
 #: src/components/farm/overview/FarmOverviewHero.tsx:52
 #: src/components/plot/overview/PlotOverviewHero.tsx:59
 msgid "Do you have existing plots on this machine? <0>Add Plot Directory</0>"
-msgstr "Ye 'ave existin' crewdogs on this ship? <0>Add Crewdog Folder</0>"
+msgstr "Ye 'ave existin' crewguas on this ship? <0>Add Crewgua Folder</0>"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:55
 msgid "Does your machine support parallel plotting?"
@@ -779,7 +779,7 @@ msgstr ""
 
 #: src/components/farm/overview/FarmOverviewHero.tsx:33
 msgid "Farmers earn block rewards and transaction fees by committing spare space to the network to help secure transactions. This is where your farm will be once you add a plot. <0>Learn more</0>"
-msgstr "Plunderers get booty 'n transaction fees by givin' space t' the ocean (t' \"help secure transactions\"). 'tis where yer plunderer will be once ye add a crewdog. <0>Look fer more</0>"
+msgstr "Plunderers get booty 'n transaction fees by givin' space t' the ocean (t' \"help secure transactions\"). 'tis where yer plunderer will be once ye add a crewgua. <0>Look fer more</0>"
 
 #: src/components/farm/Farm.tsx:23
 #: src/components/farm/FarmerStatus.tsx:18
@@ -811,7 +811,7 @@ msgid "Fee"
 msgstr "Fee"
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
-#~ msgid "Fee (TGDOG)"
+#~ msgid "Fee (TMGA)"
 #~ msgstr ""
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
@@ -1257,13 +1257,13 @@ msgid "Not found Plots"
 msgstr "Missing Crew"
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:184
-msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25GDOG reward for pooling plots."
+msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25MGA reward for pooling plots."
 msgstr ""
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:120
 #: src/components/plotNFT/PlotNFTCard.tsx:159
 msgid "Number of Plots"
-msgstr "Number o' Crewdogs"
+msgstr "Number o' Crewguas"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:147
 msgid "Number of buckets"
@@ -1420,11 +1420,11 @@ msgstr "Crew Count"
 
 #: src/components/block/Block.jsx:299
 msgid "Plot Id"
-msgstr "Crewdog's Id"
+msgstr "Crewgua's Id"
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:75
 msgid "Plot Key"
-msgstr "Crewdog Key"
+msgstr "Crewgua Key"
 
 #: src/components/pool/PoolOverview.tsx:40
 msgid "Plot NFT"
@@ -1441,7 +1441,7 @@ msgstr ""
 
 #: src/components/block/Block.jsx:259
 msgid "Plot Public Key"
-msgstr "Crewdog Public Key"
+msgstr "Crewgua Public Key"
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:49
 #~ msgid "Plot Seed"
@@ -1449,7 +1449,7 @@ msgstr "Crewdog Public Key"
 
 #: src/components/plot/add/PlotAddChooseSize.tsx:80
 msgid "Plot Size"
-msgstr "Crewdog's Strength"
+msgstr "Crewgua's Strength"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:74
 msgid "Plot in Parallel"
@@ -1457,7 +1457,7 @@ msgstr "Recruit in Parallel"
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:46
 msgid "Plot is duplicate of {0}"
-msgstr "Crewdog is clone o' {0}"
+msgstr "Crewgua is clone o' {0}"
 
 #: src/components/plotNFT/PlotNFTState.tsx:46
 #~ msgid "PlotNFT is transitioning to (target state)"
@@ -1473,11 +1473,11 @@ msgstr "Crew"
 
 #: src/components/farm/FarmLastAttemptedProof.tsx:22
 msgid "Plots Passed Filter"
-msgstr "Crewdogs Takin' Action"
+msgstr "Crewguas Takin' Action"
 
 #: src/components/plot/overview/PlotOverviewHero.tsx:35
 msgid "Plots are allocated space on your hard drive used to farm and earn Mogua. <0>Learn more</0>"
-msgstr "Crewdogs are recruited space on yer hard drive used t' plunder 'n get Mogua. <0>Look fer more</0>"
+msgstr "Crewguas are recruited space on yer hard drive used t' plunder 'n get Mogua. <0>Look fer more</0>"
 
 #: src/components/plot/queue/PlotQueueIndicator.tsx:34
 msgid "Plotting"
@@ -1485,7 +1485,7 @@ msgstr "Recruitin'"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:58
 msgid "Plotting in parallel can save time. Otherwise, add plot(s) to the queue."
-msgstr "Recruitin' in parallel can save time. Otherwise, add crewdog(s) to the queue."
+msgstr "Recruitin' in parallel can save time. Otherwise, add crewgua(s) to the queue."
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:174
 msgid "Plotting with bitfield enabled has about 30% less overall writes and is now almost always faster. You may see reduced memory requirements with bitfield plotting disabled. If your CPU design is from before 2010 you may have to disable bitfield plotting."
@@ -1795,7 +1795,7 @@ msgstr "Choose type o' treasure chest"
 
 #: src/components/plot/add/PlotAddSelectFinalDirectory.tsx:25
 msgid "Select the final destination for the folder where you would like the plot to be stored. We recommend you use a large slow hard drive (like external HDD)."
-msgstr "Give the final destination where ye wants t' post the crewdog after recruitin'. A large slow hold (like external HDD) will be good enough."
+msgstr "Give the final destination where ye wants t' post the crewgua after recruitin'. A large slow hold (like external HDD) will be good enough."
 
 #: src/components/plot/add/PlotAddSelectTemporaryDirectory.tsx:41
 #~ msgid "Select the temporary destination for the folder where you would like the plot to be stored. We recommend you use a fast SSD."
@@ -1991,23 +1991,23 @@ msgstr "Pillagin' <0/>/<1/>"
 #~ msgstr "Syncing {progress}/{tip}"
 
 #: src/components/farm/card/FarmCardBlockRewards.tsx:15
-#~ msgid "TGDOG Block Rewards"
+#~ msgid "TMGA Block Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardCoinbaseRewards.tsx:12
-#~ msgid "TGDOG Farming Rewards"
+#~ msgid "TMGA Farming Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardFeesReward.tsx:12
-#~ msgid "TGDOG Fees Collected"
+#~ msgid "TMGA Fees Collected"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardUserFees.tsx:12
-#~ msgid "TGDOG User Fees"
-#~ msgstr "TGDOG User Fees"
+#~ msgid "TMGA User Fees"
+#~ msgstr "TMGA User Fees"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:15
-#~ msgid "TGDOG User Transaction Fees"
+#~ msgid "TMGA User Transaction Fees"
 #~ msgstr ""
 
 #: src/components/pool/PoolInfo.tsx:37
@@ -2069,7 +2069,7 @@ msgstr ""
 
 #: src/components/block/Block.jsx:302
 msgid "The seed used to create the plot. This depends on the pool pk and plot pk."
-msgstr "The seed used t' recruit the crewdog. It depends on the clan pk an' crewdog pk."
+msgstr "The seed used t' recruit the crewgua. It depends on the clan pk an' crewgua pk."
 
 #: src/components/block/Block.jsx:228
 msgid "The total number of VDF (verifiable delay function) or proof of time iterations on the whole chain up to this sub block."
@@ -2089,11 +2089,11 @@ msgstr ""
 
 #: src/components/plot/PlotsFailed.tsx:40
 msgid "These plots are invalid, you might want to delete them."
-msgstr "These crewdogs be invalid, ye might wants t' maroon 'em."
+msgstr "These crewguas be invalid, ye might wants t' maroon 'em."
 
 #: src/components/plot/PlotAddDirectoryDialog.tsx:72
 msgid "This allows you to add a directory that has plots in it. If you have not created any plots, go to the plotting screen."
-msgstr "This allows ye t' add a folder that has crewdogs in it. If ye 'ave nah recruited any crewdogs, go t' the crew screen."
+msgstr "This allows ye t' add a folder that has crewguas in it. If ye 'ave nah recruited any crewguas, go t' the crew screen."
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:132
 #: src/components/plotNFT/PlotNFTCard.tsx:171
@@ -2198,7 +2198,7 @@ msgstr "To"
 msgid "Total Balance"
 msgstr "Ye Whole Treasure"
 
-#: src/components/farm/card/FarmCardTotalMoguaFarmed.tsx:15
+#: src/components/farm/card/FarmCardTotalMguaFarmed.tsx:15
 #~ msgid "Total Mogua Farmed"
 #~ msgstr ""
 
@@ -2409,11 +2409,11 @@ msgstr ""
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:139
 msgid "Want to earn more Mogua? Add more plots to your farm."
-msgstr "Wants t' earn more Mogua? Assign more crewdogs t' yer plunderer."
+msgstr "Wants t' earn more Mogua? Assign more crewguas t' yer plunderer."
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:86
 msgid "Want to have a delay before the next plot starts?"
-msgstr "Wants t' wait afore crimpin' the next crewdog?"
+msgstr "Wants t' wait afore crimpin' the next crewgua?"
 
 #: src/components/block/Block.jsx:205
 msgid "Weight"
@@ -2583,7 +2583,7 @@ msgstr ""
 msgid "{currencyCode} Block Rewards"
 msgstr "{currencyCode} Booty Looted"
 
-#: src/components/farm/card/FarmCardTotalMoguaFarmed.tsx:29
+#: src/components/farm/card/FarmCardTotalMguaFarmed.tsx:29
 msgid "{currencyCode} Total Mogua Farmed"
 msgstr "{currencyCode} Total Prize Claimed"
 
@@ -2592,5 +2592,5 @@ msgid "{currencyCode} User Transaction Fees"
 msgstr "{currencyCode} Earned On The Side"
 
 #: src/components/core/components/Amount/Amount.tsx:82
-msgid "{gua, plural, one {gua} other {dogs}}"
+msgid "{gua, plural, one {gua} other {guas}}"
 msgstr ""

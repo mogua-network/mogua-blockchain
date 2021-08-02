@@ -17,7 +17,7 @@ from mogua.wallet.mogualisp import (
 )
 
 
-class TestMogualisp:
+class TestMgualisp:
     def test_sexp(self):
         assert sexp() == "()"
         assert sexp(1) == "(1)"
