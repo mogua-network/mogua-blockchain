@@ -59,7 +59,7 @@ from mogua.wallet.wallet_puzzle_store import WalletPuzzleStore
 from mogua.wallet.wallet_sync_store import WalletSyncStore
 from mogua.wallet.wallet_transaction_store import WalletTransactionStore
 from mogua.wallet.wallet_user_store import WalletUserStore
-from mogua.server.server import GreenDogeServer
+from mogua.server.server import MoguaServer
 from mogua.wallet.did_wallet.did_wallet import DIDWallet
 
 
@@ -107,7 +107,7 @@ class WalletStateManager:
     interested_store: WalletInterestedStore
     pool_store: WalletPoolStore
     weight_proof_handler: Any
-    server: GreenDogeServer
+    server: MoguaServer
     root_path: Path
 
     @staticmethod
@@ -116,7 +116,7 @@ class WalletStateManager:
         config: Dict,
         db_path: Path,
         constants: ConsensusConstants,
-        server: GreenDogeServer,
+        server: MoguaServer,
         root_path: Path,
         name: str = None,
     ):

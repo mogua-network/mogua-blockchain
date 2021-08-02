@@ -1,6 +1,6 @@
 import pytest
 
-from mogua.wallet.greendogelisp import (
+from mogua.wallet.mogualisp import (
     apply,
     args,
     cons,
@@ -17,7 +17,7 @@ from mogua.wallet.greendogelisp import (
 )
 
 
-class TestGreenDogelisp:
+class TestMogualisp:
     def test_sexp(self):
         assert sexp() == "()"
         assert sexp(1) == "(1)"

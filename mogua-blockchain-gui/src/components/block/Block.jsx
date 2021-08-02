@@ -27,7 +27,7 @@ import {
   sha256,
 } from '../../util/utils';
 import { getBlockRecord, getBlock } from '../../modules/fullnodeMessages';
-import { dog_to_greendoge } from '../../util/mogua';
+import { dog_to_mogua } from '../../util/mogua';
 import {
   calculatePoolReward,
   calculateBaseFarmerReward,
@@ -171,13 +171,13 @@ export default function Block() {
       ? blockRecord.weight - prevBlockRecord.weight
       : blockRecord?.weight ?? 0;
 
-  const poolReward = dog_to_greendoge(calculatePoolReward(blockRecord.height));
-  const baseFarmerReward = dog_to_greendoge(
+  const poolReward = dog_to_mogua(calculatePoolReward(blockRecord.height));
+  const baseFarmerReward = dog_to_mogua(
     calculateBaseFarmerReward(blockRecord.height),
   );
 
-  const greendogeFees = blockRecord.fees
-    ? dog_to_greendoge(BigInt(blockRecord.fees))
+  const moguaFees = blockRecord.fees
+    ? dog_to_mogua(BigInt(blockRecord.fees))
     : '';
 
   const rows = [
@@ -319,7 +319,7 @@ export default function Block() {
     },
     {
       name: <Trans>Fees Amount</Trans>,
-      value: greendogeFees ? `${greendogeFees} ${currencyCode}` : '',
+      value: moguaFees ? `${moguaFees} ${currencyCode}` : '',
       tooltip: (
         <Trans>
           The total transactions fees in this block. Rewarded to the farmer.

@@ -4,7 +4,7 @@ from mogua.types.blockchain_format.program import Program, INFINITE_COST
 from mogua.util.byte_types import hexstr_to_bytes
 from mogua.wallet.puzzles.load_clvm import load_clvm
 
-DESERIALIZE_MOD = load_clvm("greendogelisp_deserialisation.clvm", package_or_requirement="mogua.wallet.puzzles")
+DESERIALIZE_MOD = load_clvm("mogualisp_deserialisation.clvm", package_or_requirement="mogua.wallet.puzzles")
 
 
 def serialized_atom_overflow(size):

@@ -28,7 +28,7 @@ from mogua.protocols.pool_protocol import (
 from mogua.protocols.protocol_message_types import ProtocolMessageTypes
 from mogua.server.outbound_message import NodeType, make_msg
 from mogua.server.server import ssl_context_for_root
-from mogua.server.ws_connection import WSGreenDogeConnection
+from mogua.server.ws_connection import WSMoguaConnection
 from mogua.ssl.create_ssl import get_mozilla_ca_crt
 from mogua.types.blockchain_format.proof_of_space import ProofOfSpace
 from mogua.types.blockchain_format.sized_bytes import bytes32
@@ -166,7 +166,7 @@ class Farmer:
     def _set_state_changed_callback(self, callback: Callable):
         self.state_changed_callback = callback
 
-    async def on_connect(self, peer: WSGreenDogeConnection):
+    async def on_connect(self, peer: WSMoguaConnection):
         # Sends a handshake to the harvester
         self.state_changed("add_connection", {})
         handshake = harvester_protocol.HarvesterHandshake(
@@ -190,7 +190,7 @@ class Farmer:
             ErrorResponse(uint16(PoolErrorCode.REQUEST_FAILED.value), error_message).to_json_dict()
         )
 
-    def on_disconnect(self, connection: ws.WSGreenDogeConnection):
+    def on_disconnect(self, connection: ws.WSMoguaConnection):
         self.log.info(f"peer disconnected {connection.get_peer_info()}")
         self.state_changed("close_connection", {})
 
@@ -602,7 +602,7 @@ class Farmer:
                         "Harvester did not respond. You might need to update harvester to the latest version"
                     )
 
-    async def get_cached_harvesters(self, connection: WSGreenDogeConnection) -> HarvesterCacheEntry:
+    async def get_cached_harvesters(self, connection: WSMoguaConnection) -> HarvesterCacheEntry:
         host_cache = self.harvester_cache.get(connection.peer_host)
         if host_cache is None:
             host_cache = {}

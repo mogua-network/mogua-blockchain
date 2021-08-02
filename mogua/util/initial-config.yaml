@@ -36,7 +36,7 @@ network_overrides: &network_overrides
 
 selected_network: &selected_network "mainnet"
 ALERTS_URL: https://download.mogua.gua/notify/mainnet_alert.txt
-GREENDOGE_ALERTS_PUBKEY: a9555c79d2cf30e16c4ad1eeb72e4fd9194515522437f865e71794dfff407394328ce9b13c1884301ff1f3ac5e6065fa
+MOGUA_ALERTS_PUBKEY: a9555c79d2cf30e16c4ad1eeb72e4fd9194515522437f865e71794dfff407394328ce9b13c1884301ff1f3ac5e6065fa
 
 # public ssl ca is included in source code
 # Private ssl ca is used for trusted connections between machines user owns
@@ -44,9 +44,9 @@ private_ssl_ca:
   crt: "config/ssl/ca/private_ca.crt"
   key: "config/ssl/ca/private_ca.key"
 
-greendoge_ssl_ca:
-  crt: "config/ssl/ca/greendoge_ca.crt"
-  key: "config/ssl/ca/greendoge_ca.key"
+mogua_ssl_ca:
+  crt: "config/ssl/ca/mogua_ca.crt"
+  key: "config/ssl/ca/mogua_ca.key"
 
 
 daemon_ssl:
@@ -92,9 +92,9 @@ harvester:
     crt: "config/ssl/ca/private_ca.crt"
     key: "config/ssl/ca/private_ca.key"
 
-  greendoge_ssl_ca:
-    crt: "config/ssl/ca/greendoge_ca.crt"
-    key: "config/ssl/ca/greendoge_ca.key"
+  mogua_ssl_ca:
+    crt: "config/ssl/ca/mogua_ca.crt"
+    key: "config/ssl/ca/mogua_ca.key"
 
 pool:
   # Replace this with a real puzzle hash

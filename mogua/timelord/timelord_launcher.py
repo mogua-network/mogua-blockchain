@@ -8,7 +8,7 @@ from typing import Dict, List
 
 import pkg_resources
 
-from mogua.util.greendoge_logging import initialize_logging
+from mogua.util.mogua_logging import initialize_logging
 from mogua.util.config import load_config
 from mogua.util.default_root import DEFAULT_ROOT_PATH
 from mogua.util.setproctitle import setproctitle
@@ -87,7 +87,7 @@ async def spawn_all_processes(config: Dict, net_config: Dict):
 
 def main():
     root_path = DEFAULT_ROOT_PATH
-    setproctitle("greendoge_timelord_launcher")
+    setproctitle("mogua_timelord_launcher")
     net_config = load_config(root_path, "config.yaml")
     config = net_config["timelord_launcher"]
     initialize_logging("TLauncher", config["logging"], root_path)

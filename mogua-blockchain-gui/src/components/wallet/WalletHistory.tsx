@@ -4,7 +4,7 @@ import { Box, Tooltip, Typography } from '@material-ui/core';
 import { Card, CopyToClipboard, Flex, Table } from '@mogua/core';
 import type { Row } from '../core/components/Table/Table';
 import {
-  dog_to_greendoge_string,
+  dog_to_mogua_string,
   dog_to_colouredcoin_string,
 } from '../../util/mogua';
 import { unix_to_short_date } from '../../util/utils';
@@ -58,11 +58,11 @@ const getCols = (type: WalletType) => [
     field: (row: Row) =>
       type === WalletType.COLOURED_COIN
         ? dog_to_colouredcoin_string(row.amount)
-        : dog_to_greendoge_string(row.amount),
+        : dog_to_mogua_string(row.amount),
     title: <Trans>Amount</Trans>,
   },
   {
-    field: (row: Row) => dog_to_greendoge_string(row.fee_amount),
+    field: (row: Row) => dog_to_mogua_string(row.fee_amount),
     title: <Trans>Fee</Trans>,
   },
 ];

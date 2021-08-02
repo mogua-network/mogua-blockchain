@@ -61,7 +61,7 @@ SERVERS = [
     "timelord",
 ]
 
-# TODO: collapse all these entry points into one `greendoge_exec` entrypoint that accepts the server as a parameter
+# TODO: collapse all these entry points into one `mogua_exec` entrypoint that accepts the server as a parameter
 
 entry_points = ["mogua.cmds.mogua"] + [f"mogua.server.start_{s}" for s in SERVERS]
 
@@ -80,7 +80,7 @@ if THIS_IS_WINDOWS:
     entry_points.extend(["aiohttp", "mogua.util.bip39"])
 
 if THIS_IS_WINDOWS:
-    greendoge_mod = importlib.import_module("mogua")
+    mogua_mod = importlib.import_module("mogua")
     dll_paths = ROOT / "*.dll"
 
     binaries = [

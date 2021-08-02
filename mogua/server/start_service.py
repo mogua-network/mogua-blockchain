@@ -7,7 +7,7 @@ from sys import platform
 from typing import Any, Callable, List, Optional, Tuple
 
 from mogua.daemon.server import singleton, service_launch_lock_path
-from mogua.server.ssl_context import greendoge_ssl_ca_paths, private_ssl_ca_paths
+from mogua.server.ssl_context import mogua_ssl_ca_paths, private_ssl_ca_paths
 
 try:
     import uvloop
@@ -16,10 +16,10 @@ except ImportError:
 
 from mogua.rpc.rpc_server import start_rpc_server
 from mogua.server.outbound_message import NodeType
-from mogua.server.server import GreenDogeServer
+from mogua.server.server import MoguaServer
 from mogua.server.upnp import UPnP
 from mogua.types.peer_info import PeerInfo
-from mogua.util.greendoge_logging import initialize_logging
+from mogua.util.mogua_logging import initialize_logging
 from mogua.util.config import load_config, load_config_cli
 from mogua.util.setproctitle import setproctitle
 from mogua.util.ints import uint16
@@ -64,7 +64,7 @@ class Service:
         self._rpc_close_task: Optional[asyncio.Task] = None
         self._network_id: str = network_id
 
-        proctitle_name = f"greendoge_{service_name}"
+        proctitle_name = f"mogua_{service_name}"
         setproctitle(proctitle_name)
         self._log = logging.getLogger(service_name)
 
@@ -76,11 +76,11 @@ class Service:
 
         self._rpc_info = rpc_info
         private_ca_crt, private_ca_key = private_ssl_ca_paths(root_path, self.config)
-        greendoge_ca_crt, greendoge_ca_key = greendoge_ssl_ca_paths(root_path, self.config)
+        mogua_ca_crt, mogua_ca_key = mogua_ssl_ca_paths(root_path, self.config)
         inbound_rlp = self.config.get("inbound_rate_limit_percent")
         outbound_rlp = self.config.get("outbound_rate_limit_percent")
         assert inbound_rlp and outbound_rlp
-        self._server = GreenDogeServer(
+        self._server = MoguaServer(
             advertised_port,
             node,
             peer_api,
@@ -92,7 +92,7 @@ class Service:
             root_path,
             service_config,
             (private_ca_crt, private_ca_key),
-            (greendoge_ca_crt, greendoge_ca_key),
+            (mogua_ca_crt, mogua_ca_key),
             name=f"{service_name}_server",
         )
         f = getattr(node, "set_server", None)
@@ -226,7 +226,7 @@ class Service:
 
         self._log.info("Waiting for socket to be closed (if opened)")
 
-        self._log.info("Waiting for GreenDogeServer to be closed")
+        self._log.info("Waiting for MoguaServer to be closed")
         await self._server.await_closed()
 
         if self._rpc_close_task:

@@ -14,7 +14,7 @@ from typing import Callable, Dict, List, Optional, Tuple, Any
 from blspy import AugSchemeMPL, G1Element, G2Element, PrivateKey
 from chiabip158 import PyBIP158
 
-from mogua.cmds.init_funcs import create_all_ssl, create_default_greendoge_config
+from mogua.cmds.init_funcs import create_all_ssl, create_default_mogua_config
 from mogua.full_node.bundle_tools import (
     best_solution_generator_from_template,
     detect_potential_template_generator,
@@ -131,7 +131,7 @@ class BlockTools:
             root_path = Path(self._tempdir.name)
 
         self.root_path = root_path
-        create_default_greendoge_config(root_path)
+        create_default_mogua_config(root_path)
         self.keychain = Keychain("testing-1.8.0", True)
         self.keychain.delete_all_keys()
         self.farmer_master_sk_entropy = std_hash(b"block_tools farmer key")
@@ -1219,7 +1219,7 @@ def get_challenges(
 
 
 def get_plot_dir() -> Path:
-    cache_path = Path(os.path.expanduser(os.getenv("GREENDOGE_ROOT", "~/.mogua/"))) / "test-plots"
+    cache_path = Path(os.path.expanduser(os.getenv("MOGUA_ROOT", "~/.mogua/"))) / "test-plots"
     mkdir(cache_path)
     return cache_path
 

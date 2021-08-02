@@ -73,42 +73,42 @@ class Mogua {
   }
 }
 
-export const greendoge_formatter = (value, unit) => new Mogua(value, unit);
+export const mogua_formatter = (value, unit) => new Mogua(value, unit);
 
-greendoge_formatter.convert = convert;
-greendoge_formatter.setDisplay = units.setDisplay;
-greendoge_formatter.setUnit = units.setUnit;
-greendoge_formatter.getUnit = units.getUnit;
-greendoge_formatter.setFiat = (currency, rate, display = null) => {
+mogua_formatter.convert = convert;
+mogua_formatter.setDisplay = units.setDisplay;
+mogua_formatter.setUnit = units.setUnit;
+mogua_formatter.getUnit = units.getUnit;
+mogua_formatter.setFiat = (currency, rate, display = null) => {
   units.setUnit(currency, 1 / rate, display);
 };
 
-export const dog_to_greendoge = (gua) => {
-  return greendoge_formatter(Number.parseInt(gua), 'gua').to('mogua').value();
+export const dog_to_mogua = (gua) => {
+  return mogua_formatter(Number.parseInt(gua), 'gua').to('mogua').value();
 };
 
-export const greendoge_to_dog = (mogua) => {
-  return greendoge_formatter(Number.parseFloat(Number(mogua)), 'mogua')
+export const mogua_to_dog = (mogua) => {
+  return mogua_formatter(Number.parseFloat(Number(mogua)), 'mogua')
     .to('gua')
     .value();
 };
 
-export const dog_to_greendoge_string = (gua) => {
-  return greendoge_formatter(Number(gua), 'gua').to('mogua').toString();
+export const dog_to_mogua_string = (gua) => {
+  return mogua_formatter(Number(gua), 'gua').to('mogua').toString();
 };
 
 export const dog_to_colouredcoin = (gua) => {
-  return greendoge_formatter(Number.parseInt(gua), 'gua')
+  return mogua_formatter(Number.parseInt(gua), 'gua')
     .to('colouredcoin')
     .value();
 };
 
 export const colouredcoin_to_dog = (colouredcoin) => {
-  return greendoge_formatter(Number.parseFloat(Number(colouredcoin)), 'colouredcoin')
+  return mogua_formatter(Number.parseFloat(Number(colouredcoin)), 'colouredcoin')
     .to('gua')
     .value();
 };
 
 export const dog_to_colouredcoin_string = (gua) => {
-  return greendoge_formatter(Number(gua), 'gua').to('colouredcoin').toString();
+  return mogua_formatter(Number(gua), 'gua').to('colouredcoin').toString();
 };

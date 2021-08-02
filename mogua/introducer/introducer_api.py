@@ -4,7 +4,7 @@ from mogua.introducer.introducer import Introducer
 from mogua.protocols.introducer_protocol import RequestPeersIntroducer, RespondPeersIntroducer
 from mogua.protocols.protocol_message_types import ProtocolMessageTypes
 from mogua.server.outbound_message import Message, make_msg
-from mogua.server.ws_connection import WSGreenDogeConnection
+from mogua.server.ws_connection import WSMoguaConnection
 from mogua.types.peer_info import TimestampedPeerInfo
 from mogua.util.api_decorators import api_request, peer_required
 from mogua.util.ints import uint64
@@ -24,7 +24,7 @@ class IntroducerAPI:
     async def request_peers_introducer(
         self,
         request: RequestPeersIntroducer,
-        peer: WSGreenDogeConnection,
+        peer: WSMoguaConnection,
     ) -> Optional[Message]:
         max_peers = self.introducer.max_peers_to_send
         if self.introducer.server is None or self.introducer.server.introducer_peers is None:

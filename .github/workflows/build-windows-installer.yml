@@ -91,9 +91,9 @@ jobs:
         python -m venv ..\venv
         . ..\venv\Scripts\Activate.ps1
         pip3 install setuptools_scm
-        $env:GREENDOGE_INSTALLER_VERSION = python .\build_scripts\installer-version.py -win
-        echo "$env:GREENDOGE_INSTALLER_VERSION"
-        echo "::set-output name=GREENDOGE_INSTALLER_VERSION::$env:GREENDOGE_INSTALLER_VERSION"
+        $env:MOGUA_INSTALLER_VERSION = python .\build_scripts\installer-version.py -win
+        echo "$env:MOGUA_INSTALLER_VERSION"
+        echo "::set-output name=MOGUA_INSTALLER_VERSION::$env:MOGUA_INSTALLER_VERSION"
         deactivate
 
     - name: Build Windows installer with build_scripts\build_windows.ps1
@@ -121,9 +121,9 @@ jobs:
     - name: Create Checksums
       if: startsWith(github.ref, 'refs/tags/')
       env:
-        GREENDOGE_INSTALLER_VERSION: ${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}
+        MOGUA_INSTALLER_VERSION: ${{ steps.version_number.outputs.MOGUA_INSTALLER_VERSION }}
       run: |
-         certutil.exe -hashfile ${{ github.workspace }}\mogua-blockchain-gui\release-builds\windows-installer\GreenDogeSetup-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}.exe SHA256 > ${{ github.workspace }}\mogua-blockchain-gui\release-builds\windows-installer\GreenDogeSetup-${{ steps.version_number.outputs.GREENDOGE_INSTALLER_VERSION }}.exe.checksum
+         certutil.exe -hashfile ${{ github.workspace }}\mogua-blockchain-gui\release-builds\windows-installer\MoguaSetup-${{ steps.version_number.outputs.MOGUA_INSTALLER_VERSION }}.exe SHA256 > ${{ github.workspace }}\mogua-blockchain-gui\release-builds\windows-installer\MoguaSetup-${{ steps.version_number.outputs.MOGUA_INSTALLER_VERSION }}.exe.checksum
          ls ${{ github.workspace }}\mogua-blockchain-gui\release-builds\windows-installer\
 
     - name: Get tag name
@@ -140,7 +140,7 @@ jobs:
             Authorization="Bearer ${{ secrets.GLUE_ACCESS_TOKEN }}"
         }
         $data = @{
-            greendoge_ref='${{ steps.tag-name.outputs.TAG_NAME }}'
+            mogua_ref='${{ steps.tag-name.outputs.TAG_NAME }}'
         }
         $json = $data | ConvertTo-Json
         $response = Invoke-RestMethod '${{ secrets.GLUE_API_URL }}/api/v1/${{ steps.tag-name.outputs.REPO_NAME }}/${{ steps.tag-name.outputs.TAG_NAME }}/success/build-windows' -Method Post -Body $json -ContentType 'application/json' -Headers $headers

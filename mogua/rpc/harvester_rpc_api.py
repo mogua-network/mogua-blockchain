@@ -7,7 +7,7 @@ from mogua.util.ws_message import WsRpcMessage, create_payload_dict
 class HarvesterRpcApi:
     def __init__(self, harvester: Harvester):
         self.service = harvester
-        self.service_name = "greendoge_harvester"
+        self.service_name = "mogua_harvester"
 
     def get_routes(self) -> Dict[str, Callable]:
         return {

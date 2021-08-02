@@ -3,7 +3,7 @@ import { Table } from '@mogua/core';
 import styled from 'styled-components';
 import { Trans } from '@lingui/macro';
 import { Box } from '@material-ui/core';
-import { dog_to_greendoge_string } from '../../util/mogua';
+import { dog_to_mogua_string } from '../../util/mogua';
 
 const Amount = styled(Box)`
   white-space: normal;
@@ -46,7 +46,7 @@ export default function TradesTable(props: Props) {
         return {
           side: amount < 0 ? <Trans>Sell</Trans> : <Trans>Buy</Trans>,
           name: <Amount>{name}</Amount>,
-          amount: <Amount>{dog_to_greendoge_string(humanAmount)}</Amount>,
+          amount: <Amount>{dog_to_mogua_string(humanAmount)}</Amount>,
         };
       }),
     [rows],

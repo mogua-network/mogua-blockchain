@@ -48,7 +48,7 @@ https://github.com/Mogua-Network/mogua-blockchain/blob/main/mogua/consensus/bloc
 [Mogua Chinese Group](https://t.me/green_dogecoin)
 
 ## Reddit
-https://www.reddit.com/r/GreenDogecoin/
+https://www.reddit.com/r/Moguacoin/
 
 ## Community
 [Mogua Community](https://discord.gg/3vwEfD2kws) (Official)<br>

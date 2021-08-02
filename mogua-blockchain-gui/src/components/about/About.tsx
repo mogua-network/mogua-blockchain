@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import icon from '../../assets/img/greendoge_circle.svg';
+import icon from '../../assets/img/mogua_circle.svg';
 
 const GlobalStyle = createGlobalStyle`
   body,

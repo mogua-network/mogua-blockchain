@@ -5,7 +5,7 @@ import {
   Amount,
   Fee,
   Form,
-  TextField as GreenDogeTextField,
+  TextField as MoguaTextField,
   AlertDialog,
   CopyToClipboard,
   Flex,
@@ -42,7 +42,7 @@ import {
   send_transaction,
   farm_block,
 } from '../../../modules/message';
-import { /* dog_to_greendoge_string, */ greendoge_to_dog } from '../../../util/mogua';
+import { /* dog_to_mogua_string, */ mogua_to_dog } from '../../../util/mogua';
 import { openDialog } from '../../../modules/dialog';
 import { get_transaction_result } from '../../../util/transaction_result';
 import config from '../../../config/config';
@@ -238,7 +238,7 @@ function BalanceCardSubSection(props: BalanceCardSubSectionProps) {
         </Box>
         <Box>
           <Typography variant="subtitle1">
-            {dog_to_greendoge_string(props.balance)} {currencyCode}
+            {dog_to_mogua_string(props.balance)} {currencyCode}
           </Typography>
         </Box>
       </Box>
@@ -463,15 +463,15 @@ function SendCard(props: SendCardProps) {
       return;
     }
 
-    if (address.slice(0, 12) === 'greendoge_addr://') {
+    if (address.slice(0, 12) === 'mogua_addr://') {
       address = address.slice(12);
     }
     if (address.startsWith('0x') || address.startsWith('0X')) {
       address = address.slice(2);
     }
 
-    const amountValue = Number.parseFloat(greendoge_to_dog(amount));
-    const feeValue = Number.parseFloat(greendoge_to_dog(fee));
+    const amountValue = Number.parseFloat(mogua_to_dog(amount));
+    const feeValue = Number.parseFloat(mogua_to_dog(fee));
 
     dispatch(send_transaction(wallet_id, amountValue, feeValue, address));
 
@@ -494,7 +494,7 @@ function SendCard(props: SendCardProps) {
       <Form methods={methods} onSubmit={handleSubmit}>
         <Grid spacing={2} container>
           <Grid xs={12} item>
-            <GreenDogeTextField
+            <MoguaTextField
               name="address"
               variant="filled"
               color="secondary"

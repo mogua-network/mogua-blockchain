@@ -6,7 +6,7 @@ from typing import Any, Callable, Dict, List, Optional
 
 from aiohttp import WSCloseCode, WSMessage, WSMsgType
 
-from mogua.cmds.init_funcs import greendoge_full_version_str
+from mogua.cmds.init_funcs import mogua_full_version_str
 from mogua.protocols.protocol_message_types import ProtocolMessageTypes
 from mogua.protocols.shared_protocol import Capability, Handshake
 from mogua.server.outbound_message import Message, NodeType, make_msg
@@ -23,7 +23,7 @@ from mogua.util.network import class_for_type, is_localhost
 LENGTH_BYTES: int = 4
 
 
-class WSGreenDogeConnection:
+class WSMoguaConnection:
     """
     Represents a connection to another node. Local host and port are ours, while peer host and
     port are the host and port of the peer that we are connected to. Node_id and connection_type are
@@ -69,7 +69,7 @@ class WSGreenDogeConnection:
         self.is_outbound = is_outbound
         self.is_feeler = is_feeler
 
-        # GreenDogeConnection metrics
+        # MoguaConnection metrics
         self.creation_time = time.time()
         self.bytes_read = 0
         self.bytes_written = 0
@@ -110,7 +110,7 @@ class WSGreenDogeConnection:
                 Handshake(
                     network_id,
                     protocol_version,
-                    greendoge_full_version_str(),
+                    mogua_full_version_str(),
                     uint16(server_port),
                     uint8(local_type.value),
                     [(uint16(Capability.BASE.value), "1")],
@@ -164,7 +164,7 @@ class WSGreenDogeConnection:
                 Handshake(
                     network_id,
                     protocol_version,
-                    greendoge_full_version_str(),
+                    mogua_full_version_str(),
                     uint16(server_port),
                     uint8(local_type.value),
                     [(uint16(Capability.BASE.value), "1")],

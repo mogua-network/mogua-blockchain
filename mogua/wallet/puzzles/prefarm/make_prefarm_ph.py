@@ -37,25 +37,25 @@ def make_puzzle(amount: int) -> int:
     result = puzzle_prog.run(solution)
     error, result_human = parse_sexp_to_conditions(result)
 
-    total_greendoge = 0
+    total_mogua = 0
     if error:
         print(f"Error: {error}")
     else:
         assert result_human is not None
         for cvp in result_human:
             assert len(cvp.vars) == 2
-            total_greendoge += int_from_bytes(cvp.vars[1])
+            total_mogua += int_from_bytes(cvp.vars[1])
             print(
                 f"{ConditionOpcode(cvp.opcode).name}: {encode_puzzle_hash(cvp.vars[0], prefix)},"
                 f" amount: {int_from_bytes(cvp.vars[1])}"
             )
-    return total_greendoge
+    return total_mogua
 
 
-total_greendoge = 0
+total_mogua = 0
 print("Pool address: ")
-total_greendoge += make_puzzle(pool_amounts)
+total_mogua += make_puzzle(pool_amounts)
 print("\nFarmer address: ")
-total_greendoge += make_puzzle(farmer_amounts)
+total_mogua += make_puzzle(farmer_amounts)
 
-assert total_greendoge == calculate_base_farmer_reward(uint32(0)) + calculate_pool_reward(uint32(0))
+assert total_mogua == calculate_base_farmer_reward(uint32(0)) + calculate_pool_reward(uint32(0))

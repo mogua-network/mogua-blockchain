@@ -21,7 +21,7 @@ import usePlotNFTs from '../../hooks/usePlotNFTs';
 import { pwAbsorbRewards } from '../../modules/plotNFT';
 import { SubmitData } from './select/PlotNFTSelectPool';
 import PlotNFTName from './PlotNFTName';
-import { dog_to_greendoge, greendoge_to_dog } from '../../util/mogua';
+import { dog_to_mogua, mogua_to_dog } from '../../util/mogua';
 import useStandardWallet from '../../hooks/useStandardWallet';
 
 type FormData = {
@@ -64,7 +64,7 @@ export default function PlotNFTAbsorbRewards(props: Props) {
 
       const { fee } = data;
 
-      const feeDogs = greendoge_to_dog(fee);
+      const feeDogs = mogua_to_dog(fee);
 
       if (walletId === undefined || !address) {
         return;
@@ -137,7 +137,7 @@ export default function PlotNFTAbsorbRewards(props: Props) {
               <Trans>
                 You will recieve{' '}
                 <UnitFormat
-                  value={dog_to_greendoge(BigInt(balance))}
+                  value={dog_to_mogua(BigInt(balance))}
                   display="inline"
                   state={State.SUCCESS}
                 />{' '}
