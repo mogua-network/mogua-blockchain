@@ -34,15 +34,15 @@ pip install pyinstaller==4.2
 pip install setuptools_scm
 
 Write-Output "   ---"
-Write-Output "Get MGUA_INSTALLER_VERSION"
-# The environment variable MGUA_INSTALLER_VERSION needs to be defined
-$env:MGUA_INSTALLER_VERSION = python .\build_scripts\installer-version.py -win
+Write-Output "Get GREENDOGE_INSTALLER_VERSION"
+# The environment variable GREENDOGE_INSTALLER_VERSION needs to be defined
+$env:GREENDOGE_INSTALLER_VERSION = python .\build_scripts\installer-version.py -win
 
-if (-not (Test-Path env:MGUA_INSTALLER_VERSION)) {
-  $env:MGUA_INSTALLER_VERSION = '0.0.0'
-  Write-Output "WARNING: No environment variable MGUA_INSTALLER_VERSION set. Using 0.0.0"
+if (-not (Test-Path env:GREENDOGE_INSTALLER_VERSION)) {
+  $env:GREENDOGE_INSTALLER_VERSION = '0.0.0'
+  Write-Output "WARNING: No environment variable GREENDOGE_INSTALLER_VERSION set. Using 0.0.0"
   }
-Write-Output "Mogua Version is: $env:MGUA_INSTALLER_VERSION"
+Write-Output "MoGua Version is: $env:GREENDOGE_INSTALLER_VERSION"
 Write-Output "   ---"
 
 Write-Output "   ---"
@@ -102,14 +102,14 @@ Write-Output "Increase the stack for mogua command for (mogua plots create) chia
 editbin.exe /STACK:8000000 daemon\mogua.exe
 Write-Output "   ---"
 
-$packageVersion = "$env:MGUA_INSTALLER_VERSION"
-$packageName = "Mogua-$packageVersion"
+$packageVersion = "$env:GREENDOGE_INSTALLER_VERSION"
+$packageName = "MoGua-$packageVersion"
 
 Write-Output "packageName is $packageName"
 
 Write-Output "   ---"
 Write-Output "electron-packager"
-electron-packager . Mogua --asar.unpack="**\daemon\**" --overwrite --icon=.\src\assets\img\mogua.ico --app-version=$packageVersion
+electron-packager . MoGua --asar.unpack="**\daemon\**" --overwrite --icon=.\src\assets\img\mogua.ico --app-version=$packageVersion
 Write-Output "   ---"
 
 Write-Output "   ---"
@@ -123,8 +123,8 @@ If ($env:HAS_SECRET) {
    Write-Output "   ---"
    Write-Output "Add timestamp and verify signature"
    Write-Output "   ---"
-   signtool.exe timestamp /v /t http://timestamp.comodoca.com/ .\release-builds\windows-installer\MguaSetup-$packageVersion.exe
-   signtool.exe verify /v /pa .\release-builds\windows-installer\MguaSetup-$packageVersion.exe
+   signtool.exe timestamp /v /t http://timestamp.comodoca.com/ .\release-builds\windows-installer\GreenDogeSetup-$packageVersion.exe
+   signtool.exe verify /v /pa .\release-builds\windows-installer\GreenDogeSetup-$packageVersion.exe
    }   Else    {
    Write-Output "Skipping timestamp and verify signatures - no authorization to install certificates"
 }

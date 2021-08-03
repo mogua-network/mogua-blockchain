@@ -7,10 +7,10 @@ import yaml
 
 from mogua import __version__
 from mogua.consensus.coinbase import create_puzzlehash_for_pk
-from mogua.ssl.create_ssl import generate_ca_signed_cert, get_mogua_ca_crt_key, make_ca_cert
+from mogua.ssl.create_ssl import generate_ca_signed_cert, get_greendoge_ca_crt_key, make_ca_cert
 from mogua.util.bech32m import encode_puzzle_hash
 from mogua.util.config import (
-    create_default_mogua_config,
+    create_default_greendoge_config,
     initial_config_file,
     load_config,
     save_config,
@@ -56,8 +56,8 @@ def check_keys(new_root: Path) -> None:
     config: Dict = load_config(new_root, "config.yaml")
     pool_child_pubkeys = [master_sk_to_pool_sk(sk).get_g1() for sk, _ in all_sks]
     all_targets = []
-    stop_searching_for_farmer = "mga_target_address" not in config["farmer"]
-    stop_searching_for_pool = "mga_target_address" not in config["pool"]
+    stop_searching_for_farmer = "gdog_target_address" not in config["farmer"]
+    stop_searching_for_pool = "gdog_target_address" not in config["pool"]
     number_of_ph_to_search = 500
     selected = config["selected_network"]
     prefix = config["network_overrides"]["config"][selected]["address_prefix"]
@@ -68,32 +68,32 @@ def check_keys(new_root: Path) -> None:
             all_targets.append(
                 encode_puzzle_hash(create_puzzlehash_for_pk(master_sk_to_wallet_sk(sk, uint32(i)).get_g1()), prefix)
             )
-            if all_targets[-1] == config["farmer"].get("mga_target_address"):
+            if all_targets[-1] == config["farmer"].get("gdog_target_address"):
                 stop_searching_for_farmer = True
-            if all_targets[-1] == config["pool"].get("mga_target_address"):
+            if all_targets[-1] == config["pool"].get("gdog_target_address"):
                 stop_searching_for_pool = True
 
     # Set the destinations
-    if "mga_target_address" not in config["farmer"]:
+    if "gdog_target_address" not in config["farmer"]:
         print(f"Setting the mga destination address for coinbase fees reward to {all_targets[0]}")
-        config["farmer"]["mga_target_address"] = all_targets[0]
-    elif config["farmer"]["mga_target_address"] not in all_targets:
+        config["farmer"]["gdog_target_address"] = all_targets[0]
+    elif config["farmer"]["gdog_target_address"] not in all_targets:
         print(
             f"WARNING: using a farmer address which we don't have the private"
             f" keys for. We searched the first {number_of_ph_to_search} addresses. Consider overriding "
-            f"{config['farmer']['mga_target_address']} with {all_targets[0]}"
+            f"{config['farmer']['gdog_target_address']} with {all_targets[0]}"
         )
 
     if "pool" not in config:
         config["pool"] = {}
-    if "mga_target_address" not in config["pool"]:
+    if "gdog_target_address" not in config["pool"]:
         print(f"Setting the mga destination address for coinbase reward to {all_targets[0]}")
-        config["pool"]["mga_target_address"] = all_targets[0]
-    elif config["pool"]["mga_target_address"] not in all_targets:
+        config["pool"]["gdog_target_address"] = all_targets[0]
+    elif config["pool"]["gdog_target_address"] not in all_targets:
         print(
             f"WARNING: using a pool address which we don't have the private"
             f" keys for. We searched the first {number_of_ph_to_search} addresses. Consider overriding "
-            f"{config['pool']['mga_target_address']} with {all_targets[0]}"
+            f"{config['pool']['gdog_target_address']} with {all_targets[0]}"
         )
 
     # Set the pool pks in the farmer
@@ -176,11 +176,11 @@ def create_all_ssl(root: Path):
 
     private_ca_key_path = ca_dir / "private_ca.key"
     private_ca_crt_path = ca_dir / "private_ca.crt"
-    mogua_ca_crt, mogua_ca_key = get_mogua_ca_crt_key()
-    mogua_ca_crt_path = ca_dir / "mogua_ca.crt"
-    mogua_ca_key_path = ca_dir / "mogua_ca.key"
-    mogua_ca_crt_path.write_bytes(mogua_ca_crt)
-    mogua_ca_key_path.write_bytes(mogua_ca_key)
+    greendoge_ca_crt, greendoge_ca_key = get_greendoge_ca_crt_key()
+    greendoge_ca_crt_path = ca_dir / "greendoge_ca.crt"
+    greendoge_ca_key_path = ca_dir / "greendoge_ca.key"
+    greendoge_ca_crt_path.write_bytes(greendoge_ca_crt)
+    greendoge_ca_key_path.write_bytes(greendoge_ca_key)
 
     if not private_ca_key_path.exists() or not private_ca_crt_path.exists():
         # Create private CA
@@ -197,8 +197,8 @@ def create_all_ssl(root: Path):
         ca_crt = private_ca_crt_path.read_bytes()
         generate_ssl_for_nodes(ssl_dir, ca_crt, ca_key, True)
 
-    mogua_ca_crt, mogua_ca_key = get_mogua_ca_crt_key()
-    generate_ssl_for_nodes(ssl_dir, mogua_ca_crt, mogua_ca_key, False, overwrite=False)
+    greendoge_ca_crt, greendoge_ca_key = get_greendoge_ca_crt_key()
+    generate_ssl_for_nodes(ssl_dir, greendoge_ca_crt, greendoge_ca_key, False, overwrite=False)
 
 
 def generate_ssl_for_nodes(ssl_dir: Path, ca_crt: bytes, ca_key: bytes, private: bool, overwrite=True):
@@ -245,16 +245,16 @@ def init(create_certs: Optional[Path], root_path: Path):
         else:
             print(f"** {root_path} does not exist. Executing core init **")
             # sanity check here to prevent infinite recursion
-            if mogua_init(root_path) == 0 and root_path.exists():
+            if greendoge_init(root_path) == 0 and root_path.exists():
                 return init(create_certs, root_path)
 
             print(f"** {root_path} was not created. Exiting **")
             return -1
     else:
-        return mogua_init(root_path)
+        return greendoge_init(root_path)
 
 
-def mogua_version_number() -> Tuple[str, str, str, str]:
+def greendoge_version_number() -> Tuple[str, str, str, str]:
     scm_full_version = __version__
     left_full_version = scm_full_version.split("+")
 
@@ -302,34 +302,34 @@ def mogua_version_number() -> Tuple[str, str, str, str]:
     return major_release_number, minor_release_number, patch_release_number, dev_release_number
 
 
-def mogua_minor_release_number():
-    res = int(mogua_version_number()[2])
+def greendoge_minor_release_number():
+    res = int(greendoge_version_number()[2])
     print(f"Install release number: {res}")
     return res
 
 
-def mogua_full_version_str() -> str:
-    major, minor, patch, dev = mogua_version_number()
+def greendoge_full_version_str() -> str:
+    major, minor, patch, dev = greendoge_version_number()
     return f"{major}.{minor}.{patch}{dev}"
 
 
-def mogua_init(root_path: Path):
-    if os.environ.get("MGUA_ROOT", None) is not None:
+def greendoge_init(root_path: Path):
+    if os.environ.get("GREENDOGE_ROOT", None) is not None:
         print(
-            f"warning, your MGUA_ROOT is set to {os.environ['MGUA_ROOT']}. "
+            f"warning, your GREENDOGE_ROOT is set to {os.environ['GREENDOGE_ROOT']}. "
             f"Please unset the environment variable and run mogua init again\n"
             f"or manually migrate config.yaml"
         )
 
-    print(f"Mogua directory {root_path}")
+    print(f"MoGua directory {root_path}")
     if root_path.is_dir() and Path(root_path / "config" / "config.yaml").exists():
-        # This is reached if MGUA_ROOT is set, or if user has run mogua init twice
+        # This is reached if GREENDOGE_ROOT is set, or if user has run mogua init twice
         # before a new update.
         check_keys(root_path)
         print(f"{root_path} already exists, no migration action taken")
         return -1
 
-    create_default_mogua_config(root_path)
+    create_default_greendoge_config(root_path)
     create_all_ssl(root_path)
     check_keys(root_path)
     print("")

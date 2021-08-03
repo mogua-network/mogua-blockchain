@@ -15,7 +15,7 @@ msgstr ""
 "X-Crowdin-Project: mogua-blockchain\n"
 "X-Crowdin-Project-ID: 440660\n"
 "X-Crowdin-Language: pt-PT\n"
-"X-Crowdin-File: /[Mogua-Network.mogua-blockchain-gui] main/src/locales/en-US/messages.po\n"
+"X-Crowdin-File: /[MoGua-Network.mogua-blockchain-gui] main/src/locales/en-US/messages.po\n"
 "X-Crowdin-File-ID: 118\n"
 
 #: src/components/plot/add/PlotAddNFT.tsx:62
@@ -23,8 +23,8 @@ msgid "(Optional)"
 msgstr "(Opcional)"
 
 #: src/components/farm/FarmLatestBlockChallenges.tsx:64
-msgid "*Want to explore Mogua’s blocks further? Check out <0>Mogua Explorer</0> built by an open source developer."
-msgstr "*Quer explorar mais os blocos de Mogua? Confira o <0> Mogua Explorer </0> desenvolvido por um programador de código aberto."
+msgid "*Want to explore MoGua’s blocks further? Check out <0>MoGua Explorer</0> built by an open source developer."
+msgstr "*Quer explorar mais os blocos de MoGua? Confira o <0> MoGua Explorer </0> desenvolvido por um programador de código aberto."
 
 #: src/components/plot/add/PlotAddNFT.tsx:125
 msgid "+ Add New Plot NFT"
@@ -44,8 +44,8 @@ msgstr "Um harvester é um serviço executado numa máquina onde os plot(s) est�
 
 #: src/electron/main.tsx:422
 #: src/electron/main.tsx:509
-msgid "About Mogua Blockchain"
-msgstr "Sobre Mogua Blockchain"
+msgid "About MoGua Blockchain"
+msgstr "Sobre MoGua Blockchain"
 
 #: src/components/trading/ViewOffer.jsx:74
 msgid "Accept"
@@ -216,8 +216,8 @@ msgid "Block VDF Iterations"
 msgstr "Iterações Bloco VDF"
 
 #: src/components/block/Block.jsx:336
-msgid "Block at height {0} in the Mogua blockchain"
-msgstr "Bloco na altura {0} na cadeia de blocos Mogua"
+msgid "Block at height {0} in the MoGua blockchain"
+msgstr "Bloco na altura {0} na cadeia de blocos MoGua"
 
 #: src/components/fullNode/FullNode.jsx:331
 #~ msgid "Block hash"
@@ -309,16 +309,16 @@ msgid "Chat on KeyBase"
 msgstr "Chat no KeyBase"
 
 #: src/electron/main.tsx:419
-msgid "Mogua"
-msgstr "Mogua"
+msgid "MoGua"
+msgstr "MoGua"
 
 #: src/electron/main.tsx:358
-msgid "Mogua Blockchain Wiki"
-msgstr "Wiki da Mogua Blockchain"
+msgid "MoGua Blockchain Wiki"
+msgstr "Wiki da MoGua Blockchain"
 
 #: src/components/wallet/standard/WalletStandard.tsx:647
-msgid "Mogua Wallet"
-msgstr "Carteira Mogua"
+msgid "MoGua Wallet"
+msgstr "Carteira MoGua"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:36
 msgid "Choose Number of Plots"
@@ -686,8 +686,8 @@ msgid "Edit"
 msgstr "Editar"
 
 #: src/components/wallet/WalletImport.tsx:147
-msgid "Enter the 24 word mnemonic that you have saved in order to restore your Mogua wallet."
-msgstr "Digite o mnemônico de 24 palavras que você salvou para restaurar sua carteira Mogua."
+msgid "Enter the 24 word mnemonic that you have saved in order to restore your MoGua wallet."
+msgstr "Digite o mnemônico de 24 palavras que você salvou para restaurar sua carteira MoGua."
 
 #: src/components/farm/FarmerStatus.tsx:21
 #: src/components/farm/FarmerStatus.tsx:22
@@ -811,7 +811,7 @@ msgid "Fee"
 msgstr "Taxa"
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
-#~ msgid "Fee (TMGA)"
+#~ msgid "Fee (TGDOG)"
 #~ msgstr ""
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
@@ -1257,8 +1257,8 @@ msgid "Not found Plots"
 msgstr "Plots não encontrados"
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:184
-msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25MGA reward for pooling plots."
-msgstr "Note que isto não muda os seus endereços de pagamento de pooling. isto afeta apenas plots no formato antigo e a recompensa de 0.25MGA de plots em pooling."
+msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25GDOG reward for pooling plots."
+msgstr "Note que isto não muda os seus endereços de pagamento de pooling. isto afeta apenas plots no formato antigo e a recompensa de 0.25GDOG de plots em pooling."
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:120
 #: src/components/plotNFT/PlotNFTCard.tsx:159
@@ -1476,8 +1476,8 @@ msgid "Plots Passed Filter"
 msgstr "Plots Aprovados no FIltro"
 
 #: src/components/plot/overview/PlotOverviewHero.tsx:35
-msgid "Plots are allocated space on your hard drive used to farm and earn Mogua. <0>Learn more</0>"
-msgstr "Os plots são alocados no espaço do seu disco rígido, usado para cultivar e ganhar Mogua. <0>Saiba mais</0>"
+msgid "Plots are allocated space on your hard drive used to farm and earn MoGua. <0>Learn more</0>"
+msgstr "Os plots são alocados no espaço do seu disco rígido, usado para cultivar e ganhar MoGua. <0>Saiba mais</0>"
 
 #: src/components/plot/queue/PlotQueueIndicator.tsx:34
 msgid "Plotting"
@@ -1963,8 +1963,8 @@ msgstr "Estado:"
 #~ msgstr "Sub Block Height"
 
 #: src/components/block/Block.jsx:338
-#~ msgid "Sub Block at height {0} in the Mogua blockchain"
-#~ msgstr "Sub Block at height {0} in the Mogua blockchain"
+#~ msgid "Sub Block at height {0} in the MoGua blockchain"
+#~ msgstr "Sub Block at height {0} in the MoGua blockchain"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:347
 msgid "Submit"
@@ -1991,23 +1991,23 @@ msgstr "Sincronizando <0/>/<1/>"
 #~ msgstr "Syncing {progress}/{tip}"
 
 #: src/components/farm/card/FarmCardBlockRewards.tsx:15
-#~ msgid "TMGA Block Rewards"
+#~ msgid "TGDOG Block Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardCoinbaseRewards.tsx:12
-#~ msgid "TMGA Farming Rewards"
+#~ msgid "TGDOG Farming Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardFeesReward.tsx:12
-#~ msgid "TMGA Fees Collected"
+#~ msgid "TGDOG Fees Collected"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardUserFees.tsx:12
-#~ msgid "TMGA User Fees"
-#~ msgstr "TMGA User Fees"
+#~ msgid "TGDOG User Fees"
+#~ msgstr "TGDOG User Fees"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:15
-#~ msgid "TMGA User Transaction Fees"
+#~ msgid "TGDOG User Transaction Fees"
 #~ msgstr ""
 
 #: src/components/pool/PoolInfo.tsx:37
@@ -2107,8 +2107,8 @@ msgid "This feature is available only from the GUI."
 msgstr "Este recurso está disponível apenas na GUI."
 
 #: src/components/wallet/card/WalletCardSpendableBalance.tsx:26
-msgid "This is the amount of Mogua that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and Mogua that you have just spent but is not yet in the blockchain."
-msgstr "Esta é a quantidade de Mogua que você pode usar atualmente para fazer transações. Não inclui recompensas agrícolas pendentes, transações recebidas pendentes e Mogua que você acabou de gastar, mas ainda não está no blockchain."
+msgid "This is the amount of MoGua that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and MoGua that you have just spent but is not yet in the blockchain."
+msgstr "Esta é a quantidade de MoGua que você pode usar atualmente para fazer transações. Não inclui recompensas agrícolas pendentes, transações recebidas pendentes e MoGua que você acabou de gastar, mas ainda não está no blockchain."
 
 #: src/components/wallet/card/WalletCardPendingChange.tsx:26
 msgid "This is the pending change, which are change coins which you have sent to yourself, but have not been confirmed yet."
@@ -2173,8 +2173,8 @@ msgid "This trade was included on blockchain at this block height"
 msgstr "Esta operação foi incluída na blockchain nesta altura do bloco"
 
 #: src/components/app/AppTimeBombAlert.tsx:19
-msgid "This version of Mogua is no longer compatible with the blockchain and can not safely farm."
-msgstr "Esta versão do Mogua já não é mais compatível com a blockchain e não pode fazer farming com segurança."
+msgid "This version of MoGua is no longer compatible with the blockchain and can not safely farm."
+msgstr "Esta versão do MoGua já não é mais compatível com a blockchain e não pode fazer farming com segurança."
 
 #: src/components/fullNode/FullNode.jsx:92
 msgid "Time Created"
@@ -2198,8 +2198,8 @@ msgstr "Para"
 msgid "Total Balance"
 msgstr "Balanço Total"
 
-#: src/components/farm/card/FarmCardTotalMguaFarmed.tsx:15
-#~ msgid "Total Mogua Farmed"
+#: src/components/farm/card/FarmCardTotalGreenDogeFarmed.tsx:15
+#~ msgid "Total MoGua Farmed"
 #~ msgstr ""
 
 #: src/components/fullNode/card/FullNodeCardTotalIterations.tsx:20
@@ -2371,7 +2371,7 @@ msgstr "Estado da carteira:"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:30
-#~ msgid "WalletItem.moguaWallet"
+#~ msgid "WalletItem.greendogeWallet"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:48
@@ -2408,8 +2408,8 @@ msgid "Want to Join a Pool? Create a Plot NFT"
 msgstr "Quer entrar em numa Pool? Crie um Plot NFT"
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:139
-msgid "Want to earn more Mogua? Add more plots to your farm."
-msgstr "Quer ganhar mais Mogua? Adicione mais plots à sua farm."
+msgid "Want to earn more MoGua? Add more plots to your farm."
+msgstr "Quer ganhar mais MoGua? Adicione mais plots à sua farm."
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:86
 msgid "Want to have a delay before the next plot starts?"
@@ -2424,8 +2424,8 @@ msgid "Weight is the total added difficulty of all sub blocks up to and includin
 msgstr "O peso é a dificuldade total adicionada de todos os sub-blocos até e incluindo este"
 
 #: src/components/selectKey/SelectKey.tsx:112
-msgid "Welcome to Mogua. Please log in with an existing key, or create a new key."
-msgstr "Bem-vindo à Mogua. Faça login com uma chave existente ou crie uma nova chave."
+msgid "Welcome to MoGua. Please log in with an existing key, or create a new key."
+msgstr "Bem-vindo à MoGua. Faça login com uma chave existente ou crie uma nova chave."
 
 #: src/components/wallet/WalletAdd.tsx:66
 msgid "Welcome! The following words are used for your wallet backup. Without them, you will lose access to your wallet, keep them safe! Write down each word along with the order number next to them. (Order is important)"
@@ -2495,8 +2495,8 @@ msgid "You need to claim your rewards first"
 msgstr "Você precisa resgatar as suas recompensas primeiro"
 
 #: src/components/app/AppTimeBomb.tsx:28
-#~ msgid "You need to upgrade the Mogua application as this version will stop working soon!"
-#~ msgstr "You need to upgrade the Mogua application as this version will stop working soon!"
+#~ msgid "You need to upgrade the MoGua application as this version will stop working soon!"
+#~ msgstr "You need to upgrade the MoGua application as this version will stop working soon!"
 
 #: src/components/plotNFT/select/PlotNFTSelectFaucet.tsx:37
 msgid "You need {currencyCode} to join a pool."
@@ -2583,14 +2583,14 @@ msgstr "{0} pontos {1} - {2} horas atrás"
 msgid "{currencyCode} Block Rewards"
 msgstr "{currencyCode} Recompensas do Bloco"
 
-#: src/components/farm/card/FarmCardTotalMguaFarmed.tsx:29
-msgid "{currencyCode} Total Mogua Farmed"
-msgstr "{currencyCode} Total de Mogua cultivada"
+#: src/components/farm/card/FarmCardTotalGreenDogeFarmed.tsx:29
+msgid "{currencyCode} Total MoGua Farmed"
+msgstr "{currencyCode} Total de MoGua cultivada"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:28
 msgid "{currencyCode} User Transaction Fees"
 msgstr "{currencyCode} Taxas de transação do utilizador"
 
 #: src/components/core/components/Amount/Amount.tsx:82
-msgid "{gua, plural, one {gua} other {guas}}"
-msgstr "{gua, plural, one {gua} other {guas}}"
+msgid "{mog, plural, one {mog} other {dogs}}"
+msgstr "{mog, plural, one {mog} other {dogs}}"

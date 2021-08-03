@@ -1,4 +1,4 @@
-export { default as Mogua } from './Mogua';
+export { default as MoGua } from './MoGua';
 export { default as Farm } from './Farm';
 export { default as Home } from './Home';
 export { default as Keys } from './Keys';

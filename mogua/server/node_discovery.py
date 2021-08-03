@@ -16,7 +16,7 @@ from mogua.protocols.protocol_message_types import ProtocolMessageTypes
 from mogua.server.address_manager import AddressManager, ExtendedPeerInfo
 from mogua.server.address_manager_store import AddressManagerStore
 from mogua.server.outbound_message import NodeType, make_msg
-from mogua.server.server import MguaServer
+from mogua.server.server import GreenDogeServer
 from mogua.types.peer_info import PeerInfo, TimestampedPeerInfo
 from mogua.util.hash import std_hash
 from mogua.util.ints import uint64
@@ -37,7 +37,7 @@ class FullNodeDiscovery:
 
     def __init__(
         self,
-        server: MguaServer,
+        server: GreenDogeServer,
         root_path: Path,
         target_outbound_count: int,
         peer_db_path: str,
@@ -48,7 +48,7 @@ class FullNodeDiscovery:
         default_port: Optional[int],
         log,
     ):
-        self.server: MguaServer = server
+        self.server: GreenDogeServer = server
         self.message_queue: asyncio.Queue = asyncio.Queue()
         self.is_closed = False
         self.target_outbound_count = target_outbound_count
@@ -127,7 +127,7 @@ class FullNodeDiscovery:
     def add_message(self, message, data):
         self.message_queue.put_nowait((message, data))
 
-    async def on_connect(self, peer: ws.WSMguaConnection):
+    async def on_connect(self, peer: ws.WSGreenDogeConnection):
         if (
             peer.is_outbound is False
             and peer.peer_server_port is not None
@@ -154,7 +154,7 @@ class FullNodeDiscovery:
             await peer.send_message(msg)
 
     # Updates timestamps each time we receive a message for outbound connections.
-    async def update_peer_timestamp_on_message(self, peer: ws.WSMguaConnection):
+    async def update_peer_timestamp_on_message(self, peer: ws.WSGreenDogeConnection):
         if (
             peer.is_outbound
             and peer.peer_server_port is not None
@@ -192,7 +192,7 @@ class FullNodeDiscovery:
         if self.introducer_info is None:
             return None
 
-        async def on_connect(peer: ws.WSMguaConnection):
+        async def on_connect(peer: ws.WSGreenDogeConnection):
             msg = make_msg(ProtocolMessageTypes.request_peers_introducer, introducer_protocol.RequestPeersIntroducer())
             await peer.send_message(msg)
 

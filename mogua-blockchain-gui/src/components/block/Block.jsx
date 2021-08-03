@@ -27,7 +27,7 @@ import {
   sha256,
 } from '../../util/utils';
 import { getBlockRecord, getBlock } from '../../modules/fullnodeMessages';
-import { gua_to_mogua } from '../../util/mogua';
+import { dog_to_greendoge } from '../../util/mogua';
 import {
   calculatePoolReward,
   calculateBaseFarmerReward,
@@ -171,13 +171,13 @@ export default function Block() {
       ? blockRecord.weight - prevBlockRecord.weight
       : blockRecord?.weight ?? 0;
 
-  const poolReward = gua_to_mogua(calculatePoolReward(blockRecord.height));
-  const baseFarmerReward = gua_to_mogua(
+  const poolReward = dog_to_greendoge(calculatePoolReward(blockRecord.height));
+  const baseFarmerReward = dog_to_greendoge(
     calculateBaseFarmerReward(blockRecord.height),
   );
 
-  const moguaFees = blockRecord.fees
-    ? gua_to_mogua(BigInt(blockRecord.fees))
+  const greendogeFees = blockRecord.fees
+    ? dog_to_greendoge(BigInt(blockRecord.fees))
     : '';
 
   const rows = [
@@ -319,7 +319,7 @@ export default function Block() {
     },
     {
       name: <Trans>Fees Amount</Trans>,
-      value: moguaFees ? `${moguaFees} ${currencyCode}` : '',
+      value: greendogeFees ? `${greendogeFees} ${currencyCode}` : '',
       tooltip: (
         <Trans>
           The total transactions fees in this block. Rewarded to the farmer.
@@ -334,7 +334,7 @@ export default function Block() {
         title={
           <BlockTitle>
             <Trans>
-              Block at height {blockRecord.height} in the Mogua blockchain
+              Block at height {blockRecord.height} in the MoGua blockchain
             </Trans>
           </BlockTitle>
         }

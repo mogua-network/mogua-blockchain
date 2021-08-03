@@ -17,7 +17,7 @@ export default function AppTimeBomb() {
     return (
       <Alert severity="warning">
         <Trans>
-          This version of Mogua is no longer compatible with the blockchain and
+          This version of MoGua is no longer compatible with the blockchain and
           can not safely farm.
         </Trans>
       </Alert>

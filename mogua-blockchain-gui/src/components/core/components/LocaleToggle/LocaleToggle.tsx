@@ -43,7 +43,7 @@ export default function LocaleToggle(props: Props) {
     handleClose();
 
     openExternal(
-      'https://github.com/Mogua-Network/mogua-blockchain-gui/tree/main/src/locales/README.md',
+      'https://github.com/MoGua-Network/mogua-blockchain-gui/tree/main/src/locales/README.md',
     );
   }
 

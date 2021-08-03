@@ -1,12 +1,12 @@
 const units = {
   mogua: 1,
-  gua: 1 / 1e12,
+  mog: 1 / 1e12,
   colouredcoin: 1 / 1e9,
 };
 
 const aliases = {
-  mogua: ['ch', 'mogua', 'Mogua'],
-  gua: ['mj', 'gua'],
+  mogua: ['ch', 'mogua', 'MoGua'],
+  mog: ['mj', 'mog'],
   colouredcoin: ['cc', 'colouredcoin'],
 };
 
@@ -15,7 +15,7 @@ const display = {
     format: '{amount} CH',
     fractionDigits: 12,
   },
-  gua: {
+  mog: {
     format: '{amount} MJ',
     fractionDigits: 0,
   },

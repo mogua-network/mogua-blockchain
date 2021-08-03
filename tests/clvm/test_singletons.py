@@ -110,7 +110,7 @@ class TestSingleton(TestCase):
             )
             raise AssertionError("This should fail due to an even amount")
         except ValueError as msg:
-            assert str(msg) == "Coin amount cannot be even. Subtract one gua."
+            assert str(msg) == "Coin amount cannot be even. Subtract one mog."
             conditions, launcher_coinsol = singleton_top_layer.launch_conditions_and_coinsol(  # noqa
                 starting_coin, adapted_puzzle, comment, START_AMOUNT
             )

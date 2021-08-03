@@ -10,8 +10,8 @@ import '../config/env';
 import handleSquirrelEvent from './handleSquirrelEvent';
 import config from '../config/config';
 import dev_config from '../dev_config';
-import moguaEnvironment from '../util/moguaEnvironment';
-import moguaConfig from '../util/config';
+import greendogeEnvironment from '../util/greendogeEnvironment';
+import greendogeConfig from '../util/config';
 import { i18n } from '../config/locales';
 import About from '../components/about/About';
 import packageJson from '../../package.json';
@@ -96,7 +96,7 @@ if (!handleSquirrelEvent()) {
 
   const ensureCorrectEnvironment = () => {
     // check that the app is either packaged or running in the python venv
-    if (!moguaEnvironment.guessPackaged() && !('VIRTUAL_ENV' in process.env)) {
+    if (!greendogeEnvironment.guessPackaged() && !('VIRTUAL_ENV' in process.env)) {
       console.log('App must be installed or in venv');
       app.quit();
       return false;
@@ -110,7 +110,7 @@ if (!handleSquirrelEvent()) {
   // if any of these checks return false, don't do any other initialization since the app is quitting
   if (ensureSingleInstance() && ensureCorrectEnvironment()) {
     // this needs to happen early in startup so all processes share the same global config
-    moguaConfig.loadConfig('mainnet');
+    greendogeConfig.loadConfig('mainnet');
     global.sharedObj = { local_test };
 
     const exitPyProc = (e) => {};
@@ -169,7 +169,7 @@ if (!handleSquirrelEvent()) {
       });
 
       // don't show remote daeomn detials in the title bar
-      if (!moguaConfig.manageDaemonLifetime()) {
+      if (!greendogeConfig.manageDaemonLifetime()) {
         mainWindow.webContents.on('did-finish-load', () => {
           mainWindow.setTitle(`${app.getName()} [${global.daemon_rpc_ws}]`);
         });
@@ -180,7 +180,7 @@ if (!handleSquirrelEvent()) {
       // }
       mainWindow.on('close', (e) => {
         // if the daemon isn't local we aren't going to try to start/stop it
-        if (decidedToClose || !moguaConfig.manageDaemonLifetime()) {
+        if (decidedToClose || !greendogeConfig.manageDaemonLifetime()) {
           return;
         }
         e.preventDefault();
@@ -222,8 +222,8 @@ if (!handleSquirrelEvent()) {
       createWindow();
       app.applicationMenu = createMenu();
       // if the daemon isn't local we aren't going to try to start/stop it
-      if (moguaConfig.manageDaemonLifetime()) {
-        moguaEnvironment.startMguaDaemon();
+      if (greendogeConfig.manageDaemonLifetime()) {
+        greendogeEnvironment.startGreenDogeDaemon();
       }
     };
 
@@ -355,10 +355,10 @@ if (!handleSquirrelEvent()) {
         role: 'help',
         submenu: [
           {
-            label: i18n._(/* i18n */ { id: 'Mogua Blockchain Website' }),
+            label: i18n._(/* i18n */ { id: 'MoGua Blockchain Website' }),
             click: () => {
               openExternal(
-                'https://mogua.gua',
+                'https://mogua.mog',
               );
             },
           },
@@ -374,7 +374,7 @@ if (!handleSquirrelEvent()) {
             label: i18n._(/* i18n */ { id: 'Release Notes' }),
             click: () => {
               openExternal(
-                'https://github.com/Mogua-Network/mogua-blockchain/releases',
+                'https://github.com/MoGua-Network/mogua-blockchain/releases',
               );
             },
           },
@@ -382,7 +382,7 @@ if (!handleSquirrelEvent()) {
             label: i18n._(/* i18n */ { id: 'Contribute on GitHub' }),
             click: () => {
               openExternal(
-                'https://github.com/Mogua-Network/mogua-blockchain/blob/master/CONTRIBUTING.md',
+                'https://github.com/MoGua-Network/mogua-blockchain/blob/master/CONTRIBUTING.md',
               );
             },
           },
@@ -393,7 +393,7 @@ if (!handleSquirrelEvent()) {
             label: i18n._(/* i18n */ { id: 'Report an Issue...' }),
             click: () => {
               openExternal(
-                'https://github.com/Mogua-Network/mogua-blockchain/issues',
+                'https://github.com/MoGua-Network/mogua-blockchain/issues',
               );
             },
           },
@@ -406,7 +406,7 @@ if (!handleSquirrelEvent()) {
           {
             label: i18n._(/* i18n */ { id: 'Follow on Twitter' }),
             click: () => {
-              openExternal('https://twitter.com/green_guaecoin');
+              openExternal('https://twitter.com/green_dogecoin');
             },
           },
         ],
@@ -414,12 +414,12 @@ if (!handleSquirrelEvent()) {
     ];
 
     if (process.platform === 'darwin') {
-      // Mogua Blockchain menu (Mac)
+      // MoGua Blockchain menu (Mac)
       template.unshift({
-        label: i18n._(/* i18n */ { id: 'Mogua' }),
+        label: i18n._(/* i18n */ { id: 'MoGua' }),
         submenu: [
           {
-            label: i18n._(/* i18n */ { id: 'About Mogua Blockchain' }),
+            label: i18n._(/* i18n */ { id: 'About MoGua Blockchain' }),
             click: () => {
               openAbout();
             },
@@ -506,7 +506,7 @@ if (!handleSquirrelEvent()) {
           type: 'separator',
         },
         {
-          label: i18n._(/* i18n */ { id: 'About Mogua Blockchain' }),
+          label: i18n._(/* i18n */ { id: 'About MoGua Blockchain' }),
           click() {
             openAbout();
           },

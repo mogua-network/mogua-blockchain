@@ -1,8 +1,8 @@
 {
   "name": "mogua-blockchain",
-  "author": "Mogua Network <hello@mogua.gua> (https://mogua.gua/)",
-  "description": "GUI for Mogua Blockchain",
-  "productName": "Mogua Blockchain",
+  "author": "MoGua Network <hello@mogua.mog> (https://mogua.mog/)",
+  "description": "GUI for MoGua Blockchain",
+  "productName": "MoGua Blockchain",
   "private": true,
   "homepage": "./",
   "main": "build/electron/main.js",

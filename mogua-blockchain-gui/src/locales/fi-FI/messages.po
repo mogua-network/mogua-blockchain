@@ -15,7 +15,7 @@ msgstr ""
 "X-Crowdin-Project: mogua-blockchain\n"
 "X-Crowdin-Project-ID: 440660\n"
 "X-Crowdin-Language: fi\n"
-"X-Crowdin-File: /[Mogua-Network.mogua-blockchain-gui] main/src/locales/en-US/messages.po\n"
+"X-Crowdin-File: /[MoGua-Network.mogua-blockchain-gui] main/src/locales/en-US/messages.po\n"
 "X-Crowdin-File-ID: 118\n"
 
 #: src/components/plot/add/PlotAddNFT.tsx:62
@@ -23,8 +23,8 @@ msgid "(Optional)"
 msgstr "(Valinnainen)"
 
 #: src/components/farm/FarmLatestBlockChallenges.tsx:64
-msgid "*Want to explore Mogua’s blocks further? Check out <0>Mogua Explorer</0> built by an open source developer."
-msgstr "Haluatko tarkastella lohkoja? Katso avoimen koodin <0>Mogua Explorer</0>."
+msgid "*Want to explore MoGua’s blocks further? Check out <0>MoGua Explorer</0> built by an open source developer."
+msgstr "Haluatko tarkastella lohkoja? Katso avoimen koodin <0>MoGua Explorer</0>."
 
 #: src/components/plot/add/PlotAddNFT.tsx:125
 msgid "+ Add New Plot NFT"
@@ -44,8 +44,8 @@ msgstr "Harvesteri on palvelu koneella, jolle plot-tiedostot on tallennettu. Far
 
 #: src/electron/main.tsx:422
 #: src/electron/main.tsx:509
-msgid "About Mogua Blockchain"
-msgstr "Mogua Lohkoketjusta"
+msgid "About MoGua Blockchain"
+msgstr "MoGua Lohkoketjusta"
 
 #: src/components/trading/ViewOffer.jsx:74
 msgid "Accept"
@@ -216,8 +216,8 @@ msgid "Block VDF Iterations"
 msgstr "Lohkon VDF-iteraatiot"
 
 #: src/components/block/Block.jsx:336
-msgid "Block at height {0} in the Mogua blockchain"
-msgstr "Lohko korkeudessa {0} Mguan lohkoketjussa"
+msgid "Block at height {0} in the MoGua blockchain"
+msgstr "Lohko korkeudessa {0} GreenDogen lohkoketjussa"
 
 #: src/components/fullNode/FullNode.jsx:331
 #~ msgid "Block hash"
@@ -309,16 +309,16 @@ msgid "Chat on KeyBase"
 msgstr "Keskustele KeyBasessa"
 
 #: src/electron/main.tsx:419
-msgid "Mogua"
-msgstr "Mogua"
+msgid "MoGua"
+msgstr "MoGua"
 
 #: src/electron/main.tsx:358
-msgid "Mogua Blockchain Wiki"
-msgstr "Mogua Wiki"
+msgid "MoGua Blockchain Wiki"
+msgstr "MoGua Wiki"
 
 #: src/components/wallet/standard/WalletStandard.tsx:647
-msgid "Mogua Wallet"
-msgstr "Mogua-lompakko"
+msgid "MoGua Wallet"
+msgstr "MoGua-lompakko"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:36
 msgid "Choose Number of Plots"
@@ -686,8 +686,8 @@ msgid "Edit"
 msgstr "Muokkaa"
 
 #: src/components/wallet/WalletImport.tsx:147
-msgid "Enter the 24 word mnemonic that you have saved in order to restore your Mogua wallet."
-msgstr "Anna tallentamasi 24 muistisanaa palauttaaksesi Mogua-lompakon."
+msgid "Enter the 24 word mnemonic that you have saved in order to restore your MoGua wallet."
+msgstr "Anna tallentamasi 24 muistisanaa palauttaaksesi MoGua-lompakon."
 
 #: src/components/farm/FarmerStatus.tsx:21
 #: src/components/farm/FarmerStatus.tsx:22
@@ -701,7 +701,7 @@ msgstr "Virhe"
 
 #: src/components/wallet/standard/WalletStandard.tsx:456
 msgid "Error: Cannot send mogua to coloured address. Please enter a mogua address."
-msgstr "Virhe: Chioja ei voi lähettää värikolikko-osoitteeseen. Anna Mgualompakon osoite."
+msgstr "Virhe: Chioja ei voi lähettää värikolikko-osoitteeseen. Anna GreenDogelompakon osoite."
 
 #: src/components/fullNode/card/FullNodeEstimatedNetworkSpace.tsx:20
 msgid "Estimated Network Space"
@@ -811,7 +811,7 @@ msgid "Fee"
 msgstr "Veloitus"
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
-#~ msgid "Fee (TMGA)"
+#~ msgid "Fee (TGDOG)"
 #~ msgstr ""
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
@@ -1257,7 +1257,7 @@ msgid "Not found Plots"
 msgstr "Ei löydettyjä Plot-tiedostoja"
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:184
-msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25MGA reward for pooling plots."
+msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25GDOG reward for pooling plots."
 msgstr "Huomaa, että tämä ei muuta poolauksen maksuosoitteitasi. Tämä vaikuttaa vain vanhan formaatin plotteihin, ja 0,25 MGA palkintoon poolausploteissa."
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:120
@@ -1476,7 +1476,7 @@ msgid "Plots Passed Filter"
 msgstr "Plotteja Päässyt Filtteristä"
 
 #: src/components/plot/overview/PlotOverviewHero.tsx:35
-msgid "Plots are allocated space on your hard drive used to farm and earn Mogua. <0>Learn more</0>"
+msgid "Plots are allocated space on your hard drive used to farm and earn MoGua. <0>Learn more</0>"
 msgstr "Plotit ovat levyn tilavarauksia, joilla tuotetaan ja ansaitaan Chioja. <0>Katso lisää</0>"
 
 #: src/components/plot/queue/PlotQueueIndicator.tsx:34
@@ -1915,7 +1915,7 @@ msgstr "Käyttöajanjakson pituus (lohkojen määrä)"
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:401
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:448
 msgid "Spending Limit (mogua per interval): {0}"
-msgstr "Käyttöraja (Mguaa/ajanjakso):{0}"
+msgstr "Käyttöraja (GreenDogea/ajanjakso):{0}"
 
 #: src/components/fullNode/FullNode.jsx:100
 msgid "State"
@@ -1963,8 +1963,8 @@ msgstr "Tila:"
 #~ msgstr "Sub Block Height"
 
 #: src/components/block/Block.jsx:338
-#~ msgid "Sub Block at height {0} in the Mogua blockchain"
-#~ msgstr "Sub Block at height {0} in the Mogua blockchain"
+#~ msgid "Sub Block at height {0} in the MoGua blockchain"
+#~ msgstr "Sub Block at height {0} in the MoGua blockchain"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:347
 msgid "Submit"
@@ -1991,23 +1991,23 @@ msgstr "Synkronoi <0/>/<1/>"
 #~ msgstr "Syncing {progress}/{tip}"
 
 #: src/components/farm/card/FarmCardBlockRewards.tsx:15
-#~ msgid "TMGA Block Rewards"
+#~ msgid "TGDOG Block Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardCoinbaseRewards.tsx:12
-#~ msgid "TMGA Farming Rewards"
+#~ msgid "TGDOG Farming Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardFeesReward.tsx:12
-#~ msgid "TMGA Fees Collected"
+#~ msgid "TGDOG Fees Collected"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardUserFees.tsx:12
-#~ msgid "TMGA User Fees"
-#~ msgstr "TMGA User Fees"
+#~ msgid "TGDOG User Fees"
+#~ msgstr "TGDOG User Fees"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:15
-#~ msgid "TMGA User Transaction Fees"
+#~ msgid "TGDOG User Transaction Fees"
 #~ msgstr ""
 
 #: src/components/pool/PoolInfo.tsx:37
@@ -2107,7 +2107,7 @@ msgid "This feature is available only from the GUI."
 msgstr "Tämä ominaisuus käytettävissä ainoastaan graafisessa käyttöliittymässä."
 
 #: src/components/wallet/card/WalletCardSpendableBalance.tsx:26
-msgid "This is the amount of Mogua that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and Mogua that you have just spent but is not yet in the blockchain."
+msgid "This is the amount of MoGua that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and MoGua that you have just spent but is not yet in the blockchain."
 msgstr "Transaktioihin käytettävissä oleva Chiojen määrä. Ei sisällä avoimia farmarin palkkioita, avoimia saapuvia transaktioita eikä lähetettyjä, mutta vahvistamattomia transaktioita."
 
 #: src/components/wallet/card/WalletCardPendingChange.tsx:26
@@ -2173,8 +2173,8 @@ msgid "This trade was included on blockchain at this block height"
 msgstr "Kauppa on sisällytetty lohkoketjuun tässä lohkokorkeudessa"
 
 #: src/components/app/AppTimeBombAlert.tsx:19
-msgid "This version of Mogua is no longer compatible with the blockchain and can not safely farm."
-msgstr "Tämä Mguan versio ei ole enää yhteensopiva lohkoketjun kanssa."
+msgid "This version of MoGua is no longer compatible with the blockchain and can not safely farm."
+msgstr "Tämä GreenDogen versio ei ole enää yhteensopiva lohkoketjun kanssa."
 
 #: src/components/fullNode/FullNode.jsx:92
 msgid "Time Created"
@@ -2198,8 +2198,8 @@ msgstr "Osoitteeseen"
 msgid "Total Balance"
 msgstr "Kokonaissaldo"
 
-#: src/components/farm/card/FarmCardTotalMguaFarmed.tsx:15
-#~ msgid "Total Mogua Farmed"
+#: src/components/farm/card/FarmCardTotalGreenDogeFarmed.tsx:15
+#~ msgid "Total MoGua Farmed"
 #~ msgstr ""
 
 #: src/components/fullNode/card/FullNodeCardTotalIterations.tsx:20
@@ -2371,7 +2371,7 @@ msgstr "Lompakon Tila:"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:30
-#~ msgid "WalletItem.moguaWallet"
+#~ msgid "WalletItem.greendogeWallet"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:48
@@ -2408,7 +2408,7 @@ msgid "Want to Join a Pool? Create a Plot NFT"
 msgstr "Haluatko liittyä pooliin? Luo Plot-NFT"
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:139
-msgid "Want to earn more Mogua? Add more plots to your farm."
+msgid "Want to earn more MoGua? Add more plots to your farm."
 msgstr "Haluatko ansaita Chioja? Lisää plot-tiedostoja farmiisi."
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:86
@@ -2424,8 +2424,8 @@ msgid "Weight is the total added difficulty of all sub blocks up to and includin
 msgstr "Paino on kaikkien tähänastisten lohkojen vaikeuskerroin"
 
 #: src/components/selectKey/SelectKey.tsx:112
-msgid "Welcome to Mogua. Please log in with an existing key, or create a new key."
-msgstr "Tervetuloa Mguaan. Kirjaudu sisään avaimella tai luo uusi avain."
+msgid "Welcome to MoGua. Please log in with an existing key, or create a new key."
+msgstr "Tervetuloa GreenDogean. Kirjaudu sisään avaimella tai luo uusi avain."
 
 #: src/components/wallet/WalletAdd.tsx:66
 msgid "Welcome! The following words are used for your wallet backup. Without them, you will lose access to your wallet, keep them safe! Write down each word along with the order number next to them. (Order is important)"
@@ -2495,8 +2495,8 @@ msgid "You need to claim your rewards first"
 msgstr "Sinun täytyy lunastaa ensin palkkiosi"
 
 #: src/components/app/AppTimeBomb.tsx:28
-#~ msgid "You need to upgrade the Mogua application as this version will stop working soon!"
-#~ msgstr "You need to upgrade the Mogua application as this version will stop working soon!"
+#~ msgid "You need to upgrade the MoGua application as this version will stop working soon!"
+#~ msgstr "You need to upgrade the MoGua application as this version will stop working soon!"
 
 #: src/components/plotNFT/select/PlotNFTSelectFaucet.tsx:37
 msgid "You need {currencyCode} to join a pool."
@@ -2583,8 +2583,8 @@ msgstr "{0} pistettä {1} - {2} tuntia sitten"
 msgid "{currencyCode} Block Rewards"
 msgstr "{currencyCode} Lohkopalkkiot"
 
-#: src/components/farm/card/FarmCardTotalMguaFarmed.tsx:29
-msgid "{currencyCode} Total Mogua Farmed"
+#: src/components/farm/card/FarmCardTotalGreenDogeFarmed.tsx:29
+msgid "{currencyCode} Total MoGua Farmed"
 msgstr "{currencyCode} Chioja Farmaroitu"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:28
@@ -2592,5 +2592,5 @@ msgid "{currencyCode} User Transaction Fees"
 msgstr "{currencyCode} Transaktioveloitukset Käyttäjälle"
 
 #: src/components/core/components/Amount/Amount.tsx:82
-msgid "{gua, plural, one {gua} other {guas}}"
-msgstr "{gua, plural, one {gua} other {guaa}}"
+msgid "{mog, plural, one {mog} other {dogs}}"
+msgstr "{mog, plural, one {mog} other {doga}}"

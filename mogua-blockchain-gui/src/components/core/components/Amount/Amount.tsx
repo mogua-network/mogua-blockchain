@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import { useWatch, useFormContext } from 'react-hook-form';
 import TextField, { TextFieldProps } from '../TextField';
-import { mogua_to_gua } from '../../../../util/mogua';
+import { greendoge_to_dog } from '../../../../util/mogua';
 import useCurrencyCode from '../../../../hooks/useCurrencyCode';
 import FormatLargeNumber from '../FormatLargeNumber';
 import Flex from '../Flex';
@@ -40,7 +40,7 @@ function NumberFormatCustom(props: NumberFormatCustomProps) {
 }
 
 export type AmountProps = TextFieldProps & {
-  children?: (props: { gua: number; value: string | undefined }) => ReactNode;
+  children?: (props: { mog: number; value: string | undefined }) => ReactNode;
   name?: string;
 };
 
@@ -54,7 +54,7 @@ export default function Amount(props: AmountProps) {
     name,
   });
 
-  const gua = mogua_to_gua(value);
+  const mog = greendoge_to_dog(value);
 
   return (
     <FormControl variant={variant} fullWidth={fullWidth}>
@@ -71,18 +71,18 @@ export default function Amount(props: AmountProps) {
         }}
         {...rest}
       />
-      {!!gua && (
+      {!!mog && (
         <FormHelperText>
           <Flex alignItems="center" gap={2}>
             <Flex flexGrow={1} gap={1}>
-              <FormatLargeNumber value={gua} />
+              <FormatLargeNumber value={mog} />
               <Box>
-                <Plural value={gua} one="gua" other="guas" />
+                <Plural value={mog} one="mog" other="dogs" />
               </Box>
             </Flex>
             {children &&
               children({
-                gua,
+                mog,
                 value,
               })}
           </Flex>

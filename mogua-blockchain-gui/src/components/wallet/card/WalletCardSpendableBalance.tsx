@@ -3,7 +3,7 @@ import { Trans } from '@lingui/macro';
 import FarmCard from '../../farm/card/FarmCard';
 import useWallet from '../../../hooks/useWallet';
 import useCurrencyCode from '../../../hooks/useCurrencyCode';
-import { gua_to_mogua_string } from '../../../util/mogua';
+import { dog_to_greendoge_string } from '../../../util/mogua';
 
 type Props = {
   wallet_id: number;
@@ -24,15 +24,15 @@ export default function WalletCardSpendableBalance(props: Props) {
       title={<Trans>Spendable Balance</Trans>}
       tooltip={
         <Trans>
-          This is the amount of Mogua that you can currently use to make
+          This is the amount of MoGua that you can currently use to make
           transactions. It does not include pending farming rewards, pending
-          incoming transactions, and Mogua that you have just spent but is not
+          incoming transactions, and MoGua that you have just spent but is not
           yet in the blockchain.
         </Trans>
       }
       value={
         <>
-          {gua_to_mogua_string(value)} {currencyCode}
+          {dog_to_greendoge_string(value)} {currencyCode}
         </>
       }
     />

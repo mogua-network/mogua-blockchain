@@ -18,9 +18,9 @@ type FeeProps = AmountProps;
 export default function Fee(props: FeeProps) {
   return (
     <Amount {...props}>
-      {({ value, gua }) => {
-        const isHigh = gua >= 1000;
-        const isLow = gua !== 0 && gua < 1;
+      {({ value, mog }) => {
+        const isHigh = mog >= 1000;
+        const isLow = mog !== 0 && mog < 1;
 
         if (isHigh) {
           return (

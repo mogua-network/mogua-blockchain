@@ -1,8 +1,8 @@
-export const service_wallet = 'mogua_wallet';
-export const service_full_node = 'mogua_full_node';
-export const service_farmer = 'mogua_farmer';
-export const service_harvester = 'mogua_harvester';
-export const service_simulator = 'mogua_full_node_simulator';
+export const service_wallet = 'greendoge_wallet';
+export const service_full_node = 'greendoge_full_node';
+export const service_farmer = 'greendoge_farmer';
+export const service_harvester = 'greendoge_harvester';
+export const service_simulator = 'greendoge_full_node_simulator';
 export const service_daemon = 'daemon';
 export const service_plotter = 'mogua plots create';
 

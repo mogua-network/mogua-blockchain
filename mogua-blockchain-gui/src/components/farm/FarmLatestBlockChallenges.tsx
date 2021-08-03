@@ -62,13 +62,13 @@ export default function FarmLatestBlockChallenges() {
       />
       <Typography variant="caption">
         <Trans>
-          *Want to explore Mogua’s blocks further? Check out{' '}
+          *Want to explore MoGua’s blocks further? Check out{' '}
           <Link
             color="primary"
             href="https://mogua.posat.io/"
             target="_blank"
           >
-            Mogua Explorer
+            MoGua Explorer
           </Link>{' '}
           built by an open source developer.
         </Trans>

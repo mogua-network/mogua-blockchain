@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Box, BoxProps } from '@material-ui/core';
-import { Mogua } from '@mogua/icons';
+import { MoGua } from '@mogua/icons';
 
-const StyledMgua = styled(Mogua)`
+const StyledGreenDoge = styled(MoGua)`
   max-width: 100%;
   width: auto;
   height: auto;
@@ -12,7 +12,7 @@ const StyledMgua = styled(Mogua)`
 export default function Logo(props: BoxProps) {
   return (
     <Box {...props}>
-      <StyledMgua />
+      <StyledGreenDoge />
     </Box>
   );
 }

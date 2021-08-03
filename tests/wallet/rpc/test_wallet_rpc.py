@@ -250,11 +250,11 @@ class TestWalletRpc:
             sk = wallet_node.get_key_for_fingerprint(pks[0])
             test_ph = create_puzzlehash_for_pk(master_sk_to_wallet_sk(sk, uint32(0)).get_g1())
             test_config = load_config(wallet_node.root_path, "config.yaml")
-            test_config["farmer"]["mga_target_address"] = encode_puzzle_hash(test_ph, "tmga")
+            test_config["farmer"]["gdog_target_address"] = encode_puzzle_hash(test_ph, "tgdog")
             # set pool to second private key
             sk = wallet_node.get_key_for_fingerprint(pks[1])
             test_ph = create_puzzlehash_for_pk(master_sk_to_wallet_sk(sk, uint32(0)).get_g1())
-            test_config["pool"]["mga_target_address"] = encode_puzzle_hash(test_ph, "tmga")
+            test_config["pool"]["gdog_target_address"] = encode_puzzle_hash(test_ph, "tgdog")
             save_config(wallet_node.root_path, "config.yaml", test_config)
 
             # Check first key

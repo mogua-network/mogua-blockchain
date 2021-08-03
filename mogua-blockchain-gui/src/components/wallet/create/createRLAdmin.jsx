@@ -20,7 +20,7 @@ import {
 } from '../../../modules/createWallet';
 import { useStyles } from './WalletCreate';
 import { create_rl_admin_action } from '../../../modules/message';
-import { mogua_to_gua } from '../../../util/mogua';
+import { greendoge_to_dog } from '../../../util/mogua';
 import { openDialog } from '../../../modules/dialog';
 
 export const customStyles = makeStyles((theme) => ({
@@ -76,7 +76,7 @@ export const CreateRLAdminWallet = () => {
   const custom = customStyles();
   const dispatch = useDispatch();
   let interval_input = null;
-  let moguaper_input = null;
+  let greendogeper_input = null;
   let userpubkey_input = null;
   let amount_input = null;
   let fee_input = null;
@@ -104,10 +104,10 @@ export const CreateRLAdminWallet = () => {
       return;
     }
     if (
-      moguaper_input.value === '' ||
-      Number(moguaper_input.value) === 0 ||
-      !Number(moguaper_input.value) ||
-      isNaN(Number(moguaper_input.value))
+      greendogeper_input.value === '' ||
+      Number(greendogeper_input.value) === 0 ||
+      !Number(greendogeper_input.value) ||
+      isNaN(Number(greendogeper_input.value))
     ) {
       dispatch(
         openDialog(
@@ -156,18 +156,18 @@ export const CreateRLAdminWallet = () => {
     dispatch(createState(true, true));
     const interval = interval_input.value;
     const interval_value = Number.parseInt(Number(interval));
-    const moguaper = mogua_to_gua(moguaper_input.value);
-    const moguaper_value = Number.parseInt(Number(moguaper));
+    const greendogeper = greendoge_to_dog(greendogeper_input.value);
+    const greendogeper_value = Number.parseInt(Number(greendogeper));
     const userpubkey = userpubkey_input.value;
-    const amount = mogua_to_gua(amount_input.value);
+    const amount = greendoge_to_dog(amount_input.value);
     const amount_value = Number.parseInt(Number(amount));
-    // var fee = mogua_to_gua(fee_input.value);
+    // var fee = greendoge_to_dog(fee_input.value);
     // TODO(lipa): send fee to server
     // const fee_value = parseInt(Number(fee));
     dispatch(
       create_rl_admin_action(
         interval_value,
-        moguaper_value,
+        greendogeper_value,
         userpubkey,
         amount_value,
       ),
@@ -225,7 +225,7 @@ export const CreateRLAdminWallet = () => {
               color="secondary"
               fullWidth
               inputRef={(input) => {
-                moguaper_input = input;
+                greendogeper_input = input;
               }}
               label={<Trans>Spendable Amount</Trans>}
             />

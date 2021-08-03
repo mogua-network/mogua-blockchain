@@ -56,7 +56,7 @@ jobs:
     - name: Checkout test blocks and plots
       uses: actions/checkout@v2
       with:
-        repository: 'Mogua-Network/test-cache'
+        repository: 'MoGua-Network/test-cache'
         path: '.mogua'
         ref: '0.27.0'
         fetch-depth: 1

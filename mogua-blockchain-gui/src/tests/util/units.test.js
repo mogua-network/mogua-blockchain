@@ -7,8 +7,8 @@ describe('units', () => {
 
       expect(result).toBe(1);
     });
-    it('gets unit of gua', () => {
-      const result = units.getUnit('gua');
+    it('gets unit of mog', () => {
+      const result = units.getUnit('mog');
 
       expect(result).toBe(1e-12);
     });
@@ -27,7 +27,7 @@ describe('units', () => {
 
       expect(result).toBe(1);
     });
-    it('gets unit of gua using alias', () => {
+    it('gets unit of mog using alias', () => {
       const result = units.getUnit('mj');
 
       expect(result).toBe(1e-12);
@@ -54,8 +54,8 @@ describe('units', () => {
         fractionDigits: 12,
       });
     });
-    it('gets display of gua', () => {
-      const result = units.getDisplay('gua');
+    it('gets display of mog', () => {
+      const result = units.getDisplay('mog');
 
       expect(result).toEqual({
         format: '{amount} MJ',
@@ -112,14 +112,14 @@ describe('units', () => {
     });
     it('updates an existing display', () => {
       units.setDisplay('mogua', {
-        format: '{amount} TMGA',
+        format: '{amount} TGDOG',
         fractionDigits: 0,
       });
 
       const result = units.getDisplay('mogua');
 
       expect(result).toEqual({
-        format: '{amount} TMGA',
+        format: '{amount} TGDOG',
         fractionDigits: 0,
       });
     });

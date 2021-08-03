@@ -110,7 +110,7 @@ export default function SelectKey() {
               </Typography>
               <Typography variant="subtitle1">
                 <Trans>
-                  Welcome to Mogua. Please log in with an existing key, or create
+                  Welcome to MoGua. Please log in with an existing key, or create
                   a new key.
                 </Trans>
               </Typography>

@@ -9,7 +9,7 @@ wallet_program_files = set(
     [
         "mogua/wallet/puzzles/calculate_synthetic_public_key.clvm",
         "mogua/wallet/puzzles/cc.clvm",
-        "mogua/wallet/puzzles/mogualisp_deserialisation.clvm",
+        "mogua/wallet/puzzles/greendogelisp_deserialisation.clvm",
         "mogua/wallet/puzzles/rom_bootstrap_generator.clvm",
         "mogua/wallet/puzzles/generator_for_single_coin.clvm",
         "mogua/wallet/puzzles/genesis-by-coin-id-with-0.clvm",
