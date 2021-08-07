@@ -73,42 +73,42 @@ class MoGua {
   }
 }
 
-export const greendoge_formatter = (value, unit) => new MoGua(value, unit);
+export const mogua_formatter = (value, unit) => new MoGua(value, unit);
 
-greendoge_formatter.convert = convert;
-greendoge_formatter.setDisplay = units.setDisplay;
-greendoge_formatter.setUnit = units.setUnit;
-greendoge_formatter.getUnit = units.getUnit;
-greendoge_formatter.setFiat = (currency, rate, display = null) => {
+mogua_formatter.convert = convert;
+mogua_formatter.setDisplay = units.setDisplay;
+mogua_formatter.setUnit = units.setUnit;
+mogua_formatter.getUnit = units.getUnit;
+mogua_formatter.setFiat = (currency, rate, display = null) => {
   units.setUnit(currency, 1 / rate, display);
 };
 
-export const dog_to_greendoge = (mog) => {
-  return greendoge_formatter(Number.parseInt(mog), 'mog').to('mogua').value();
+export const mog_to_mogua = (mog) => {
+  return mogua_formatter(Number.parseInt(mog), 'mog').to('mogua').value();
 };
 
-export const greendoge_to_dog = (mogua) => {
-  return greendoge_formatter(Number.parseFloat(Number(mogua)), 'mogua')
+export const mogua_to_mog = (mogua) => {
+  return mogua_formatter(Number.parseFloat(Number(mogua)), 'mogua')
     .to('mog')
     .value();
 };
 
-export const dog_to_greendoge_string = (mog) => {
-  return greendoge_formatter(Number(mog), 'mog').to('mogua').toString();
+export const mog_to_mogua_string = (mog) => {
+  return mogua_formatter(Number(mog), 'mog').to('mogua').toString();
 };
 
-export const dog_to_colouredcoin = (mog) => {
-  return greendoge_formatter(Number.parseInt(mog), 'mog')
+export const mog_to_colouredcoin = (mog) => {
+  return mogua_formatter(Number.parseInt(mog), 'mog')
     .to('colouredcoin')
     .value();
 };
 
-export const colouredcoin_to_dog = (colouredcoin) => {
-  return greendoge_formatter(Number.parseFloat(Number(colouredcoin)), 'colouredcoin')
+export const colouredcoin_to_mog = (colouredcoin) => {
+  return mogua_formatter(Number.parseFloat(Number(colouredcoin)), 'colouredcoin')
     .to('mog')
     .value();
 };
 
-export const dog_to_colouredcoin_string = (mog) => {
-  return greendoge_formatter(Number(mog), 'mog').to('colouredcoin').toString();
+export const mog_to_colouredcoin_string = (mog) => {
+  return mogua_formatter(Number(mog), 'mog').to('colouredcoin').toString();
 };

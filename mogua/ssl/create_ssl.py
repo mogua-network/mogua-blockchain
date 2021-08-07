@@ -11,9 +11,9 @@ from cryptography.hazmat.primitives.serialization import load_pem_private_key
 from cryptography.x509.oid import NameOID
 
 
-def get_greendoge_ca_crt_key() -> Tuple[Any, Any]:
-    crt = pkg_resources.resource_string(__name__, "greendoge_ca.crt")
-    key = pkg_resources.resource_string(__name__, "greendoge_ca.key")
+def get_mogua_ca_crt_key() -> Tuple[Any, Any]:
+    crt = pkg_resources.resource_string(__name__, "mogua_ca.crt")
+    key = pkg_resources.resource_string(__name__, "mogua_ca.key")
     return crt, key
 
 
@@ -99,7 +99,7 @@ def make_ca_cert(cert_path: Path, key_path: Path):
 
 
 def main():
-    return make_ca_cert(Path("./greendoge_ca.crt"), Path("./greendoge_ca.key"))
+    return make_ca_cert(Path("./mogua_ca.crt"), Path("./mogua_ca.key"))
 
 
 if __name__ == "__main__":

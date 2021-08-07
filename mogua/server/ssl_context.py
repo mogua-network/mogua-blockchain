@@ -23,8 +23,8 @@ def private_ssl_ca_paths(path: Path, config: Dict):
     )
 
 
-def greendoge_ssl_ca_paths(path: Path, config: Dict):
+def mogua_ssl_ca_paths(path: Path, config: Dict):
     return (
-        path / config["greendoge_ssl_ca"]["crt"],
-        path / config["greendoge_ssl_ca"]["key"],
+        path / config["mogua_ssl_ca"]["crt"],
+        path / config["mogua_ssl_ca"]["key"],
     )

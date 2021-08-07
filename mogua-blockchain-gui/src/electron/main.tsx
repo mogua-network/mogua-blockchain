@@ -10,8 +10,8 @@ import '../config/env';
 import handleSquirrelEvent from './handleSquirrelEvent';
 import config from '../config/config';
 import dev_config from '../dev_config';
-import greendogeEnvironment from '../util/greendogeEnvironment';
-import greendogeConfig from '../util/config';
+import moguaEnvironment from '../util/moguaEnvironment';
+import moguaConfig from '../util/config';
 import { i18n } from '../config/locales';
 import About from '../components/about/About';
 import packageJson from '../../package.json';
@@ -96,7 +96,7 @@ if (!handleSquirrelEvent()) {
 
   const ensureCorrectEnvironment = () => {
     // check that the app is either packaged or running in the python venv
-    if (!greendogeEnvironment.guessPackaged() && !('VIRTUAL_ENV' in process.env)) {
+    if (!moguaEnvironment.guessPackaged() && !('VIRTUAL_ENV' in process.env)) {
       console.log('App must be installed or in venv');
       app.quit();
       return false;
@@ -110,7 +110,7 @@ if (!handleSquirrelEvent()) {
   // if any of these checks return false, don't do any other initialization since the app is quitting
   if (ensureSingleInstance() && ensureCorrectEnvironment()) {
     // this needs to happen early in startup so all processes share the same global config
-    greendogeConfig.loadConfig('mainnet');
+    moguaConfig.loadConfig('mainnet');
     global.sharedObj = { local_test };
 
     const exitPyProc = (e) => {};
@@ -169,7 +169,7 @@ if (!handleSquirrelEvent()) {
       });
 
       // don't show remote daeomn detials in the title bar
-      if (!greendogeConfig.manageDaemonLifetime()) {
+      if (!moguaConfig.manageDaemonLifetime()) {
         mainWindow.webContents.on('did-finish-load', () => {
           mainWindow.setTitle(`${app.getName()} [${global.daemon_rpc_ws}]`);
         });
@@ -180,7 +180,7 @@ if (!handleSquirrelEvent()) {
       // }
       mainWindow.on('close', (e) => {
         // if the daemon isn't local we aren't going to try to start/stop it
-        if (decidedToClose || !greendogeConfig.manageDaemonLifetime()) {
+        if (decidedToClose || !moguaConfig.manageDaemonLifetime()) {
           return;
         }
         e.preventDefault();
@@ -222,8 +222,8 @@ if (!handleSquirrelEvent()) {
       createWindow();
       app.applicationMenu = createMenu();
       // if the daemon isn't local we aren't going to try to start/stop it
-      if (greendogeConfig.manageDaemonLifetime()) {
-        greendogeEnvironment.startGreenDogeDaemon();
+      if (moguaConfig.manageDaemonLifetime()) {
+        moguaEnvironment.startMoGuaDaemon();
       }
     };
 
@@ -406,7 +406,7 @@ if (!handleSquirrelEvent()) {
           {
             label: i18n._(/* i18n */ { id: 'Follow on Twitter' }),
             click: () => {
-              openExternal('https://twitter.com/green_dogecoin');
+              openExternal('https://twitter.com/green_mogecoin');
             },
           },
         ],

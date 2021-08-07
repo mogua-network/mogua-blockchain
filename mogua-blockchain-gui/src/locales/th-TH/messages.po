@@ -701,7 +701,7 @@ msgstr "ข้อผิดพลาด"
 
 #: src/components/wallet/standard/WalletStandard.tsx:456
 msgid "Error: Cannot send mogua to coloured address. Please enter a mogua address."
-msgstr "ข้อผิดพลาด: ไม่สามารถส่งgreendogeไปที่coloures addressได้ กรุณากรอก MoGua address"
+msgstr "ข้อผิดพลาด: ไม่สามารถส่งmoguaไปที่coloures addressได้ กรุณากรอก MoGua address"
 
 #: src/components/fullNode/card/FullNodeEstimatedNetworkSpace.tsx:20
 msgid "Estimated Network Space"
@@ -811,7 +811,7 @@ msgid "Fee"
 msgstr "ค่าธรรมเนียม"
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
-#~ msgid "Fee (TGDOG)"
+#~ msgid "Fee (TMGA)"
 #~ msgstr ""
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
@@ -1249,7 +1249,7 @@ msgid "Not found Plots"
 msgstr "ไม่เจอพล็อต"
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:186
-msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25GDOG reward for pooling plots."
+msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25MGA reward for pooling plots."
 msgstr ""
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:115
@@ -1982,23 +1982,23 @@ msgstr "กำลังซิงค์ <0/>/<1/>"
 #~ msgstr "Syncing {progress}/{tip}"
 
 #: src/components/farm/card/FarmCardBlockRewards.tsx:15
-#~ msgid "TGDOG Block Rewards"
+#~ msgid "TMGA Block Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardCoinbaseRewards.tsx:12
-#~ msgid "TGDOG Farming Rewards"
+#~ msgid "TMGA Farming Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardFeesReward.tsx:12
-#~ msgid "TGDOG Fees Collected"
+#~ msgid "TMGA Fees Collected"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardUserFees.tsx:12
-#~ msgid "TGDOG User Fees"
-#~ msgstr "TGDOG User Fees"
+#~ msgid "TMGA User Fees"
+#~ msgstr "TMGA User Fees"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:15
-#~ msgid "TGDOG User Transaction Fees"
+#~ msgid "TMGA User Transaction Fees"
 #~ msgstr ""
 
 #: src/components/pool/PoolInfo.tsx:37
@@ -2185,7 +2185,7 @@ msgstr "ถึง"
 msgid "Total Balance"
 msgstr "ยอดคงเหลือทั้งหมด"
 
-#: src/components/farm/card/FarmCardTotalGreenDogeFarmed.tsx:15
+#: src/components/farm/card/FarmCardTotalMoGuaFarmed.tsx:15
 #~ msgid "Total MoGua Farmed"
 #~ msgstr ""
 
@@ -2359,7 +2359,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:30
-#~ msgid "WalletItem.greendogeWallet"
+#~ msgid "WalletItem.moguaWallet"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:48
@@ -2571,7 +2571,7 @@ msgstr ""
 msgid "{currencyCode} Block Rewards"
 msgstr "{currencyCode} บล็อกรางวัล"
 
-#: src/components/farm/card/FarmCardTotalGreenDogeFarmed.tsx:29
+#: src/components/farm/card/FarmCardTotalMoGuaFarmed.tsx:29
 msgid "{currencyCode} Total MoGua Farmed"
 msgstr "{currencyCode} MoGua ที่ฟาร์มแล้ว"
 
@@ -2580,6 +2580,6 @@ msgid "{currencyCode} User Transaction Fees"
 msgstr "{currencyCode} ค่าธรรมเนียมการโอนของผู้ใช้"
 
 #: src/components/core/components/Amount/Amount.tsx:52
-msgid "{mog, plural, one {mog} other {dogs}}"
+msgid "{mog, plural, one {mog} other {mogs}}"
 msgstr ""
 

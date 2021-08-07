@@ -1,15 +1,15 @@
 #!/bin/bash
 pip install setuptools_scm
-# The environment variable GREENDOGE_INSTALLER_VERSION needs to be defined.
+# The environment variable MOGUA_INSTALLER_VERSION needs to be defined.
 # If the env variable NOTARIZE and the username and password variables are
 # set, this will attempt to Notarize the signed DMG.
-GREENDOGE_INSTALLER_VERSION=$(python installer-version.py)
+MOGUA_INSTALLER_VERSION=$(python installer-version.py)
 
-if [ ! "$GREENDOGE_INSTALLER_VERSION" ]; then
-	echo "WARNING: No environment variable GREENDOGE_INSTALLER_VERSION set. Using 0.0.0."
-	GREENDOGE_INSTALLER_VERSION="0.0.0"
+if [ ! "$MOGUA_INSTALLER_VERSION" ]; then
+	echo "WARNING: No environment variable MOGUA_INSTALLER_VERSION set. Using 0.0.0."
+	MOGUA_INSTALLER_VERSION="0.0.0"
 fi
-echo "MoGua Installer Version is: $GREENDOGE_INSTALLER_VERSION"
+echo "MoGua Installer Version is: $MOGUA_INSTALLER_VERSION"
 
 echo "Installing npm and electron packagers"
 npm install electron-installer-dmg -g
@@ -46,7 +46,7 @@ fi
 
 electron-packager . MoGua --asar.unpack="**/daemon/**" --platform=darwin \
 --icon=src/assets/img/MoGua.icns --overwrite --app-bundle-id=net.mogua.blockchain \
---appVersion=$GREENDOGE_INSTALLER_VERSION
+--appVersion=$MOGUA_INSTALLER_VERSION
 LAST_EXIT_CODE=$?
 if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	echo >&2 "electron-packager failed!"
@@ -55,7 +55,7 @@ fi
 
 if [ "$NOTARIZE" ]; then
   electron-osx-sign MoGua-darwin-x64/MoGua.app --platform=darwin \
-  --hardened-runtime=true --provisioning-profile=greendogeblockchain.provisionprofile \
+  --hardened-runtime=true --provisioning-profile=moguablockchain.provisionprofile \
   --entitlements=entitlements.mac.plist --entitlements-inherit=entitlements.mac.plist \
   --no-gatekeeper-assess
 fi
@@ -68,10 +68,10 @@ fi
 mv MoGua-darwin-x64 ../build_scripts/dist/
 cd ../build_scripts || exit
 
-DMG_NAME="MoGua-$GREENDOGE_INSTALLER_VERSION.dmg"
+DMG_NAME="MoGua-$MOGUA_INSTALLER_VERSION.dmg"
 echo "Create $DMG_NAME"
 mkdir final_installer
-electron-installer-dmg dist/MoGua-darwin-x64/MoGua.app MoGua-$GREENDOGE_INSTALLER_VERSION \
+electron-installer-dmg dist/MoGua-darwin-x64/MoGua.app MoGua-$MOGUA_INSTALLER_VERSION \
 --overwrite --out final_installer
 LAST_EXIT_CODE=$?
 if [ "$LAST_EXIT_CODE" -ne 0 ]; then

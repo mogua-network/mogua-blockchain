@@ -3,7 +3,7 @@ min_mainnet_k_size: 32
 # Send a ping to all peers after ping_interval seconds
 ping_interval: 120
 self_hostname: &self_hostname "localhost"
-daemon_port: 53500
+daemon_port: 50129
 inbound_rate_limit_percent: 100
 outbound_rate_limit_percent: 30
 
@@ -28,15 +28,15 @@ network_overrides: &network_overrides
   config:
     mainnet:
       address_prefix: "mga"
-      default_full_node_port: 6544
+      default_full_node_port: 8921
     testnet0:
-      address_prefix: "tgdog"
+      address_prefix: "tmga"
     testnet1:
-      address_prefix: "tgdog"
+      address_prefix: "tmga"
 
 selected_network: &selected_network "mainnet"
 ALERTS_URL: https://download.mogua.mog/notify/mainnet_alert.txt
-GREENDOGE_ALERTS_PUBKEY: a9555c79d2cf30e16c4ad1eeb72e4fd9194515522437f865e71794dfff407394328ce9b13c1884301ff1f3ac5e6065fa
+MOGUA_ALERTS_PUBKEY: a9555c79d2cf30e16c4ad1eeb72e4fd9194515522437f865e71794dfff407394328ce9b13c1884301ff1f3ac5e6065fa
 
 # public ssl ca is included in source code
 # Private ssl ca is used for trusted connections between machines user owns
@@ -44,9 +44,9 @@ private_ssl_ca:
   crt: "config/ssl/ca/private_ca.crt"
   key: "config/ssl/ca/private_ca.key"
 
-greendoge_ssl_ca:
-  crt: "config/ssl/ca/greendoge_ca.crt"
-  key: "config/ssl/ca/greendoge_ca.key"
+mogua_ssl_ca:
+  crt: "config/ssl/ca/mogua_ca.crt"
+  key: "config/ssl/ca/mogua_ca.key"
 
 
 daemon_ssl:
@@ -58,7 +58,7 @@ daemon_ssl:
 logging: &logging
   log_stdout: False  # If True, outputs to stdout instead of a file
   log_filename: "log/debug.log"
-  log_level: "WARNING"  # Can be CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
+  log_level: "INFO"  # Can be CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
   log_maxfilesrotation: 7 #  Max files in rotation. Default value 7 if the key is not set
   log_syslog: False  # If True, outputs to SysLog host and port specified
   log_syslog_host: "localhost"  # Send logging messages to a remote or local Unix syslog
@@ -92,13 +92,13 @@ harvester:
     crt: "config/ssl/ca/private_ca.crt"
     key: "config/ssl/ca/private_ca.key"
 
-  greendoge_ssl_ca:
-    crt: "config/ssl/ca/greendoge_ca.crt"
-    key: "config/ssl/ca/greendoge_ca.key"
+  mogua_ssl_ca:
+    crt: "config/ssl/ca/mogua_ca.crt"
+    key: "config/ssl/ca/mogua_ca.key"
 
 pool:
   # Replace this with a real puzzle hash
-  # gdog_target_address: tgdog102gkhhzs60grx7cfnpng5n6rjecr89r86l5s8xux2za8k820cxsq64ssdg
+  # mga_target_address: tmga102gkhhzs60grx7cfnpng5n6rjecr89r86l5s8xux2za8k820cxsq64ssdg
   logging: *logging
   network_overrides: *network_overrides
   selected_network: *selected_network
@@ -110,7 +110,7 @@ farmer:
   # The farmer will attempt to connect to this full node and harvester
   full_node_peer:
     host: *self_hostname
-    port: 6544
+    port: 8921
   harvester_peer:
     host: *self_hostname
     port: 6548
@@ -118,7 +118,7 @@ farmer:
   pool_public_keys: []
 
   # Replace this with a real puzzle hash
-  # gdog_target_address: tgdog102gkhhzs60grx7cfnpng5n6rjecr89r86l5s8xux2za8k820cxsq64ssdg
+  # mga_target_address: tmga102gkhhzs60grx7cfnpng5n6rjecr89r86l5s8xux2za8k820cxsq64ssdg
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
@@ -159,7 +159,7 @@ timelord:
       - 150000
   full_node_peer:
       host: *self_hostname
-      port: 6544
+      port: 8921
   # Maximum number of seconds allowed for a client to reconnect to the server.
   max_connection_time: 60
   # The ip and port where the TCP clients will connect.
@@ -194,7 +194,7 @@ timelord:
 
 full_node:
   # The full node server (if run) will run on this port
-  port: 6544
+  port: 8921
 
   # Run multiple nodes with different databases by changing the database_path
   database_path: db/blockchain_v1_CHALLENGE.sqlite
@@ -288,7 +288,7 @@ ui:
   # this is where the electron UI will find its daemon
   # defaults to the one running locally with its private keys
   daemon_host: *self_hostname
-  daemon_port: 53500
+  daemon_port: 50129
   daemon_ssl:
     private_crt: config/ssl/daemon/private_daemon.crt
     private_key: config/ssl/daemon/private_daemon.key
@@ -324,7 +324,7 @@ wallet:
 
   full_node_peer:
     host: *self_hostname
-    port: 6544
+    port: 8921
 
   testing: False
   database_path: wallet/db/blockchain_wallet_v1_CHALLENGE_KEY.sqlite

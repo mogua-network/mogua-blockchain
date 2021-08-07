@@ -45,7 +45,7 @@ const getExecutablePath = (dist_file) => {
   return path.join(__dirname, PY_MAC_DIST_FOLDER, dist_file);
 };
 
-const getGreenDogeVersion = () => {
+const getMoGuaVersion = () => {
   let version = null;
   const exePath = getExecutablePath('mogua');
   // first see if we can get a mogua exe in a standard location relative to where we are
@@ -71,7 +71,7 @@ const getGreenDogeVersion = () => {
   return version;
 };
 
-const startGreenDogeDaemon = () => {
+const startMoGuaDaemon = () => {
   let script = getScriptPath(PY_DIST_FILE);
   let processOptions = {};
   //processOptions.detached = true;
@@ -138,7 +138,7 @@ const startGreenDogeDaemon = () => {
 };
 
 module.exports = {
-  startGreenDogeDaemon,
-  getGreenDogeVersion,
+  startMoGuaDaemon,
+  getMoGuaVersion,
   guessPackaged,
 };

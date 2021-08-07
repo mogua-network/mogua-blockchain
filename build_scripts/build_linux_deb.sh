@@ -12,16 +12,16 @@ else
 fi
 
 pip install setuptools_scm
-# The environment variable GREENDOGE_INSTALLER_VERSION needs to be defined
+# The environment variable MOGUA_INSTALLER_VERSION needs to be defined
 # If the env variable NOTARIZE and the username and password variables are
 # set, this will attempt to Notarize the signed DMG
-GREENDOGE_INSTALLER_VERSION=$(python installer-version.py)
+MOGUA_INSTALLER_VERSION=$(python installer-version.py)
 
-if [ ! "$GREENDOGE_INSTALLER_VERSION" ]; then
-	echo "WARNING: No environment variable GREENDOGE_INSTALLER_VERSION set. Using 0.0.0."
-	GREENDOGE_INSTALLER_VERSION="0.0.0"
+if [ ! "$MOGUA_INSTALLER_VERSION" ]; then
+	echo "WARNING: No environment variable MOGUA_INSTALLER_VERSION set. Using 0.0.0."
+	MOGUA_INSTALLER_VERSION="0.0.0"
 fi
-echo "MoGua Installer Version is: $GREENDOGE_INSTALLER_VERSION"
+echo "MoGua Installer Version is: $MOGUA_INSTALLER_VERSION"
 
 echo "Installing npm and electron packagers"
 npm install electron-packager -g
@@ -57,7 +57,7 @@ fi
 
 electron-packager . mogua-blockchain --asar.unpack="**/daemon/**" --platform=linux \
 --icon=src/assets/img/MoGua.icns --overwrite --app-bundle-id=net.mogua.blockchain \
---appVersion=$GREENDOGE_INSTALLER_VERSION
+--appVersion=$MOGUA_INSTALLER_VERSION
 LAST_EXIT_CODE=$?
 if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	echo >&2 "electron-packager failed!"
@@ -67,11 +67,11 @@ fi
 mv $DIR_NAME ../build_scripts/dist/
 cd ../build_scripts || exit
 
-echo "Create mogua-$GREENDOGE_INSTALLER_VERSION.deb"
+echo "Create mogua-$MOGUA_INSTALLER_VERSION.deb"
 rm -rf final_installer
 mkdir final_installer
 electron-installer-debian --src dist/$DIR_NAME/ --dest final_installer/ \
---arch "$PLATFORM" --options.version $GREENDOGE_INSTALLER_VERSION
+--arch "$PLATFORM" --options.version $MOGUA_INSTALLER_VERSION
 LAST_EXIT_CODE=$?
 if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	echo >&2 "electron-installer-debian failed!"

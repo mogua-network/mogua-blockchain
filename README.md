@@ -13,8 +13,8 @@ MoGua is a modern community-centric green cryptocurrency based on a proof-of-spa
 * A growing community of farmers and developers around the world
 
 ## Latest News
-- MoGua will be listed on [forks.green](https://www.forks.green/) at 15:00 GMT+0 on July 30th.
-- MoGua will reduce its production by 5 times, with the end of the community early participant rewards.
+- The block rewards have been reduced from 100 to 20 now, with the end of the community early participant rewards.
+- MoGua has been listed on [forks.green](https://www.forks.green/).
 - The 500 MGA rewards for registered early community participants have been sent.
 - The rewards on the testnet will not be retained, please make sure you are on the mainnet.
 ![image](https://github.com/MoGua-Network/mogua-blockchain/blob/79a9291b3d70f2dd03702e1822193f4d6ca16601/make_sure_mainnet.png)
@@ -44,11 +44,11 @@ https://github.com/MoGua-Network/mogua-blockchain/blob/main/mogua/consensus/bloc
 - [1.2.2](https://github.com/MoGua-Network/mogua-blockchain/commit/1702a31ffe3e8e55e296d7047e00b08a161210d2)
 
 ## Telegram
-[MoGua International Group](https://t.me/green_doge)<br>
-[MoGua Chinese Group](https://t.me/green_dogecoin)
+[MoGua International Group](https://t.me/green_moge)<br>
+[MoGua Chinese Group](https://t.me/green_mogecoin)
 
 ## Reddit
-https://www.reddit.com/r/GreenDogecoin/
+https://www.reddit.com/r/MoGuacoin/
 
 ## Community
 [MoGua Community](https://discord.gg/3vwEfD2kws) (Official)<br>
@@ -58,8 +58,8 @@ https://www.reddit.com/r/GreenDogecoin/
 ## Node Information
 - dns-introducer.mogua.mog
 - introducer.mogua.mog:6545
-- 18.206.194.242:6544 - US East (N. Virginia)
-- 18.141.194.162:6544 - Asia Pacific (Singapore)
+- 18.206.194.242:8921 - US East (N. Virginia)
+- 18.141.194.162:8921 - Asia Pacific (Singapore)
 
 ## History
 - The ChiaDoge(CDOG) testnet launched on July 4, different from ChiaDogecoin(XCD) that launched on July 10.
@@ -73,4 +73,4 @@ Sponsor the developer for renting the Intorducer and Timelord servers.
 - BNB: bnb136ns6lfw4zs5hg4n85vdthaad7hq5m4gtkgf23 / MEMO 104421505
 - TRC20: TVbXhifwY34cSVK6GuT5QWCxtWQiiCnYFz
 - XCH: xch1wz5u3hj3wq6lzpsf5qxrhae6w2ff08mxekum03htpsgw3t98zfws2r24pu
-- MGA: gdog1u5qz05xkr7k7x3yuqdqmsz8yvvj0w9608wue7ykrnrgqnqrw0ltq7qhkk8
+- MGA: mga1u5qz05xkr7k7x3yuqdqmsz8yvvj0w9608wue7ykrnrgqnqrw0ltq7qhkk8

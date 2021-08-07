@@ -23,11 +23,11 @@ def print_transaction(tx: TransactionRecord, verbose: bool, name) -> None:
     if verbose:
         print(tx)
     else:
-        greendoge_amount = Decimal(int(tx.amount)) / units["mogua"]
+        mogua_amount = Decimal(int(tx.amount)) / units["mogua"]
         to_address = encode_puzzle_hash(tx.to_puzzle_hash, name)
         print(f"Transaction {tx.name}")
         print(f"Status: {'Confirmed' if tx.confirmed else ('In mempool' if tx.is_in_mempool() else 'Pending')}")
-        print(f"Amount: {greendoge_amount} {name}")
+        print(f"Amount: {mogua_amount} {name}")
         print(f"To address: {to_address}")
         print("Created at:", datetime.fromtimestamp(tx.created_at_time).strftime("%Y-%m-%d %H:%M:%S"))
         print("")
@@ -243,7 +243,7 @@ async def execute_with_wallet(wallet_rpc_port: int, fingerprint: int, extra_para
         if isinstance(e, aiohttp.ClientConnectorError):
             print(
                 f"Connection error. Check if the wallet is running at {wallet_rpc_port}. "
-                "You can run the wallet via:\n\tgreendoge start wallet"
+                "You can run the wallet via:\n\tmogua start wallet"
             )
         else:
             print(f"Exception from 'wallet' {e}")

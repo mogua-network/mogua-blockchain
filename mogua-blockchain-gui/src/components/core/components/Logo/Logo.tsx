@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Box, BoxProps } from '@material-ui/core';
 import { MoGua } from '@mogua/icons';
 
-const StyledGreenDoge = styled(MoGua)`
+const StyledMoGua = styled(MoGua)`
   max-width: 100%;
   width: auto;
   height: auto;
@@ -12,7 +12,7 @@ const StyledGreenDoge = styled(MoGua)`
 export default function Logo(props: BoxProps) {
   return (
     <Box {...props}>
-      <StyledGreenDoge />
+      <StyledMoGua />
     </Box>
   );
 }

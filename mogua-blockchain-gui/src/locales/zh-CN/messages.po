@@ -45,7 +45,7 @@ msgstr "收割机是一个在存有农田文件的机器上运行的服务。农
 #: src/electron/main.tsx:422
 #: src/electron/main.tsx:509
 msgid "About MoGua Blockchain"
-msgstr "关于奇亚GreenDoge区块链项目"
+msgstr "关于奇亚MoGua区块链项目"
 
 #: src/components/trading/ViewOffer.jsx:74
 msgid "Accept"
@@ -811,7 +811,7 @@ msgid "Fee"
 msgstr "费用"
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
-#~ msgid "Fee (TGDOG)"
+#~ msgid "Fee (TMGA)"
 #~ msgstr ""
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
@@ -1016,15 +1016,15 @@ msgstr "加入农业合作社"
 
 #: src/components/plot/add/PlotAddNFT.tsx:44
 msgid "Join a pool and get consistent MGA farming rewards. The average returns are the same, but it is much less volatile."
-msgstr "加入农业合作社来获得持续的GDOG耕种收益。平均回报是相同的，但是收益会更加稳定。"
+msgstr "加入农业合作社来获得持续的MGA耕种收益。平均回报是相同的，但是收益会更加稳定。"
 
 #: src/components/plotNFT/PlotNFTAdd.tsx:59
 msgid "Join a pool and get consistent MGA farming rewards. The average returns are the same, but it is much less volatile. Assign plots to a plot NFT. You can easily switch pools without having to re-plot."
-msgstr "加入农业合作社来获得持续的GDOG耕种收益。平均回报是相同的，但是收益会更加稳定。为已开垦的农田分配农田NFT。你可以轻松切换耕种池，而不比重新开垦现有农田。"
+msgstr "加入农业合作社来获得持续的MGA耕种收益。平均回报是相同的，但是收益会更加稳定。为已开垦的农田分配农田NFT。你可以轻松切换耕种池，而不比重新开垦现有农田。"
 
 #: src/components/plot/add/PlotAddNFT.tsx:135
 msgid "Join a pool and get more consistent MGA farming rewards. Create a plot NFT and assign your new plots to a group."
-msgstr "加入农业合作社来获得持续的GDOG耕种收益。创建一个农田NFT，然后将新农田分配到组。"
+msgstr "加入农业合作社来获得持续的MGA耕种收益。创建一个农田NFT，然后将新农田分配到组。"
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:63
 msgid "K-Size"
@@ -1257,8 +1257,8 @@ msgid "Not found Plots"
 msgstr "未找到农田"
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:184
-msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25GDOG reward for pooling plots."
-msgstr "请注意，这将不会改变你的合作社耕作支付地址。这只会影响旧农田文件，以及0.25GDOG的合作社耕作奖励。"
+msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25MGA reward for pooling plots."
+msgstr "请注意，这将不会改变你的合作社耕作支付地址。这只会影响旧农田文件，以及0.25MGA的合作社耕作奖励。"
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:120
 #: src/components/plotNFT/PlotNFTCard.tsx:159
@@ -1826,7 +1826,7 @@ msgstr "自耕种"
 
 #: src/components/plotNFT/select/PlotNFTSelectBase.tsx:105
 msgid "Self pool. When you win a block you will earn MGA rewards."
-msgstr "自耕种。一旦发现新区块，你将得到全部GDOG区块奖励。"
+msgstr "自耕种。一旦发现新区块，你将得到全部MGA区块奖励。"
 
 #: src/components/trading/CreateOffer.jsx:164
 #: src/components/trading/TradesTable.tsx:47
@@ -1879,7 +1879,7 @@ msgstr "勾选此项，将不会自动把最终目录添加到收割机进行耕
 
 #: src/components/pool/PoolHero.tsx:26
 msgid "Smooth out your MGA farming rewards by joining a pool."
-msgstr "加入农业合作社来稳定GDOG耕作收益。"
+msgstr "加入农业合作社来稳定MGA耕作收益。"
 
 #: src/components/plotNFT/PlotNFTGetPoolLoginLinkDialog.tsx:60
 msgid "Something went wrong"
@@ -1991,23 +1991,23 @@ msgstr "正在同步 <0/> / <1/>"
 #~ msgstr "Syncing {progress}/{tip}"
 
 #: src/components/farm/card/FarmCardBlockRewards.tsx:15
-#~ msgid "TGDOG Block Rewards"
+#~ msgid "TMGA Block Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardCoinbaseRewards.tsx:12
-#~ msgid "TGDOG Farming Rewards"
+#~ msgid "TMGA Farming Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardFeesReward.tsx:12
-#~ msgid "TGDOG Fees Collected"
+#~ msgid "TMGA Fees Collected"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardUserFees.tsx:12
-#~ msgid "TGDOG User Fees"
-#~ msgstr "TGDOG User Fees"
+#~ msgid "TMGA User Fees"
+#~ msgstr "TMGA User Fees"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:15
-#~ msgid "TGDOG User Transaction Fees"
+#~ msgid "TMGA User Transaction Fees"
 #~ msgstr ""
 
 #: src/components/pool/PoolInfo.tsx:37
@@ -2085,7 +2085,7 @@ msgstr "本区块上奖励给农民的全部交易费用。"
 
 #: src/components/plotNFT/PlotNFTPayoutInstructionsDialog.tsx:87
 msgid "These are the instructions for how the farmer wants to get paid. By default this will be an MGA address, but it can be set to any string with a size of less than 1024 characters, so it can represent another blockchain or payment system identifier."
-msgstr "这是农民耕种奖励的支付方式。默认情况下，这将是一个GDOG钱包地址，但是你可以设置任意长度小于1024的字符串，也就是说，你可以指定其它区块链或者支付系统标识。"
+msgstr "这是农民耕种奖励的支付方式。默认情况下，这将是一个MGA钱包地址，但是你可以设置任意长度小于1024的字符串，也就是说，你可以指定其它区块链或者支付系统标识。"
 
 #: src/components/plot/PlotsFailed.tsx:40
 msgid "These plots are invalid, you might want to delete them."
@@ -2198,7 +2198,7 @@ msgstr "目标地址"
 msgid "Total Balance"
 msgstr "总余额"
 
-#: src/components/farm/card/FarmCardTotalGreenDogeFarmed.tsx:15
+#: src/components/farm/card/FarmCardTotalMoGuaFarmed.tsx:15
 #~ msgid "Total MoGua Farmed"
 #~ msgstr ""
 
@@ -2371,7 +2371,7 @@ msgstr "钱包状态："
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:30
-#~ msgid "WalletItem.greendogeWallet"
+#~ msgid "WalletItem.moguaWallet"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:48
@@ -2583,7 +2583,7 @@ msgstr "{0} 积点 {1} - {2} 小时前"
 msgid "{currencyCode} Block Rewards"
 msgstr "{currencyCode} 区块奖励"
 
-#: src/components/farm/card/FarmCardTotalGreenDogeFarmed.tsx:29
+#: src/components/farm/card/FarmCardTotalMoGuaFarmed.tsx:29
 msgid "{currencyCode} Total MoGua Farmed"
 msgstr "{currencyCode} 收获的奇亚币总计"
 
@@ -2592,5 +2592,5 @@ msgid "{currencyCode} User Transaction Fees"
 msgstr "{currencyCode} 用户交易费用"
 
 #: src/components/core/components/Amount/Amount.tsx:82
-msgid "{mog, plural, one {mog} other {dogs}}"
-msgstr "{mog, plural, one {mog} other {dogs}}"
+msgid "{mog, plural, one {mog} other {mogs}}"
+msgstr "{mog, plural, one {mog} other {mogs}}"

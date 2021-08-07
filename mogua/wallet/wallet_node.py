@@ -28,8 +28,8 @@ from mogua.protocols.wallet_protocol import (
 )
 from mogua.server.node_discovery import WalletPeers
 from mogua.server.outbound_message import Message, NodeType, make_msg
-from mogua.server.server import GreenDogeServer
-from mogua.server.ws_connection import WSGreenDogeConnection
+from mogua.server.server import MoGuaServer
+from mogua.server.ws_connection import WSMoGuaConnection
 from mogua.types.blockchain_format.coin import Coin, hash_coin_list
 from mogua.types.blockchain_format.sized_bytes import bytes32
 from mogua.types.coin_solution import CoinSolution
@@ -59,7 +59,7 @@ class WalletNode:
     key_config: Dict
     config: Dict
     constants: ConsensusConstants
-    server: Optional[GreenDogeServer]
+    server: Optional[MoGuaServer]
     log: logging.Logger
     wallet_peers: WalletPeers
     # Maintains the state of the wallet (blockchain and transactions), handles DB connections
@@ -318,7 +318,7 @@ class WalletNode:
 
         return messages
 
-    def set_server(self, server: GreenDogeServer):
+    def set_server(self, server: MoGuaServer):
         self.server = server
         DNS_SERVERS_EMPTY: list = []
         # TODO: Perhaps use a different set of DNS seeders for wallets, to split the traffic.
@@ -335,7 +335,7 @@ class WalletNode:
             self.log,
         )
 
-    async def on_connect(self, peer: WSGreenDogeConnection):
+    async def on_connect(self, peer: WSMoGuaConnection):
         if self.wallet_state_manager is None or self.backup_initialized is False:
             return None
         messages_peer_ids = await self._messages_to_resend()
@@ -380,7 +380,7 @@ class WalletNode:
                 return True
         return False
 
-    async def complete_blocks(self, header_blocks: List[HeaderBlock], peer: WSGreenDogeConnection):
+    async def complete_blocks(self, header_blocks: List[HeaderBlock], peer: WSMoGuaConnection):
         if self.wallet_state_manager is None:
             return None
         header_block_records: List[HeaderBlockRecord] = []
@@ -430,7 +430,7 @@ class WalletNode:
                 else:
                     self.log.debug(f"Result: {result}")
 
-    async def new_peak_wallet(self, peak: wallet_protocol.NewPeakWallet, peer: WSGreenDogeConnection):
+    async def new_peak_wallet(self, peak: wallet_protocol.NewPeakWallet, peer: WSMoGuaConnection):
         if self.wallet_state_manager is None:
             return
 
@@ -618,7 +618,7 @@ class WalletNode:
             self.log.info("Not performing sync, already caught up.")
             return None
 
-        peers: List[WSGreenDogeConnection] = self.server.get_full_node_connections()
+        peers: List[WSMoGuaConnection] = self.server.get_full_node_connections()
         if len(peers) == 0:
             self.log.info("No peers to sync to")
             return None
@@ -661,7 +661,7 @@ class WalletNode:
 
     async def fetch_blocks_and_validate(
         self,
-        peer: WSGreenDogeConnection,
+        peer: WSMoGuaConnection,
         height_start: uint32,
         height_end: uint32,
         fork_point_with_peak: Optional[uint32],
@@ -914,7 +914,7 @@ class WalletNode:
         return additional_coin_spends
 
     async def get_additions(
-        self, peer: WSGreenDogeConnection, block_i, additions: Optional[List[bytes32]], get_all_additions: bool = False
+        self, peer: WSMoGuaConnection, block_i, additions: Optional[List[bytes32]], get_all_additions: bool = False
     ) -> Optional[List[Coin]]:
         if (additions is not None and len(additions) > 0) or get_all_additions:
             if get_all_additions:
@@ -948,7 +948,7 @@ class WalletNode:
             return []  # No added coins
 
     async def get_removals(
-        self, peer: WSGreenDogeConnection, block_i, additions, removals, request_all_removals=False
+        self, peer: WSMoGuaConnection, block_i, additions, removals, request_all_removals=False
     ) -> Optional[List[Coin]]:
         assert self.wallet_state_manager is not None
         # Check if we need all removals

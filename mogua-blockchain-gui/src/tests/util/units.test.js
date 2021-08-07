@@ -18,7 +18,7 @@ describe('units', () => {
       expect(result).toBe(1e-9);
     });
     it('supports uppercase characters', () => {
-      const result = units.getUnit('GREENDGOE');
+      const result = units.getUnit('MOGUA');
 
       expect(result).toBe(1);
     });
@@ -112,14 +112,14 @@ describe('units', () => {
     });
     it('updates an existing display', () => {
       units.setDisplay('mogua', {
-        format: '{amount} TGDOG',
+        format: '{amount} TMGA',
         fractionDigits: 0,
       });
 
       const result = units.getDisplay('mogua');
 
       expect(result).toEqual({
-        format: '{amount} TGDOG',
+        format: '{amount} TMGA',
         fractionDigits: 0,
       });
     });

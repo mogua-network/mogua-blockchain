@@ -3,10 +3,10 @@ import { Trans } from '@lingui/macro';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../../modules/rootReducer';
 import FarmCard from './FarmCard';
-import { dog_to_greendoge } from '../../../util/mogua';
+import { mog_to_mogua } from '../../../util/mogua';
 import useCurrencyCode from '../../../hooks/useCurrencyCode';
 
-export default function FarmCardTotalGreenDogeFarmed() {
+export default function FarmCardTotalMoGuaFarmed() {
   const currencyCode = useCurrencyCode();
 
   const loading = useSelector(
@@ -17,17 +17,17 @@ export default function FarmCardTotalGreenDogeFarmed() {
     (state: RootState) => state.wallet_state.farmed_amount?.farmed_amount,
   );
 
-  const totalGreenDogeFarmed = useMemo(() => {
+  const totalMoGuaFarmed = useMemo(() => {
     if (farmedAmount !== undefined) {
       const val = BigInt(farmedAmount.toString());
-      return dog_to_greendoge(val);
+      return mog_to_mogua(val);
     }
   }, [farmedAmount]);
 
   return (
     <FarmCard
       title={<Trans>{currencyCode} Total MoGua Farmed</Trans>}
-      value={totalGreenDogeFarmed}
+      value={totalMoGuaFarmed}
       loading={loading}
     />
   );

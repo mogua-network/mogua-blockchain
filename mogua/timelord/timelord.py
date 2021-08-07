@@ -14,7 +14,7 @@ from mogua.consensus.pot_iterations import calculate_sp_iters, is_overflow_block
 from mogua.protocols import timelord_protocol
 from mogua.protocols.protocol_message_types import ProtocolMessageTypes
 from mogua.server.outbound_message import NodeType, make_msg
-from mogua.server.server import GreenDogeServer
+from mogua.server.server import MoGuaServer
 from mogua.timelord.iters_from_block import iters_from_block
 from mogua.timelord.timelord_state import LastState
 from mogua.timelord.types import Chain, IterationType, StateType
@@ -44,7 +44,7 @@ class Timelord:
         self.free_clients: List[Tuple[str, asyncio.StreamReader, asyncio.StreamWriter]] = []
         self.potential_free_clients: List = []
         self.ip_whitelist = self.config["vdf_clients"]["ip"]
-        self.server: Optional[GreenDogeServer] = None
+        self.server: Optional[MoGuaServer] = None
         self.chain_type_to_stream: Dict[Chain, Tuple[str, asyncio.StreamReader, asyncio.StreamWriter]] = {}
         self.chain_start_time: Dict = {}
         # Chains that currently don't have a vdf_client.
@@ -116,7 +116,7 @@ class Timelord:
     async def _await_closed(self):
         pass
 
-    def set_server(self, server: GreenDogeServer):
+    def set_server(self, server: MoGuaServer):
         self.server = server
 
     async def _handle_client(self, reader: asyncio.StreamReader, writer: asyncio.StreamWriter):

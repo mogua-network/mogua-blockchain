@@ -811,7 +811,7 @@ msgid "Fee"
 msgstr "Taxa"
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
-#~ msgid "Fee (TGDOG)"
+#~ msgid "Fee (TMGA)"
 #~ msgstr ""
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
@@ -1257,8 +1257,8 @@ msgid "Not found Plots"
 msgstr "Lotes não encontrados"
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:184
-msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25GDOG reward for pooling plots."
-msgstr "Note que isso não muda seus endereços de pagamento no bolão. Isso afeta apenas os lotes de formato antigo e a recompensa 0.25GDOG por agrupamento de pontos."
+msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25MGA reward for pooling plots."
+msgstr "Note que isso não muda seus endereços de pagamento no bolão. Isso afeta apenas os lotes de formato antigo e a recompensa 0.25MGA por agrupamento de pontos."
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:120
 #: src/components/plotNFT/PlotNFTCard.tsx:159
@@ -1991,23 +1991,23 @@ msgstr "Sincronizando <0/>/<1/>"
 #~ msgstr "Syncing {progress}/{tip}"
 
 #: src/components/farm/card/FarmCardBlockRewards.tsx:15
-#~ msgid "TGDOG Block Rewards"
+#~ msgid "TMGA Block Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardCoinbaseRewards.tsx:12
-#~ msgid "TGDOG Farming Rewards"
+#~ msgid "TMGA Farming Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardFeesReward.tsx:12
-#~ msgid "TGDOG Fees Collected"
+#~ msgid "TMGA Fees Collected"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardUserFees.tsx:12
-#~ msgid "TGDOG User Fees"
-#~ msgstr "TGDOG User Fees"
+#~ msgid "TMGA User Fees"
+#~ msgstr "TMGA User Fees"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:15
-#~ msgid "TGDOG User Transaction Fees"
+#~ msgid "TMGA User Transaction Fees"
 #~ msgstr ""
 
 #: src/components/pool/PoolInfo.tsx:37
@@ -2198,7 +2198,7 @@ msgstr "Para"
 msgid "Total Balance"
 msgstr "Balanço Total"
 
-#: src/components/farm/card/FarmCardTotalGreenDogeFarmed.tsx:15
+#: src/components/farm/card/FarmCardTotalMoGuaFarmed.tsx:15
 #~ msgid "Total MoGua Farmed"
 #~ msgstr ""
 
@@ -2371,7 +2371,7 @@ msgstr "Status da carteira:"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:30
-#~ msgid "WalletItem.greendogeWallet"
+#~ msgid "WalletItem.moguaWallet"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:48
@@ -2583,7 +2583,7 @@ msgstr "{0} pontos {1} - {2} horas atrás"
 msgid "{currencyCode} Block Rewards"
 msgstr "{currencyCode} Recompensas por bloco"
 
-#: src/components/farm/card/FarmCardTotalGreenDogeFarmed.tsx:29
+#: src/components/farm/card/FarmCardTotalMoGuaFarmed.tsx:29
 msgid "{currencyCode} Total MoGua Farmed"
 msgstr "{currencyCode} Total de MoGua cultivada"
 
@@ -2592,5 +2592,5 @@ msgid "{currencyCode} User Transaction Fees"
 msgstr "{currencyCode} Taxas de transação do usuário"
 
 #: src/components/core/components/Amount/Amount.tsx:82
-msgid "{mog, plural, one {mog} other {dogs}}"
-msgstr "{mog, plural, one {mog} other {dogs}}"
+msgid "{mog, plural, one {mog} other {mogs}}"
+msgstr "{mog, plural, one {mog} other {mogs}}"

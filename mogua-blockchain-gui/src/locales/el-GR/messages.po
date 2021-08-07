@@ -811,7 +811,7 @@ msgid "Fee"
 msgstr "Προμήθεια"
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
-#~ msgid "Fee (TGDOG)"
+#~ msgid "Fee (TMGA)"
 #~ msgstr ""
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
@@ -1257,7 +1257,7 @@ msgid "Not found Plots"
 msgstr "Δεν βρέθηκαν Οικόπεδα"
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:184
-msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25GDOG reward for pooling plots."
+msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25MGA reward for pooling plots."
 msgstr ""
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:120
@@ -1991,23 +1991,23 @@ msgstr ""
 #~ msgstr "Syncing {progress}/{tip}"
 
 #: src/components/farm/card/FarmCardBlockRewards.tsx:15
-#~ msgid "TGDOG Block Rewards"
+#~ msgid "TMGA Block Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardCoinbaseRewards.tsx:12
-#~ msgid "TGDOG Farming Rewards"
+#~ msgid "TMGA Farming Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardFeesReward.tsx:12
-#~ msgid "TGDOG Fees Collected"
+#~ msgid "TMGA Fees Collected"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardUserFees.tsx:12
-#~ msgid "TGDOG User Fees"
-#~ msgstr "TGDOG User Fees"
+#~ msgid "TMGA User Fees"
+#~ msgstr "TMGA User Fees"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:15
-#~ msgid "TGDOG User Transaction Fees"
+#~ msgid "TMGA User Transaction Fees"
 #~ msgstr ""
 
 #: src/components/pool/PoolInfo.tsx:37
@@ -2198,7 +2198,7 @@ msgstr "Προς"
 msgid "Total Balance"
 msgstr "Συνολικό Υπόλοιπο"
 
-#: src/components/farm/card/FarmCardTotalGreenDogeFarmed.tsx:15
+#: src/components/farm/card/FarmCardTotalMoGuaFarmed.tsx:15
 #~ msgid "Total MoGua Farmed"
 #~ msgstr ""
 
@@ -2371,7 +2371,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:30
-#~ msgid "WalletItem.greendogeWallet"
+#~ msgid "WalletItem.moguaWallet"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:48
@@ -2583,7 +2583,7 @@ msgstr ""
 msgid "{currencyCode} Block Rewards"
 msgstr "{currencyCode} Ανταμοιβές μπλοκ"
 
-#: src/components/farm/card/FarmCardTotalGreenDogeFarmed.tsx:29
+#: src/components/farm/card/FarmCardTotalMoGuaFarmed.tsx:29
 msgid "{currencyCode} Total MoGua Farmed"
 msgstr "{currencyCode} Σύνολο MoGua που έχουν γίνει Farmed"
 
@@ -2592,5 +2592,5 @@ msgid "{currencyCode} User Transaction Fees"
 msgstr "{currencyCode} Τέλη Συναλλαγής Χρήστη"
 
 #: src/components/core/components/Amount/Amount.tsx:82
-msgid "{mog, plural, one {mog} other {dogs}}"
+msgid "{mog, plural, one {mog} other {mogs}}"
 msgstr ""

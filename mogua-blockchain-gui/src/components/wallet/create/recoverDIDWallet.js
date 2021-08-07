@@ -24,7 +24,7 @@ import {
 } from '../../../modules/createWallet';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { recover_did_action } from '../../../modules/message';
-import { greendoge_to_dog } from '../../../util/mogua';
+import { mogua_to_mog } from '../../../util/mogua';
 import { openDialog } from '../../../modules/dialog';
 import { useForm, Controller, useFieldArray } from 'react-hook-form';
 

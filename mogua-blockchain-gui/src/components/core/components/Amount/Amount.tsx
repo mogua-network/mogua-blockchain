@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import { useWatch, useFormContext } from 'react-hook-form';
 import TextField, { TextFieldProps } from '../TextField';
-import { greendoge_to_dog } from '../../../../util/mogua';
+import { mogua_to_mog } from '../../../../util/mogua';
 import useCurrencyCode from '../../../../hooks/useCurrencyCode';
 import FormatLargeNumber from '../FormatLargeNumber';
 import Flex from '../Flex';
@@ -54,7 +54,7 @@ export default function Amount(props: AmountProps) {
     name,
   });
 
-  const mog = greendoge_to_dog(value);
+  const mog = mogua_to_mog(value);
 
   return (
     <FormControl variant={variant} fullWidth={fullWidth}>
@@ -77,7 +77,7 @@ export default function Amount(props: AmountProps) {
             <Flex flexGrow={1} gap={1}>
               <FormatLargeNumber value={mog} />
               <Box>
-                <Plural value={mog} one="mog" other="dogs" />
+                <Plural value={mog} one="mog" other="mogs" />
               </Box>
             </Flex>
             {children &&

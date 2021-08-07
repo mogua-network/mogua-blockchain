@@ -15,7 +15,7 @@ import {
 import { AlertDialog, Card, Flex } from '@mogua/core';
 import isElectron from 'is-electron';
 import { newBuy, newSell, addTrade, resetTrades } from '../../modules/trade';
-import { greendoge_to_dog, colouredcoin_to_dog } from '../../util/mogua';
+import { mogua_to_mog, colouredcoin_to_mog } from '../../util/mogua';
 import { openDialog } from '../../modules/dialog';
 import { create_trade_action } from '../../modules/trade_messages';
 import { COLOURED_COIN } from '../../util/wallet_types';
@@ -81,8 +81,8 @@ export default function CreateOffer() {
     }
     const mog =
       wallets[wallet_id.value].type === COLOURED_COIN
-        ? colouredcoin_to_dog(amount_input.value)
-        : greendoge_to_dog(amount_input.value);
+        ? colouredcoin_to_mog(amount_input.value)
+        : mogua_to_mog(amount_input.value);
 
     const trade =
       buy_or_sell.value === 1
