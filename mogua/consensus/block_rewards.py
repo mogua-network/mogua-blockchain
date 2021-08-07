@@ -42,7 +42,7 @@ def calculate_base_farmer_reward(height: uint32) -> uint64:
     if height == 0:
         return uint64(int((1 / 8) * 8888888 * _mog_per_mogua))
     elif height < (1 / 12) * _blocks_per_year:
-        return uint64(int((1 / 8) * 100 * _mog_per_mogua)) #Reward for early participants in the community.
+        return uint64(int((1 / 8) * 30 * _mog_per_mogua)) #Reward for early participants in the community.
     elif height < 2 * _blocks_per_year:
         return uint64(int((1 / 8) * 20 * _mog_per_mogua))
     elif height < 4 * _blocks_per_year:

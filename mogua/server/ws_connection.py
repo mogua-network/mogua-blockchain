@@ -103,12 +103,12 @@ class WSMoGuaConnection:
         self.outbound_rate_limiter = RateLimiter(incoming=False, percentage_of_limit=outbound_rate_limit_percent)
         self.inbound_rate_limiter = RateLimiter(incoming=True, percentage_of_limit=inbound_rate_limit_percent)
 
-    async def perform_handshake(self, "mogua-"network_id: str, protocol_version: str, server_port: int, local_type: NodeType):
+    async def perform_handshake(self, network_id: str, protocol_version: str, server_port: int, local_type: NodeType):
         if self.is_outbound:
             outbound_handshake = make_msg(
                 ProtocolMessageTypes.handshake,
                 Handshake(
-                    "mogua-"network_id,
+                    'mogua-' + network_id,
                     protocol_version,
                     mogua_full_version_str(),
                     uint16(server_port),
@@ -132,7 +132,7 @@ class WSMoGuaConnection:
             if message_type != ProtocolMessageTypes.handshake:
                 raise ProtocolError(Err.INVALID_HANDSHAKE)
 
-            if inbound_handshake."mogua-"network_id != "mogua-"network_id:
+            if inbound_handshake.network_id != 'mogua-' + network_id:
                 raise ProtocolError(Err.INCOMPATIBLE_NETWORK_ID)
 
             self.peer_server_port = inbound_handshake.server_port
@@ -157,12 +157,12 @@ class WSMoGuaConnection:
                 raise ProtocolError(Err.INVALID_HANDSHAKE)
 
             inbound_handshake = Handshake.from_bytes(message.data)
-            if inbound_handshake."mogua-"network_id != "mogua-"network_id:
+            if inbound_handshake.network_id != 'mogua-' + network_id:
                 raise ProtocolError(Err.INCOMPATIBLE_NETWORK_ID)
             outbound_handshake = make_msg(
                 ProtocolMessageTypes.handshake,
                 Handshake(
-                    "mogua-"network_id,
+                    'mogua-' + network_id,
                     protocol_version,
                     mogua_full_version_str(),
                     uint16(server_port),
