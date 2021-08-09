@@ -1,11 +1,11 @@
 import asyncio
 import socket
 
-from mogua.server.server import MoGuaServer
+from mogua.server.server import MoguaServer
 from mogua.types.peer_info import PeerInfo
 
 
-def start_reconnect_task(server: MoGuaServer, peer_info_arg: PeerInfo, log, auth: bool):
+def start_reconnect_task(server: MoguaServer, peer_info_arg: PeerInfo, log, auth: bool):
     """
     Start a background task that checks connection and reconnects periodically to a peer.
     """

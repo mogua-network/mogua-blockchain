@@ -17,7 +17,7 @@ from mogua.types.condition_with_args import ConditionWithArgs
 from mogua.types.unfinished_block import UnfinishedBlock
 from mogua.util.clvm import int_to_bytes
 from mogua.util.ints import uint64
-from tests.wallet_tools import WalletTool
+from mogua.util.wallet_tools import WalletTool
 from tests.core.fixtures import empty_blockchain  # noqa: F401
 
 from tests.connection_utils import add_dummy_connection, connect_and_get_peer

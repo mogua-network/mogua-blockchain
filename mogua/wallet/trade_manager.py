@@ -34,6 +34,8 @@ from mogua.wallet.util.wallet_types import WalletType
 from mogua.wallet.wallet import Wallet
 from mogua.wallet.wallet_coin_record import WalletCoinRecord
 
+# from mogua.wallet.cc_wallet.debug_spend_bundle import debug_spend_bundle
+
 
 class TradeManager:
     wallet_state_manager: Any
@@ -151,7 +153,7 @@ class TradeManager:
                     self.log.warning(f"Trade with id: {trade.trade_id} failed at height: {height}")
 
     async def get_locked_coins(self, wallet_id: int = None) -> Dict[bytes32, WalletCoinRecord]:
-        """Returns a dictionary of confirmed coins that are locked by a trade."""
+        """ Returns a dictionary of confirmed coins that are locked by a trade. """
         all_pending = []
         pending_accept = await self.get_offers_with_status(TradeStatus.PENDING_ACCEPT)
         pending_confirm = await self.get_offers_with_status(TradeStatus.PENDING_CONFIRM)
@@ -183,7 +185,7 @@ class TradeManager:
         return record
 
     async def get_locked_coins_in_spend_bundle(self, bundle: SpendBundle) -> Dict[bytes32, WalletCoinRecord]:
-        """Returns a list of coin records that are used in this SpendBundle"""
+        """ Returns a list of coin records that are used in this SpendBundle"""
         result = {}
         removals = bundle.removals()
         for coin in removals:
@@ -197,7 +199,7 @@ class TradeManager:
         await self.trade_store.set_status(trade_id, TradeStatus.CANCELED, False)
 
     async def cancel_pending_offer_safely(self, trade_id: bytes32):
-        """This will create a transaction that includes coins that were offered"""
+        """ This will create a transaction that includes coins that were offered"""
         self.log.info(f"Secure-Cancel pending offer with id trade_id {trade_id.hex()}")
         trade = await self.trade_store.get_trade_record(trade_id)
         if trade is None:
@@ -531,6 +533,7 @@ class TradeManager:
         now = uint64(int(time.time()))
         if mogua_spend_bundle is not None:
             spend_bundle = SpendBundle.aggregate([spend_bundle, mogua_spend_bundle])
+            # debug_spend_bundle(spend_bundle)
             if mogua_discrepancy < 0:
                 tx_record = TransactionRecord(
                     confirmed_at_height=uint32(0),

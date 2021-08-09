@@ -9,7 +9,7 @@ if [ ! "$MOGUA_INSTALLER_VERSION" ]; then
 	echo "WARNING: No environment variable MOGUA_INSTALLER_VERSION set. Using 0.0.0."
 	MOGUA_INSTALLER_VERSION="0.0.0"
 fi
-echo "MoGua Installer Version is: $MOGUA_INSTALLER_VERSION"
+echo "Mogua Installer Version is: $MOGUA_INSTALLER_VERSION"
 
 echo "Installing npm and electron packagers"
 npm install electron-installer-dmg -g
@@ -44,8 +44,8 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	exit $LAST_EXIT_CODE
 fi
 
-electron-packager . MoGua --asar.unpack="**/daemon/**" --platform=darwin \
---icon=src/assets/img/MoGua.icns --overwrite --app-bundle-id=net.mogua.blockchain \
+electron-packager . Mogua --asar.unpack="**/daemon/**" --platform=darwin \
+--icon=src/assets/img/Mogua.icns --overwrite --app-bundle-id=net.mogua.blockchain \
 --appVersion=$MOGUA_INSTALLER_VERSION
 LAST_EXIT_CODE=$?
 if [ "$LAST_EXIT_CODE" -ne 0 ]; then
@@ -54,7 +54,7 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 fi
 
 if [ "$NOTARIZE" ]; then
-  electron-osx-sign MoGua-darwin-x64/MoGua.app --platform=darwin \
+  electron-osx-sign Mogua-darwin-x64/Mogua.app --platform=darwin \
   --hardened-runtime=true --provisioning-profile=moguablockchain.provisionprofile \
   --entitlements=entitlements.mac.plist --entitlements-inherit=entitlements.mac.plist \
   --no-gatekeeper-assess
@@ -65,13 +65,13 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	exit $LAST_EXIT_CODE
 fi
 
-mv MoGua-darwin-x64 ../build_scripts/dist/
+mv Mogua-darwin-x64 ../build_scripts/dist/
 cd ../build_scripts || exit
 
-DMG_NAME="MoGua-$MOGUA_INSTALLER_VERSION.dmg"
+DMG_NAME="Mogua-$MOGUA_INSTALLER_VERSION.dmg"
 echo "Create $DMG_NAME"
 mkdir final_installer
-electron-installer-dmg dist/MoGua-darwin-x64/MoGua.app MoGua-$MOGUA_INSTALLER_VERSION \
+electron-installer-dmg dist/Mogua-darwin-x64/Mogua.app Mogua-$MOGUA_INSTALLER_VERSION \
 --overwrite --out final_installer
 LAST_EXIT_CODE=$?
 if [ "$LAST_EXIT_CODE" -ne 0 ]; then
@@ -93,7 +93,7 @@ fi
 #
 # Ask for username and password. password should be an app specific password.
 # Generate app specific password https://support.apple.com/en-us/HT204397
-# xcrun altool --notarize-app -f MoGua-0.1.X.dmg --primary-bundle-id net.mogua.blockchain -u username -p password
+# xcrun altool --notarize-app -f Mogua-0.1.X.dmg --primary-bundle-id net.mogua.blockchain -u username -p password
 # xcrun altool --notarize-app; -should return REQUEST-ID, use it in next command
 #
 # Wait until following command return a success message".
@@ -101,7 +101,7 @@ fi
 # It can take a while, run it every few minutes.
 #
 # Once that is successful, execute the following command":
-# xcrun stapler staple MoGua-0.1.X.dmg
+# xcrun stapler staple Mogua-0.1.X.dmg
 #
 # Validate DMG:
-# xcrun stapler validate MoGua-0.1.X.dmg
+# xcrun stapler validate Mogua-0.1.X.dmg

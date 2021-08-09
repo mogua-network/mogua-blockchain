@@ -38,7 +38,7 @@ from mogua.protocols.full_node_protocol import (
 from mogua.protocols.protocol_message_types import ProtocolMessageTypes
 from mogua.server.node_discovery import FullNodePeers
 from mogua.server.outbound_message import Message, NodeType, make_msg
-from mogua.server.server import MoGuaServer
+from mogua.server.server import MoguaServer
 from mogua.types.blockchain_format.classgroup import ClassgroupElement
 from mogua.types.blockchain_format.pool_target import PoolTarget
 from mogua.types.blockchain_format.sized_bytes import bytes32
@@ -68,7 +68,6 @@ class FullNode:
     mempool_manager: MempoolManager
     connection: aiosqlite.Connection
     _sync_task: Optional[asyncio.Task]
-    _init_weight_proof: Optional[asyncio.Task] = None
     blockchain: Blockchain
     config: Dict
     server: Any
@@ -80,7 +79,6 @@ class FullNode:
     timelord_lock: asyncio.Lock
     initialized: bool
     weight_proof_handler: Optional[WeightProofHandler]
-    _ui_tasks: Set[asyncio.Task]
 
     def __init__(
         self,
@@ -101,11 +99,11 @@ class FullNode:
         self.sync_store = None
         self.signage_point_times = [time.time() for _ in range(self.constants.NUM_SPS_SUB_SLOT)]
         self.full_node_store = FullNodeStore(self.constants)
-        self.uncompact_task = None
 
-        self.log = logging.getLogger(name if name else __name__)
-
-        self._ui_tasks = set()
+        if name:
+            self.log = logging.getLogger(name)
+        else:
+            self.log = logging.getLogger(__name__)
 
         db_path_replaced: str = config["database_path"].replace("CHALLENGE", config["selected_network"])
         self.db_path = path_from_root(root_path, db_path_replaced)
@@ -116,8 +114,8 @@ class FullNode:
 
     async def _start(self):
         self.timelord_lock = asyncio.Lock()
-        self.compact_vdf_sem = asyncio.Semaphore(4)
-        self.new_peak_sem = asyncio.Semaphore(8)
+        self.compact_vdf_lock = asyncio.Semaphore(4)
+        self.new_peak_lock = asyncio.Semaphore(8)
         # create the store (db) and full node instance
         self.connection = await aiosqlite.connect(self.db_path)
         self.db_wrapper = DBWrapper(self.connection)
@@ -129,10 +127,10 @@ class FullNode:
         self.blockchain = await Blockchain.create(self.coin_store, self.block_store, self.constants)
         self.mempool_manager = MempoolManager(self.coin_store, self.constants)
         self.weight_proof_handler = None
-        self._init_weight_proof = asyncio.create_task(self.initialize_weight_proof())
+        asyncio.create_task(self.initialize_weight_proof())
 
         if self.config.get("enable_profiler", False):
-            asyncio.create_task(profile_task(self.root_path, "node", self.log))
+            asyncio.create_task(profile_task(self.root_path, self.log))
 
         self._sync_task = None
         self._segment_task = None
@@ -149,6 +147,7 @@ class FullNode:
             assert len(pending_tx) == 0  # no pending transactions when starting up
 
         peak: Optional[BlockRecord] = self.blockchain.get_peak()
+        self.uncompact_task = None
         if peak is not None:
             full_peak = await self.blockchain.get_full_peak()
             await self.peak_post_processing(full_peak, peak, max(peak.height - 1, 0), None)
@@ -174,20 +173,14 @@ class FullNode:
         if peak is not None:
             await self.weight_proof_handler.create_sub_epoch_segments()
 
-    def set_server(self, server: MoGuaServer):
+    def set_server(self, server: MoguaServer):
         self.server = server
         dns_servers = []
-        try:
-            network_name = self.config["selected_network"]
-            default_port = self.config["network_overrides"]["config"][network_name]["default_full_node_port"]
-        except Exception:
-            self.log.info("Default port field not found in config.")
-            default_port = None
         if "dns_servers" in self.config:
             dns_servers = self.config["dns_servers"]
-        elif self.config["port"] == 8921:
+        elif self.config["port"] == 6935:
             # If `dns_servers` misses from the `config`, hardcode it if we're running mainnet.
-            dns_servers.append("dns-introducer.mogua.mog")
+            dns_servers.append("dns-introducer.moguanetwork.org")
         try:
             self.full_node_peers = FullNodePeers(
                 self.server,
@@ -198,8 +191,6 @@ class FullNode:
                 self.config["introducer_peer"],
                 dns_servers,
                 self.config["peer_connect_interval"],
-                self.config["selected_network"],
-                default_port,
                 self.log,
             )
         except Exception as e:
@@ -212,7 +203,7 @@ class FullNode:
         if self.state_changed_callback is not None:
             self.state_changed_callback(change)
 
-    async def short_sync_batch(self, peer: ws.WSMoGuaConnection, start_height: uint32, target_height: uint32) -> bool:
+    async def short_sync_batch(self, peer: ws.WSMoguaConnection, start_height: uint32, target_height: uint32) -> bool:
         """
         Tries to sync to a chain which is not too far in the future, by downloading batches of blocks. If the first
         block that we download is not connected to our chain, we return False and do an expensive long sync instead.
@@ -282,7 +273,7 @@ class FullNode:
         return True
 
     async def short_sync_backtrack(
-        self, peer: ws.WSMoGuaConnection, peak_height: uint32, target_height: uint32, target_unf_hash: bytes32
+        self, peer: ws.WSMoguaConnection, peak_height: uint32, target_height: uint32, target_unf_hash: bytes32
     ):
         """
         Performs a backtrack sync, where blocks are downloaded one at a time from newest to oldest. If we do not
@@ -333,12 +324,7 @@ class FullNode:
         self.sync_store.backtrack_syncing[peer.peer_node_id] -= 1
         return found_fork_point
 
-    async def _refresh_ui_connections(self, sleep_before: float = 0):
-        if sleep_before > 0:
-            await asyncio.sleep(sleep_before)
-        self._state_changed("peer_changed_peak")
-
-    async def new_peak(self, request: full_node_protocol.NewPeak, peer: ws.WSMoGuaConnection):
+    async def new_peak(self, request: full_node_protocol.NewPeak, peer: ws.WSMoguaConnection):
         """
         We have received a notification of a new peak from a peer. This happens either when we have just connected,
         or when the peer has updated their peak.
@@ -348,17 +334,6 @@ class FullNode:
             peer: peer that sent the message
 
         """
-
-        try:
-            seen_header_hash = self.sync_store.seen_header_hash(request.header_hash)
-            # Updates heights in the UI. Sleeps 1.5s before, so other peers have time to update their peaks as well.
-            # Limit to 3 refreshes.
-            if not seen_header_hash and len(self._ui_tasks) < 3:
-                self._ui_tasks.add(asyncio.create_task(self._refresh_ui_connections(1.5)))
-            # Prune completed connect tasks
-            self._ui_tasks = set(filter(lambda t: not t.done(), self._ui_tasks))
-        except Exception as e:
-            self.log.warning(f"Exception UI refresh task: {e}")
 
         # Store this peak/peer combination in case we want to sync to it, and to keep track of peers
         self.sync_store.peer_has_block(request.header_hash, peer.peer_node_id, request.weight, request.height, True)
@@ -416,7 +391,7 @@ class FullNode:
             self._sync_task = asyncio.create_task(self._sync())
 
     async def send_peak_to_timelords(
-        self, peak_block: Optional[FullBlock] = None, peer: Optional[ws.WSMoGuaConnection] = None
+        self, peak_block: Optional[FullBlock] = None, peer: Optional[ws.WSMoguaConnection] = None
     ):
         """
         Sends current peak to timelords
@@ -489,7 +464,7 @@ class FullNode:
         else:
             return True
 
-    async def on_connect(self, connection: ws.WSMoGuaConnection):
+    async def on_connect(self, connection: ws.WSMoguaConnection):
         """
         Whenever we connect to another node / wallet, send them our current heads. Also send heads to farmers
         and challenges to timelords.
@@ -541,7 +516,7 @@ class FullNode:
             elif connection.connection_type is NodeType.TIMELORD:
                 await self.send_peak_to_timelords()
 
-    def on_disconnect(self, connection: ws.WSMoGuaConnection):
+    def on_disconnect(self, connection: ws.WSMoguaConnection):
         self.log.info(f"peer disconnected {connection.get_peer_info()}")
         self._state_changed("close_connection")
         self._state_changed("sync_mode")
@@ -556,8 +531,6 @@ class FullNode:
 
     def _close(self):
         self._shut_down = True
-        if self._init_weight_proof is not None:
-            self._init_weight_proof.cancel()
         if self.blockchain is not None:
             self.blockchain.shut_down()
         if self.mempool_manager is not None:
@@ -572,8 +545,6 @@ class FullNode:
         for task_id, task in list(self.full_node_store.tx_fetch_tasks.items()):
             cancel_task_safe(task, self.log)
         await self.connection.close()
-        if self._init_weight_proof is not None:
-            await asyncio.wait([self._init_weight_proof])
 
     async def _sync(self):
         """
@@ -729,7 +700,7 @@ class FullNode:
         if len(ses_heigths) > 2 and our_peak_height is not None:
             ses_heigths.sort()
             max_fork_ses_height = ses_heigths[-3]
-            # This is the fork point in SES in the case where no fork was detected
+            # This is fork point in SES in case where fork was not detected
             if self.blockchain.get_peak_height() is not None and fork_point_height == max_fork_ses_height:
                 for peer in peers_with_peak:
                     # Grab a block at peak + 1 and check if fork point is actually our current height
@@ -809,7 +780,7 @@ class FullNode:
     async def receive_block_batch(
         self,
         all_blocks: List[FullBlock],
-        peer: ws.WSMoGuaConnection,
+        peer: ws.WSMoguaConnection,
         fork_point: Optional[uint32],
         wp_summaries: Optional[List[SubEpochSummary]] = None,
     ) -> Tuple[bool, bool, Optional[uint32]]:
@@ -827,7 +798,7 @@ class FullNode:
         pre_validate_start = time.time()
         pre_validation_results: Optional[
             List[PreValidationResult]
-        ] = await self.blockchain.pre_validate_blocks_multiprocessing(blocks_to_validate, {}, wp_summaries=wp_summaries)
+        ] = await self.blockchain.pre_validate_blocks_multiprocessing(blocks_to_validate, {})
         self.log.debug(f"Block pre-validation time: {time.time() - pre_validate_start}")
         if pre_validation_results is None:
             return False, False, None
@@ -841,7 +812,7 @@ class FullNode:
         for i, block in enumerate(blocks_to_validate):
             assert pre_validation_results[i].required_iters is not None
             (result, error, fork_height,) = await self.blockchain.receive_block(
-                block, pre_validation_results[i], None if advanced_peak else fork_point
+                block, pre_validation_results[i], None if advanced_peak else fork_point, wp_summaries
             )
             if result == ReceiveBlockResult.NEW_PEAK:
                 advanced_peak = True
@@ -903,7 +874,7 @@ class FullNode:
     async def signage_point_post_processing(
         self,
         request: full_node_protocol.RespondSignagePoint,
-        peer: ws.WSMoGuaConnection,
+        peer: ws.WSMoguaConnection,
         ip_sub_slot: Optional[EndOfSubSlotBundle],
     ):
         self.log.info(
@@ -957,7 +928,7 @@ class FullNode:
         await self.server.send_to_all([msg], NodeType.FARMER)
 
     async def peak_post_processing(
-        self, block: FullBlock, record: BlockRecord, fork_height: uint32, peer: Optional[ws.WSMoGuaConnection]
+        self, block: FullBlock, record: BlockRecord, fork_height: uint32, peer: Optional[ws.WSMoguaConnection]
     ):
         """
         Must be called under self.blockchain.lock. This updates the internal state of the full node with the
@@ -1106,7 +1077,7 @@ class FullNode:
     async def respond_block(
         self,
         respond_block: full_node_protocol.RespondBlock,
-        peer: Optional[ws.WSMoGuaConnection] = None,
+        peer: Optional[ws.WSMoguaConnection] = None,
     ) -> Optional[Message]:
         """
         Receive a full block from a peer full node (or ourselves).
@@ -1267,7 +1238,7 @@ class FullNode:
     async def respond_unfinished_block(
         self,
         respond_unfinished_block: full_node_protocol.RespondUnfinishedBlock,
-        peer: Optional[ws.WSMoGuaConnection],
+        peer: Optional[ws.WSMoguaConnection],
         farmed_block: bool = False,
     ):
         """
@@ -1424,7 +1395,7 @@ class FullNode:
         self._state_changed("unfinished_block")
 
     async def new_infusion_point_vdf(
-        self, request: timelord_protocol.NewInfusionPointVDF, timelord_peer: Optional[ws.WSMoGuaConnection] = None
+        self, request: timelord_protocol.NewInfusionPointVDF, timelord_peer: Optional[ws.WSMoguaConnection] = None
     ) -> Optional[Message]:
         # Lookup unfinished blocks
         unfinished_block: Optional[UnfinishedBlock] = self.full_node_store.get_unfinished_block(
@@ -1527,7 +1498,7 @@ class FullNode:
         return None
 
     async def respond_end_of_sub_slot(
-        self, request: full_node_protocol.RespondEndOfSubSlot, peer: ws.WSMoGuaConnection
+        self, request: full_node_protocol.RespondEndOfSubSlot, peer: ws.WSMoguaConnection
     ) -> Tuple[Optional[Message], bool]:
 
         fetched_ss = self.full_node_store.get_sub_slot(request.end_of_slot_bundle.challenge_chain.get_hash())
@@ -1615,7 +1586,7 @@ class FullNode:
         self,
         transaction: SpendBundle,
         spend_name: bytes32,
-        peer: Optional[ws.WSMoGuaConnection] = None,
+        peer: Optional[ws.WSMoguaConnection] = None,
         test: bool = False,
     ) -> Tuple[MempoolInclusionStatus, Optional[Err]]:
         if self.sync_store.get_sync_mode():
@@ -1761,16 +1732,12 @@ class FullNode:
         vdf_proof: VDFProof,
         height: uint32,
         field_vdf: CompressibleVDFField,
-    ) -> bool:
+    ):
         full_blocks = await self.block_store.get_full_blocks_at([height])
         assert len(full_blocks) > 0
-        replaced = False
-        expected_header_hash = self.blockchain.height_to_hash(height)
         for block in full_blocks:
             new_block = None
-            if block.header_hash != expected_header_hash:
-                continue
-            block_record = await self.blockchain.get_block_record_from_db(expected_header_hash)
+            block_record = await self.blockchain.get_block_record_from_db(self.blockchain.height_to_hash(height))
             assert block_record is not None
 
             if field_vdf == CompressibleVDFField.CC_EOS_VDF:
@@ -1802,12 +1769,11 @@ class FullNode:
                 if block.reward_chain_block.challenge_chain_ip_vdf == vdf_info:
                     new_block = dataclasses.replace(block, challenge_chain_ip_proof=vdf_proof)
             if new_block is None:
-                continue
+                self.log.debug("did not replace any proof, vdf does not match")
+                return
             async with self.db_wrapper.lock:
                 await self.block_store.add_full_block(new_block.header_hash, new_block, block_record)
                 await self.block_store.db_wrapper.commit_transaction()
-                replaced = True
-        return replaced
 
     async def respond_compact_proof_of_time(self, request: timelord_protocol.RespondCompactProofOfTime):
         field_vdf = CompressibleVDFField(int(request.field_vdf))
@@ -1816,10 +1782,7 @@ class FullNode:
         ):
             return None
         async with self.blockchain.compact_proof_lock:
-            replaced = await self._replace_proof(request.vdf_info, request.vdf_proof, request.height, field_vdf)
-        if not replaced:
-            self.log.error(f"Could not replace compact proof: {request.height}")
-            return None
+            await self._replace_proof(request.vdf_info, request.vdf_proof, request.height, field_vdf)
         msg = make_msg(
             ProtocolMessageTypes.new_compact_vdf,
             full_node_protocol.NewCompactVDF(request.height, request.header_hash, request.field_vdf, request.vdf_info),
@@ -1827,7 +1790,7 @@ class FullNode:
         if self.server is not None:
             await self.server.send_to_all([msg], NodeType.FULL_NODE)
 
-    async def new_compact_vdf(self, request: full_node_protocol.NewCompactVDF, peer: ws.WSMoGuaConnection):
+    async def new_compact_vdf(self, request: full_node_protocol.NewCompactVDF, peer: ws.WSMoguaConnection):
         is_fully_compactified = await self.block_store.is_fully_compactified(request.header_hash)
         if is_fully_compactified is None or is_fully_compactified:
             return False
@@ -1845,7 +1808,7 @@ class FullNode:
             if response is not None and isinstance(response, full_node_protocol.RespondCompactVDF):
                 await self.respond_compact_vdf(response, peer)
 
-    async def request_compact_vdf(self, request: full_node_protocol.RequestCompactVDF, peer: ws.WSMoGuaConnection):
+    async def request_compact_vdf(self, request: full_node_protocol.RequestCompactVDF, peer: ws.WSMoguaConnection):
         header_block = await self.blockchain.get_header_block_by_height(
             request.height, request.header_hash, tx_filter=False
         )
@@ -1889,7 +1852,7 @@ class FullNode:
         msg = make_msg(ProtocolMessageTypes.respond_compact_vdf, compact_vdf)
         await peer.send_message(msg)
 
-    async def respond_compact_vdf(self, request: full_node_protocol.RespondCompactVDF, peer: ws.WSMoGuaConnection):
+    async def respond_compact_vdf(self, request: full_node_protocol.RespondCompactVDF, peer: ws.WSMoguaConnection):
         field_vdf = CompressibleVDFField(int(request.field_vdf))
         if not await self._can_accept_compact_proof(
             request.vdf_info, request.vdf_proof, request.height, request.header_hash, field_vdf
@@ -1898,10 +1861,7 @@ class FullNode:
         async with self.blockchain.compact_proof_lock:
             if self.blockchain.seen_compact_proofs(request.vdf_info, request.height):
                 return None
-            replaced = await self._replace_proof(request.vdf_info, request.vdf_proof, request.height, field_vdf)
-        if not replaced:
-            self.log.error(f"Could not replace compact proof: {request.height}")
-            return None
+            await self._replace_proof(request.vdf_info, request.vdf_proof, request.height, field_vdf)
         msg = make_msg(
             ProtocolMessageTypes.new_compact_vdf,
             full_node_protocol.NewCompactVDF(request.height, request.header_hash, request.field_vdf, request.vdf_info),

@@ -18,6 +18,7 @@ from mogua.wallet.cc_wallet.cc_utils import (
     spend_bundle_for_spendable_ccs,
     spendable_cc_list_from_coin_solution,
 )
+from mogua.wallet.cc_wallet.debug_spend_bundle import debug_spend_bundle
 from mogua.wallet.puzzles.genesis_by_coin_id_with_0 import create_genesis_or_zero_coin_checker
 from mogua.wallet.puzzles.genesis_by_puzzle_hash_with_0 import create_genesis_puzzle_or_zero_coin_checker
 
@@ -123,7 +124,8 @@ def test_spend_through_n(mod_code, coin_checker_for_farmed_coin, n):
 
     puzzles_for_db = [cc_puzzle_for_inner_puzzle(mod_code, genesis_coin_checker, eve_inner_puzzle)]
     add_puzzles_to_puzzle_preimage_db(puzzles_for_db)
-    spend_bundle.debug()
+
+    debug_spend_bundle(spend_bundle)
 
     ################################
 
@@ -145,7 +147,7 @@ def test_spend_through_n(mod_code, coin_checker_for_farmed_coin, n):
         [inner_puzzle_solution],
     )
 
-    spend_bundle.debug()
+    debug_spend_bundle(spend_bundle)
 
     ################################
 
@@ -170,7 +172,7 @@ def test_spend_through_n(mod_code, coin_checker_for_farmed_coin, n):
         inner_solutions,
     )
 
-    spend_bundle.debug()
+    debug_spend_bundle(spend_bundle)
 
 
 def test_spend_zero_coin(mod_code: Program, coin_checker_for_farmed_coin):
@@ -220,7 +222,7 @@ def test_spend_zero_coin(mod_code: Program, coin_checker_for_farmed_coin):
         solution_for_pay_to_any([(wrapped_cc_puzzle_hash, eve_cc_spendable.coin.amount)]),
     ]
     spend_bundle = spend_bundle_for_spendable_ccs(mod_code, genesis_coin_checker, spendable_cc_list, inner_solutions)
-    spend_bundle.debug()
+    debug_spend_bundle(spend_bundle)
 
 
 def main():

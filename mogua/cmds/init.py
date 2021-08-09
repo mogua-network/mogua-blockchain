@@ -20,8 +20,8 @@ def init_cmd(ctx: click.Context, create_certs: str):
     - Shut down all mogua daemon processes with `mogua stop all -d`
     - Run `mogua init -c [directory]` on your remote harvester,
       where [directory] is the the copy of your Farming Machine CA directory
-    - Get more details on remote harvester on Chia wiki:
-      https://github.com/Chia-Network/chia-blockchain/wiki/Farming-on-many-machines
+    - Get more details on remote harvester on Mogua wiki:
+      https://github.com/Mogua-Network/mogua-blockchain/wiki/Farming-on-many-machines
     """
     from pathlib import Path
     from .init_funcs import init

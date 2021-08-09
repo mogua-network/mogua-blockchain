@@ -23,7 +23,7 @@ from mogua.util.network import class_for_type, is_localhost
 LENGTH_BYTES: int = 4
 
 
-class WSMoGuaConnection:
+class WSMoguaConnection:
     """
     Represents a connection to another node. Local host and port are ours, while peer host and
     port are the host and port of the peer that we are connected to. Node_id and connection_type are
@@ -69,7 +69,7 @@ class WSMoGuaConnection:
         self.is_outbound = is_outbound
         self.is_feeler = is_feeler
 
-        # MoGuaConnection metrics
+        # MoguaConnection metrics
         self.creation_time = time.time()
         self.bytes_read = 0
         self.bytes_written = 0
@@ -122,16 +122,8 @@ class WSMoGuaConnection:
             if inbound_handshake_msg is None:
                 raise ProtocolError(Err.INVALID_HANDSHAKE)
             inbound_handshake = Handshake.from_bytes(inbound_handshake_msg.data)
-
-            # Handle case of invalid ProtocolMessageType
-            try:
-                message_type: ProtocolMessageTypes = ProtocolMessageTypes(inbound_handshake_msg.type)
-            except Exception:
+            if ProtocolMessageTypes(inbound_handshake_msg.type) != ProtocolMessageTypes.handshake:
                 raise ProtocolError(Err.INVALID_HANDSHAKE)
-
-            if message_type != ProtocolMessageTypes.handshake:
-                raise ProtocolError(Err.INVALID_HANDSHAKE)
-
             if inbound_handshake.network_id != 'mogua-' + network_id:
                 raise ProtocolError(Err.INCOMPATIBLE_NETWORK_ID)
 
@@ -146,17 +138,9 @@ class WSMoGuaConnection:
 
             if message is None:
                 raise ProtocolError(Err.INVALID_HANDSHAKE)
-
-            # Handle case of invalid ProtocolMessageType
-            try:
-                message_type = ProtocolMessageTypes(message.type)
-            except Exception:
-                raise ProtocolError(Err.INVALID_HANDSHAKE)
-
-            if message_type != ProtocolMessageTypes.handshake:
-                raise ProtocolError(Err.INVALID_HANDSHAKE)
-
             inbound_handshake = Handshake.from_bytes(message.data)
+            if ProtocolMessageTypes(message.type) != ProtocolMessageTypes.handshake:
+                raise ProtocolError(Err.INVALID_HANDSHAKE)
             if inbound_handshake.network_id != 'mogua-' + network_id:
                 raise ProtocolError(Err.INCOMPATIBLE_NETWORK_ID)
             outbound_handshake = make_msg(
