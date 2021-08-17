@@ -1,7 +1,7 @@
-from flax.types.blockchain_format.coin import Coin
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.util.ints import uint64
-from flax.util.hash import std_hash
+from mogua.types.blockchain_format.coin import Coin
+from mogua.types.blockchain_format.sized_bytes import bytes32
+from mogua.util.ints import uint64
+from mogua.util.hash import std_hash
 import io
 
 

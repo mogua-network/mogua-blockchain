@@ -1,10 +1,10 @@
 from typing import Dict
 from unittest import TestCase
 
-from flax.types.blockchain_format.program import Program, SerializedProgram
-from flax.types.generator_types import GeneratorBlockCacheInterface
-from flax.full_node.generator import create_block_generator, create_generator_args
-from flax.util.ints import uint32
+from mogua.types.blockchain_format.program import Program, SerializedProgram
+from mogua.types.generator_types import GeneratorBlockCacheInterface
+from mogua.full_node.generator import create_block_generator, create_generator_args
+from mogua.util.ints import uint32
 
 gen0 = SerializedProgram.from_bytes(
     bytes.fromhex(

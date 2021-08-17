@@ -9,38 +9,38 @@ from typing import Dict, Optional, List
 
 import pytest
 
-from flax.consensus.pot_iterations import is_overflow_block
-from flax.full_node.bundle_tools import detect_potential_template_generator
-from flax.full_node.full_node_api import FullNodeAPI
-from flax.full_node.signage_point import SignagePoint
-from flax.protocols import full_node_protocol as fnp, full_node_protocol
-from flax.protocols import timelord_protocol
-from flax.protocols.full_node_protocol import RespondTransaction
-from flax.protocols.protocol_message_types import ProtocolMessageTypes
-from flax.server.address_manager import AddressManager
-from flax.server.outbound_message import Message
-from flax.simulator.simulator_protocol import FarmNewBlockProtocol
-from flax.types.blockchain_format.classgroup import ClassgroupElement
-from flax.types.blockchain_format.program import SerializedProgram
-from flax.types.blockchain_format.vdf import CompressibleVDFField, VDFProof
-from flax.types.condition_opcodes import ConditionOpcode
-from flax.types.condition_with_args import ConditionWithArgs
-from flax.types.full_block import FullBlock
-from flax.types.mempool_inclusion_status import MempoolInclusionStatus
-from flax.types.peer_info import PeerInfo, TimestampedPeerInfo
-from flax.types.spend_bundle import SpendBundle
-from flax.types.unfinished_block import UnfinishedBlock
-from flax.util.block_tools import get_signage_point
-from flax.util.clvm import int_to_bytes
-from flax.util.errors import Err
-from flax.util.hash import std_hash
-from flax.util.ints import uint8, uint16, uint32, uint64
-from flax.util.recursive_replace import recursive_replace
-from flax.util.vdf_prover import get_vdf_info_and_proof
-from flax.util.wallet_tools import WalletTool
+from mogua.consensus.pot_iterations import is_overflow_block
+from mogua.full_node.bundle_tools import detect_potential_template_generator
+from mogua.full_node.full_node_api import FullNodeAPI
+from mogua.full_node.signage_point import SignagePoint
+from mogua.protocols import full_node_protocol as fnp, full_node_protocol
+from mogua.protocols import timelord_protocol
+from mogua.protocols.full_node_protocol import RespondTransaction
+from mogua.protocols.protocol_message_types import ProtocolMessageTypes
+from mogua.server.address_manager import AddressManager
+from mogua.server.outbound_message import Message
+from mogua.simulator.simulator_protocol import FarmNewBlockProtocol
+from mogua.types.blockchain_format.classgroup import ClassgroupElement
+from mogua.types.blockchain_format.program import SerializedProgram
+from mogua.types.blockchain_format.vdf import CompressibleVDFField, VDFProof
+from mogua.types.condition_opcodes import ConditionOpcode
+from mogua.types.condition_with_args import ConditionWithArgs
+from mogua.types.full_block import FullBlock
+from mogua.types.mempool_inclusion_status import MempoolInclusionStatus
+from mogua.types.peer_info import PeerInfo, TimestampedPeerInfo
+from mogua.types.spend_bundle import SpendBundle
+from mogua.types.unfinished_block import UnfinishedBlock
+from mogua.util.block_tools import get_signage_point
+from mogua.util.clvm import int_to_bytes
+from mogua.util.errors import Err
+from mogua.util.hash import std_hash
+from mogua.util.ints import uint8, uint16, uint32, uint64
+from mogua.util.recursive_replace import recursive_replace
+from mogua.util.vdf_prover import get_vdf_info_and_proof
+from mogua.util.wallet_tools import WalletTool
 from tests.core.fixtures import empty_blockchain  # noqa: F401
-from flax.wallet.cc_wallet.cc_wallet import CCWallet
-from flax.wallet.transaction_record import TransactionRecord
+from mogua.wallet.cc_wallet.cc_wallet import CCWallet
+from mogua.wallet.transaction_record import TransactionRecord
 
 from tests.connection_utils import add_dummy_connection, connect_and_get_peer
 from tests.core.full_node.test_coin_store import get_future_reward_coins

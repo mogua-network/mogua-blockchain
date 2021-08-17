@@ -1,25 +1,25 @@
 import asyncio
 import time
 import pytest
-from flax.simulator.simulator_protocol import FarmNewBlockProtocol
-from flax.types.peer_info import PeerInfo
-from flax.util.ints import uint16, uint32, uint64
+from mogua.simulator.simulator_protocol import FarmNewBlockProtocol
+from mogua.types.peer_info import PeerInfo
+from mogua.util.ints import uint16, uint32, uint64
 from tests.setup_nodes import setup_simulators_and_wallets
-from flax.wallet.did_wallet.did_wallet import DIDWallet
-from flax.wallet.did_wallet import did_wallet_puzzles
+from mogua.wallet.did_wallet.did_wallet import DIDWallet
+from mogua.wallet.did_wallet import did_wallet_puzzles
 from clvm_tools import binutils
-from flax.types.blockchain_format.program import Program
-from flax.wallet.derivation_record import DerivationRecord
-from flax.types.coin_solution import CoinSolution
+from mogua.types.blockchain_format.program import Program
+from mogua.wallet.derivation_record import DerivationRecord
+from mogua.types.coin_solution import CoinSolution
 from blspy import AugSchemeMPL
-from flax.types.spend_bundle import SpendBundle
-from flax.wallet.transaction_record import TransactionRecord
-from flax.wallet.derive_keys import master_sk_to_wallet_sk
-from flax.consensus.block_rewards import calculate_pool_reward, calculate_base_farmer_reward
+from mogua.types.spend_bundle import SpendBundle
+from mogua.wallet.transaction_record import TransactionRecord
+from mogua.wallet.derive_keys import master_sk_to_wallet_sk
+from mogua.consensus.block_rewards import calculate_pool_reward, calculate_base_farmer_reward
 from tests.time_out_assert import time_out_assert
 from secrets import token_bytes
-from flax.wallet.util.transaction_type import TransactionType
-from flax.consensus.default_constants import DEFAULT_CONSTANTS
+from mogua.wallet.util.transaction_type import TransactionType
+from mogua.consensus.default_constants import DEFAULT_CONSTANTS
 
 
 @pytest.fixture(scope="module")

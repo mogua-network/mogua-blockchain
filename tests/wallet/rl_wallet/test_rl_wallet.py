@@ -2,10 +2,10 @@ import asyncio
 
 import pytest
 
-from flax.simulator.simulator_protocol import FarmNewBlockProtocol
-from flax.types.peer_info import PeerInfo
-from flax.util.ints import uint16, uint64
-from flax.wallet.rl_wallet.rl_wallet import RLWallet
+from mogua.simulator.simulator_protocol import FarmNewBlockProtocol
+from mogua.types.peer_info import PeerInfo
+from mogua.util.ints import uint16, uint64
+from mogua.wallet.rl_wallet.rl_wallet import RLWallet
 from tests.setup_nodes import self_hostname, setup_simulators_and_wallets
 from tests.time_out_assert import time_out_assert
 

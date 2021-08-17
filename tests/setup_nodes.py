@@ -4,24 +4,24 @@ import signal
 from secrets import token_bytes
 from typing import Dict, List, Optional
 
-from flax.consensus.constants import ConsensusConstants
-from flax.daemon.server import WebSocketServer, create_server_for_daemon, daemon_launch_lock_path, singleton
-from flax.full_node.full_node_api import FullNodeAPI
-from flax.server.start_farmer import service_kwargs_for_farmer
-from flax.server.start_full_node import service_kwargs_for_full_node
-from flax.server.start_harvester import service_kwargs_for_harvester
-from flax.server.start_introducer import service_kwargs_for_introducer
-from flax.server.start_service import Service
-from flax.server.start_timelord import service_kwargs_for_timelord
-from flax.server.start_wallet import service_kwargs_for_wallet
-from flax.simulator.start_simulator import service_kwargs_for_full_node_simulator
-from flax.timelord.timelord_launcher import kill_processes, spawn_process
-from flax.types.peer_info import PeerInfo
-from flax.util.bech32m import encode_puzzle_hash
-from flax.util.block_tools import BlockTools, test_constants
-from flax.util.hash import std_hash
-from flax.util.ints import uint16, uint32
-from flax.util.keychain import Keychain, bytes_to_mnemonic
+from mogua.consensus.constants import ConsensusConstants
+from mogua.daemon.server import WebSocketServer, create_server_for_daemon, daemon_launch_lock_path, singleton
+from mogua.full_node.full_node_api import FullNodeAPI
+from mogua.server.start_farmer import service_kwargs_for_farmer
+from mogua.server.start_full_node import service_kwargs_for_full_node
+from mogua.server.start_harvester import service_kwargs_for_harvester
+from mogua.server.start_introducer import service_kwargs_for_introducer
+from mogua.server.start_service import Service
+from mogua.server.start_timelord import service_kwargs_for_timelord
+from mogua.server.start_wallet import service_kwargs_for_wallet
+from mogua.simulator.start_simulator import service_kwargs_for_full_node_simulator
+from mogua.timelord.timelord_launcher import kill_processes, spawn_process
+from mogua.types.peer_info import PeerInfo
+from mogua.util.bech32m import encode_puzzle_hash
+from mogua.util.block_tools import BlockTools, test_constants
+from mogua.util.hash import std_hash
+from mogua.util.ints import uint16, uint32
+from mogua.util.keychain import Keychain, bytes_to_mnemonic
 from tests.time_out_assert import time_out_assert_custom_interval
 
 bt = BlockTools(constants=test_constants)

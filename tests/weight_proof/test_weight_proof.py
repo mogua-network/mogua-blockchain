@@ -6,22 +6,22 @@ from typing import Dict, List, Optional, Tuple
 import aiosqlite
 import pytest
 
-from flax.consensus.block_header_validation import validate_finished_header_block
-from flax.consensus.block_record import BlockRecord
-from flax.consensus.blockchain import Blockchain
-from flax.consensus.default_constants import DEFAULT_CONSTANTS
-from flax.consensus.difficulty_adjustment import get_next_sub_slot_iters_and_difficulty
-from flax.consensus.full_block_to_block_record import block_to_block_record
-from flax.full_node.block_store import BlockStore
-from flax.full_node.coin_store import CoinStore
-from flax.server.start_full_node import SERVICE_NAME
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.types.blockchain_format.sub_epoch_summary import SubEpochSummary
-from flax.util.block_cache import BlockCache
-from flax.util.block_tools import test_constants
-from flax.util.config import load_config
-from flax.util.default_root import DEFAULT_ROOT_PATH
-from flax.util.generator_tools import get_block_header
+from mogua.consensus.block_header_validation import validate_finished_header_block
+from mogua.consensus.block_record import BlockRecord
+from mogua.consensus.blockchain import Blockchain
+from mogua.consensus.default_constants import DEFAULT_CONSTANTS
+from mogua.consensus.difficulty_adjustment import get_next_sub_slot_iters_and_difficulty
+from mogua.consensus.full_block_to_block_record import block_to_block_record
+from mogua.full_node.block_store import BlockStore
+from mogua.full_node.coin_store import CoinStore
+from mogua.server.start_full_node import SERVICE_NAME
+from mogua.types.blockchain_format.sized_bytes import bytes32
+from mogua.types.blockchain_format.sub_epoch_summary import SubEpochSummary
+from mogua.util.block_cache import BlockCache
+from mogua.util.block_tools import test_constants
+from mogua.util.config import load_config
+from mogua.util.default_root import DEFAULT_ROOT_PATH
+from mogua.util.generator_tools import get_block_header
 from tests.setup_nodes import bt
 
 try:
@@ -30,16 +30,16 @@ except ImportError:
     pass
 
 
-from flax.consensus.pot_iterations import calculate_iterations_quality
-from flax.full_node.weight_proof import (  # type: ignore
+from mogua.consensus.pot_iterations import calculate_iterations_quality
+from mogua.full_node.weight_proof import (  # type: ignore
     WeightProofHandler,
     _map_sub_epoch_summaries,
     _validate_sub_epoch_segments,
     _validate_summaries_weight,
 )
-from flax.types.full_block import FullBlock
-from flax.types.header_block import HeaderBlock
-from flax.util.ints import uint32, uint64
+from mogua.types.full_block import FullBlock
+from mogua.types.header_block import HeaderBlock
+from mogua.util.ints import uint32, uint64
 from tests.core.fixtures import (
     default_400_blocks,
     default_1000_blocks,

@@ -3,43 +3,43 @@ from unittest import TestCase
 
 from clvm_tools.clvmc import compile_clvm
 
-from flax.types.blockchain_format.program import Program, SerializedProgram
+from mogua.types.blockchain_format.program import Program, SerializedProgram
 
 wallet_program_files = set(
     [
-        "flax/wallet/puzzles/calculate_synthetic_public_key.clvm",
-        "flax/wallet/puzzles/cc.clvm",
-        "flax/wallet/puzzles/flaxlisp_deserialisation.clvm",
-        "flax/wallet/puzzles/rom_bootstrap_generator.clvm",
-        "flax/wallet/puzzles/generator_for_single_coin.clvm",
-        "flax/wallet/puzzles/genesis-by-coin-id-with-0.clvm",
-        "flax/wallet/puzzles/genesis-by-puzzle-hash-with-0.clvm",
-        "flax/wallet/puzzles/lock.inner.puzzle.clvm",
-        "flax/wallet/puzzles/p2_conditions.clvm",
-        "flax/wallet/puzzles/p2_delegated_conditions.clvm",
-        "flax/wallet/puzzles/p2_delegated_puzzle.clvm",
-        "flax/wallet/puzzles/p2_delegated_puzzle_or_hidden_puzzle.clvm",
-        "flax/wallet/puzzles/p2_m_of_n_delegate_direct.clvm",
-        "flax/wallet/puzzles/p2_puzzle_hash.clvm",
-        "flax/wallet/puzzles/rl_aggregation.clvm",
-        "flax/wallet/puzzles/rl.clvm",
-        "flax/wallet/puzzles/sha256tree_module.clvm",
-        "flax/wallet/puzzles/singleton_top_layer.clvm",
-        "flax/wallet/puzzles/did_innerpuz.clvm",
-        "flax/wallet/puzzles/decompress_puzzle.clvm",
-        "flax/wallet/puzzles/decompress_coin_solution_entry_with_prefix.clvm",
-        "flax/wallet/puzzles/decompress_coin_solution_entry.clvm",
-        "flax/wallet/puzzles/block_program_zero.clvm",
-        "flax/wallet/puzzles/test_generator_deserialize.clvm",
-        "flax/wallet/puzzles/test_multiple_generator_input_arguments.clvm",
+        "mogua/wallet/puzzles/calculate_synthetic_public_key.clvm",
+        "mogua/wallet/puzzles/cc.clvm",
+        "mogua/wallet/puzzles/mogualisp_deserialisation.clvm",
+        "mogua/wallet/puzzles/rom_bootstrap_generator.clvm",
+        "mogua/wallet/puzzles/generator_for_single_coin.clvm",
+        "mogua/wallet/puzzles/genesis-by-coin-id-with-0.clvm",
+        "mogua/wallet/puzzles/genesis-by-puzzle-hash-with-0.clvm",
+        "mogua/wallet/puzzles/lock.inner.puzzle.clvm",
+        "mogua/wallet/puzzles/p2_conditions.clvm",
+        "mogua/wallet/puzzles/p2_delegated_conditions.clvm",
+        "mogua/wallet/puzzles/p2_delegated_puzzle.clvm",
+        "mogua/wallet/puzzles/p2_delegated_puzzle_or_hidden_puzzle.clvm",
+        "mogua/wallet/puzzles/p2_m_of_n_delegate_direct.clvm",
+        "mogua/wallet/puzzles/p2_puzzle_hash.clvm",
+        "mogua/wallet/puzzles/rl_aggregation.clvm",
+        "mogua/wallet/puzzles/rl.clvm",
+        "mogua/wallet/puzzles/sha256tree_module.clvm",
+        "mogua/wallet/puzzles/singleton_top_layer.clvm",
+        "mogua/wallet/puzzles/did_innerpuz.clvm",
+        "mogua/wallet/puzzles/decompress_puzzle.clvm",
+        "mogua/wallet/puzzles/decompress_coin_solution_entry_with_prefix.clvm",
+        "mogua/wallet/puzzles/decompress_coin_solution_entry.clvm",
+        "mogua/wallet/puzzles/block_program_zero.clvm",
+        "mogua/wallet/puzzles/test_generator_deserialize.clvm",
+        "mogua/wallet/puzzles/test_multiple_generator_input_arguments.clvm",
     ]
 )
 
 clvm_include_files = set(
-    ["flax/wallet/puzzles/create-lock-puzzlehash.clvm", "flax/wallet/puzzles/condition_codes.clvm"]
+    ["mogua/wallet/puzzles/create-lock-puzzlehash.clvm", "mogua/wallet/puzzles/condition_codes.clvm"]
 )
 
-CLVM_PROGRAM_ROOT = "flax/wallet/puzzles"
+CLVM_PROGRAM_ROOT = "mogua/wallet/puzzles"
 
 
 def list_files(dir, glob):
@@ -66,7 +66,7 @@ class TestClvmCompilation(TestCase):
 
     def test_all_programs_listed(self):
         """
-        Checks to see if a new .clvm file was added to flax/wallet/puzzles, but not added to `wallet_program_files`
+        Checks to see if a new .clvm file was added to mogua/wallet/puzzles, but not added to `wallet_program_files`
         """
         existing_files = list_files(CLVM_PROGRAM_ROOT, "*.clvm")
         existing_file_paths = set([Path(x).relative_to(CLVM_PROGRAM_ROOT) for x in existing_files])

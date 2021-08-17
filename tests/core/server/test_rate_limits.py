@@ -2,9 +2,9 @@ import asyncio
 
 import pytest
 
-from flax.protocols.protocol_message_types import ProtocolMessageTypes
-from flax.server.outbound_message import make_msg
-from flax.server.rate_limits import RateLimiter, NON_TX_FREQ
+from mogua.protocols.protocol_message_types import ProtocolMessageTypes
+from mogua.server.outbound_message import make_msg
+from mogua.server.rate_limits import RateLimiter, NON_TX_FREQ
 from tests.setup_nodes import test_constants
 
 

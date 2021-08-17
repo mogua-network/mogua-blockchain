@@ -2,17 +2,17 @@ from collections import defaultdict
 from dataclasses import dataclass, replace
 from typing import Dict, Iterator, Set
 
-from flax.full_node.mempool_check_conditions import mempool_check_conditions_dict
-from flax.types.blockchain_format.coin import Coin
-from flax.types.blockchain_format.sized_bytes import bytes32
-from flax.types.coin_record import CoinRecord
-from flax.types.spend_bundle import SpendBundle
-from flax.util.condition_tools import (
+from mogua.full_node.mempool_check_conditions import mempool_check_conditions_dict
+from mogua.types.blockchain_format.coin import Coin
+from mogua.types.blockchain_format.sized_bytes import bytes32
+from mogua.types.coin_record import CoinRecord
+from mogua.types.spend_bundle import SpendBundle
+from mogua.util.condition_tools import (
     conditions_dict_for_solution,
     coin_announcement_names_for_conditions_dict,
     puzzle_announcement_names_for_conditions_dict,
 )
-from flax.util.ints import uint32, uint64
+from mogua.util.ints import uint32, uint64
 
 
 class BadSpendBundleError(Exception):

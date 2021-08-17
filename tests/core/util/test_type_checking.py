@@ -2,8 +2,8 @@ import unittest
 from dataclasses import dataclass
 from typing import Dict, List, Optional, Tuple
 
-from flax.util.ints import uint8
-from flax.util.type_checking import is_type_List, is_type_SpecificOptional, strictdataclass
+from mogua.util.ints import uint8
+from mogua.util.type_checking import is_type_List, is_type_SpecificOptional, strictdataclass
 
 
 class TestIsTypeList(unittest.TestCase):
