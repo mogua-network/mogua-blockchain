@@ -2,7 +2,7 @@ import React, { useMemo, ReactNode } from 'react';
 import { Trans } from '@lingui/macro';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { Flex, Loading } from '@chia/core';
+import { Flex, Loading } from '@mogua/core';
 import { ChevronRight as ChevronRightIcon } from '@material-ui/icons';
 import { useParams } from 'react-router';
 import usePlotNFTs from '../../hooks/usePlotNFTs';

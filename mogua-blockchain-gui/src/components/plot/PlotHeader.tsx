@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Trans } from '@lingui/macro';
-import { Flex, More } from '@chia/core';
+import { Flex, More } from '@mogua/core';
 import { createTeleporter } from 'react-teleporter';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';

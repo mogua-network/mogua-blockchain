@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import { useStyles } from './WalletCreate';
 import { create_did_action } from '../../../modules/message';
-import { chia_to_mojo } from '../../../util/chia';
+import { chia_to_mojo } from '../../../util/mogua';
 import { openDialog } from '../../../modules/dialog';
 import { useForm, Controller, useFieldArray } from 'react-hook-form';
 

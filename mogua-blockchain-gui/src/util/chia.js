@@ -12,7 +12,7 @@ const convert = (amount, from, to) => {
   return Number.parseFloat(amountInFromUnit.div(units.getUnit(to)));
 };
 
-class Chia {
+class Mogua {
   constructor(value, unit) {
     this._value = value;
     this._unit = unit;
@@ -73,7 +73,7 @@ class Chia {
   }
 }
 
-export const chia_formatter = (value, unit) => new Chia(value, unit);
+export const chia_formatter = (value, unit) => new Mogua(value, unit);
 
 chia_formatter.convert = convert;
 chia_formatter.setDisplay = units.setDisplay;
@@ -84,17 +84,17 @@ chia_formatter.setFiat = (currency, rate, display = null) => {
 };
 
 export const mojo_to_chia = (mojo) => {
-  return chia_formatter(Number.parseInt(mojo), 'mojo').to('chia').value();
+  return chia_formatter(Number.parseInt(mojo), 'mojo').to('mogua').value();
 };
 
-export const chia_to_mojo = (chia) => {
-  return chia_formatter(Number.parseFloat(Number(chia)), 'chia')
+export const chia_to_mojo = (mogua) => {
+  return chia_formatter(Number.parseFloat(Number(mogua)), 'mogua')
     .to('mojo')
     .value();
 };
 
 export const mojo_to_chia_string = (mojo) => {
-  return chia_formatter(Number(mojo), 'mojo').to('chia').toString();
+  return chia_formatter(Number(mojo), 'mojo').to('mogua').toString();
 };
 
 export const mojo_to_colouredcoin = (mojo) => {

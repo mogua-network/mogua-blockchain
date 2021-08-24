@@ -1,7 +1,7 @@
 import React from 'react';
 import { Trans } from '@lingui/macro';
 import { useToggle } from 'react-use';
-import { Flex, UnitFormat, More, Table } from '@chia/core';
+import { Flex, UnitFormat, More, Table } from '@mogua/core';
 import { useHistory } from 'react-router';
 import {
   ViewList as ViewListIcon,
@@ -31,7 +31,7 @@ import PlotNFTStateEnum from '../../constants/PlotNFTState';
 import PlotNFTUnconfirmedCard from '../plotNFT/PlotNFTUnconfirmedCard';
 import PlotNFTState from '../plotNFT/PlotNFTState';
 import useUnconfirmedPlotNFTs from '../../hooks/useUnconfirmedPlotNFTs';
-import { mojo_to_chia } from '../../util/chia';
+import { mojo_to_chia } from '../../util/mogua';
 import WalletStatus from '../wallet/WalletStatus';
 
 const groupsCols = [

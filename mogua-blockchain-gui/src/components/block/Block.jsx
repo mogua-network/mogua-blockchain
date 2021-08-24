@@ -19,7 +19,7 @@ import {
   Loading,
   TooltipIcon,
   Flex,
-} from '@chia/core';
+} from '@mogua/core';
 import {
   unix_to_short_date,
   hex_to_array,
@@ -27,7 +27,7 @@ import {
   sha256,
 } from '../../util/utils';
 import { getBlockRecord, getBlock } from '../../modules/fullnodeMessages';
-import { mojo_to_chia } from '../../util/chia';
+import { mojo_to_chia } from '../../util/mogua';
 import {
   calculatePoolReward,
   calculateBaseFarmerReward,
@@ -334,7 +334,7 @@ export default function Block() {
         title={
           <BlockTitle>
             <Trans>
-              Block at height {blockRecord.height} in the Chia blockchain
+              Block at height {blockRecord.height} in the Mogua blockchain
             </Trans>
           </BlockTitle>
         }

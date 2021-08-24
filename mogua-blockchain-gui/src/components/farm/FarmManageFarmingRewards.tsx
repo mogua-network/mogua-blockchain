@@ -3,7 +3,7 @@ import { Trans } from '@lingui/macro';
 import { useForm } from 'react-hook-form';
 import { Alert } from '@material-ui/lab';
 import styled from 'styled-components';
-import { Flex, Form, TextField, Loading } from '@chia/core';
+import { Flex, Form, TextField, Loading } from '@mogua/core';
 import {
   Button,
   Dialog,

@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { Trans } from '@lingui/macro';
-import { AlertDialog, Card, Flex } from '@chia/core';
+import { AlertDialog, Card, Flex } from '@mogua/core';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import {
@@ -23,7 +23,7 @@ import {
 import {
   mojo_to_colouredcoin_string,
   colouredcoin_to_mojo,
-} from '../../../util/chia';
+} from '../../../util/mogua';
 import { openDialog } from '../../../modules/dialog';
 import { get_transaction_result } from '../../../util/transaction_result';
 import config from '../../../config/config';

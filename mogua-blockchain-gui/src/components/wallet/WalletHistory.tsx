@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
 import { Trans } from '@lingui/macro';
 import { Box, Tooltip, Typography } from '@material-ui/core';
-import { Card, CopyToClipboard, Flex, Table } from '@chia/core';
+import { Card, CopyToClipboard, Flex, Table } from '@mogua/core';
 import type { Row } from '../core/components/Table/Table';
 import {
   mojo_to_chia_string,
   mojo_to_colouredcoin_string,
-} from '../../util/chia';
+} from '../../util/mogua';
 import { unix_to_short_date } from '../../util/utils';
 import TransactionType from '../../constants/TransactionType';
 import WalletType from '../../constants/WalletType';

@@ -6,16 +6,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: @lingui/cli\n"
 "Language: ca_ES\n"
-"Project-Id-Version: chia-blockchain\n"
+"Project-Id-Version: mogua-blockchain\n"
 "Report-Msgid-Bugs-To: \n"
 "PO-Revision-Date: 2021-07-17 00:02\n"
 "Last-Translator: \n"
 "Language-Team: Catalan\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Crowdin-Project: chia-blockchain\n"
+"X-Crowdin-Project: mogua-blockchain\n"
 "X-Crowdin-Project-ID: 440660\n"
 "X-Crowdin-Language: ca\n"
-"X-Crowdin-File: /[Chia-Network.chia-blockchain-gui] main/src/locales/en-US/messages.po\n"
+"X-Crowdin-File: /[Mogua-Network.mogua-blockchain-gui] main/src/locales/en-US/messages.po\n"
 "X-Crowdin-File-ID: 118\n"
 
 #: src/components/plot/add/PlotAddNFT.tsx:62
@@ -23,8 +23,8 @@ msgid "(Optional)"
 msgstr ""
 
 #: src/components/farm/FarmLatestBlockChallenges.tsx:64
-msgid "*Want to explore Chia’s blocks further? Check out <0>Chia Explorer</0> built by an open source developer."
-msgstr "*Vols explorar encara més els blocs de Chia? Dona un cop d'ull a <0>Chia Explorer</0> creat per un desenvolupador de codi lliure."
+msgid "*Want to explore Mogua’s blocks further? Check out <0>Mogua Explorer</0> built by an open source developer."
+msgstr "*Vols explorar encara més els blocs de Mogua? Dona un cop d'ull a <0>Mogua Explorer</0> creat per un desenvolupador de codi lliure."
 
 #: src/components/plot/add/PlotAddNFT.tsx:123
 msgid "+ Add New Plot NFT"
@@ -44,8 +44,8 @@ msgstr "Un recol·lector és un servei que s'executa en una màquina on actualme
 
 #: src/electron/main.tsx:422
 #: src/electron/main.tsx:509
-msgid "About Chia Blockchain"
-msgstr "Sobre la cadena de blocs de Chia"
+msgid "About Mogua Blockchain"
+msgstr "Sobre la cadena de blocs de Mogua"
 
 #: src/components/trading/ViewOffer.jsx:74
 msgid "Accept"
@@ -216,8 +216,8 @@ msgid "Block VDF Iterations"
 msgstr "Iteracions de bloc VDF"
 
 #: src/components/block/Block.jsx:336
-msgid "Block at height {0} in the Chia blockchain"
-msgstr "Bloc a la alçada {0} a la cadena de blocs de Chia"
+msgid "Block at height {0} in the Mogua blockchain"
+msgstr "Bloc a la alçada {0} a la cadena de blocs de Mogua"
 
 #: src/components/fullNode/FullNode.jsx:331
 #~ msgid "Block hash"
@@ -310,16 +310,16 @@ msgid "Chat on KeyBase"
 msgstr "Xateja a KeyBase"
 
 #: src/electron/main.tsx:419
-msgid "Chia"
-msgstr "Chia"
+msgid "Mogua"
+msgstr "Mogua"
 
 #: src/electron/main.tsx:358
-msgid "Chia Blockchain Wiki"
-msgstr "Wiki de la Cadena de Blocs de Chia"
+msgid "Mogua Blockchain Wiki"
+msgstr "Wiki de la Cadena de Blocs de Mogua"
 
 #: src/components/wallet/standard/WalletStandard.tsx:647
-msgid "Chia Wallet"
-msgstr "Moneder Chia"
+msgid "Mogua Wallet"
+msgstr "Moneder Mogua"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:36
 msgid "Choose Number of Plots"
@@ -697,8 +697,8 @@ msgid "Edit Payout Instructions"
 msgstr ""
 
 #: src/components/wallet/WalletImport.tsx:147
-msgid "Enter the 24 word mnemonic that you have saved in order to restore your Chia wallet."
-msgstr "Introdueix les 24 paraules mnemotècniques que has guardat per restaurar el moneder de Chia."
+msgid "Enter the 24 word mnemonic that you have saved in order to restore your Mogua wallet."
+msgstr "Introdueix les 24 paraules mnemotècniques que has guardat per restaurar el moneder de Mogua."
 
 #: src/components/farm/FarmerStatus.tsx:21
 #: src/components/farm/FarmerStatus.tsx:22
@@ -711,8 +711,8 @@ msgid "Error"
 msgstr "Error"
 
 #: src/components/wallet/standard/WalletStandard.tsx:456
-msgid "Error: Cannot send chia to coloured address. Please enter a chia address."
-msgstr "No és possible enviar Chia a l'adreça acolorida. Si us plau, introdueix una adreça Chia."
+msgid "Error: Cannot send mogua to coloured address. Please enter a mogua address."
+msgstr "No és possible enviar Mogua a l'adreça acolorida. Si us plau, introdueix una adreça Mogua."
 
 #: src/components/fullNode/card/FullNodeEstimatedNetworkSpace.tsx:20
 msgid "Estimated Network Space"
@@ -1491,8 +1491,8 @@ msgid "Plots Passed Filter"
 msgstr "Parcel·les que han passat el filtre"
 
 #: src/components/plot/overview/PlotOverviewHero.tsx:35
-msgid "Plots are allocated space on your hard drive used to farm and earn Chia. <0>Learn more</0>"
-msgstr "Parcel·les ubicades al teu disc dur fetes servir per cultivar i aconseguir Chia. <0>Aprèn més</0>"
+msgid "Plots are allocated space on your hard drive used to farm and earn Mogua. <0>Learn more</0>"
+msgstr "Parcel·les ubicades al teu disc dur fetes servir per cultivar i aconseguir Mogua. <0>Aprèn més</0>"
 
 #: src/components/plot/queue/PlotQueueIndicator.tsx:34
 msgid "Plotting"
@@ -1929,8 +1929,8 @@ msgstr "Longitud de l'interval gastable (en nombre de blocs)"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:401
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:448
-msgid "Spending Limit (chia per interval): {0}"
-msgstr "Límit de despesa (Chia per interval): {0}"
+msgid "Spending Limit (mogua per interval): {0}"
+msgstr "Límit de despesa (Mogua per interval): {0}"
 
 #: src/components/fullNode/FullNode.jsx:100
 msgid "State"
@@ -1978,8 +1978,8 @@ msgstr "Estat:"
 #~ msgstr "Sub Block Height"
 
 #: src/components/block/Block.jsx:338
-#~ msgid "Sub Block at height {0} in the Chia blockchain"
-#~ msgstr "Sub Block at height {0} in the Chia blockchain"
+#~ msgid "Sub Block at height {0} in the Mogua blockchain"
+#~ msgstr "Sub Block at height {0} in the Mogua blockchain"
 
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:347
 msgid "Submit"
@@ -2122,8 +2122,8 @@ msgid "This feature is available only from the GUI."
 msgstr "Aquesta característica només està disponible a la interfície gràfica."
 
 #: src/components/wallet/card/WalletCardSpendableBalance.tsx:26
-msgid "This is the amount of Chia that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and Chia that you have just spent but is not yet in the blockchain."
-msgstr "Aquesta és la quantitat de Chia que pots fer servir per fer transaccions. No inclou les recompenses agrícoles pendents, transaccions entrants pendents ni Chia que acabis de gastar, però que encara no es troba a la cadena de blocs."
+msgid "This is the amount of Mogua that you can currently use to make transactions. It does not include pending farming rewards, pending incoming transactions, and Mogua that you have just spent but is not yet in the blockchain."
+msgstr "Aquesta és la quantitat de Mogua que pots fer servir per fer transaccions. No inclou les recompenses agrícoles pendents, transaccions entrants pendents ni Mogua que acabis de gastar, però que encara no es troba a la cadena de blocs."
 
 #: src/components/wallet/card/WalletCardPendingChange.tsx:26
 msgid "This is the pending change, which are change coins which you have sent to yourself, but have not been confirmed yet."
@@ -2142,8 +2142,8 @@ msgid "This is the time the block was created by the farmer, which is before it 
 msgstr "Moment en què el bloc ha estat creat pel pagès, abans de ser finalitzat amb una prova de temps"
 
 #: src/components/wallet/card/WalletCardTotalBalance.tsx:34
-msgid "This is the total amount of chia in the blockchain at the current peak sub block that is controlled by your private keys. It includes frozen farming rewards, but not pending incoming and outgoing transactions."
-msgstr "Aquesta és la quantitat total de Chia, a la cadena de blocs del sub bloc pic actual, controlada per les teves claus privades. Inclou les recompenses pel cultiu congelades, però no les transaccions entrants i sortints pendents."
+msgid "This is the total amount of mogua in the blockchain at the current peak sub block that is controlled by your private keys. It includes frozen farming rewards, but not pending incoming and outgoing transactions."
+msgstr "Aquesta és la quantitat total de Mogua, a la cadena de blocs del sub bloc pic actual, controlada per les teves claus privades. Inclou les recompenses pel cultiu congelades, però no les transaccions entrants i sortints pendents."
 
 #: src/components/wallet/card/WalletCardPendingTotalBalance.tsx:29
 msgid "This is the total balance + pending balance: it is what your balance will be after all pending transactions are confirmed."
@@ -2188,8 +2188,8 @@ msgid "This trade was included on blockchain at this block height"
 msgstr "Aquesta transacció va ser inclosa en aquesta alçada de bloc"
 
 #: src/components/app/AppTimeBombAlert.tsx:19
-msgid "This version of Chia is no longer compatible with the blockchain and can not safely farm."
-msgstr "Aquesta versió de Chia ja no és compatible amb la cadena de blocs i pot no cultivar amb seguretat."
+msgid "This version of Mogua is no longer compatible with the blockchain and can not safely farm."
+msgstr "Aquesta versió de Mogua ja no és compatible amb la cadena de blocs i pot no cultivar amb seguretat."
 
 #: src/components/fullNode/FullNode.jsx:92
 msgid "Time Created"
@@ -2214,7 +2214,7 @@ msgid "Total Balance"
 msgstr "Saldo total"
 
 #: src/components/farm/card/FarmCardTotalChiaFarmed.tsx:15
-#~ msgid "Total Chia Farmed"
+#~ msgid "Total Mogua Farmed"
 #~ msgstr ""
 
 #: src/components/fullNode/card/FullNodeCardTotalIterations.tsx:20
@@ -2423,8 +2423,8 @@ msgid "Want to Join a Pool? Create a Plot NFT"
 msgstr ""
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:139
-msgid "Want to earn more Chia? Add more plots to your farm."
-msgstr "Vols aconseguir més Chia? Afegeix més parcel·les al teu cultiu."
+msgid "Want to earn more Mogua? Add more plots to your farm."
+msgstr "Vols aconseguir més Mogua? Afegeix més parcel·les al teu cultiu."
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:86
 msgid "Want to have a delay before the next plot starts?"
@@ -2451,8 +2451,8 @@ msgid "Weight is the total added difficulty of all sub blocks up to and includin
 msgstr "El pes és la dificultat afegida total de tots els sub blocs incloent l'actual"
 
 #: src/components/selectKey/SelectKey.tsx:141
-msgid "Welcome to Chia. Please log in with an existing key, or create a new key."
-msgstr "Benvingut a Chia. Inicia la sessió amb una clau existent o crea'n una de nova."
+msgid "Welcome to Mogua. Please log in with an existing key, or create a new key."
+msgstr "Benvingut a Mogua. Inicia la sessió amb una clau existent o crea'n una de nova."
 
 #: src/components/wallet/WalletAdd.tsx:66
 msgid "Welcome! The following words are used for your wallet backup. Without them, you will lose access to your wallet, keep them safe! Write down each word along with the order number next to them. (Order is important)"
@@ -2522,8 +2522,8 @@ msgid "You need to claim your rewards first"
 msgstr ""
 
 #: src/components/app/AppTimeBomb.tsx:28
-#~ msgid "You need to upgrade the Chia application as this version will stop working soon!"
-#~ msgstr "You need to upgrade the Chia application as this version will stop working soon!"
+#~ msgid "You need to upgrade the Mogua application as this version will stop working soon!"
+#~ msgstr "You need to upgrade the Mogua application as this version will stop working soon!"
 
 #: src/components/plotNFT/select/PlotNFTSelectFaucet.tsx:37
 msgid "You need {currencyCode} to join a pool."
@@ -2611,8 +2611,8 @@ msgid "{currencyCode} Block Rewards"
 msgstr "{currencyCode} Recompenses de bloc"
 
 #: src/components/farm/card/FarmCardTotalChiaFarmed.tsx:29
-msgid "{currencyCode} Total Chia Farmed"
-msgstr "{currencyCode} Chia total cultivada"
+msgid "{currencyCode} Total Mogua Farmed"
+msgstr "{currencyCode} Mogua total cultivada"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:28
 msgid "{currencyCode} User Transaction Fees"

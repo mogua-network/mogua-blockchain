@@ -12,10 +12,10 @@ import {
   Button,
   InputLabel,
 } from '@material-ui/core';
-import { AlertDialog, Card, Flex } from '@chia/core';
+import { AlertDialog, Card, Flex } from '@mogua/core';
 import isElectron from 'is-electron';
 import { newBuy, newSell, addTrade, resetTrades } from '../../modules/trade';
-import { chia_to_mojo, colouredcoin_to_mojo } from '../../util/chia';
+import { chia_to_mojo, colouredcoin_to_mojo } from '../../util/mogua';
 import { openDialog } from '../../modules/dialog';
 import { create_trade_action } from '../../modules/trade_messages';
 import { COLOURED_COIN } from '../../util/wallet_types';

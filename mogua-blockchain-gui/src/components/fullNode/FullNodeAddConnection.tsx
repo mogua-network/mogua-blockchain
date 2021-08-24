@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Trans } from '@lingui/macro';
 import { Alert } from '@material-ui/lab';
 import { useDispatch } from 'react-redux';
-import { DialogActions, Flex, Form, TextField } from '@chia/core';
+import { DialogActions, Flex, Form, TextField } from '@mogua/core';
 import { useForm } from 'react-hook-form';
 import { Button, Dialog, DialogTitle, DialogContent } from '@material-ui/core';
 import { openConnection } from '../../modules/fullnodeMessages';

@@ -11,13 +11,13 @@ import {
   Box,
   Typography,
 } from '@material-ui/core';
-import { Card, Flex } from '@chia/core';
+import { Card, Flex } from '@mogua/core';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import Grid from '@material-ui/core/Grid';
 import HelpIcon from '@material-ui/icons/Help';
 import { unix_to_short_date } from '../../util/utils';
 import { presetOverview, presentTrade } from '../../modules/trade';
-import { mojo_to_chia_string } from '../../util/chia';
+import { mojo_to_chia_string } from '../../util/mogua';
 import {
   get_all_trades,
   cancel_trade_with_spend_action,

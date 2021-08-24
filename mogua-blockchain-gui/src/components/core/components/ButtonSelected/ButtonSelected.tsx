@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonProps } from '@chia/core';
+import { Button, ButtonProps } from '@mogua/core';
 import { Check as CheckIcon } from '@material-ui/icons';
 
 type Props = ButtonProps & {

@@ -10,8 +10,8 @@ import {
   Home as HomeIcon,
   Plot as PlotIcon,
   Pool as PoolIcon,
-} from '@chia/icons';
-import { Flex, SideBarItem } from '@chia/core';
+} from '@mogua/icons';
+import { Flex, SideBarItem } from '@mogua/core';
 import { logOut } from '../../modules/message';
 
 const StyledRoot = styled(Flex)`

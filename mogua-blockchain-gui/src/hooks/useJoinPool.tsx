@@ -1,7 +1,7 @@
 import React from 'react';
 import { Trans } from '@lingui/macro';
 import { useDispatch } from 'react-redux';
-import { AlertDialog } from '@chia/core';
+import { AlertDialog } from '@mogua/core';
 import type PlotNFT from '../types/PlotNFT';
 import { pwJoinPool } from '../modules/plotNFT';
 import useOpenDialog from './useOpenDialog';

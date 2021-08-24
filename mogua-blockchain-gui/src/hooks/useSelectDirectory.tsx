@@ -1,7 +1,7 @@
 import React from 'react';
 import isElectron from 'is-electron';
 import { Trans } from '@lingui/macro';
-import { AlertDialog } from '@chia/core';
+import { AlertDialog } from '@mogua/core';
 import useOpenDialog from './useOpenDialog';
 
 type Options = {

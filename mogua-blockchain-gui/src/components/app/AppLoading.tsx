@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Spinner } from '@chia/core';
+import { Spinner } from '@mogua/core';
 import { RootState } from '../../modules/rootReducer';
 
 export default function AppLoading() {

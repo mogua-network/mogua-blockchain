@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Trans } from '@lingui/macro';
-import { ConfirmDialog } from '@chia/core';
+import { ConfirmDialog } from '@mogua/core';
 import { closeConnection } from '../../modules/fullnodeMessages';
 import useOpenDialog from '../../hooks/useOpenDialog';
 

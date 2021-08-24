@@ -1,5 +1,5 @@
 import React from 'react';
-import { Flex, Link } from '@chia/core';
+import { Flex, Link } from '@mogua/core';
 import { Trans } from '@lingui/macro';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import LayoutMain from '../layout/LayoutMain';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Trans } from '@lingui/macro';
-import { StateIndicator, State } from '@chia/core';
+import { StateIndicator, State } from '@mogua/core';
 import FarmCard from './FarmCard';
 import FarmCardNotAvailable from './FarmCardNotAvailable';
 import useFarmerStatus from '../../../hooks/useFarmerStatus';

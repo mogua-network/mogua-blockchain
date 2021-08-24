@@ -12,7 +12,7 @@ import {
   Form,
   FormBackButton,
   State,
-} from '@chia/core';
+} from '@mogua/core';
 import { useForm } from 'react-hook-form';
 import { ChevronRight as ChevronRightIcon } from '@material-ui/icons';
 import { Grid, Typography } from '@material-ui/core';
@@ -21,7 +21,7 @@ import usePlotNFTs from '../../hooks/usePlotNFTs';
 import { pwAbsorbRewards } from '../../modules/plotNFT';
 import { SubmitData } from './select/PlotNFTSelectPool';
 import PlotNFTName from './PlotNFTName';
-import { mojo_to_chia, chia_to_mojo } from '../../util/chia';
+import { mojo_to_chia, chia_to_mojo } from '../../util/mogua';
 import useStandardWallet from '../../hooks/useStandardWallet';
 
 type FormData = {
