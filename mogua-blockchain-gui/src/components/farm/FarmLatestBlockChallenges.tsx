@@ -65,7 +65,7 @@ export default function FarmLatestBlockChallenges() {
           *Want to explore Mogua’s blocks further? Check out{' '}
           <Link
             color="primary"
-            href="https://www.chiaexplorer.com/"
+            href="https://mogua.posat.io/"
             target="_blank"
           >
             Mogua Explorer

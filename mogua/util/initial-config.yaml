@@ -12,22 +12,31 @@ network_overrides: &network_overrides
     mainnet:
       NETWORK_TYPE: 0
       GENESIS_CHALLENGE: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "e8e245e2e6536e17fd7cbc2e3bd90de06f55362ee3c84cea5a68391e5bad7ef6"
-      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "e8e245e2e6536e17fd7cbc2e3bd90de06f55362ee3c84cea5a68391e5bad7ef6"
+      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "7b4cf0a5211765ab98718b523b16e811010bf242d312b227ccb338a65874be8b"
+      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "432acc92b1dfa1d48869c2524d0ca88828f15c9c5a551ca3a321e3cc6b299af8"
     testnet0:
-      GENESIS_CHALLENGE: 28a206a22e7e2060230c88ad149d81cc8e74bcf5e8e74aafcce8b8efe6181dbb
+      GENESIS_CHALLENGE: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       NETWORK_TYPE: 1
-      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "e8e245e2e6536e17fd7cbc2e3bd90de06f55362ee3c84cea5a68391e5bad7ef6"
-      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "e8e245e2e6536e17fd7cbc2e3bd90de06f55362ee3c84cea5a68391e5bad7ef6"
+      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
+      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
+    testnet1:
+      GENESIS_CHALLENGE: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      NETWORK_TYPE: 1
+      GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
+      GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "4d816059cdd0b562cba4ffa86358eda07261c931b92d91cd71b71fccd671070c"
+    
   config:
     mainnet:
       address_prefix: "mga"
+      default_full_node_port: 6935
     testnet0:
+      address_prefix: "tmga"
+    testnet1:
       address_prefix: "tmga"
 
 selected_network: &selected_network "mainnet"
-ALERTS_URL: https://download.moguanetwork.org/notify/mainnet_alert.txt
-MOGUA_ALERTS_PUBKEY: a88dc9b53e21088dcd53347eda53b533aec7cd5ff267c3968b1dfc0dc132e39575cf401f0d6bc9952404dbbfc30731c5
+ALERTS_URL: https://download.mogua.mog/notify/mainnet_alert.txt
+MOGUA_ALERTS_PUBKEY: a9555c79d2cf30e16c4ad1eeb72e4fd9194515522437f865e71794dfff407394328ce9b13c1884301ff1f3ac5e6065fa
 
 # public ssl ca is included in source code
 # Private ssl ca is used for trusted connections between machines user owns
@@ -51,6 +60,9 @@ logging: &logging
   log_filename: "log/debug.log"
   log_level: "INFO"  # Can be CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
   log_maxfilesrotation: 7 #  Max files in rotation. Default value 7 if the key is not set
+  log_syslog: False  # If True, outputs to SysLog host and port specified
+  log_syslog_host: "localhost"  # Send logging messages to a remote or local Unix syslog
+  log_syslog_port: 514  # UDP port of the remote or local Unix syslog
 
 harvester:
   # The harvester server (if run) will run on this port
@@ -219,7 +231,7 @@ full_node:
   # Only connect to peers who we have heard about in the last recent_peer_threshold seconds
   recent_peer_threshold: 6000
 
-  # Send to a Bluebox (sanitizing timelord) uncompact blocks once every
+  # Send to a Bluebox (sanatizing timelord) uncompact blocks once every
   # 'send_uncompact_interval' seconds. Set to 0 if you don't use this feature.
   send_uncompact_interval: 0
   # At every 'send_uncompact_interval' seconds, send blueboxes 'target_uncompact_proofs' proofs to be normalized.
@@ -237,7 +249,7 @@ full_node:
   # List of trusted DNS seeders to bootstrap from.
   # If you modify this, please change the hardcode as well from FullNode.set_server()
   dns_servers:
-    - "dns-introducer.moguanetwork.org"
+    - "dns-introducer.mogua.mog"
   farmer_peer:
       host: *self_hostname
       port: 6932
@@ -245,8 +257,8 @@ full_node:
       host: *self_hostname
       port: 6933
   introducer_peer:
-      host: introducer.moguanetwork.org  # Mogua AWS introducer IPv4/IPv6
-      port: 6935
+      host: introducer.mogua.mog  # Mogua AWS introducer IPv4/IPv6
+      port: 6936
   wallet_peer:
     host: *self_hostname
     port: 6930
@@ -283,7 +295,7 @@ ui:
 
 introducer:
   host: *self_hostname
-  port: 6934
+  port: 6936
   max_peers_to_send: 20
   # The introducer will only return peers who it has seen in the last
   # recent_peer_threshold seconds
@@ -299,6 +311,8 @@ introducer:
 wallet:
   port: 6930
   rpc_port: 6961
+
+  enable_profiler: False
 
   # The minimum height that we care about for our transactions. Set to zero
   # If we are restoring from private key and don't know the height.
@@ -327,8 +341,8 @@ wallet:
   recent_peer_threshold: 6000
 
   introducer_peer:
-    host: introducer.moguanetwork.org # Mogua AWS introducer IPv4/IPv6
-    port: 6935
+    host: introducer.mogua.mog # Mogua AWS introducer IPv4/IPv6
+    port: 6936
 
   ssl:
     private_crt:  "config/ssl/wallet/private_wallet.crt"
@@ -338,3 +352,5 @@ wallet:
 
   trusted_peers:
     trusted_node_1: "config/ssl/full_node/public_full_node.crt"
+
+  short_sync_blocks_behind_threshold: 20

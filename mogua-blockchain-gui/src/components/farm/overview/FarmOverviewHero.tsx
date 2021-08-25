@@ -36,7 +36,7 @@ export default function FarmOverviewHero() {
               where your farm will be once you add a plot.{' '}
               <Link
                 target="_blank"
-                href="https://github.com/Mogua-Network/mogua-blockchain/wiki/Network-Architecture"
+                href="https://github.com/Chia-Network/chia-blockchain/wiki/Network-Architecture"
               >
                 Learn more
               </Link>

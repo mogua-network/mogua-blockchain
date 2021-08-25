@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
-import icon from '../../assets/img/chia_circle.svg';
+import icon from '../../assets/img/mogua_circle.svg';
 
 const GlobalStyle = createGlobalStyle`
   body,
@@ -70,7 +70,7 @@ const Spacer = styled.div`
   margin-bottom: 1rem;
 `;
 
-const url = 'https://mogua.net';
+const url = 'https://mogua.mog';
 
 type Props = {
   version: string;
@@ -114,7 +114,7 @@ export default function About(props: Props) {
         </StyledLink>
         <StyledSubTitle>{description}</StyledSubTitle>
         <Spacer />
-        <div className="copyright">Copyright (c) 2021 Mogua Network</div>
+        <div className="copyright">Copyright (c) 2021 Chia Network</div>
         <Spacer />
         <VersionsTable>
           {versions?.electron && (

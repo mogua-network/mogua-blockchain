@@ -32,6 +32,11 @@ wallet_program_files = set(
         "mogua/wallet/puzzles/block_program_zero.clvm",
         "mogua/wallet/puzzles/test_generator_deserialize.clvm",
         "mogua/wallet/puzzles/test_multiple_generator_input_arguments.clvm",
+        "mogua/wallet/puzzles/p2_singleton.clvm",
+        "mogua/wallet/puzzles/pool_waitingroom_innerpuz.clvm",
+        "mogua/wallet/puzzles/pool_member_innerpuz.clvm",
+        "mogua/wallet/puzzles/singleton_launcher.clvm",
+        "mogua/wallet/puzzles/p2_singleton_or_delayed_puzhash.clvm",
     ]
 )
 

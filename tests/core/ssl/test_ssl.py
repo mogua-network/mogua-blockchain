@@ -9,7 +9,7 @@ from mogua.server.server import MoguaServer, ssl_context_for_client
 from mogua.server.ws_connection import WSMoguaConnection
 from mogua.ssl.create_ssl import generate_ca_signed_cert
 from mogua.types.peer_info import PeerInfo
-from mogua.util.block_tools import test_constants
+from tests.block_tools import test_constants
 from mogua.util.ints import uint16
 from tests.setup_nodes import (
     bt,

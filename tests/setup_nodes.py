@@ -18,7 +18,7 @@ from mogua.simulator.start_simulator import service_kwargs_for_full_node_simulat
 from mogua.timelord.timelord_launcher import kill_processes, spawn_process
 from mogua.types.peer_info import PeerInfo
 from mogua.util.bech32m import encode_puzzle_hash
-from mogua.util.block_tools import BlockTools, test_constants
+from tests.block_tools import BlockTools, test_constants
 from mogua.util.hash import std_hash
 from mogua.util.ints import uint16, uint32
 from mogua.util.keychain import Keychain, bytes_to_mnemonic

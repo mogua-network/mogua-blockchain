@@ -9,7 +9,7 @@ import useWallet from '../../hooks/useWallet';
 import TransactionType from '../../constants/TransactionType';
 import type Transaction from '../../types/Transaction';
 import type Peak from '../../types/Peak';
-import { mojo_to_chia } from '../../util/mogua';
+import { mog_to_mogua } from '../../util/mogua';
 import usePeak from '../../hooks/usePeak';
 import useCurrencyCode from '../../hooks/useCurrencyCode';
 import blockHeightToTimestamp from '../../util/blockHeightToTimestamp';
@@ -197,8 +197,8 @@ function prepareGraphPoints(
   const points = [
     {
       x: peak.height,
-      y: Math.max(0, mojo_to_chia(start)),
-      tooltip: mojo_to_chia(balance),
+      y: Math.max(0, mog_to_mogua(start)),
+      tooltip: mog_to_mogua(balance),
     },
   ];
 
@@ -209,8 +209,8 @@ function prepareGraphPoints(
 
     points.push({
       x: timestamp,
-      y: Math.max(0, mojo_to_chia(start)),
-      tooltip: mojo_to_chia(start),
+      y: Math.max(0, mog_to_mogua(start)),
+      tooltip: mog_to_mogua(start),
     });
   });
 

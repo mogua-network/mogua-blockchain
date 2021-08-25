@@ -29,7 +29,7 @@ import {
 import {
   Delete as DeleteIcon,
   Link as LinkIcon,
-  Payment as PaymentIcon,
+  // Payment as PaymentIcon,
 } from '@material-ui/icons';
 import type PlotNFT from '../../types/PlotNFT';
 import PlotNFTName from './PlotNFTName';
@@ -39,13 +39,12 @@ import usePlotNFTDetails from '../../hooks/usePlotNFTDetails';
 import useOpenDialog from '../../hooks/useOpenDialog';
 import PoolJoin from '../pool/PoolJoin';
 import PoolAbsorbRewards from '../pool/PoolAbsorbRewards';
-import { mojo_to_chia } from '../../util/mogua';
+import { mog_to_mogua } from '../../util/mogua';
 import { deleteUnconfirmedTransactions } from '../../modules/incoming';
 import PlotNFTGraph from './PlotNFTGraph';
 import PlotNFTGetPoolLoginLinkDialog from './PlotNFTGetPoolLoginLinkDialog';
-import PlotNFTPayoutInstructionsDialog from './PlotNFTPayoutInstructionsDialog';
+// import PlotNFTPayoutInstructionsDialog from './PlotNFTPayoutInstructionsDialog';
 import getPercentPointsSuccessfull from '../../util/getPercentPointsSuccessfull';
-import usePayoutAddress from '../../hooks/usePayoutAddress';
 
 const StyledCard = styled(Card)`
   display: flex;
@@ -90,8 +89,6 @@ export default function PlotNFTCard(props: Props) {
     },
   } = props;
 
-  const { loading, payoutAddress } = usePayoutAddress(nft);
-
   const percentPointsSuccessful24 = getPercentPointsSuccessfull(
     points_acknowledged_24h,
     points_found_24h,
@@ -135,9 +132,11 @@ export default function PlotNFTCard(props: Props) {
     openDialog(<PlotNFTGetPoolLoginLinkDialog nft={nft} />);
   }
 
+  /*
   function handlePayoutInstructions() {
     openDialog(<PlotNFTPayoutInstructionsDialog nft={nft} />);
   }
+  */
 
   const rows = [
     {
@@ -150,7 +149,7 @@ export default function PlotNFTCard(props: Props) {
       label: <Trans>Unclaimed Rewards</Trans>,
       value: (
         <UnitFormat
-          value={mojo_to_chia(BigInt(balance))}
+          value={mog_to_mogua(BigInt(balance))}
           state={State.SUCCESS}
         />
       ),
@@ -287,7 +286,7 @@ export default function PlotNFTCard(props: Props) {
                         </Typography>
                       </MenuItem>
                     )}
-                    {!isSelfPooling && (
+                    {/* !isSelfPooling && (
                       <MenuItem
                         onClick={() => {
                           onClose();
@@ -298,10 +297,10 @@ export default function PlotNFTCard(props: Props) {
                           <PaymentIcon />
                         </ListItemIcon>
                         <Typography variant="inherit" noWrap>
-                          <Trans>Edit Payout Instructions</Trans>
+                          <Trans>View Payout Instructions</Trans>
                         </Typography>
                       </MenuItem>
-                    )}
+                    ) */}
                     <MenuItem
                       onClick={() => {
                         onClose();
@@ -352,17 +351,6 @@ export default function PlotNFTCard(props: Props) {
             <Tooltip title={launcher_id} copyToClipboard>
               <Typography variant="body2" noWrap>
                 {launcher_id}
-              </Typography>
-            </Tooltip>
-          </Flex>
-
-          <Flex flexDirection="column" gap={1}>
-            <Typography variant="body1" color="textSecondary" noWrap>
-              <Trans>Payout Address</Trans>
-            </Typography>
-            <Tooltip title={payoutAddress} copyToClipboard>
-              <Typography variant="body2" noWrap>
-                {loading ? <Loading size="1rem" /> : payoutAddress ?? <Trans>Not Available</Trans>}
               </Typography>
             </Tooltip>
           </Flex>

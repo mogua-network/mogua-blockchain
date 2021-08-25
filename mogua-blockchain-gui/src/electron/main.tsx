@@ -10,8 +10,8 @@ import '../config/env';
 import handleSquirrelEvent from './handleSquirrelEvent';
 import config from '../config/config';
 import dev_config from '../dev_config';
-import chiaEnvironment from '../util/chiaEnvironment';
-import chiaConfig from '../util/config';
+import moguaEnvironment from '../util/moguaEnvironment';
+import moguaConfig from '../util/config';
 import { i18n } from '../config/locales';
 import About from '../components/about/About';
 import packageJson from '../../package.json';
@@ -96,7 +96,7 @@ if (!handleSquirrelEvent()) {
 
   const ensureCorrectEnvironment = () => {
     // check that the app is either packaged or running in the python venv
-    if (!chiaEnvironment.guessPackaged() && !('VIRTUAL_ENV' in process.env)) {
+    if (!moguaEnvironment.guessPackaged() && !('VIRTUAL_ENV' in process.env)) {
       console.log('App must be installed or in venv');
       app.quit();
       return false;
@@ -110,7 +110,7 @@ if (!handleSquirrelEvent()) {
   // if any of these checks return false, don't do any other initialization since the app is quitting
   if (ensureSingleInstance() && ensureCorrectEnvironment()) {
     // this needs to happen early in startup so all processes share the same global config
-    chiaConfig.loadConfig('mainnet');
+    moguaConfig.loadConfig('mainnet');
     global.sharedObj = { local_test };
 
     const exitPyProc = (e) => {};
@@ -169,7 +169,7 @@ if (!handleSquirrelEvent()) {
       });
 
       // don't show remote daeomn detials in the title bar
-      if (!chiaConfig.manageDaemonLifetime()) {
+      if (!moguaConfig.manageDaemonLifetime()) {
         mainWindow.webContents.on('did-finish-load', () => {
           mainWindow.setTitle(`${app.getName()} [${global.daemon_rpc_ws}]`);
         });
@@ -180,7 +180,7 @@ if (!handleSquirrelEvent()) {
       // }
       mainWindow.on('close', (e) => {
         // if the daemon isn't local we aren't going to try to start/stop it
-        if (decidedToClose || !chiaConfig.manageDaemonLifetime()) {
+        if (decidedToClose || !moguaConfig.manageDaemonLifetime()) {
           return;
         }
         e.preventDefault();
@@ -222,8 +222,8 @@ if (!handleSquirrelEvent()) {
       createWindow();
       app.applicationMenu = createMenu();
       // if the daemon isn't local we aren't going to try to start/stop it
-      if (chiaConfig.manageDaemonLifetime()) {
-        chiaEnvironment.startChiaDaemon();
+      if (moguaConfig.manageDaemonLifetime()) {
+        moguaEnvironment.startMoguaDaemon();
       }
     };
 
@@ -355,10 +355,10 @@ if (!handleSquirrelEvent()) {
         role: 'help',
         submenu: [
           {
-            label: i18n._(/* i18n */ { id: 'Mogua Blockchain Wiki' }),
+            label: i18n._(/* i18n */ { id: 'Mogua Blockchain Website' }),
             click: () => {
               openExternal(
-                'https://github.com/Mogua-Network/mogua-blockchain/wiki',
+                'https://mogua.mog',
               );
             },
           },
@@ -366,7 +366,7 @@ if (!handleSquirrelEvent()) {
             label: i18n._(/* i18n */ { id: 'Frequently Asked Questions' }),
             click: () => {
               openExternal(
-                'https://github.com/Mogua-Network/mogua-blockchain/wiki/FAQ',
+                'https://github.com/Chia-Network/chia-blockchain/wiki/FAQ',
               );
             },
           },
@@ -398,15 +398,15 @@ if (!handleSquirrelEvent()) {
             },
           },
           {
-            label: i18n._(/* i18n */ { id: 'Chat on KeyBase' }),
+            label: i18n._(/* i18n */ { id: 'Chat on Discord' }),
             click: () => {
-              openExternal('https://keybase.io/team/chia_network.public');
+              openExternal('https://discord.gg/3vwEfD2kws');
             },
           },
           {
             label: i18n._(/* i18n */ { id: 'Follow on Twitter' }),
             click: () => {
-              openExternal('https://twitter.com/chia_project');
+              openExternal('https://twitter.com/green_mogecoin');
             },
           },
         ],
