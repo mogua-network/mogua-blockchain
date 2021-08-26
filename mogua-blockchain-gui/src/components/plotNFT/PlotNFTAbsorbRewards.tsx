@@ -21,7 +21,7 @@ import usePlotNFTs from '../../hooks/usePlotNFTs';
 import { pwAbsorbRewards } from '../../modules/plotNFT';
 import { SubmitData } from './select/PlotNFTSelectPool';
 import PlotNFTName from './PlotNFTName';
-import { mog_to_mogua, mogua_to_mog } from '../../util/mogua';
+import { mojo_to_mogua, mogua_to_mojo } from '../../util/mogua';
 import useStandardWallet from '../../hooks/useStandardWallet';
 
 type FormData = {
@@ -64,13 +64,13 @@ export default function PlotNFTAbsorbRewards(props: Props) {
 
       const { fee } = data;
 
-      const feeDogs = mogua_to_mog(fee);
+      const feeMojos = mogua_to_mojo(fee);
 
       if (walletId === undefined || !address) {
         return;
       }
 
-      await dispatch(pwAbsorbRewards(walletId, feeDogs));
+      await dispatch(pwAbsorbRewards(walletId, feeMojos));
 
       if (history.length) {
         history.goBack();
@@ -137,7 +137,7 @@ export default function PlotNFTAbsorbRewards(props: Props) {
               <Trans>
                 You will recieve{' '}
                 <UnitFormat
-                  value={mog_to_mogua(BigInt(balance))}
+                  value={mojo_to_mogua(BigInt(balance))}
                   display="inline"
                   state={State.SUCCESS}
                 />{' '}

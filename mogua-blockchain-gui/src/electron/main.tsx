@@ -355,10 +355,10 @@ if (!handleSquirrelEvent()) {
         role: 'help',
         submenu: [
           {
-            label: i18n._(/* i18n */ { id: 'Mogua Blockchain Website' }),
+            label: i18n._(/* i18n */ { id: 'Mogua Blockchain Wiki' }),
             click: () => {
               openExternal(
-                'https://mogua.mog',
+                'https://github.com/Mogua-Network/mogua-blockchain/wiki',
               );
             },
           },
@@ -366,7 +366,7 @@ if (!handleSquirrelEvent()) {
             label: i18n._(/* i18n */ { id: 'Frequently Asked Questions' }),
             click: () => {
               openExternal(
-                'https://github.com/Chia-Network/chia-blockchain/wiki/FAQ',
+                'https://github.com/Mogua-Network/mogua-blockchain/wiki/FAQ',
               );
             },
           },
@@ -400,13 +400,13 @@ if (!handleSquirrelEvent()) {
           {
             label: i18n._(/* i18n */ { id: 'Chat on Discord' }),
             click: () => {
-              openExternal('https://discord.gg/3vwEfD2kws');
+              openExternal('https://discord.gg/TgJyxsEFFc');
             },
           },
           {
             label: i18n._(/* i18n */ { id: 'Follow on Twitter' }),
             click: () => {
-              openExternal('https://twitter.com/green_mogecoin');
+              openExternal('https://twitter.com/mogua_project');
             },
           },
         ],

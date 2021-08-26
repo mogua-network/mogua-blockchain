@@ -3,7 +3,7 @@ import { Trans } from '@lingui/macro';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../../../modules/rootReducer';
 import FarmCard from './FarmCard';
-import { mog_to_mogua } from '../../../util/mogua';
+import { mojo_to_mogua } from '../../../util/mogua';
 import useCurrencyCode from '../../../hooks/useCurrencyCode';
 
 export default function FarmCardBlockRewards() {
@@ -26,7 +26,7 @@ export default function FarmCardBlockRewards() {
       const val =
         BigInt(farmerRewardAmount.toString()) +
         BigInt(poolRewardAmount.toString());
-      return mog_to_mogua(val);
+      return mojo_to_mogua(val);
     }
   }, [farmerRewardAmount, poolRewardAmount]);
 

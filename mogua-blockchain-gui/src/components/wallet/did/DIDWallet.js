@@ -31,7 +31,7 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Tooltip } from '@material-ui/core';
 import HelpIcon from '@material-ui/icons/Help';
-import { mog_to_mogua_string } from '../../../util/mogua';
+import { mojo_to_mogua_string } from '../../../util/mogua';
 import { useForm, Controller, useFieldArray } from 'react-hook-form';
 import { openDialog } from '../../../modules/dialog';
 import useCurrencyCode from '../../../hooks/useCurrencyCode';
@@ -474,7 +474,7 @@ const BalanceCardSubSection = (props) => {
           </Box>
           <Box>
             <Typography variant="subtitle1">
-              {mog_to_mogua_string(props.balance)} {currencyCode}
+              {mojo_to_mogua_string(props.balance)} {currencyCode}
             </Typography>
           </Box>
         </Box>

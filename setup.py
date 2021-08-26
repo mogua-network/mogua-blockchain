@@ -1,10 +1,10 @@
 from setuptools import setup
 
 dependencies = [
-    "blspy==1.0.2",  # Signature library
+    "blspy==1.0.5",  # Signature library
     "chiavdf==1.0.2",  # timelord and vdf verification
     "chiabip158==1.0",  # bip158-style wallet filters
-    "chiapos==1.0.3",  # proof of space
+    "chiapos==1.0.4",  # proof of space
     "clvm==0.9.7",
     "clvm_rs==0.1.8",
     "clvm_tools==0.4.3",
@@ -42,10 +42,8 @@ dev_dependencies = [
 
 kwargs = dict(
     name="mogua-blockchain",
-    author="Lion Ethan",
-    author_email="ethan@mogua.mog",
     description="Mogua blockchain full node, farmer, timelord, and wallet.",
-    url="https://mogua.mog/",
+    url="https://moguanetwork.org/",
     license="Apache License",
     python_requires=">=3.7, <4",
     keywords="mogua blockchain node",
@@ -103,7 +101,7 @@ kwargs = dict(
     },
     package_data={
         "mogua": ["pyinstaller.spec"],
-        "mogua.wallet.puzzles": ["*.clvm", "*.clvm.hex"],
+        "": ["*.clvm", "*.clvm.hex", "*.clib", "*.clinc", "*.clsp"],
         "mogua.util": ["initial-*.yaml", "english.txt"],
         "mogua.ssl": ["mogua_ca.crt", "mogua_ca.key", "dst_root_ca.pem"],
         "mozilla-ca": ["cacert.pem"],

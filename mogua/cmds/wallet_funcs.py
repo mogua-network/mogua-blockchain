@@ -3,7 +3,7 @@ import sys
 import time
 from datetime import datetime
 from decimal import Decimal
-from typing import Callable, List, Optional, Tuple
+from typing import Callable, List, Optional, Tuple, Dict
 
 import aiohttp
 
@@ -120,13 +120,13 @@ def wallet_coin_unit(typ: WalletType, address_prefix: str) -> Tuple[str, int]:
         return "", units["colouredcoin"]
     if typ in [WalletType.STANDARD_WALLET, WalletType.POOLING_WALLET, WalletType.MULTI_SIG, WalletType.RATE_LIMITED]:
         return address_prefix, units["mogua"]
-    return "", units["mog"]
+    return "", units["mojo"]
 
 
 def print_balance(amount: int, scale: int, address_prefix: str) -> str:
     ret = f"{amount/scale} {address_prefix} "
     if scale > 1:
-        ret += f"({amount} mog)"
+        ret += f"({amount} mojo)"
     return ret
 
 
@@ -190,7 +190,7 @@ async def get_wallet(wallet_client: WalletRpcClient, fingerprint: int = None) ->
             use_cloud = True
             if "backup_path" in log_in_response:
                 path = log_in_response["backup_path"]
-                print(f"Backup file from backup.mogua.mog downloaded and written to: {path}")
+                print(f"Backup file from backup.moguanetwork.org downloaded and written to: {path}")
                 val = input("Do you want to use this file to restore from backup? (Y/N) ")
                 if val.lower() == "y":
                     log_in_response = await wallet_client.log_in_and_restore(fingerprint, path)
@@ -223,7 +223,9 @@ async def get_wallet(wallet_client: WalletRpcClient, fingerprint: int = None) ->
     return wallet_client, fingerprint
 
 
-async def execute_with_wallet(wallet_rpc_port: int, fingerprint: int, extra_params: dict, function: Callable) -> None:
+async def execute_with_wallet(
+    wallet_rpc_port: Optional[int], fingerprint: int, extra_params: Dict, function: Callable
+) -> None:
     try:
         config = load_config(DEFAULT_ROOT_PATH, "config.yaml")
         self_hostname = config["self_hostname"]

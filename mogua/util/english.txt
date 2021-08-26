@@ -514,7 +514,7 @@ divorce
 dizzy
 doctor
 document
-mog
+dog
 doll
 dolphin
 domain
