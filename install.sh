@@ -116,13 +116,13 @@ python -m pip install --upgrade pip
 python -m pip install wheel
 #if [ "$INSTALL_PYTHON_VERSION" = "3.8" ]; then
 # This remains in case there is a diversion of binary wheels
-python -m pip install --extra-index-url https://pypi.chia.net/simple/ miniupnpc==2.2.2
-python -m pip install -e . --extra-index-url https://pypi.chia.net/simple/
+python -m pip install --extra-index-url https://pypi.mogua.net/simple/ miniupnpc==2.2.2
+python -m pip install -e . --extra-index-url https://pypi.mogua.net/simple/
 
 echo ""
 echo "Mogua blockchain install.sh complete."
-echo "For assistance join us on Discord in the #support chat channel:"
-echo "https://discord.gg/TgJyxsEFFc"
+echo "For assistance join us on Keybase in the #testnet chat channel:"
+echo "https://keybase.io/team/mogua_network.public"
 echo ""
 echo "Try the Quick Start Guide to running mogua-blockchain:"
 echo "https://github.com/Mogua-Network/mogua-blockchain/wiki/Quick-Start-Guide"

@@ -157,7 +157,7 @@ class WSMoguaConnection:
                 raise ProtocolError(Err.INVALID_HANDSHAKE)
 
             inbound_handshake = Handshake.from_bytes(message.data)
-            if inbound_handshake.network_id != 'mogua-' + network_id:
+            if inbound_handshake.network_id != 'mogua-' +  network_id:
                 raise ProtocolError(Err.INCOMPATIBLE_NETWORK_ID)
             outbound_handshake = make_msg(
                 ProtocolMessageTypes.handshake,
@@ -273,7 +273,7 @@ class WSMoguaConnection:
             request_start_t = time.time()
             result = await self.create_request(msg, timeout)
             self.log.debug(
-                f"Time for request {attr_name}: {self.get_peer_info()} = {time.time() - request_start_t}, "
+                f"Time for request {attr_name}: {self.get_peer_logging()} = {time.time() - request_start_t}, "
                 f"None? {result is None}"
             )
             if result is not None:
@@ -468,3 +468,12 @@ class WSMoguaConnection:
         connection_host = result[0]
         port = self.peer_server_port if self.peer_server_port is not None else self.peer_port
         return PeerInfo(connection_host, port)
+
+    def get_peer_logging(self) -> PeerInfo:
+        info: Optional[PeerInfo] = self.get_peer_info()
+        if info is None:
+            # in this case, we will use self.peer_host which is friendlier for logging
+            port = self.peer_server_port if self.peer_server_port is not None else self.peer_port
+            return PeerInfo(self.peer_host, port)
+        else:
+            return info

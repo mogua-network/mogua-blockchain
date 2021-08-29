@@ -1,5 +1,5 @@
 from typing import List, Tuple
-from chiabip158 import PyBIP158
+from moguabip158 import PyBIP158
 
 from mogua.types.blockchain_format.coin import Coin
 from mogua.types.blockchain_format.sized_bytes import bytes32

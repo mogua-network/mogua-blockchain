@@ -398,9 +398,9 @@ if (!handleSquirrelEvent()) {
             },
           },
           {
-            label: i18n._(/* i18n */ { id: 'Chat on Discord' }),
+            label: i18n._(/* i18n */ { id: 'Chat on KeyBase' }),
             click: () => {
-              openExternal('https://discord.gg/TgJyxsEFFc');
+              openExternal('https://keybase.io/team/mogua_network.public');
             },
           },
           {

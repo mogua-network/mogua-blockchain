@@ -1,3 +1,4 @@
+import sys
 from typing import Optional
 
 import click
@@ -48,12 +49,32 @@ def get_transaction_cmd(wallet_rpc_port: Optional[int], fingerprint: int, id: in
     required=True,
 )
 @click.option("--verbose", "-v", count=True, type=int)
-def get_transactions_cmd(wallet_rpc_port: Optional[int], fingerprint: int, id: int, offset: int, verbose: bool) -> None:
-    extra_params = {"id": id, "verbose": verbose, "offset": offset}
+@click.option(
+    "--paginate/--no-paginate",
+    default=None,
+    help="Prompt for each page of data.  Defaults to true for interactive consoles, otherwise false.",
+)
+def get_transactions_cmd(
+    wallet_rpc_port: Optional[int],
+    fingerprint: int,
+    id: int,
+    offset: int,
+    verbose: bool,
+    paginate: Optional[bool],
+) -> None:
+    extra_params = {"id": id, "verbose": verbose, "offset": offset, "paginate": paginate}
     import asyncio
     from .wallet_funcs import execute_with_wallet, get_transactions
 
     asyncio.run(execute_with_wallet(wallet_rpc_port, fingerprint, extra_params, get_transactions))
+
+    # The flush/close avoids output like below when piping through `head -n 1`
+    # which will close stdout.
+    #
+    # Exception ignored in: <_io.TextIOWrapper name='<stdout>' mode='w' encoding='utf-8'>
+    # BrokenPipeError: [Errno 32] Broken pipe
+    sys.stdout.flush()
+    sys.stdout.close()
 
 
 @wallet_cmd.command("send", short_help="Send mogua to another wallet")
@@ -66,17 +87,17 @@ def get_transactions_cmd(wallet_rpc_port: Optional[int], fingerprint: int, id: i
 )
 @click.option("-f", "--fingerprint", help="Set the fingerprint to specify which wallet to use", type=int)
 @click.option("-i", "--id", help="Id of the wallet to use", type=int, default=1, show_default=True, required=True)
-@click.option("-a", "--amount", help="How much mogua to send, in MGA", type=str, required=True)
+@click.option("-a", "--amount", help="How much mogua to send, in XCH", type=str, required=True)
 @click.option(
     "-m",
     "--fee",
-    help="Set the fees for the transaction, in MGA",
+    help="Set the fees for the transaction, in XCH",
     type=str,
     default="0",
     show_default=True,
     required=True,
 )
-@click.option("-t", "--address", help="Address to send the MGA", type=str, required=True)
+@click.option("-t", "--address", help="Address to send the XCH", type=str, required=True)
 @click.option(
     "-o", "--override", help="Submits transaction without checking for unusual values", is_flag=True, default=False
 )

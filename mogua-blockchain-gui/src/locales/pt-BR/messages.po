@@ -8,7 +8,7 @@ msgstr ""
 "Language: pt_BR\n"
 "Project-Id-Version: mogua-blockchain\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-07-17 00:01\n"
+"PO-Revision-Date: 2021-07-26 15:12\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese, Brazilian\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -29,6 +29,10 @@ msgstr "Quer explorar os blocos de Mogua mais à fundo? Dê uma olhada no <0>Mog
 #: src/components/plot/add/PlotAddNFT.tsx:123
 msgid "+ Add New Plot NFT"
 msgstr "+ Adicionar novo lote NFT"
+
+#: src/components/wallet/Wallets.tsx:122
+msgid "+ Add Wallet"
+msgstr ""
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:94
 #~ msgid "0 automatically chooses bucket count"
@@ -144,7 +148,7 @@ msgid "Are you sure you want to delete the plot? The plot cannot be recovered."
 msgstr "Tem certeza que deseja deletar o plot? O plot não poderá ser recuperado."
 
 #: src/components/plotNFT/PlotNFTCard.tsx:125
-#: src/components/wallet/standard/WalletStandard.tsx:632
+#: src/components/wallet/standard/WalletStandard.tsx:633
 msgid "Are you sure you want to delete unconfirmed transactions?"
 msgstr "Tem certeza que deseja excluir as transações não confirmadas?"
 
@@ -306,8 +310,8 @@ msgid "Change Pool"
 msgstr "Trocar Bolão"
 
 #: src/electron/main.tsx:401
-msgid "Chat on Discord"
-msgstr "Chat no Discord"
+msgid "Chat on KeyBase"
+msgstr "Chat no KeyBase"
 
 #: src/electron/main.tsx:419
 msgid "Mogua"
@@ -317,7 +321,7 @@ msgstr "Mogua"
 msgid "Mogua Blockchain Wiki"
 msgstr "Wiki da Mogua Blockchain"
 
-#: src/components/wallet/standard/WalletStandard.tsx:647
+#: src/components/wallet/standard/WalletStandard.tsx:649
 msgid "Mogua Wallet"
 msgstr "Carteira Mogua"
 
@@ -383,7 +387,7 @@ msgid "Confirm Disconnect"
 msgstr "Confirmar desconexão"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:121
-#: src/components/wallet/standard/WalletStandard.tsx:628
+#: src/components/wallet/standard/WalletStandard.tsx:629
 msgid "Confirmation"
 msgstr "Confirmação"
 
@@ -596,7 +600,7 @@ msgstr "Atraso"
 #: src/components/plotNFT/PlotNFTCard.tsx:122
 #: src/components/selectKey/SelectKey.tsx:67
 #: src/components/selectKey/SelectKey.tsx:109
-#: src/components/wallet/standard/WalletStandard.tsx:629
+#: src/components/wallet/standard/WalletStandard.tsx:630
 msgid "Delete"
 msgstr "Apagar"
 
@@ -606,7 +610,7 @@ msgid "Delete Plot"
 msgstr "Apagar Lote"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:315
-#: src/components/wallet/standard/WalletStandard.tsx:663
+#: src/components/wallet/standard/WalletStandard.tsx:674
 msgid "Delete Unconfirmed Transactions"
 msgstr "Apagar transações não confirmadas"
 
@@ -822,7 +826,7 @@ msgid "Fee"
 msgstr "Taxa"
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
-#~ msgid "Fee (TMGA)"
+#~ msgid "Fee (TXCH)"
 #~ msgstr ""
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
@@ -1026,16 +1030,16 @@ msgid "Join a Pool"
 msgstr "Juntar-se ao bolão"
 
 #: src/components/plot/add/PlotAddNFT.tsx:44
-msgid "Join a pool and get consistent MGA farming rewards. The average returns are the same, but it is much less volatile."
-msgstr "Junte-se a um bolão e obtenha recompensas consistentes de cultivo em MGA. Os retornos médios são iguais, mas são muito menos voláteis."
+msgid "Join a pool and get consistent XCH farming rewards. The average returns are the same, but it is much less volatile."
+msgstr "Junte-se a um bolão e obtenha recompensas consistentes de cultivo em XCH. Os retornos médios são iguais, mas são muito menos voláteis."
 
 #: src/components/plotNFT/PlotNFTAdd.tsx:59
-msgid "Join a pool and get consistent MGA farming rewards. The average returns are the same, but it is much less volatile. Assign plots to a plot NFT. You can easily switch pools without having to re-plot."
-msgstr "Junte-se a um bolão e obtenha recompensas consistentes de cultivo em MGA. Os retornos médios são iguais, mas são muito menos voláteis. Atribua seus lotes a um lote NFT. Você pode facilmente trocar de bolão sem precisar recriar seus lotes."
+msgid "Join a pool and get consistent XCH farming rewards. The average returns are the same, but it is much less volatile. Assign plots to a plot NFT. You can easily switch pools without having to re-plot."
+msgstr "Junte-se a um bolão e obtenha recompensas consistentes de cultivo em XCH. Os retornos médios são iguais, mas são muito menos voláteis. Atribua seus lotes a um lote NFT. Você pode facilmente trocar de bolão sem precisar recriar seus lotes."
 
 #: src/components/plot/add/PlotAddNFT.tsx:133
-msgid "Join a pool and get more consistent MGA farming rewards. Create a plot NFT and assign your new plots to a group."
-msgstr "Junte-se a um bolão e obtenha recompensas de cultivo MGA mais consistentes. Crie um lote NFT e atribua seu lote a um bolão."
+msgid "Join a pool and get more consistent XCH farming rewards. Create a plot NFT and assign your new plots to a group."
+msgstr "Junte-se a um bolão e obtenha recompensas de cultivo XCH mais consistentes. Crie um lote NFT e atribua seu lote a um bolão."
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:63
 msgid "K-Size"
@@ -1084,7 +1088,7 @@ msgstr "Visualização em lista"
 msgid "Loading Plot NFTs"
 msgstr "Carregando Lote NFTs"
 
-#: src/components/wallet/Wallets.tsx:172
+#: src/components/wallet/Wallets.tsx:111
 msgid "Loading list of wallets"
 msgstr "Carregando lista de carteiras"
 
@@ -1269,8 +1273,8 @@ msgid "Not found Plots"
 msgstr "Lotes não encontrados"
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:184
-msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25MGA reward for pooling plots."
-msgstr "Note que isso não muda seus endereços de pagamento no bolão. Isso afeta apenas os lotes de formato antigo e a recompensa 0.25MGA em lotes de bolão."
+msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25XCH reward for pooling plots."
+msgstr "Note que isso não muda seus endereços de pagamento no bolão. Isso afeta apenas os lotes de formato antigo e a recompensa 0.25XCH em lotes de bolão."
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:118
 #: src/components/plotNFT/PlotNFTCard.tsx:160
@@ -1840,8 +1844,8 @@ msgid "Self Pooling"
 msgstr "Bolão próprio"
 
 #: src/components/plotNFT/select/PlotNFTSelectBase.tsx:105
-msgid "Self pool. When you win a block you will earn MGA rewards."
-msgstr "Bolão próprio. Quando você ganhar um bloco, você receberá recompensas em MGA."
+msgid "Self pool. When you win a block you will earn XCH rewards."
+msgstr "Bolão próprio. Quando você ganhar um bloco, você receberá recompensas em XCH."
 
 #: src/components/trading/CreateOffer.jsx:164
 #: src/components/trading/TradesTable.tsx:47
@@ -1893,8 +1897,8 @@ msgid "Skips adding a final directory to harvester for farming"
 msgstr "Ignorar adicionando um diretório final para os coletores da fazenda"
 
 #: src/components/pool/PoolHero.tsx:26
-msgid "Smooth out your MGA farming rewards by joining a pool."
-msgstr "Suavize suas recompensas de coleta MGA ao se juntar a um bolão."
+msgid "Smooth out your XCH farming rewards by joining a pool."
+msgstr "Suavize suas recompensas de coleta XCH ao se juntar a um bolão."
 
 #: src/components/plotNFT/PlotNFTGetPoolLoginLinkDialog.tsx:60
 msgid "Something went wrong"
@@ -1945,7 +1949,7 @@ msgstr "Estado"
 #: src/components/trading/TradingOverview.jsx:128
 #: src/components/wallet/WalletHistory.tsx:55
 #: src/components/wallet/WalletStatusCard.tsx:22
-#: src/components/wallet/Wallets.tsx:118
+#: src/components/wallet/Wallets.tsx:52
 msgid "Status"
 msgstr "Estado"
 
@@ -2006,23 +2010,23 @@ msgstr "Sincronizando <0/>/<1/>"
 #~ msgstr "Syncing {progress}/{tip}"
 
 #: src/components/farm/card/FarmCardBlockRewards.tsx:15
-#~ msgid "TMGA Block Rewards"
+#~ msgid "TXCH Block Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardCoinbaseRewards.tsx:12
-#~ msgid "TMGA Farming Rewards"
+#~ msgid "TXCH Farming Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardFeesReward.tsx:12
-#~ msgid "TMGA Fees Collected"
+#~ msgid "TXCH Fees Collected"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardUserFees.tsx:12
-#~ msgid "TMGA User Fees"
-#~ msgstr "TMGA User Fees"
+#~ msgid "TXCH User Fees"
+#~ msgstr "TXCH User Fees"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:15
-#~ msgid "TMGA User Transaction Fees"
+#~ msgid "TXCH User Transaction Fees"
 #~ msgstr ""
 
 #: src/components/pool/PoolInfo.tsx:37
@@ -2099,8 +2103,8 @@ msgid "The total transactions fees in this block. Rewarded to the farmer."
 msgstr "As taxas de transações totais neste bloco. Recompensado ao fazendeiro."
 
 #: src/components/plotNFT/PlotNFTPayoutInstructionsDialog.tsx:102
-msgid "These are the instructions for how the farmer wants to get paid. By default this will be an MGA address, but it can be set to any string with a size of less than 1024 characters, so it can represent another blockchain or payment system identifier."
-msgstr "Estas são as instruções sobre como o fazendeiro quer ser pago. Por padrão este será um endereço MGA, mas pode ser definido como qualquer sequência de caracteres com menos de 1024 caracteres, assim, ele pode representar outro blockchain ou identificador do sistema de pagamento."
+msgid "These are the instructions for how the farmer wants to get paid. By default this will be an XCH address, but it can be set to any string with a size of less than 1024 characters, so it can represent another blockchain or payment system identifier."
+msgstr "Estas são as instruções sobre como o fazendeiro quer ser pago. Por padrão este será um endereço XCH, mas pode ser definido como qualquer sequência de caracteres com menos de 1024 caracteres, assim, ele pode representar outro blockchain ou identificador do sistema de pagamento."
 
 #: src/components/plot/PlotsFailed.tsx:40
 msgid "These plots are invalid, you might want to delete them."
@@ -2377,7 +2381,7 @@ msgid "Waiting for the transaction to be confirmed"
 msgstr "Aguardando confirmação da transação"
 
 #: src/components/pool/PoolOverview.tsx:185
-#: src/components/wallet/standard/WalletStandard.tsx:674
+#: src/components/wallet/standard/WalletStandard.tsx:656
 msgid "Wallet Status:"
 msgstr "Status da carteira:"
 
@@ -2410,7 +2414,7 @@ msgstr "Status da carteira:"
 #~ msgstr ""
 
 #: src/components/dashboard/DashboardSideBar.tsx:45
-#: src/components/wallet/Wallets.tsx:173
+#: src/components/wallet/Wallets.tsx:112
 msgid "Wallets"
 msgstr "Carteiras"
 
@@ -2562,16 +2566,16 @@ msgid "[Error 22] File not found. Most likely one of the plot folders in your co
 msgstr "[Erro 22] Arquivo não encontrado. Provavelmente, uma das pastas de plotagem em seu config.yaml está com problemas."
 
 #: src/components/wallet/WalletStatusCard.tsx:41
-#: src/components/wallet/Wallets.tsx:143
+#: src/components/wallet/Wallets.tsx:77
 msgid "connections:"
 msgstr "conexões:"
 
 #: src/components/wallet/WalletStatusCard.tsx:33
-#: src/components/wallet/Wallets.tsx:135
+#: src/components/wallet/Wallets.tsx:69
 msgid "height:"
 msgstr "altura:"
 
-#: src/components/wallet/Wallets.tsx:129
+#: src/components/wallet/Wallets.tsx:63
 msgid "not synced"
 msgstr "não sincronizado"
 
@@ -2580,17 +2584,17 @@ msgid "p2_singleton_puzzle_hash is not defined"
 msgstr "p2_singleton_puzzle_hash não está definido"
 
 #: src/components/wallet/WalletStatusCard.tsx:27
-#: src/components/wallet/Wallets.tsx:123
+#: src/components/wallet/Wallets.tsx:57
 msgid "status:"
 msgstr "status:"
 
 #: src/components/wallet/WalletStatusCard.tsx:29
-#: src/components/wallet/Wallets.tsx:128
+#: src/components/wallet/Wallets.tsx:62
 msgid "synced"
 msgstr "sincronizado"
 
 #: src/components/wallet/WalletStatusCard.tsx:29
-#: src/components/wallet/Wallets.tsx:127
+#: src/components/wallet/Wallets.tsx:61
 msgid "syncing"
 msgstr "sincronizando"
 
@@ -2621,4 +2625,3 @@ msgstr "{currencyCode} Taxas de transação do usuário"
 #: src/components/core/components/Amount/Amount.tsx:80
 msgid "{mojo, plural, one {mojo} other {mojos}}"
 msgstr "{mojo, plural, one {mojo} other {mojos}}"
-

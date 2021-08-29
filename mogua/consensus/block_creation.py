@@ -5,7 +5,7 @@ from typing import Callable, Dict, List, Optional, Tuple
 
 import blspy
 from blspy import G1Element, G2Element
-from chiabip158 import PyBIP158
+from moguabip158 import PyBIP158
 
 from mogua.consensus.block_record import BlockRecord
 from mogua.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
@@ -127,7 +127,11 @@ def create_foliage(
         if block_generator is not None:
             generator_block_heights_list = block_generator.block_height_list()
             result: NPCResult = get_name_puzzle_conditions(
-                block_generator, constants.MAX_BLOCK_COST_CLVM, cost_per_byte=constants.COST_PER_BYTE, safe_mode=True
+                block_generator,
+                constants.MAX_BLOCK_COST_CLVM,
+                cost_per_byte=constants.COST_PER_BYTE,
+                safe_mode=True,
+                rust_checker=height > constants.RUST_CONDITION_CHECKER,
             )
             cost = calculate_cost_of_program(block_generator.program, result, constants.COST_PER_BYTE)
 

@@ -8,7 +8,7 @@ msgstr ""
 "Language: ko_KR\n"
 "Project-Id-Version: mogua-blockchain\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-07-17 00:02\n"
+"PO-Revision-Date: 2021-07-26 15:12\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
@@ -30,6 +30,10 @@ msgstr "Mogua의 블록을 더 탐험하고 싶으십니까? 오픈 소스 개�
 msgid "+ Add New Plot NFT"
 msgstr ""
 
+#: src/components/wallet/Wallets.tsx:122
+msgid "+ Add Wallet"
+msgstr ""
+
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:94
 #~ msgid "0 automatically chooses bucket count"
 #~ msgstr ""
@@ -45,7 +49,7 @@ msgstr "수확기는 플롯이 실제 저장되어 구동되는 기기입니다.
 #: src/electron/main.tsx:422
 #: src/electron/main.tsx:509
 msgid "About Mogua Blockchain"
-msgstr "Mogua 블록체인에 대하여"
+msgstr "치아 블록체인에 대하여"
 
 #: src/components/trading/ViewOffer.jsx:74
 msgid "Accept"
@@ -144,7 +148,7 @@ msgid "Are you sure you want to delete the plot? The plot cannot be recovered."
 msgstr "정말로 플롯을 삭제하시겠습니까? 삭제된 플롯은 복구되지 않습니다."
 
 #: src/components/plotNFT/PlotNFTCard.tsx:125
-#: src/components/wallet/standard/WalletStandard.tsx:632
+#: src/components/wallet/standard/WalletStandard.tsx:633
 msgid "Are you sure you want to delete unconfirmed transactions?"
 msgstr ""
 
@@ -306,20 +310,20 @@ msgid "Change Pool"
 msgstr ""
 
 #: src/electron/main.tsx:401
-msgid "Chat on Discord"
+msgid "Chat on KeyBase"
 msgstr "키베이스에서 채팅하기"
 
 #: src/electron/main.tsx:419
 msgid "Mogua"
-msgstr "Mogua"
+msgstr "치아"
 
 #: src/electron/main.tsx:358
 msgid "Mogua Blockchain Wiki"
-msgstr "Mogua 블록체인 위키"
+msgstr "치아 블록체인 위키"
 
-#: src/components/wallet/standard/WalletStandard.tsx:647
+#: src/components/wallet/standard/WalletStandard.tsx:649
 msgid "Mogua Wallet"
-msgstr "Mogua 지갑"
+msgstr "치아 지갑"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:36
 msgid "Choose Number of Plots"
@@ -383,7 +387,7 @@ msgid "Confirm Disconnect"
 msgstr "연결 해제 확인"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:121
-#: src/components/wallet/standard/WalletStandard.tsx:628
+#: src/components/wallet/standard/WalletStandard.tsx:629
 msgid "Confirmation"
 msgstr ""
 
@@ -596,7 +600,7 @@ msgstr "지연"
 #: src/components/plotNFT/PlotNFTCard.tsx:122
 #: src/components/selectKey/SelectKey.tsx:67
 #: src/components/selectKey/SelectKey.tsx:109
-#: src/components/wallet/standard/WalletStandard.tsx:629
+#: src/components/wallet/standard/WalletStandard.tsx:630
 msgid "Delete"
 msgstr "삭제"
 
@@ -606,7 +610,7 @@ msgid "Delete Plot"
 msgstr "플롯 삭제"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:315
-#: src/components/wallet/standard/WalletStandard.tsx:663
+#: src/components/wallet/standard/WalletStandard.tsx:674
 msgid "Delete Unconfirmed Transactions"
 msgstr ""
 
@@ -698,7 +702,7 @@ msgstr ""
 
 #: src/components/wallet/WalletImport.tsx:147
 msgid "Enter the 24 word mnemonic that you have saved in order to restore your Mogua wallet."
-msgstr "Mogua 지갑을 복구하기 위해서 24자로 된 니모닉 단어를 입력하세요."
+msgstr "치아 지갑을 복구하기 위해서 24자로 된 니모닉 단어를 입력하세요."
 
 #: src/components/farm/FarmerStatus.tsx:21
 #: src/components/farm/FarmerStatus.tsx:22
@@ -712,7 +716,7 @@ msgstr "오류"
 
 #: src/components/wallet/standard/WalletStandard.tsx:456
 msgid "Error: Cannot send mogua to coloured address. Please enter a mogua address."
-msgstr "에러: Mogua를 컬러드 주소로 보낼 수 없습니다. Mogua 주소를 입력하세요."
+msgstr "에러: 치아를 컬러드 주소로 보낼 수 없습니다. 치아 주소를 입력하세요."
 
 #: src/components/fullNode/card/FullNodeEstimatedNetworkSpace.tsx:20
 msgid "Estimated Network Space"
@@ -822,7 +826,7 @@ msgid "Fee"
 msgstr "수수료"
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
-#~ msgid "Fee (TMGA)"
+#~ msgid "Fee (TXCH)"
 #~ msgstr ""
 
 #: src/components/wallet/coloured/WalletColoured.tsx:420
@@ -1026,15 +1030,15 @@ msgid "Join a Pool"
 msgstr ""
 
 #: src/components/plot/add/PlotAddNFT.tsx:44
-msgid "Join a pool and get consistent MGA farming rewards. The average returns are the same, but it is much less volatile."
+msgid "Join a pool and get consistent XCH farming rewards. The average returns are the same, but it is much less volatile."
 msgstr ""
 
 #: src/components/plotNFT/PlotNFTAdd.tsx:59
-msgid "Join a pool and get consistent MGA farming rewards. The average returns are the same, but it is much less volatile. Assign plots to a plot NFT. You can easily switch pools without having to re-plot."
+msgid "Join a pool and get consistent XCH farming rewards. The average returns are the same, but it is much less volatile. Assign plots to a plot NFT. You can easily switch pools without having to re-plot."
 msgstr ""
 
 #: src/components/plot/add/PlotAddNFT.tsx:133
-msgid "Join a pool and get more consistent MGA farming rewards. Create a plot NFT and assign your new plots to a group."
+msgid "Join a pool and get more consistent XCH farming rewards. Create a plot NFT and assign your new plots to a group."
 msgstr ""
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:63
@@ -1084,7 +1088,7 @@ msgstr ""
 msgid "Loading Plot NFTs"
 msgstr ""
 
-#: src/components/wallet/Wallets.tsx:172
+#: src/components/wallet/Wallets.tsx:111
 msgid "Loading list of wallets"
 msgstr ""
 
@@ -1269,7 +1273,7 @@ msgid "Not found Plots"
 msgstr "플롯을 찾지 못했습니다"
 
 #: src/components/farm/FarmManageFarmingRewards.tsx:184
-msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25MGA reward for pooling plots."
+msgid "Note that this does not change your pooling payout addresses. This only affects old format plots, and the 0.25XCH reward for pooling plots."
 msgstr ""
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:118
@@ -1840,7 +1844,7 @@ msgid "Self Pooling"
 msgstr ""
 
 #: src/components/plotNFT/select/PlotNFTSelectBase.tsx:105
-msgid "Self pool. When you win a block you will earn MGA rewards."
+msgid "Self pool. When you win a block you will earn XCH rewards."
 msgstr ""
 
 #: src/components/trading/CreateOffer.jsx:164
@@ -1893,7 +1897,7 @@ msgid "Skips adding a final directory to harvester for farming"
 msgstr "농업용 수확기에 최종 디렉토리 추가 건너뛰기"
 
 #: src/components/pool/PoolHero.tsx:26
-msgid "Smooth out your MGA farming rewards by joining a pool."
+msgid "Smooth out your XCH farming rewards by joining a pool."
 msgstr ""
 
 #: src/components/plotNFT/PlotNFTGetPoolLoginLinkDialog.tsx:60
@@ -1945,7 +1949,7 @@ msgstr "상태"
 #: src/components/trading/TradingOverview.jsx:128
 #: src/components/wallet/WalletHistory.tsx:55
 #: src/components/wallet/WalletStatusCard.tsx:22
-#: src/components/wallet/Wallets.tsx:118
+#: src/components/wallet/Wallets.tsx:52
 msgid "Status"
 msgstr "상태"
 
@@ -2006,23 +2010,23 @@ msgstr "동기화 중... <0/> / <1/>"
 #~ msgstr "Syncing {progress}/{tip}"
 
 #: src/components/farm/card/FarmCardBlockRewards.tsx:15
-#~ msgid "TMGA Block Rewards"
+#~ msgid "TXCH Block Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardCoinbaseRewards.tsx:12
-#~ msgid "TMGA Farming Rewards"
+#~ msgid "TXCH Farming Rewards"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardFeesReward.tsx:12
-#~ msgid "TMGA Fees Collected"
+#~ msgid "TXCH Fees Collected"
 #~ msgstr ""
 
 #: src/components/farm/card/FarmCardUserFees.tsx:12
-#~ msgid "TMGA User Fees"
-#~ msgstr "TMGA User Fees"
+#~ msgid "TXCH User Fees"
+#~ msgstr "TXCH User Fees"
 
 #: src/components/farm/card/FarmCardUserFees.tsx:15
-#~ msgid "TMGA User Transaction Fees"
+#~ msgid "TXCH User Transaction Fees"
 #~ msgstr ""
 
 #: src/components/pool/PoolInfo.tsx:37
@@ -2099,7 +2103,7 @@ msgid "The total transactions fees in this block. Rewarded to the farmer."
 msgstr "이 블록의 총 거래 수수료. 농부에게 보상."
 
 #: src/components/plotNFT/PlotNFTPayoutInstructionsDialog.tsx:102
-msgid "These are the instructions for how the farmer wants to get paid. By default this will be an MGA address, but it can be set to any string with a size of less than 1024 characters, so it can represent another blockchain or payment system identifier."
+msgid "These are the instructions for how the farmer wants to get paid. By default this will be an XCH address, but it can be set to any string with a size of less than 1024 characters, so it can represent another blockchain or payment system identifier."
 msgstr ""
 
 #: src/components/plot/PlotsFailed.tsx:40
@@ -2377,7 +2381,7 @@ msgid "Waiting for the transaction to be confirmed"
 msgstr ""
 
 #: src/components/pool/PoolOverview.tsx:185
-#: src/components/wallet/standard/WalletStandard.tsx:674
+#: src/components/wallet/standard/WalletStandard.tsx:656
 msgid "Wallet Status:"
 msgstr ""
 
@@ -2410,7 +2414,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/dashboard/DashboardSideBar.tsx:45
-#: src/components/wallet/Wallets.tsx:173
+#: src/components/wallet/Wallets.tsx:112
 msgid "Wallets"
 msgstr "지갑"
 
@@ -2562,16 +2566,16 @@ msgid "[Error 22] File not found. Most likely one of the plot folders in your co
 msgstr "[오류 22] 파일을 찾을 수 없습니다. config.yaml의 플롯 폴더 중 하나에 문제가 있을 가능성이 높습니다."
 
 #: src/components/wallet/WalletStatusCard.tsx:41
-#: src/components/wallet/Wallets.tsx:143
+#: src/components/wallet/Wallets.tsx:77
 msgid "connections:"
 msgstr "연결:"
 
 #: src/components/wallet/WalletStatusCard.tsx:33
-#: src/components/wallet/Wallets.tsx:135
+#: src/components/wallet/Wallets.tsx:69
 msgid "height:"
 msgstr "높이:"
 
-#: src/components/wallet/Wallets.tsx:129
+#: src/components/wallet/Wallets.tsx:63
 msgid "not synced"
 msgstr "동기화 되지 않음"
 
@@ -2580,17 +2584,17 @@ msgid "p2_singleton_puzzle_hash is not defined"
 msgstr ""
 
 #: src/components/wallet/WalletStatusCard.tsx:27
-#: src/components/wallet/Wallets.tsx:123
+#: src/components/wallet/Wallets.tsx:57
 msgid "status:"
 msgstr "상태:"
 
 #: src/components/wallet/WalletStatusCard.tsx:29
-#: src/components/wallet/Wallets.tsx:128
+#: src/components/wallet/Wallets.tsx:62
 msgid "synced"
 msgstr "동기화됨"
 
 #: src/components/wallet/WalletStatusCard.tsx:29
-#: src/components/wallet/Wallets.tsx:127
+#: src/components/wallet/Wallets.tsx:61
 msgid "syncing"
 msgstr "동기화중"
 
@@ -2621,4 +2625,3 @@ msgstr "{currencyCode} 사용자 거래 수수료"
 #: src/components/core/components/Amount/Amount.tsx:80
 msgid "{mojo, plural, one {mojo} other {mojos}}"
 msgstr ""
-

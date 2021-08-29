@@ -10,7 +10,7 @@ git status
 Write-Output "   ---"
 Write-Output "curl miniupnpc"
 Write-Output "   ---"
-Invoke-WebRequest -Uri "https://pypi.chia.net/simple/miniupnpc/miniupnpc-2.2.2-cp39-cp39-win_amd64.whl" -OutFile "miniupnpc-2.2.2-cp39-cp39-win_amd64.whl"
+Invoke-WebRequest -Uri "https://pypi.mogua.net/simple/miniupnpc/miniupnpc-2.2.2-cp39-cp39-win_amd64.whl" -OutFile "miniupnpc-2.2.2-cp39-cp39-win_amd64.whl"
 Write-Output "Using win_amd64 python 3.9 wheel from https://github.com/miniupnp/miniupnp/pull/475 (2.2.0-RC1)"
 Write-Output "Actual build from https://github.com/miniupnp/miniupnp/commit/7783ac1545f70e3341da5866069bde88244dd848"
 If ($LastExitCode -gt 0){
@@ -18,7 +18,7 @@ If ($LastExitCode -gt 0){
 }
 else
 {
-    Set-Location -Path "../../" -PassThru
+    Set-Location -Path - -PassThru
     Write-Output "miniupnpc download successful."
 }
 
@@ -30,7 +30,7 @@ python -m venv venv
 python -m pip install --upgrade pip
 pip install wheel pep517
 pip install pywin32
-pip install pyinstaller==4.2
+pip install pyinstaller==4.5
 pip install setuptools_scm
 
 Write-Output "   ---"
@@ -48,7 +48,7 @@ Write-Output "   ---"
 Write-Output "   ---"
 Write-Output "Build mogua-blockchain wheels"
 Write-Output "   ---"
-pip wheel --use-pep517 --extra-index-url https://pypi.chia.net/simple/ -f . --wheel-dir=.\build_scripts\win_build .
+pip wheel --use-pep517 --extra-index-url https://pypi.mogua.net/simple/ -f . --wheel-dir=.\build_scripts\win_build .
 
 Write-Output "   ---"
 Write-Output "Install mogua-blockchain wheels into venv with pip"
@@ -97,9 +97,8 @@ If ($LastExitCode -gt 0){
 }
 
 Write-Output "   ---"
-Write-Output "Increase the stack for mogua command for (mogua plots create) chiapos limitations"
+Write-Output "Increase the stack for mogua command for (mogua plots create) moguapos limitations"
 # editbin.exe needs to be in the path
-$Env:Path +=";C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\Hostx64\x64\"
 editbin.exe /STACK:8000000 daemon\mogua.exe
 Write-Output "   ---"
 

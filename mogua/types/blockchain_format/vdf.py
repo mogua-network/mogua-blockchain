@@ -5,7 +5,7 @@ from enum import IntEnum
 from typing import Optional
 from functools import lru_cache
 
-from chiavdf import create_discriminant, verify_n_wesolowski
+from moguavdf import create_discriminant, verify_n_wesolowski
 
 from mogua.consensus.constants import ConsensusConstants
 from mogua.types.blockchain_format.classgroup import ClassgroupElement

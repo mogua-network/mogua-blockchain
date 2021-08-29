@@ -5,7 +5,7 @@ from secrets import token_bytes
 from typing import Callable, Dict, List, Optional, Tuple, Set
 
 from blspy import AugSchemeMPL, G2Element
-from chiabip158 import PyBIP158
+from moguabip158 import PyBIP158
 
 import mogua.server.ws_connection as ws
 from mogua.consensus.block_creation import create_unfinished_block
@@ -118,9 +118,6 @@ class FullNodeAPI:
         if self.full_node.sync_store.get_sync_mode():
             return None
         if not (await self.full_node.synced()):
-            return None
-
-        if int(time.time()) <= self.full_node.constants.INITIAL_FREEZE_END_TIMESTAMP:
             return None
 
         # Ignore if already seen
@@ -366,7 +363,7 @@ class FullNodeAPI:
         Receive a full block from a peer full node (or ourselves).
         """
 
-        self.log.warning(f"Received unsolicited/late block from peer {peer.get_peer_info()}")
+        self.log.warning(f"Received unsolicited/late block from peer {peer.get_peer_logging()}")
         return None
 
     @api_request
