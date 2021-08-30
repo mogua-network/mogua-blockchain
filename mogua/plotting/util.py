@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
 
 from blspy import G1Element, PrivateKey
-from moguapos import DiskProver
+from chiapos import DiskProver
 
 from mogua.types.blockchain_format.sized_bytes import bytes32
 from mogua.util.config import load_config, save_config

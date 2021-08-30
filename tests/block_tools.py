@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Callable, Dict, List, Optional, Tuple, Any
 
 from blspy import AugSchemeMPL, G1Element, G2Element, PrivateKey
-from moguabip158 import PyBIP158
+from chiabip158 import PyBIP158
 
 from mogua.cmds.init_funcs import create_all_ssl, create_default_mogua_config
 from mogua.daemon.keychain_proxy import connect_to_keychain_and_validate, wrap_local_keychain
@@ -235,7 +235,7 @@ class BlockTools:
                 test_private_keys=test_private_keys[:num_pool_public_key_plots],
             )
             # Create more plots, but to a pool address instead of public key
-            plot_keys_2 = PlotKeys(self.farmer_pk, None, encode_puzzle_hash(self.pool_ph, "xch"))
+            plot_keys_2 = PlotKeys(self.farmer_pk, None, encode_puzzle_hash(self.pool_ph, "mga"))
             args.num = num_pool_address_plots
             await create_plots(
                 args,

@@ -4,7 +4,7 @@ from secrets import token_bytes
 
 import pytest
 from blspy import AugSchemeMPL
-from moguapos import DiskPlotter
+from chiapos import DiskPlotter
 
 from mogua.consensus.coinbase import create_puzzlehash_for_pk
 from mogua.plotting.util import stream_plot_info_ph, stream_plot_info_pk, PlotRefreshResult
@@ -302,7 +302,7 @@ class TestRpc:
                 master_sk_to_wallet_sk(bt.pool_master_sk, uint32(472)).get_g1()
             )
 
-            await client.set_reward_targets(encode_puzzle_hash(new_ph, "xch"), encode_puzzle_hash(new_ph_2, "xch"))
+            await client.set_reward_targets(encode_puzzle_hash(new_ph, "mga"), encode_puzzle_hash(new_ph_2, "mga"))
             targets_3 = await client.get_reward_targets(True)
             assert decode_puzzle_hash(targets_3["farmer_target"]) == new_ph
             assert decode_puzzle_hash(targets_3["pool_target"]) == new_ph_2
@@ -311,7 +311,7 @@ class TestRpc:
             new_ph_3: bytes32 = create_puzzlehash_for_pk(
                 master_sk_to_wallet_sk(bt.pool_master_sk, uint32(1888)).get_g1()
             )
-            await client.set_reward_targets(None, encode_puzzle_hash(new_ph_3, "xch"))
+            await client.set_reward_targets(None, encode_puzzle_hash(new_ph_3, "mga"))
             targets_4 = await client.get_reward_targets(True)
             assert decode_puzzle_hash(targets_4["farmer_target"]) == new_ph
             assert decode_puzzle_hash(targets_4["pool_target"]) == new_ph_3
@@ -319,10 +319,10 @@ class TestRpc:
 
             root_path = farmer_api.farmer._root_path
             config = load_config(root_path, "config.yaml")
-            assert config["farmer"]["xch_target_address"] == encode_puzzle_hash(new_ph, "xch")
-            assert config["pool"]["xch_target_address"] == encode_puzzle_hash(new_ph_3, "xch")
+            assert config["farmer"]["mga_target_address"] == encode_puzzle_hash(new_ph, "mga")
+            assert config["pool"]["mga_target_address"] == encode_puzzle_hash(new_ph_3, "mga")
 
-            new_ph_3_encoded = encode_puzzle_hash(new_ph_3, "xch")
+            new_ph_3_encoded = encode_puzzle_hash(new_ph_3, "mga")
             added_char = new_ph_3_encoded + "a"
             with pytest.raises(ValueError):
                 await client.set_reward_targets(None, added_char)

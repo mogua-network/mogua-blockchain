@@ -515,7 +515,7 @@ export default [
   { word: 'dizzy', value: 513 },
   { word: 'doctor', value: 514 },
   { word: 'document', value: 515 },
-  { word: 'dog', value: 516 },
+  { word: 'mog', value: 516 },
   { word: 'doll', value: 517 },
   { word: 'dolphin', value: 518 },
   { word: 'domain', value: 519 },

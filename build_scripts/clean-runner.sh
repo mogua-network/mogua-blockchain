@@ -1,8 +1,6 @@
 #!/bin/bash
 # Cleans up files/directories that may be left over from previous runs for a clean slate before starting a new build
 
-PWD=$(pwd)
-
 rm -rf ../venv || true
 rm -rf venv || true
 rm -rf mogua_blockchain.egg-info || true
@@ -12,9 +10,6 @@ rm -rf build_scripts/pyinstaller || true
 rm -rf mogua-blockchain-gui/build || true
 rm -rf mogua-blockchain-gui/daemon || true
 rm -rf mogua-blockchain-gui/node_modules || true
-rm mogua-blockchain-gui/temp.json || true
-( cd "$PWD/mogua-blockchain-gui" && git checkout HEAD -- package-lock.json ) || true
-cd "$PWD" || true
 
 # Do our best to get rid of any globally installed notarize-cli versions so the version in the current build script is
 # installed without conflicting with the other version that might be installed

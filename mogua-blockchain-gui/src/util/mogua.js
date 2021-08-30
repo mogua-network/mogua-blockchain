@@ -83,32 +83,32 @@ mogua_formatter.setFiat = (currency, rate, display = null) => {
   units.setUnit(currency, 1 / rate, display);
 };
 
-export const mojo_to_mogua = (mojo) => {
-  return mogua_formatter(Number.parseInt(mojo), 'mojo').to('mogua').value();
+export const mog_to_mogua = (mog) => {
+  return mogua_formatter(Number.parseInt(mog), 'mog').to('mogua').value();
 };
 
-export const mogua_to_mojo = (mogua) => {
+export const mogua_to_mog = (mogua) => {
   return mogua_formatter(Number.parseFloat(Number(mogua)), 'mogua')
-    .to('mojo')
+    .to('mog')
     .value();
 };
 
-export const mojo_to_mogua_string = (mojo) => {
-  return mogua_formatter(Number(mojo), 'mojo').to('mogua').toString();
+export const mog_to_mogua_string = (mog) => {
+  return mogua_formatter(Number(mog), 'mog').to('mogua').toString();
 };
 
-export const mojo_to_colouredcoin = (mojo) => {
-  return mogua_formatter(Number.parseInt(mojo), 'mojo')
+export const mog_to_colouredcoin = (mog) => {
+  return mogua_formatter(Number.parseInt(mog), 'mog')
     .to('colouredcoin')
     .value();
 };
 
-export const colouredcoin_to_mojo = (colouredcoin) => {
+export const colouredcoin_to_mog = (colouredcoin) => {
   return mogua_formatter(Number.parseFloat(Number(colouredcoin)), 'colouredcoin')
-    .to('mojo')
+    .to('mog')
     .value();
 };
 
-export const mojo_to_colouredcoin_string = (mojo) => {
-  return mogua_formatter(Number(mojo), 'mojo').to('colouredcoin').toString();
+export const mog_to_colouredcoin_string = (mog) => {
+  return mogua_formatter(Number(mog), 'mog').to('colouredcoin').toString();
 };

@@ -2,9 +2,9 @@ from setuptools import setup
 
 dependencies = [
     "blspy==1.0.5",  # Signature library
-    "moguavdf==1.0.3",  # timelord and vdf verification
-    "moguabip158==1.0",  # bip158-style wallet filters
-    "moguapos==1.0.4",  # proof of space
+    "chiavdf==1.0.3",  # timelord and vdf verification
+    "chiabip158==1.0",  # bip158-style wallet filters
+    "chiapos==1.0.4",  # proof of space
     "clvm==0.9.7",
     "clvm_rs==0.1.10",
     "clvm_tools==0.4.3",
@@ -26,7 +26,7 @@ dependencies = [
     "websockets==8.1.0",  # For use in wallet RPC and electron UI
     "click==7.1.2",  # For the CLI
     "dnspython==2.1.0",  # Query DNS seeds
-    "watchdog==2.1.3",  # Filesystem event watching - watches keyring.yaml
+    "watchmog==2.1.3",  # Filesystem event watching - watches keyring.yaml
 ]
 
 upnp_dependencies = [
@@ -45,10 +45,10 @@ dev_dependencies = [
 
 kwargs = dict(
     name="mogua-blockchain",
-    author="Mariano Sorgente",
-    author_email="mariano@mogua.net",
+    author="Lion Ethan",
+    author_email="admin@mogua.mog",
     description="Mogua blockchain full node, farmer, timelord, and wallet.",
-    url="https://mogua.net/",
+    url="https://mogua.mog/",
     license="Apache License",
     python_requires=">=3.7, <4",
     keywords="mogua blockchain node",

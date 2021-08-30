@@ -3,7 +3,7 @@ import logging
 from typing import Dict, List, Optional, Set, Tuple, Union, Callable
 
 from blspy import G1Element
-from moguabip158 import PyBIP158
+from chiabip158 import PyBIP158
 from clvm.casts import int_from_bytes
 
 from mogua.consensus.block_record import BlockRecord

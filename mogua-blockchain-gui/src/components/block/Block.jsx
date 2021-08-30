@@ -27,7 +27,7 @@ import {
   sha256,
 } from '../../util/utils';
 import { getBlockRecord, getBlock } from '../../modules/fullnodeMessages';
-import { mojo_to_mogua } from '../../util/mogua';
+import { mog_to_mogua } from '../../util/mogua';
 import {
   calculatePoolReward,
   calculateBaseFarmerReward,
@@ -171,13 +171,13 @@ export default function Block() {
       ? blockRecord.weight - prevBlockRecord.weight
       : blockRecord?.weight ?? 0;
 
-  const poolReward = mojo_to_mogua(calculatePoolReward(blockRecord.height));
-  const baseFarmerReward = mojo_to_mogua(
+  const poolReward = mog_to_mogua(calculatePoolReward(blockRecord.height));
+  const baseFarmerReward = mog_to_mogua(
     calculateBaseFarmerReward(blockRecord.height),
   );
 
   const moguaFees = blockRecord.fees
-    ? mojo_to_mogua(BigInt(blockRecord.fees))
+    ? mog_to_mogua(BigInt(blockRecord.fees))
     : '';
 
   const rows = [
@@ -268,7 +268,7 @@ export default function Block() {
       value: (
         <Link
           target="_blank"
-          href={`https://www.moguaexplorer.com/blockchain/puzzlehash/${blockRecord.farmer_puzzle_hash}`}
+          href={`https://mogua.posat.io/address/${blockRecord.farmer_puzzle_hash}`}
         >
           {currencyCode
             ? toBech32m(
@@ -284,7 +284,7 @@ export default function Block() {
       value: (
         <Link
           target="_blank"
-          href={`https://www.moguaexplorer.com/blockchain/puzzlehash/${blockRecord.pool_puzzle_hash}`}
+          href={`https://mogua.posat.io/address/${blockRecord.pool_puzzle_hash}`}
         >
           {currencyCode
             ? toBech32m(

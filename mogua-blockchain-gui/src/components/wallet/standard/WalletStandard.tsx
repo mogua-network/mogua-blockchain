@@ -42,7 +42,7 @@ import {
   send_transaction,
   farm_block,
 } from '../../../modules/message';
-import { /* mojo_to_mogua_string, */ mogua_to_mojo } from '../../../util/mogua';
+import { /* mog_to_mogua_string, */ mogua_to_mog } from '../../../util/mogua';
 import { openDialog } from '../../../modules/dialog';
 import { get_transaction_result } from '../../../util/transaction_result';
 import config from '../../../config/config';
@@ -238,7 +238,7 @@ function BalanceCardSubSection(props: BalanceCardSubSectionProps) {
         </Box>
         <Box>
           <Typography variant="subtitle1">
-            {mojo_to_mogua_string(props.balance)} {currencyCode}
+            {mog_to_mogua_string(props.balance)} {currencyCode}
           </Typography>
         </Box>
       </Box>
@@ -470,8 +470,8 @@ function SendCard(props: SendCardProps) {
       address = address.slice(2);
     }
 
-    const amountValue = Number.parseFloat(mogua_to_mojo(amount));
-    const feeValue = Number.parseFloat(mogua_to_mojo(fee));
+    const amountValue = Number.parseFloat(mogua_to_mog(amount));
+    const feeValue = Number.parseFloat(mogua_to_mog(fee));
 
     dispatch(send_transaction(wallet_id, amountValue, feeValue, address));
 

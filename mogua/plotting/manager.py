@@ -8,7 +8,7 @@ from typing import Any, Callable, Dict, List, Optional, Set, Tuple
 from concurrent.futures.thread import ThreadPoolExecutor
 
 from blspy import G1Element
-from moguapos import DiskProver
+from chiapos import DiskProver
 
 from mogua.consensus.pos_quality import UI_ACTUAL_SPACE_CONSTANT_FACTOR, _expected_plot_size
 from mogua.plotting.util import (

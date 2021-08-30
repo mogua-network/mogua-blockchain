@@ -5,7 +5,7 @@ from secrets import token_bytes
 from typing import List, Optional, Tuple
 
 from blspy import AugSchemeMPL, G1Element, PrivateKey
-from moguapos import DiskPlotter
+from chiapos import DiskPlotter
 
 from mogua.daemon.keychain_proxy import KeychainProxy, connect_to_keychain_and_validate, wrap_local_keychain
 from mogua.plotting.util import add_plot_directory

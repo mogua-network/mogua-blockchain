@@ -5,7 +5,7 @@ from time import time, sleep
 from typing import List
 
 from blspy import G1Element
-from moguapos import Verifier
+from chiapos import Verifier
 
 from mogua.plotting.manager import PlotManager
 from mogua.plotting.util import (

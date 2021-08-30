@@ -14,8 +14,8 @@ from hashlib import pbkdf2_hmac
 from pathlib import Path
 from secrets import token_bytes
 from typing import Optional
-from watchdog.events import FileSystemEventHandler
-from watchdog.observers import Observer
+from watchmog.events import FileSystemEventHandler
+from watchmog.observers import Observer
 
 
 SALT_BYTES = 16  # PBKDF2 param
@@ -36,7 +36,7 @@ def loads_keyring(method):
 
     @wraps(method)
     def inner(self, *args, **kwargs):
-        # Watchdog's event dispatch timing is unreliable on macOS. Force a file modification time check for macOS.
+        # Watchmog's event dispatch timing is unreliable on macOS. Force a file modification time check for macOS.
         if sys.platform == "darwin":
             self.check_if_keyring_file_modified()
 

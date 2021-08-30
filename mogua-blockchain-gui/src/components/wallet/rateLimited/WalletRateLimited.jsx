@@ -18,7 +18,7 @@ import {
   send_transaction,
   rl_set_user_info_action,
 } from '../../../modules/message';
-import { mojo_to_mogua_string, mogua_to_mojo } from '../../../util/mogua';
+import { mog_to_mogua_string, mogua_to_mog } from '../../../util/mogua';
 import { get_transaction_result } from '../../../util/transaction_result';
 import { openDialog } from '../../../modules/dialog';
 import WalletHistory from '../WalletHistory';
@@ -400,7 +400,7 @@ const RLDetailsCard = (props) => {
               <Typography variant="subtitle1">
                 <Trans>
                   Spending Limit (mogua per interval):{' '}
-                  {mojo_to_mogua_string(limit)}
+                  {mog_to_mogua_string(limit)}
                 </Trans>
               </Typography>
             </Box>
@@ -447,7 +447,7 @@ const RLDetailsCard = (props) => {
               <Typography variant="subtitle1">
                 <Trans>
                   Spending Limit (mogua per interval):{' '}
-                  {mojo_to_mogua_string(limit)}
+                  {mog_to_mogua_string(limit)}
                 </Trans>
               </Typography>
             </Box>
@@ -512,7 +512,7 @@ const BalanceCardSubSection = (props) => {
         </Box>
         <Box>
           <Typography variant="subtitle1">
-            {mojo_to_mogua_string(props.balance)} {currencyCode}
+            {mog_to_mogua_string(props.balance)} {currencyCode}
           </Typography>
         </Box>
       </Box>
@@ -652,8 +652,8 @@ const SendCard = (props) => {
       );
       return;
     }
-    const amount = mogua_to_mojo(amount_input.value);
-    const fee = mogua_to_mojo(fee_input.value);
+    const amount = mogua_to_mog(amount_input.value);
+    const fee = mogua_to_mog(fee_input.value);
 
     if (address.startsWith('0x') || address.startsWith('0X')) {
       address = address.slice(2);

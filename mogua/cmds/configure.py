@@ -91,9 +91,9 @@ def configure(
     if testnet is not None:
         if testnet == "true" or testnet == "t":
             print("Setting Testnet")
-            testnet_port = "58444"
-            testnet_introducer = "beta1_introducer.mogua.net"
-            testnet_dns_introducer = "dns-introducer-testnet7.mogua.net"
+            testnet_port = "56544"
+            testnet_introducer = "beta1_introducer.mogua.mog"
+            testnet_dns_introducer = "dns-introducer-testnet7.mogua.mog"
             testnet = "testnet7"
             config["full_node"]["port"] = int(testnet_port)
             config["full_node"]["introducer_peer"]["port"] = int(testnet_port)
@@ -119,8 +119,8 @@ def configure(
         elif testnet == "false" or testnet == "f":
             print("Setting Mainnet")
             mainnet_port = "6935"
-            mainnet_introducer = "introducer.mogua.net"
-            mainnet_dns_introducer = "dns-introducer.mogua.net"
+            mainnet_introducer = "introducer.mogua.mog"
+            mainnet_dns_introducer = "dns-introducer.mogua.mog"
             net = "mainnet"
             config["full_node"]["port"] = int(mainnet_port)
             config["full_node"]["introducer_peer"]["port"] = int(mainnet_port)

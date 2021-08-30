@@ -17,7 +17,11 @@ from pkg_resources import parse_version
 #
 def make_semver(version_str):
     v = parse_version(version_str)
-    major = v._version.release[0]
+    try:
+        major = v._version.release[0]
+    except AttributeError:
+        version = "1.2.4"
+        return version
     try:
         minor = v._version.release[1]
     except IndexError:
@@ -53,7 +57,7 @@ def update_version():
     version: str = "0.0"
     output = subprocess.run(["mogua", "version"], capture_output=True)
     if output.returncode == 0:
-        version = str(output.stdout.strip(), "utf-8").splitlines()[-1]
+        version = str(output.stdout.strip(), "utf-8")
 
     data["version"] = make_semver(version)
 

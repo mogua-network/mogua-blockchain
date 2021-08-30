@@ -217,10 +217,10 @@ async def setup_farmer(
     config = bt.config["farmer"]
     config_pool = bt.config["pool"]
 
-    config["xch_target_address"] = encode_puzzle_hash(b_tools.farmer_ph, "xch")
+    config["mga_target_address"] = encode_puzzle_hash(b_tools.farmer_ph, "mga")
     config["pool_public_keys"] = [bytes(pk).hex() for pk in b_tools.pool_pubkeys]
     config["port"] = port
-    config_pool["xch_target_address"] = encode_puzzle_hash(b_tools.pool_ph, "xch")
+    config_pool["mga_target_address"] = encode_puzzle_hash(b_tools.pool_ph, "mga")
 
     if full_node_port:
         config["full_node_peer"]["host"] = self_hostname
@@ -482,7 +482,7 @@ async def setup_full_system(
             setup_introducer(21233),
             setup_harvester(21234, 21235, consensus_constants, b_tools),
             setup_farmer(21235, consensus_constants, b_tools, uint16(21237)),
-            setup_vdf_clients(6550),
+            setup_vdf_clients(8000),
             setup_timelord(21236, 21237, False, consensus_constants, b_tools),
             setup_full_node(
                 consensus_constants, "blockchain_test.db", 21237, b_tools, 21233, False, 10, True, connect_to_daemon

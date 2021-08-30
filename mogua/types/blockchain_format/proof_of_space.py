@@ -4,7 +4,7 @@ from typing import Optional
 
 from bitstring import BitArray
 from blspy import G1Element, AugSchemeMPL, PrivateKey
-from moguapos import Verifier
+from chiapos import Verifier
 
 from mogua.consensus.constants import ConsensusConstants
 from mogua.types.blockchain_format.sized_bytes import bytes32

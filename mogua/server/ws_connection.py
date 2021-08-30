@@ -108,7 +108,7 @@ class WSMoguaConnection:
             outbound_handshake = make_msg(
                 ProtocolMessageTypes.handshake,
                 Handshake(
-                    'mogua-' + network_id,
+                    network_id,
                     protocol_version,
                     mogua_full_version_str(),
                     uint16(server_port),
@@ -132,7 +132,7 @@ class WSMoguaConnection:
             if message_type != ProtocolMessageTypes.handshake:
                 raise ProtocolError(Err.INVALID_HANDSHAKE)
 
-            if inbound_handshake.network_id != 'mogua-' + network_id:
+            if inbound_handshake.network_id != network_id:
                 raise ProtocolError(Err.INCOMPATIBLE_NETWORK_ID)
 
             self.peer_server_port = inbound_handshake.server_port
@@ -157,12 +157,12 @@ class WSMoguaConnection:
                 raise ProtocolError(Err.INVALID_HANDSHAKE)
 
             inbound_handshake = Handshake.from_bytes(message.data)
-            if inbound_handshake.network_id != 'mogua-' +  network_id:
+            if inbound_handshake.network_id != network_id:
                 raise ProtocolError(Err.INCOMPATIBLE_NETWORK_ID)
             outbound_handshake = make_msg(
                 ProtocolMessageTypes.handshake,
                 Handshake(
-                    'mogua-' + network_id,
+                    network_id,
                     protocol_version,
                     mogua_full_version_str(),
                     uint16(server_port),

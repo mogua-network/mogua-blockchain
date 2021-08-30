@@ -3,7 +3,7 @@ import { Trans } from '@lingui/macro';
 import FarmCard from '../../farm/card/FarmCard';
 import useWallet from '../../../hooks/useWallet';
 import useCurrencyCode from '../../../hooks/useCurrencyCode';
-import { mojo_to_mogua_string } from '../../../util/mogua';
+import { mog_to_mogua_string } from '../../../util/mogua';
 
 type Props = {
   wallet_id: number;
@@ -31,7 +31,7 @@ export default function WalletCardPendingBalance(props: Props) {
       }
       value={
         <span>
-          {mojo_to_mogua_string(value)} {currencyCode}
+          {mog_to_mogua_string(value)} {currencyCode}
         </span>
       }
     />

@@ -355,10 +355,10 @@ if (!handleSquirrelEvent()) {
         role: 'help',
         submenu: [
           {
-            label: i18n._(/* i18n */ { id: 'Mogua Blockchain Wiki' }),
+            label: i18n._(/* i18n */ { id: 'Mogua Blockchain Website' }),
             click: () => {
               openExternal(
-                'https://github.com/Mogua-Network/mogua-blockchain/wiki',
+                'https://mogua.mog',
               );
             },
           },
@@ -398,15 +398,15 @@ if (!handleSquirrelEvent()) {
             },
           },
           {
-            label: i18n._(/* i18n */ { id: 'Chat on KeyBase' }),
+            label: i18n._(/* i18n */ { id: 'Chat on Discord' }),
             click: () => {
-              openExternal('https://keybase.io/team/mogua_network.public');
+              openExternal('https://discord.gg/HXbcfPGrgz');
             },
           },
           {
             label: i18n._(/* i18n */ { id: 'Follow on Twitter' }),
             click: () => {
-              openExternal('https://twitter.com/mogua_project');
+              openExternal('https://twitter.com/green_mogecoin');
             },
           },
         ],
