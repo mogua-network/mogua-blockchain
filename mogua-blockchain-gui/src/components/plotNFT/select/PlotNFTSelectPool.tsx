@@ -43,10 +43,10 @@ async function prepareSubmitData(data: FormData): SubmitData {
     initialTargetState.relative_lock_height = relative_lock_height;
   }
 
-  const feeDogs = mogua_to_mog(fee);
+  const feeMogs = mogua_to_mog(fee);
 
   return {
-    fee: feeDogs,
+    fee: feeMogs,
     initialTargetState,
   };
 }

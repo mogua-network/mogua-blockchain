@@ -28,7 +28,7 @@ msgstr "*Wants t' explore taken booty further? See <0>Mogua Explorer</0> by a mi
 
 #: src/components/plot/add/PlotAddNFT.tsx:123
 msgid "+ Add New Plot NFT"
-msgstr "Give yer Crewmog a no-so-loyal NFT tag"
+msgstr "Give yer Crewdog a no-so-loyal NFT tag"
 
 #: src/components/wallet/Wallets.tsx:122
 msgid "+ Add Wallet"
@@ -82,7 +82,7 @@ msgstr "Add Crew Room"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:70
 msgid "Add Plot to Queue"
-msgstr "Add Crewmog t' Queue"
+msgstr "Add Crewdog t' Queue"
 
 #: src/components/wallet/Wallets.tsx:88
 #~ msgid "Add Wallet"
@@ -95,7 +95,7 @@ msgstr "Add Crewmog t' Queue"
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:230
 #: src/components/plotNFT/PlotNFTCard.tsx:272
 msgid "Add a Plot"
-msgstr "Add a Crewmog"
+msgstr "Add a Crewdog"
 
 #: src/components/plotNFT/PlotNFTAdd.tsx:51
 msgid "Add a Plot NFT"
@@ -327,11 +327,11 @@ msgstr "Mogua Treasure Chest"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:36
 msgid "Choose Number of Plots"
-msgstr "Choose Number o' Crewmogs"
+msgstr "Choose Number o' Crewdogs"
 
 #: src/components/plot/add/PlotAddChooseSize.tsx:61
 msgid "Choose Plot Size"
-msgstr "Choose Strength o' Crewmog"
+msgstr "Choose Strength o' Crewdog"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:384
 #: src/components/pool/PoolOverview.tsx:92
@@ -607,7 +607,7 @@ msgstr "Maroon"
 #: src/components/plot/PlotAction.tsx:26
 #: src/components/plot/queue/PlotQueueActions.tsx:42
 msgid "Delete Plot"
-msgstr "Maroon Crewmog"
+msgstr "Maroon Crewdog"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:315
 #: src/components/wallet/standard/WalletStandard.tsx:674
@@ -675,7 +675,7 @@ msgstr "Distributed Identity Voodoo"
 #: src/components/farm/overview/FarmOverviewHero.tsx:52
 #: src/components/plot/overview/PlotOverviewHero.tsx:69
 msgid "Do you have existing plots on this machine? <0>Add Plot Directory</0>"
-msgstr "Ye 'ave existin' crewmogs on this ship? <0>Add Crewmog Folder</0>"
+msgstr "Ye 'ave existin' crewmogs on this ship? <0>Add Crewdog Folder</0>"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:55
 msgid "Does your machine support parallel plotting?"
@@ -1279,7 +1279,7 @@ msgstr ""
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:118
 #: src/components/plotNFT/PlotNFTCard.tsx:160
 msgid "Number of Plots"
-msgstr "Number o' Crewmogs"
+msgstr "Number o' Crewdogs"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:147
 msgid "Number of buckets"
@@ -1439,11 +1439,11 @@ msgstr "Crew Count"
 
 #: src/components/block/Block.jsx:299
 msgid "Plot Id"
-msgstr "Crewmog's Id"
+msgstr "Crewdog's Id"
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:75
 msgid "Plot Key"
-msgstr "Crewmog Key"
+msgstr "Crewdog Key"
 
 #: src/components/pool/PoolOverview.tsx:40
 msgid "Plot NFT"
@@ -1460,7 +1460,7 @@ msgstr ""
 
 #: src/components/block/Block.jsx:259
 msgid "Plot Public Key"
-msgstr "Crewmog Public Key"
+msgstr "Crewdog Public Key"
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:49
 #~ msgid "Plot Seed"
@@ -1468,7 +1468,7 @@ msgstr "Crewmog Public Key"
 
 #: src/components/plot/add/PlotAddChooseSize.tsx:80
 msgid "Plot Size"
-msgstr "Crewmog's Strength"
+msgstr "Crewdog's Strength"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:74
 msgid "Plot in Parallel"
@@ -1476,7 +1476,7 @@ msgstr "Recruit in Parallel"
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:46
 msgid "Plot is duplicate of {0}"
-msgstr "Crewmog is clone o' {0}"
+msgstr "Crewdog is clone o' {0}"
 
 #: src/components/plotNFT/PlotNFTState.tsx:46
 #~ msgid "PlotNFT is transitioning to (target state)"
@@ -1492,11 +1492,11 @@ msgstr "Crew"
 
 #: src/components/farm/FarmLastAttemptedProof.tsx:22
 msgid "Plots Passed Filter"
-msgstr "Crewmogs Takin' Action"
+msgstr "Crewdogs Takin' Action"
 
 #: src/components/plot/overview/PlotOverviewHero.tsx:35
 msgid "Plots are allocated space on your hard drive used to farm and earn Mogua. <0>Learn more</0>"
-msgstr "Crewmogs are recruited space on yer hard drive used t' plunder 'n get Mogua. <0>Look fer more</0>"
+msgstr "Crewdogs are recruited space on yer hard drive used t' plunder 'n get Mogua. <0>Look fer more</0>"
 
 #: src/components/plot/queue/PlotQueueIndicator.tsx:34
 msgid "Plotting"

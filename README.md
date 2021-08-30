@@ -65,7 +65,7 @@ https://mogua.mog <br>
 Discord: <br>
 https://discord.gg/HXbcfPGrgz <br>
 Twitter: <br>
-https://twitter.com/Green_Dogecoin <br>
+https://twitter.com/Moguacoin <br>
 Reddit: <br>
 https://www.reddit.com/r/Moguacoin <br>
 Facebook page: <br>

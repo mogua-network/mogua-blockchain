@@ -64,13 +64,13 @@ export default function PlotNFTAbsorbRewards(props: Props) {
 
       const { fee } = data;
 
-      const feeDogs = mogua_to_mog(fee);
+      const feeMogs = mogua_to_mog(fee);
 
       if (walletId === undefined || !address) {
         return;
       }
 
-      await dispatch(pwAbsorbRewards(walletId, feeDogs));
+      await dispatch(pwAbsorbRewards(walletId, feeMogs));
 
       if (history.length) {
         history.goBack();

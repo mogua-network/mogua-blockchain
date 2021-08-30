@@ -111,7 +111,7 @@ msgstr "Tilføj plot folder"
 
 #: src/components/plotNFT/select/PlotNFTSelectFaucet.tsx:42
 msgid "Add {currencyCode} from the Faucet"
-msgstr "Tilføj {currencyCode} fra Doghanen"
+msgstr "Tilføj {currencyCode} fra Moghanen"
 
 #: src/components/wallet/coloured/WalletColoured.tsx:561
 #: src/components/wallet/coloured/WalletColoured.tsx:657
