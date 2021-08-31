@@ -8,7 +8,7 @@ msgstr ""
 "Language: be_BY\n"
 "Project-Id-Version: mogua-blockchain\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-07-26 15:12\n"
+"PO-Revision-Date: 2021-07-17 00:01\n"
 "Last-Translator: \n"
 "Language-Team: Belarusian\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || n%10>=5 && n%10<=9 || n%100>=11 && n%100<=14 ? 2 : 3);\n"
@@ -28,10 +28,6 @@ msgstr "*Хочаце даведацца больш пра блокчэйн Mogu
 
 #: src/components/plot/add/PlotAddNFT.tsx:123
 msgid "+ Add New Plot NFT"
-msgstr ""
-
-#: src/components/wallet/Wallets.tsx:122
-msgid "+ Add Wallet"
 msgstr ""
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:94
@@ -59,9 +55,9 @@ msgstr "Прыняць"
 msgid "Accepted at time:"
 msgstr "Прынята а:"
 
-#: src/components/plot/overview/PlotOverviewPlots.tsx:114
 #: src/components/plot/PlotsFailed.tsx:19
 #: src/components/plot/PlotsNotFound.tsx:19
+#: src/components/plot/overview/PlotOverviewPlots.tsx:114
 msgid "Action"
 msgstr "Дзеянне"
 
@@ -89,9 +85,9 @@ msgstr "Дадаць дзялянку ў чаргу"
 #~ msgstr "Add Wallet"
 
 #: src/components/farm/overview/FarmOverviewHero.tsx:46
+#: src/components/plot/PlotHeader.tsx:63
 #: src/components/plot/add/PlotAdd.tsx:160
 #: src/components/plot/overview/PlotOverviewHero.tsx:54
-#: src/components/plot/PlotHeader.tsx:63
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:230
 #: src/components/plotNFT/PlotNFTCard.tsx:272
 msgid "Add a Plot"
@@ -127,10 +123,10 @@ msgstr "Адрас / Хэш-галаваломка"
 #: src/components/core/components/Amount/Amount.tsx:96
 #: src/components/trading/CreateOffer.jsx:196
 #: src/components/trading/TradesTable.tsx:20
+#: src/components/wallet/WalletHistory.tsx:62
 #: src/components/wallet/create/createNewColouredCoin.jsx:119
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:720
 #: src/components/wallet/standard/WalletStandard.tsx:513
-#: src/components/wallet/WalletHistory.tsx:62
 msgid "Amount"
 msgstr "Сума"
 
@@ -148,7 +144,7 @@ msgid "Are you sure you want to delete the plot? The plot cannot be recovered."
 msgstr "Сапраўды выдаліць дзялянку? Пасля выдалення дзялянку будзе немагчыма аднавіць."
 
 #: src/components/plotNFT/PlotNFTCard.tsx:125
-#: src/components/wallet/standard/WalletStandard.tsx:633
+#: src/components/wallet/standard/WalletStandard.tsx:632
 msgid "Are you sure you want to delete unconfirmed transactions?"
 msgstr ""
 
@@ -311,11 +307,19 @@ msgstr ""
 
 #: src/electron/main.tsx:401
 msgid "Chat on Discord"
-msgstr ""
+msgstr "Чат у Discord"
 
-#: src/electron/main.tsx:401
-#~ msgid "Chat on KeyBase"
-#~ msgstr "Чат у KeyBase"
+#: src/electron/main.tsx:419
+msgid "Mogua"
+msgstr "Mogua"
+
+#: src/electron/main.tsx:358
+msgid "Mogua Blockchain Wiki"
+msgstr "Вікі блокчэйна Mogua"
+
+#: src/components/wallet/standard/WalletStandard.tsx:647
+msgid "Mogua Wallet"
+msgstr "Кашалёк Mogua"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:36
 msgid "Choose Number of Plots"
@@ -379,7 +383,7 @@ msgid "Confirm Disconnect"
 msgstr "Пацвердзіць адлучэнне"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:121
-#: src/components/wallet/standard/WalletStandard.tsx:629
+#: src/components/wallet/standard/WalletStandard.tsx:628
 msgid "Confirmation"
 msgstr ""
 
@@ -592,7 +596,7 @@ msgstr "Затрымка"
 #: src/components/plotNFT/PlotNFTCard.tsx:122
 #: src/components/selectKey/SelectKey.tsx:67
 #: src/components/selectKey/SelectKey.tsx:109
-#: src/components/wallet/standard/WalletStandard.tsx:630
+#: src/components/wallet/standard/WalletStandard.tsx:629
 msgid "Delete"
 msgstr "Выдаліць"
 
@@ -602,7 +606,7 @@ msgid "Delete Plot"
 msgstr "Выдаліць дзялянку"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:315
-#: src/components/wallet/standard/WalletStandard.tsx:674
+#: src/components/wallet/standard/WalletStandard.tsx:663
 msgid "Delete Unconfirmed Transactions"
 msgstr ""
 
@@ -696,10 +700,10 @@ msgstr ""
 msgid "Enter the 24 word mnemonic that you have saved in order to restore your Mogua wallet."
 msgstr "Каб аднавіць свой кашалёк Mogua, увядзіце раней захаваную вамі мнеманічную фразу з 24 слоў у правільным парадку."
 
-#: src/components/farm/card/FarmCardStatus.tsx:35
-#: src/components/farm/card/FarmCardStatus.tsx:49
 #: src/components/farm/FarmerStatus.tsx:21
 #: src/components/farm/FarmerStatus.tsx:22
+#: src/components/farm/card/FarmCardStatus.tsx:35
+#: src/components/farm/card/FarmCardStatus.tsx:49
 #: src/components/plot/PlotStatus.tsx:20
 #: src/components/plot/PlotStatus.tsx:21
 #: src/components/plot/queue/PlotQueueIndicator.tsx:22
@@ -788,9 +792,9 @@ msgstr ""
 msgid "Farmers earn block rewards and transaction fees by committing spare space to the network to help secure transactions. This is where your farm will be once you add a plot. <0>Learn more</0>"
 msgstr "Фермеры зарабляюць ўзнагароду за блокі і камісійныя за трансакцыі аддаючы сваю вольную прастору на патрэбы сеткі і забяспечваючы тым самым бяспечныя трансакцыі. Тут з'явіцца ваша ферма, калі вы дадасце дзялянку.<0> Даведацца больш</0>"
 
-#: src/components/farm/card/FarmCardStatus.tsx:62
 #: src/components/farm/Farm.tsx:23
 #: src/components/farm/FarmerStatus.tsx:18
+#: src/components/farm/card/FarmCardStatus.tsx:62
 #: src/components/plot/PlotStatus.tsx:17
 msgid "Farming"
 msgstr "Ідзе фермерства"
@@ -807,13 +811,13 @@ msgstr "Стан фермерства"
 #: src/components/plotNFT/PlotNFTAbsorbRewards.tsx:154
 #: src/components/plotNFT/select/PlotNFTSelectBase.tsx:147
 #: src/components/pool/PoolInfo.tsx:17
+#: src/components/wallet/WalletHistory.tsx:66
 #: src/components/wallet/create/createExistingColouredCoin.jsx:123
 #: src/components/wallet/create/createNewColouredCoin.jsx:132
 #: src/components/wallet/create/createRLAdmin.jsx:244
 #: src/components/wallet/create/createRLAdmin.jsx:272
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:733
 #: src/components/wallet/standard/WalletStandard.tsx:524
-#: src/components/wallet/WalletHistory.tsx:66
 msgid "Fee"
 msgstr "Камісійныя"
 
@@ -842,9 +846,9 @@ msgstr "Сума камісійных"
 msgid "File"
 msgstr "Файл"
 
-#: src/components/plot/overview/PlotOverviewPlots.tsx:106
 #: src/components/plot/PlotsFailed.tsx:14
 #: src/components/plot/PlotsNotFound.tsx:14
+#: src/components/plot/overview/PlotOverviewPlots.tsx:106
 msgid "Filename"
 msgstr "Назва файла"
 
@@ -1080,7 +1084,7 @@ msgstr ""
 msgid "Loading Plot NFTs"
 msgstr ""
 
-#: src/components/wallet/Wallets.tsx:111
+#: src/components/wallet/Wallets.tsx:172
 msgid "Loading list of wallets"
 msgstr ""
 
@@ -1155,22 +1159,6 @@ msgstr ""
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:97
 msgid "Minutes"
 msgstr "хв"
-
-#: src/electron/main.tsx:419
-msgid "Mogua"
-msgstr "Mogua"
-
-#: src/electron/main.tsx:358
-msgid "Mogua Blockchain Website"
-msgstr ""
-
-#: src/electron/main.tsx:358
-#~ msgid "Mogua Blockchain Wiki"
-#~ msgstr "Вікі блокчэйна Mogua"
-
-#: src/components/wallet/standard/WalletStandard.tsx:649
-msgid "Mogua Wallet"
-msgstr "Кашалёк Mogua"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:116
 msgid "More memory slightly increases speed"
@@ -1250,9 +1238,9 @@ msgstr ""
 msgid "None of your plots have passed the plot filter yet."
 msgstr "Ніводная з вашых дзялянак яшчэ не прайшла праз фільтр."
 
+#: src/components/farm/FarmerStatus.tsx:20
 #: src/components/farm/card/FarmCardNotAvailable.tsx:20
 #: src/components/farm/card/FarmCardNotAvailable.tsx:23
-#: src/components/farm/FarmerStatus.tsx:20
 #: src/components/plot/PlotStatus.tsx:19
 #: src/components/plotNFT/PlotNFTCard.tsx:365
 msgid "Not Available"
@@ -1728,8 +1716,8 @@ msgstr "Адрас атрымання"
 msgid "Recover DID wallet"
 msgstr "Аднавіць кашалёк з дэцэнтралізаваным ідэнтыфікатарам"
 
-#: src/components/plot/overview/PlotOverviewHero.tsx:62
 #: src/components/plot/PlotHeader.tsx:78
+#: src/components/plot/overview/PlotOverviewHero.tsx:62
 msgid "Refresh Plots"
 msgstr "Абнавіць дзялянкі"
 
@@ -1956,8 +1944,8 @@ msgstr "Стан"
 #: src/components/pool/PoolOverview.tsx:44
 #: src/components/trading/TradingOverview.jsx:128
 #: src/components/wallet/WalletHistory.tsx:55
-#: src/components/wallet/Wallets.tsx:52
 #: src/components/wallet/WalletStatusCard.tsx:22
+#: src/components/wallet/Wallets.tsx:118
 msgid "Status"
 msgstr "Стан"
 
@@ -2002,8 +1990,8 @@ msgstr "Адправіць"
 msgid "Synced"
 msgstr "Сінхранізаваны"
 
-#: src/components/farm/card/FarmCardStatus.tsx:18
 #: src/components/farm/FarmerStatus.tsx:19
+#: src/components/farm/card/FarmCardStatus.tsx:18
 #: src/components/plot/PlotStatus.tsx:18
 #: src/components/wallet/WalletStatus.tsx:38
 msgid "Syncing"
@@ -2225,13 +2213,13 @@ msgstr "Каму"
 msgid "Total Balance"
 msgstr "Агульны баланс"
 
-#: src/components/fullNode/card/FullNodeCardTotalIterations.tsx:20
-msgid "Total Iterations"
-msgstr "Усяго ітэрацый"
-
 #: src/components/farm/card/FarmCardTotalMoguaFarmed.tsx:15
 #~ msgid "Total Mogua Farmed"
 #~ msgstr ""
+
+#: src/components/fullNode/card/FullNodeCardTotalIterations.tsx:20
+msgid "Total Iterations"
+msgstr "Усяго ітэрацый"
 
 #: src/components/farm/card/FarmCardTotalNetworkSpace.tsx:15
 msgid "Total Network Space"
@@ -2389,7 +2377,7 @@ msgid "Waiting for the transaction to be confirmed"
 msgstr ""
 
 #: src/components/pool/PoolOverview.tsx:185
-#: src/components/wallet/standard/WalletStandard.tsx:656
+#: src/components/wallet/standard/WalletStandard.tsx:674
 msgid "Wallet Status:"
 msgstr ""
 
@@ -2397,12 +2385,12 @@ msgstr ""
 #~ msgid "WalletItem.ccWallet"
 #~ msgstr ""
 
-#: src/components/wallet/Wallets.tsx:48
-#~ msgid "WalletItem.didWallet"
-#~ msgstr ""
-
 #: src/components/wallet/Wallets.tsx:30
 #~ msgid "WalletItem.moguaWallet"
+#~ msgstr ""
+
+#: src/components/wallet/Wallets.tsx:48
+#~ msgid "WalletItem.didWallet"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:41
@@ -2422,7 +2410,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/dashboard/DashboardSideBar.tsx:45
-#: src/components/wallet/Wallets.tsx:112
+#: src/components/wallet/Wallets.tsx:173
 msgid "Wallets"
 msgstr "Кашалькі"
 
@@ -2573,17 +2561,17 @@ msgstr "Памылка 13] У дазволе адмоўлена. Вы спраб
 msgid "[Error 22] File not found. Most likely one of the plot folders in your config.yaml has an issue."
 msgstr "[Памылка 22] Файл не знойдзены. Хутчэй за ўсё, праблема з адной з папак з дзялянкамі, указаных у файле config.yaml."
 
-#: src/components/wallet/Wallets.tsx:77
 #: src/components/wallet/WalletStatusCard.tsx:41
+#: src/components/wallet/Wallets.tsx:143
 msgid "connections:"
 msgstr "падлучэнні:"
 
-#: src/components/wallet/Wallets.tsx:69
 #: src/components/wallet/WalletStatusCard.tsx:33
+#: src/components/wallet/Wallets.tsx:135
 msgid "height:"
 msgstr "вышыня:"
 
-#: src/components/wallet/Wallets.tsx:63
+#: src/components/wallet/Wallets.tsx:129
 msgid "not synced"
 msgstr "не сінхр."
 
@@ -2591,18 +2579,18 @@ msgstr "не сінхр."
 msgid "p2_singleton_puzzle_hash is not defined"
 msgstr ""
 
-#: src/components/wallet/Wallets.tsx:57
 #: src/components/wallet/WalletStatusCard.tsx:27
+#: src/components/wallet/Wallets.tsx:123
 msgid "status:"
 msgstr "стан:"
 
-#: src/components/wallet/Wallets.tsx:62
 #: src/components/wallet/WalletStatusCard.tsx:29
+#: src/components/wallet/Wallets.tsx:128
 msgid "synced"
 msgstr "сінхр."
 
-#: src/components/wallet/Wallets.tsx:61
 #: src/components/wallet/WalletStatusCard.tsx:29
+#: src/components/wallet/Wallets.tsx:127
 msgid "syncing"
 msgstr "ідзе сінхр."
 
@@ -2631,5 +2619,6 @@ msgid "{currencyCode} User Transaction Fees"
 msgstr "{currencyCode} Камісійныя за трансакцыі карыстальнікаў"
 
 #: src/components/core/components/Amount/Amount.tsx:80
-msgid "{mog, plural, one {mog} other {mogs}}"
+msgid "{mojo, plural, one {mojo} other {mojos}}"
 msgstr ""
+

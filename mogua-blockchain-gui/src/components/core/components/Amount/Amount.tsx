@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import { useWatch, useFormContext } from 'react-hook-form';
 import TextField, { TextFieldProps } from '../TextField';
-import { mogua_to_mog } from '../../../../util/mogua';
+import { mogua_to_mojo } from '../../../../util/mogua';
 import useCurrencyCode from '../../../../hooks/useCurrencyCode';
 import FormatLargeNumber from '../FormatLargeNumber';
 import Flex from '../Flex';
@@ -40,7 +40,7 @@ function NumberFormatCustom(props: NumberFormatCustomProps) {
 }
 
 export type AmountProps = TextFieldProps & {
-  children?: (props: { mog: number; value: string | undefined }) => ReactNode;
+  children?: (props: { mojo: number; value: string | undefined }) => ReactNode;
   name?: string;
 };
 
@@ -54,7 +54,7 @@ export default function Amount(props: AmountProps) {
     name,
   });
 
-  const mog = mogua_to_mog(value);
+  const mojo = mogua_to_mojo(value);
 
   return (
     <FormControl variant={variant} fullWidth={fullWidth}>
@@ -71,18 +71,18 @@ export default function Amount(props: AmountProps) {
         }}
         {...rest}
       />
-      {!!mog && (
+      {!!mojo && (
         <FormHelperText>
           <Flex alignItems="center" gap={2}>
             <Flex flexGrow={1} gap={1}>
-              <FormatLargeNumber value={mog} />
+              <FormatLargeNumber value={mojo} />
               <Box>
-                <Plural value={mog} one="mog" other="mogs" />
+                <Plural value={mojo} one="mojo" other="mojos" />
               </Box>
             </Flex>
             {children &&
               children({
-                mog,
+                mojo,
                 value,
               })}
           </Flex>

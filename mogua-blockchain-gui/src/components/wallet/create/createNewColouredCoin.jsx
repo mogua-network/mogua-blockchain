@@ -20,7 +20,7 @@ import {
 } from '../../../modules/createWallet';
 import { useStyles } from './WalletCreate';
 import { create_cc_action } from '../../../modules/message';
-import { mogua_to_mog } from '../../../util/mogua';
+import { mogua_to_mojo } from '../../../util/mogua';
 import { openDialog } from '../../../modules/dialog';
 
 export const customStyles = makeStyles((theme) => ({
@@ -83,8 +83,8 @@ export const CreateNewCCWallet = () => {
       return;
     }
     dispatch(createState(true, true));
-    const amount = mogua_to_mog(amount_input.value);
-    const fee = mogua_to_mog(fee_input.value);
+    const amount = mogua_to_mojo(amount_input.value);
+    const fee = mogua_to_mojo(fee_input.value);
     dispatch(create_cc_action(amount, fee));
   }
 

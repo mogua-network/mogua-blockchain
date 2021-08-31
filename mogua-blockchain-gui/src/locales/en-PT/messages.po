@@ -8,7 +8,7 @@ msgstr ""
 "Language: en_PT\n"
 "Project-Id-Version: mogua-blockchain\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-07-26 15:12\n"
+"PO-Revision-Date: 2021-07-17 00:01\n"
 "Last-Translator: \n"
 "Language-Team: Pirate English\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -30,10 +30,6 @@ msgstr "*Wants t' explore taken booty further? See <0>Mogua Explorer</0> by a mi
 msgid "+ Add New Plot NFT"
 msgstr "Give yer Crewdog a no-so-loyal NFT tag"
 
-#: src/components/wallet/Wallets.tsx:122
-msgid "+ Add Wallet"
-msgstr ""
-
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:94
 #~ msgid "0 automatically chooses bucket count"
 #~ msgstr ""
@@ -44,7 +40,7 @@ msgstr "128 buckets be good fer many"
 
 #: src/components/farm/FarmYourHarvesterNetwork.tsx:98
 msgid "A harvester is a service running on a machine where plot(s) are actually stored. A farmer and harvester talk to a full node to see the state of the chain. View your network of connected harvesters below Learn more"
-msgstr "A tender be a vessel where crewmogs are actually at. A plunderer 'n tender coordinate wit' a capt'n t' see the state o' the chain. View yer connected tenders below Learn more"
+msgstr "A tender be a vessel where crewdogs are actually at. A plunderer 'n tender coordinate wit' a capt'n t' see the state o' the chain. View yer connected tenders below Learn more"
 
 #: src/electron/main.tsx:422
 #: src/electron/main.tsx:509
@@ -59,9 +55,9 @@ msgstr "Yarr"
 msgid "Accepted at time:"
 msgstr "Let through at time:"
 
-#: src/components/plot/overview/PlotOverviewPlots.tsx:114
 #: src/components/plot/PlotsFailed.tsx:19
 #: src/components/plot/PlotsNotFound.tsx:19
+#: src/components/plot/overview/PlotOverviewPlots.tsx:114
 msgid "Action"
 msgstr "Order"
 
@@ -89,9 +85,9 @@ msgstr "Add Crewdog t' Queue"
 #~ msgstr "Add Wallet"
 
 #: src/components/farm/overview/FarmOverviewHero.tsx:46
+#: src/components/plot/PlotHeader.tsx:63
 #: src/components/plot/add/PlotAdd.tsx:160
 #: src/components/plot/overview/PlotOverviewHero.tsx:54
-#: src/components/plot/PlotHeader.tsx:63
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:230
 #: src/components/plotNFT/PlotNFTCard.tsx:272
 msgid "Add a Plot"
@@ -103,7 +99,7 @@ msgstr ""
 
 #: src/components/plot/PlotAddDirectoryDialog.tsx:68
 msgid "Add a plot"
-msgstr "Add a crewmog"
+msgstr "Add a crewdog"
 
 #: src/components/plot/PlotAddDirectoryDialog.tsx:107
 msgid "Add plot directory"
@@ -127,10 +123,10 @@ msgstr "Coordinates / Puzzle hash"
 #: src/components/core/components/Amount/Amount.tsx:96
 #: src/components/trading/CreateOffer.jsx:196
 #: src/components/trading/TradesTable.tsx:20
+#: src/components/wallet/WalletHistory.tsx:62
 #: src/components/wallet/create/createNewColouredCoin.jsx:119
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:720
 #: src/components/wallet/standard/WalletStandard.tsx:513
-#: src/components/wallet/WalletHistory.tsx:62
 msgid "Amount"
 msgstr "Amount"
 
@@ -145,10 +141,10 @@ msgstr "Amount Fer First Dubloon"
 #: src/components/plot/PlotAction.tsx:30
 #: src/components/plot/queue/PlotQueueActions.tsx:46
 msgid "Are you sure you want to delete the plot? The plot cannot be recovered."
-msgstr "Be ye sure ye want to let the crewmog go o'er board? Th' scurvy mog cannot be rescued as soon as ye do so."
+msgstr "Be ye sure ye want to let the crewdog go o'er board? Th' scurvy dog cannot be rescued as soon as ye do so."
 
 #: src/components/plotNFT/PlotNFTCard.tsx:125
-#: src/components/wallet/standard/WalletStandard.tsx:633
+#: src/components/wallet/standard/WalletStandard.tsx:632
 msgid "Are you sure you want to delete unconfirmed transactions?"
 msgstr ""
 
@@ -289,7 +285,7 @@ msgstr "Abandon 'n Squander"
 
 #: src/components/plot/PlotsNotFound.tsx:39
 msgid "Caution, deleting these plots will delete them forever. Check that the storage devices are properly connected."
-msgstr "YO, maroonin' these crewmogs will let 'em be gone forever. Check that the storage devices are properly connected."
+msgstr "YO, maroonin' these crewdogs will let 'em be gone forever. Check that the storage devices are properly connected."
 
 #: src/components/farm/FarmLastAttemptedProof.tsx:16
 msgid "Challenge"
@@ -311,11 +307,19 @@ msgstr "Time to find new fleet"
 
 #: src/electron/main.tsx:401
 msgid "Chat on Discord"
-msgstr ""
+msgstr "Natter on Discord"
 
-#: src/electron/main.tsx:401
-#~ msgid "Chat on KeyBase"
-#~ msgstr "Natter on KeyBase"
+#: src/electron/main.tsx:419
+msgid "Mogua"
+msgstr "Mogua"
+
+#: src/electron/main.tsx:358
+msgid "Mogua Blockchain Wiki"
+msgstr "Mogua Blockchain Wiki"
+
+#: src/components/wallet/standard/WalletStandard.tsx:647
+msgid "Mogua Wallet"
+msgstr "Mogua Treasure Chest"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:36
 msgid "Choose Number of Plots"
@@ -379,7 +383,7 @@ msgid "Confirm Disconnect"
 msgstr "Yarr, Disconnect"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:121
-#: src/components/wallet/standard/WalletStandard.tsx:629
+#: src/components/wallet/standard/WalletStandard.tsx:628
 msgid "Confirmation"
 msgstr ""
 
@@ -592,7 +596,7 @@ msgstr "Wait"
 #: src/components/plotNFT/PlotNFTCard.tsx:122
 #: src/components/selectKey/SelectKey.tsx:67
 #: src/components/selectKey/SelectKey.tsx:109
-#: src/components/wallet/standard/WalletStandard.tsx:630
+#: src/components/wallet/standard/WalletStandard.tsx:629
 msgid "Delete"
 msgstr "Maroon"
 
@@ -602,7 +606,7 @@ msgid "Delete Plot"
 msgstr "Maroon Crewdog"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:315
-#: src/components/wallet/standard/WalletStandard.tsx:674
+#: src/components/wallet/standard/WalletStandard.tsx:663
 msgid "Delete Unconfirmed Transactions"
 msgstr ""
 
@@ -667,7 +671,7 @@ msgstr "Distributed Identity Voodoo"
 #: src/components/farm/overview/FarmOverviewHero.tsx:52
 #: src/components/plot/overview/PlotOverviewHero.tsx:69
 msgid "Do you have existing plots on this machine? <0>Add Plot Directory</0>"
-msgstr "Ye 'ave existin' crewmogs on this ship? <0>Add Crewdog Folder</0>"
+msgstr "Ye 'ave existin' crewdogs on this ship? <0>Add Crewdog Folder</0>"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:55
 msgid "Does your machine support parallel plotting?"
@@ -696,10 +700,10 @@ msgstr ""
 msgid "Enter the 24 word mnemonic that you have saved in order to restore your Mogua wallet."
 msgstr "Give the 24 word mnemonic that ye scribbled down in order t' restore yer Mogua treasure chest."
 
-#: src/components/farm/card/FarmCardStatus.tsx:35
-#: src/components/farm/card/FarmCardStatus.tsx:49
 #: src/components/farm/FarmerStatus.tsx:21
 #: src/components/farm/FarmerStatus.tsx:22
+#: src/components/farm/card/FarmCardStatus.tsx:35
+#: src/components/farm/card/FarmCardStatus.tsx:49
 #: src/components/plot/PlotStatus.tsx:20
 #: src/components/plot/PlotStatus.tsx:21
 #: src/components/plot/queue/PlotQueueIndicator.tsx:22
@@ -786,11 +790,11 @@ msgstr ""
 
 #: src/components/farm/overview/FarmOverviewHero.tsx:33
 msgid "Farmers earn block rewards and transaction fees by committing spare space to the network to help secure transactions. This is where your farm will be once you add a plot. <0>Learn more</0>"
-msgstr "Plunderers get booty 'n transaction fees by givin' space t' the ocean (t' \"help secure transactions\"). 'tis where yer plunderer will be once ye add a crewmog. <0>Look fer more</0>"
+msgstr "Plunderers get booty 'n transaction fees by givin' space t' the ocean (t' \"help secure transactions\"). 'tis where yer plunderer will be once ye add a crewdog. <0>Look fer more</0>"
 
-#: src/components/farm/card/FarmCardStatus.tsx:62
 #: src/components/farm/Farm.tsx:23
 #: src/components/farm/FarmerStatus.tsx:18
+#: src/components/farm/card/FarmCardStatus.tsx:62
 #: src/components/plot/PlotStatus.tsx:17
 msgid "Farming"
 msgstr "Under Full Sail"
@@ -807,13 +811,13 @@ msgstr "State o' Lootin' Trip"
 #: src/components/plotNFT/PlotNFTAbsorbRewards.tsx:154
 #: src/components/plotNFT/select/PlotNFTSelectBase.tsx:147
 #: src/components/pool/PoolInfo.tsx:17
+#: src/components/wallet/WalletHistory.tsx:66
 #: src/components/wallet/create/createExistingColouredCoin.jsx:123
 #: src/components/wallet/create/createNewColouredCoin.jsx:132
 #: src/components/wallet/create/createRLAdmin.jsx:244
 #: src/components/wallet/create/createRLAdmin.jsx:272
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:733
 #: src/components/wallet/standard/WalletStandard.tsx:524
-#: src/components/wallet/WalletHistory.tsx:66
 msgid "Fee"
 msgstr "Fee"
 
@@ -842,9 +846,9 @@ msgstr "Fees Amount"
 msgid "File"
 msgstr "File"
 
-#: src/components/plot/overview/PlotOverviewPlots.tsx:106
 #: src/components/plot/PlotsFailed.tsx:14
 #: src/components/plot/PlotsNotFound.tsx:14
+#: src/components/plot/overview/PlotOverviewPlots.tsx:106
 msgid "Filename"
 msgstr "Filename"
 
@@ -1080,7 +1084,7 @@ msgstr ""
 msgid "Loading Plot NFTs"
 msgstr "Reading thee NFT voodoos"
 
-#: src/components/wallet/Wallets.tsx:111
+#: src/components/wallet/Wallets.tsx:172
 msgid "Loading list of wallets"
 msgstr "Show others treasure boxes"
 
@@ -1155,22 +1159,6 @@ msgstr ""
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:97
 msgid "Minutes"
 msgstr "Minutes"
-
-#: src/electron/main.tsx:419
-msgid "Mogua"
-msgstr "Mogua"
-
-#: src/electron/main.tsx:358
-msgid "Mogua Blockchain Website"
-msgstr ""
-
-#: src/electron/main.tsx:358
-#~ msgid "Mogua Blockchain Wiki"
-#~ msgstr "Mogua Blockchain Wiki"
-
-#: src/components/wallet/standard/WalletStandard.tsx:649
-msgid "Mogua Wallet"
-msgstr "Mogua Treasure Chest"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:116
 msgid "More memory slightly increases speed"
@@ -1250,9 +1238,9 @@ msgstr ""
 msgid "None of your plots have passed the plot filter yet."
 msgstr "None of your barrages has hit a ship."
 
+#: src/components/farm/FarmerStatus.tsx:20
 #: src/components/farm/card/FarmCardNotAvailable.tsx:20
 #: src/components/farm/card/FarmCardNotAvailable.tsx:23
-#: src/components/farm/FarmerStatus.tsx:20
 #: src/components/plot/PlotStatus.tsx:19
 #: src/components/plotNFT/PlotNFTCard.tsx:365
 msgid "Not Available"
@@ -1512,7 +1500,7 @@ msgstr "Recruitin'"
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:58
 msgid "Plotting in parallel can save time. Otherwise, add plot(s) to the queue."
-msgstr "Recruitin' in parallel can save time. Otherwise, add crewmog(s) to the queue."
+msgstr "Recruitin' in parallel can save time. Otherwise, add crewdog(s) to the queue."
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:174
 msgid "Plotting with bitfield enabled has about 30% less overall writes and is now almost always faster. You may see reduced memory requirements with bitfield plotting disabled. If your CPU design is from before 2010 you may have to disable bitfield plotting."
@@ -1728,8 +1716,8 @@ msgstr "Yer Treasure's Coordinates (give t'is to scallywags who owe you)"
 msgid "Recover DID wallet"
 msgstr "Recover DID treasure chest"
 
-#: src/components/plot/overview/PlotOverviewHero.tsx:62
 #: src/components/plot/PlotHeader.tsx:78
+#: src/components/plot/overview/PlotOverviewHero.tsx:62
 msgid "Refresh Plots"
 msgstr "Roll Call o' Crew"
 
@@ -1822,7 +1810,7 @@ msgstr "Choose type o' treasure chest"
 
 #: src/components/plot/add/PlotAddSelectFinalDirectory.tsx:25
 msgid "Select the final destination for the folder where you would like the plot to be stored. We recommend you use a large slow hard drive (like external HDD)."
-msgstr "Give the final destination where ye wants t' post the crewmog after recruitin'. A large slow hold (like external HDD) will be good enough."
+msgstr "Give the final destination where ye wants t' post the crewdog after recruitin'. A large slow hold (like external HDD) will be good enough."
 
 #: src/components/plot/add/PlotAddSelectTemporaryDirectory.tsx:41
 #~ msgid "Select the temporary destination for the folder where you would like the plot to be stored. We recommend you use a fast SSD."
@@ -1849,7 +1837,7 @@ msgstr "Aye"
 #: src/components/plotNFT/PlotNFTExternalState.tsx:23
 #: src/components/plotNFT/PlotNFTState.tsx:57
 msgid "Self Pooling"
-msgstr "Just me n me trusty crewmogs"
+msgstr "Just me n me trusty crewdogs"
 
 #: src/components/plotNFT/select/PlotNFTSelectBase.tsx:105
 msgid "Self pool. When you win a block you will earn MGA rewards."
@@ -1956,8 +1944,8 @@ msgstr "State"
 #: src/components/pool/PoolOverview.tsx:44
 #: src/components/trading/TradingOverview.jsx:128
 #: src/components/wallet/WalletHistory.tsx:55
-#: src/components/wallet/Wallets.tsx:52
 #: src/components/wallet/WalletStatusCard.tsx:22
+#: src/components/wallet/Wallets.tsx:118
 msgid "Status"
 msgstr "State o' t'ings"
 
@@ -2002,8 +1990,8 @@ msgstr "Go Ahead"
 msgid "Synced"
 msgstr "Everythin' jolly"
 
-#: src/components/farm/card/FarmCardStatus.tsx:18
 #: src/components/farm/FarmerStatus.tsx:19
+#: src/components/farm/card/FarmCardStatus.tsx:18
 #: src/components/plot/PlotStatus.tsx:18
 #: src/components/wallet/WalletStatus.tsx:38
 msgid "Syncing"
@@ -2096,7 +2084,7 @@ msgstr ""
 
 #: src/components/block/Block.jsx:302
 msgid "The seed used to create the plot. This depends on the pool pk and plot pk."
-msgstr "The seed used t' recruit the crewmog. It depends on the clan pk an' crewmog pk."
+msgstr "The seed used t' recruit the crewdog. It depends on the clan pk an' crewdog pk."
 
 #: src/components/block/Block.jsx:228
 msgid "The total number of VDF (verifiable delay function) or proof of time iterations on the whole chain up to this sub block."
@@ -2116,11 +2104,11 @@ msgstr ""
 
 #: src/components/plot/PlotsFailed.tsx:40
 msgid "These plots are invalid, you might want to delete them."
-msgstr "These crewmogs be invalid, ye might wants t' maroon 'em."
+msgstr "These crewdogs be invalid, ye might wants t' maroon 'em."
 
 #: src/components/plot/PlotAddDirectoryDialog.tsx:72
 msgid "This allows you to add a directory that has plots in it. If you have not created any plots, go to the plotting screen."
-msgstr "This allows ye t' add a folder that has crewmogs in it. If ye 'ave nah recruited any crewmogs, go t' the crew screen."
+msgstr "This allows ye t' add a folder that has crewdogs in it. If ye 'ave nah recruited any crewdogs, go t' the crew screen."
 
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:130
 #: src/components/plotNFT/PlotNFTCard.tsx:172
@@ -2225,13 +2213,13 @@ msgstr "To"
 msgid "Total Balance"
 msgstr "Ye Whole Treasure"
 
-#: src/components/fullNode/card/FullNodeCardTotalIterations.tsx:20
-msgid "Total Iterations"
-msgstr "Thumbs twiddled"
-
 #: src/components/farm/card/FarmCardTotalMoguaFarmed.tsx:15
 #~ msgid "Total Mogua Farmed"
 #~ msgstr ""
+
+#: src/components/fullNode/card/FullNodeCardTotalIterations.tsx:20
+msgid "Total Iterations"
+msgstr "Thumbs twiddled"
 
 #: src/components/farm/card/FarmCardTotalNetworkSpace.tsx:15
 msgid "Total Network Space"
@@ -2389,7 +2377,7 @@ msgid "Waiting for the transaction to be confirmed"
 msgstr ""
 
 #: src/components/pool/PoolOverview.tsx:185
-#: src/components/wallet/standard/WalletStandard.tsx:656
+#: src/components/wallet/standard/WalletStandard.tsx:674
 msgid "Wallet Status:"
 msgstr ""
 
@@ -2397,12 +2385,12 @@ msgstr ""
 #~ msgid "WalletItem.ccWallet"
 #~ msgstr ""
 
-#: src/components/wallet/Wallets.tsx:48
-#~ msgid "WalletItem.didWallet"
-#~ msgstr ""
-
 #: src/components/wallet/Wallets.tsx:30
 #~ msgid "WalletItem.moguaWallet"
+#~ msgstr ""
+
+#: src/components/wallet/Wallets.tsx:48
+#~ msgid "WalletItem.didWallet"
 #~ msgstr ""
 
 #: src/components/wallet/Wallets.tsx:41
@@ -2422,7 +2410,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/dashboard/DashboardSideBar.tsx:45
-#: src/components/wallet/Wallets.tsx:112
+#: src/components/wallet/Wallets.tsx:173
 msgid "Wallets"
 msgstr "Treasure Chests"
 
@@ -2436,11 +2424,11 @@ msgstr ""
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:139
 msgid "Want to earn more Mogua? Add more plots to your farm."
-msgstr "Wants t' earn more Mogua? Assign more crewmogs t' yer plunderer."
+msgstr "Wants t' earn more Mogua? Assign more crewdogs t' yer plunderer."
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:86
 msgid "Want to have a delay before the next plot starts?"
-msgstr "Wants t' wait afore crimpin' the next crewmog?"
+msgstr "Wants t' wait afore crimpin' the next crewdog?"
 
 #: src/components/selectKey/SelectKey.tsx:86
 msgid "Warning: This key is used for a wallet that may have a non-zero balance. By deleting this key you may lose access to this wallet"
@@ -2573,17 +2561,17 @@ msgstr "[Error 13] Permission denied. Ye be trying t' access a file/directory wi
 msgid "[Error 22] File not found. Most likely one of the plot folders in your config.yaml has an issue."
 msgstr "[Error 22] File not found. See if one o' the plot folders in yer config.yaml has a problem."
 
-#: src/components/wallet/Wallets.tsx:77
 #: src/components/wallet/WalletStatusCard.tsx:41
+#: src/components/wallet/Wallets.tsx:143
 msgid "connections:"
 msgstr "connections:"
 
-#: src/components/wallet/Wallets.tsx:69
 #: src/components/wallet/WalletStatusCard.tsx:33
+#: src/components/wallet/Wallets.tsx:135
 msgid "height:"
 msgstr "recorded captures:"
 
-#: src/components/wallet/Wallets.tsx:63
+#: src/components/wallet/Wallets.tsx:129
 msgid "not synced"
 msgstr "not there yet"
 
@@ -2591,18 +2579,18 @@ msgstr "not there yet"
 msgid "p2_singleton_puzzle_hash is not defined"
 msgstr ""
 
-#: src/components/wallet/Wallets.tsx:57
 #: src/components/wallet/WalletStatusCard.tsx:27
+#: src/components/wallet/Wallets.tsx:123
 msgid "status:"
 msgstr "status:"
 
-#: src/components/wallet/Wallets.tsx:62
 #: src/components/wallet/WalletStatusCard.tsx:29
+#: src/components/wallet/Wallets.tsx:128
 msgid "synced"
 msgstr "jolly"
 
-#: src/components/wallet/Wallets.tsx:61
 #: src/components/wallet/WalletStatusCard.tsx:29
+#: src/components/wallet/Wallets.tsx:127
 msgid "syncing"
 msgstr "catchin' up"
 
@@ -2631,5 +2619,6 @@ msgid "{currencyCode} User Transaction Fees"
 msgstr "{currencyCode} Earned On The Side"
 
 #: src/components/core/components/Amount/Amount.tsx:80
-msgid "{mog, plural, one {mog} other {mogs}}"
+msgid "{mojo, plural, one {mojo} other {mojos}}"
 msgstr ""
+

@@ -27,8 +27,8 @@ MAX_TOTAL_PEERS_RECEIVED = 3000
 MAX_CONCURRENT_OUTBOUND_CONNECTIONS = 70
 NETWORK_ID_DEFAULT_PORTS = {
     "mainnet": 6935,
-    "testnet7": 56544,
-    "testnet8": 56545,
+    "testnet7": 58444,
+    "testnet8": 58445,
 }
 
 
@@ -208,20 +208,20 @@ class FullNodeDiscovery:
             if self.resolver is None:
                 self.log.warn("Skipping DNS query: asyncresolver not initialized.")
                 return
-            for rdtype in ["A", "AAAA"]:
-                peers: List[TimestampedPeerInfo] = []
-                result = await self.resolver.resolve(qname=dns_address, rdtype=rdtype, lifetime=30)
-                for ip in result:
-                    peers.append(
-                        TimestampedPeerInfo(
-                            ip.to_text(),
-                            self.default_port,
-                            0,
-                        )
+            peers: List[TimestampedPeerInfo] = []
+            result = await self.resolver.resolve(qname=dns_address, lifetime=30)
+            for ip in result:
+                peers.append(
+                    TimestampedPeerInfo(
+                        ip.to_text(),
+                        self.default_port,
+                        0,
                     )
-                self.log.info(f"Received {len(peers)} peers from DNS seeder, using rdtype = {rdtype}.")
-                if len(peers) > 0:
-                    await self._respond_peers_common(full_node_protocol.RespondPeers(peers), None, False)
+                )
+            self.log.info(f"Received {len(peers)} peers from DNS seeder.")
+            if len(peers) == 0:
+                return
+            await self._respond_peers_common(full_node_protocol.RespondPeers(peers), None, False)
         except Exception as e:
             self.log.warn(f"querying DNS introducer failed: {e}")
 

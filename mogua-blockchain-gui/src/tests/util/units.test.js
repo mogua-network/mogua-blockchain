@@ -7,8 +7,8 @@ describe('units', () => {
 
       expect(result).toBe(1);
     });
-    it('gets unit of mog', () => {
-      const result = units.getUnit('mog');
+    it('gets unit of mojo', () => {
+      const result = units.getUnit('mojo');
 
       expect(result).toBe(1e-12);
     });
@@ -27,7 +27,7 @@ describe('units', () => {
 
       expect(result).toBe(1);
     });
-    it('gets unit of mog using alias', () => {
+    it('gets unit of mojo using alias', () => {
       const result = units.getUnit('mj');
 
       expect(result).toBe(1e-12);
@@ -54,8 +54,8 @@ describe('units', () => {
         fractionDigits: 12,
       });
     });
-    it('gets display of mog', () => {
-      const result = units.getDisplay('mog');
+    it('gets display of mojo', () => {
+      const result = units.getDisplay('mojo');
 
       expect(result).toEqual({
         format: '{amount} MJ',

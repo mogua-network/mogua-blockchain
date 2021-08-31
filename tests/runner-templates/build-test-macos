@@ -42,13 +42,6 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: Create keychain for CI use
-      run: |
-        security create-keychain -p foo moguachain
-        security default-keychain -s moguachain
-        security unlock-keychain -p foo moguachain
-        security set-keychain-settings -t 7200 -u moguachain
-
     - name: Get pip cache dir
       id: pip-cache
       run: |
@@ -90,7 +83,7 @@ INSTALL_TIMELORD
     - name: Test TEST_NAME code with pytest
       run: |
         . ./activate
-        ./venv/bin/py.test TEST_DIR -s -v --durations 0PYTEST_PARALLEL_ARGS
+        ./venv/bin/py.test TEST_DIR -s -v --durations 0 PYTEST_PARALLEL_ARGS
 #
 # THIS FILE IS GENERATED. SEE https://github.com/Mogua-Network/mogua-blockchain/tree/main/tests#readme
 #

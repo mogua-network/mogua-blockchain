@@ -16,7 +16,7 @@ export default function PlotNFTSelectFaucet(props: Props) {
   const openExternal = useOpenExternal();
 
   function handleClick() {
-    openExternal('http://faucet.mogua.mog/');
+    openExternal('https://faucet.moguanetwork.org/');
   }
 
   return (
