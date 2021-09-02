@@ -65,7 +65,7 @@ export default function FarmLatestBlockChallenges() {
           *Want to explore Mogua’s blocks further? Check out{' '}
           <Link
             color="primary"
-            href="https://www.moguaexplorer.com/"
+            href="https://www.moguaexplorer.org/"
             target="_blank"
           >
             Mogua Explorer

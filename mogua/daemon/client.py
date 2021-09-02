@@ -6,6 +6,7 @@ from typing import Any, Dict, Optional
 
 import websockets
 
+from mogua.server.server import ssl_context_for_client
 from mogua.types.blockchain_format.sized_bytes import bytes32
 from mogua.util.config import load_config
 from mogua.util.json_util import dict_to_json_str
@@ -86,20 +87,6 @@ class DaemonProxy:
             return bool(response["data"]["is_running"])
         return False
 
-    async def is_keyring_locked(self) -> bool:
-        data: Dict[str, Any] = {}
-        request = self.format_request("is_keyring_locked", data)
-        response = await self._get(request)
-        if "is_keyring_locked" in response["data"]:
-            return bool(response["data"]["is_keyring_locked"])
-        return False
-
-    async def unlock_keyring(self, passphrase: str) -> WsRpcMessage:
-        data = {"key": passphrase}
-        request = self.format_request("unlock_keyring", data)
-        response = await self._get(request)
-        return response
-
     async def ping(self) -> WsRpcMessage:
         request = self.format_request("ping", {})
         response = await self._get(request)
@@ -123,13 +110,11 @@ async def connect_to_daemon(self_hostname: str, daemon_port: int, ssl_context: O
     return client
 
 
-async def connect_to_daemon_and_validate(root_path: Path, quiet: bool = False) -> Optional[DaemonProxy]:
+async def connect_to_daemon_and_validate(root_path: Path) -> Optional[DaemonProxy]:
     """
     Connect to the local daemon and do a ping to ensure that something is really
     there and running.
     """
-    from mogua.server.server import ssl_context_for_client
-
     try:
         net_config = load_config(root_path, "config.yaml")
         crt_path = root_path / net_config["daemon_ssl"]["private_crt"]
@@ -143,7 +128,6 @@ async def connect_to_daemon_and_validate(root_path: Path, quiet: bool = False) -
         if "value" in r["data"] and r["data"]["value"] == "pong":
             return connection
     except Exception:
-        if not quiet:
-            print("Daemon not started yet")
+        print("Daemon not started yet")
         return None
     return None

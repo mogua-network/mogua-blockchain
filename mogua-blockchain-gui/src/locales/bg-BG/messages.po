@@ -8,7 +8,7 @@ msgstr ""
 "Language: bg_BG\n"
 "Project-Id-Version: mogua-blockchain\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-07-26 15:12\n"
+"PO-Revision-Date: 2021-07-17 00:02\n"
 "Last-Translator: \n"
 "Language-Team: Bulgarian\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -28,10 +28,6 @@ msgstr "Mogua Explorer"
 
 #: src/components/plot/add/PlotAddNFT.tsx:123
 msgid "+ Add New Plot NFT"
-msgstr ""
-
-#: src/components/wallet/Wallets.tsx:122
-msgid "+ Add Wallet"
 msgstr ""
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:94
@@ -59,9 +55,9 @@ msgstr "Приемам"
 msgid "Accepted at time:"
 msgstr "Получено в:"
 
-#: src/components/plot/overview/PlotOverviewPlots.tsx:114
 #: src/components/plot/PlotsFailed.tsx:19
 #: src/components/plot/PlotsNotFound.tsx:19
+#: src/components/plot/overview/PlotOverviewPlots.tsx:114
 msgid "Action"
 msgstr "Изпълни"
 
@@ -89,9 +85,9 @@ msgstr "Добавяне на плот към опашката"
 #~ msgstr "Add Wallet"
 
 #: src/components/farm/overview/FarmOverviewHero.tsx:46
+#: src/components/plot/PlotHeader.tsx:63
 #: src/components/plot/add/PlotAdd.tsx:160
 #: src/components/plot/overview/PlotOverviewHero.tsx:54
-#: src/components/plot/PlotHeader.tsx:63
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:230
 #: src/components/plotNFT/PlotNFTCard.tsx:272
 msgid "Add a Plot"
@@ -127,10 +123,10 @@ msgstr "Адрес / Пъзел Хеш"
 #: src/components/core/components/Amount/Amount.tsx:96
 #: src/components/trading/CreateOffer.jsx:196
 #: src/components/trading/TradesTable.tsx:20
+#: src/components/wallet/WalletHistory.tsx:62
 #: src/components/wallet/create/createNewColouredCoin.jsx:119
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:720
 #: src/components/wallet/standard/WalletStandard.tsx:513
-#: src/components/wallet/WalletHistory.tsx:62
 msgid "Amount"
 msgstr "Количество"
 
@@ -148,7 +144,7 @@ msgid "Are you sure you want to delete the plot? The plot cannot be recovered."
 msgstr "Сигурни ли сте, че желаете да изтриете този Плот?"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:125
-#: src/components/wallet/standard/WalletStandard.tsx:633
+#: src/components/wallet/standard/WalletStandard.tsx:632
 msgid "Are you sure you want to delete unconfirmed transactions?"
 msgstr ""
 
@@ -310,8 +306,8 @@ msgid "Change Pool"
 msgstr ""
 
 #: src/electron/main.tsx:401
-msgid "Chat on KeyBase"
-msgstr "Чат в KeyBase"
+msgid "Chat on Discord"
+msgstr "Чат в Discord"
 
 #: src/electron/main.tsx:419
 msgid "Mogua"
@@ -321,7 +317,7 @@ msgstr "Чиа"
 msgid "Mogua Blockchain Wiki"
 msgstr "Чиа блокчейн Wiki"
 
-#: src/components/wallet/standard/WalletStandard.tsx:649
+#: src/components/wallet/standard/WalletStandard.tsx:647
 msgid "Mogua Wallet"
 msgstr "Mogua Портфейл"
 
@@ -387,7 +383,7 @@ msgid "Confirm Disconnect"
 msgstr "Потвърди прекратяването на връзката"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:121
-#: src/components/wallet/standard/WalletStandard.tsx:629
+#: src/components/wallet/standard/WalletStandard.tsx:628
 msgid "Confirmation"
 msgstr ""
 
@@ -600,7 +596,7 @@ msgstr "Закъснение"
 #: src/components/plotNFT/PlotNFTCard.tsx:122
 #: src/components/selectKey/SelectKey.tsx:67
 #: src/components/selectKey/SelectKey.tsx:109
-#: src/components/wallet/standard/WalletStandard.tsx:630
+#: src/components/wallet/standard/WalletStandard.tsx:629
 msgid "Delete"
 msgstr "Изтриване"
 
@@ -610,7 +606,7 @@ msgid "Delete Plot"
 msgstr "Изтрий поле"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:315
-#: src/components/wallet/standard/WalletStandard.tsx:674
+#: src/components/wallet/standard/WalletStandard.tsx:663
 msgid "Delete Unconfirmed Transactions"
 msgstr ""
 
@@ -704,10 +700,10 @@ msgstr ""
 msgid "Enter the 24 word mnemonic that you have saved in order to restore your Mogua wallet."
 msgstr "Въведи 24 думения ключ който сте запазили за да възстановите вашият Mogua портфейл."
 
-#: src/components/farm/card/FarmCardStatus.tsx:35
-#: src/components/farm/card/FarmCardStatus.tsx:49
 #: src/components/farm/FarmerStatus.tsx:21
 #: src/components/farm/FarmerStatus.tsx:22
+#: src/components/farm/card/FarmCardStatus.tsx:35
+#: src/components/farm/card/FarmCardStatus.tsx:49
 #: src/components/plot/PlotStatus.tsx:20
 #: src/components/plot/PlotStatus.tsx:21
 #: src/components/plot/queue/PlotQueueIndicator.tsx:22
@@ -796,9 +792,9 @@ msgstr ""
 msgid "Farmers earn block rewards and transaction fees by committing spare space to the network to help secure transactions. This is where your farm will be once you add a plot. <0>Learn more</0>"
 msgstr "Фермерите печелят блокови награди и такси за транзакции, като отделят резервно пространство в мрежата, за да помогнат за сигурността на транзакциите. Тук ще бъде вашата ферма, след като добавите парцел. <0> Научете повече </0>"
 
-#: src/components/farm/card/FarmCardStatus.tsx:62
 #: src/components/farm/Farm.tsx:23
 #: src/components/farm/FarmerStatus.tsx:18
+#: src/components/farm/card/FarmCardStatus.tsx:62
 #: src/components/plot/PlotStatus.tsx:17
 msgid "Farming"
 msgstr "Фармене"
@@ -815,13 +811,13 @@ msgstr "Статус на фарменето"
 #: src/components/plotNFT/PlotNFTAbsorbRewards.tsx:154
 #: src/components/plotNFT/select/PlotNFTSelectBase.tsx:147
 #: src/components/pool/PoolInfo.tsx:17
+#: src/components/wallet/WalletHistory.tsx:66
 #: src/components/wallet/create/createExistingColouredCoin.jsx:123
 #: src/components/wallet/create/createNewColouredCoin.jsx:132
 #: src/components/wallet/create/createRLAdmin.jsx:244
 #: src/components/wallet/create/createRLAdmin.jsx:272
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:733
 #: src/components/wallet/standard/WalletStandard.tsx:524
-#: src/components/wallet/WalletHistory.tsx:66
 msgid "Fee"
 msgstr "Такса"
 
@@ -850,9 +846,9 @@ msgstr "Размер на таксите"
 msgid "File"
 msgstr "Файл"
 
-#: src/components/plot/overview/PlotOverviewPlots.tsx:106
 #: src/components/plot/PlotsFailed.tsx:14
 #: src/components/plot/PlotsNotFound.tsx:14
+#: src/components/plot/overview/PlotOverviewPlots.tsx:106
 msgid "Filename"
 msgstr "Име на файл"
 
@@ -1088,7 +1084,7 @@ msgstr ""
 msgid "Loading Plot NFTs"
 msgstr ""
 
-#: src/components/wallet/Wallets.tsx:111
+#: src/components/wallet/Wallets.tsx:172
 msgid "Loading list of wallets"
 msgstr ""
 
@@ -1242,9 +1238,9 @@ msgstr ""
 msgid "None of your plots have passed the plot filter yet."
 msgstr "Никой от вашите плотове не е преминал филтъра все още."
 
+#: src/components/farm/FarmerStatus.tsx:20
 #: src/components/farm/card/FarmCardNotAvailable.tsx:20
 #: src/components/farm/card/FarmCardNotAvailable.tsx:23
-#: src/components/farm/FarmerStatus.tsx:20
 #: src/components/plot/PlotStatus.tsx:19
 #: src/components/plotNFT/PlotNFTCard.tsx:365
 msgid "Not Available"
@@ -1367,8 +1363,7 @@ msgstr "Моля, въведете валидна първоначална су�
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:639
 #: src/components/wallet/standard/WalletStandard.tsx:432
 msgid "Please enter a valid numeric amount"
-msgstr ""
-"35 / 5000\n"
+msgstr "35 / 5000\n"
 "Моля, въведете валидна числова сума"
 
 #: src/components/wallet/create/createExistingColouredCoin.jsx:70
@@ -1722,8 +1717,8 @@ msgstr "Адрес за получаване"
 msgid "Recover DID wallet"
 msgstr "Възстановете DID портфейла"
 
-#: src/components/plot/overview/PlotOverviewHero.tsx:62
 #: src/components/plot/PlotHeader.tsx:78
+#: src/components/plot/overview/PlotOverviewHero.tsx:62
 msgid "Refresh Plots"
 msgstr "Обнови полета"
 
@@ -1950,8 +1945,8 @@ msgstr "Състояние"
 #: src/components/pool/PoolOverview.tsx:44
 #: src/components/trading/TradingOverview.jsx:128
 #: src/components/wallet/WalletHistory.tsx:55
-#: src/components/wallet/Wallets.tsx:52
 #: src/components/wallet/WalletStatusCard.tsx:22
+#: src/components/wallet/Wallets.tsx:118
 msgid "Status"
 msgstr "Статус"
 
@@ -1996,8 +1991,8 @@ msgstr "Изпрати"
 msgid "Synced"
 msgstr "Синхронизиран"
 
-#: src/components/farm/card/FarmCardStatus.tsx:18
 #: src/components/farm/FarmerStatus.tsx:19
+#: src/components/farm/card/FarmCardStatus.tsx:18
 #: src/components/plot/PlotStatus.tsx:18
 #: src/components/wallet/WalletStatus.tsx:38
 msgid "Syncing"
@@ -2383,7 +2378,7 @@ msgid "Waiting for the transaction to be confirmed"
 msgstr ""
 
 #: src/components/pool/PoolOverview.tsx:185
-#: src/components/wallet/standard/WalletStandard.tsx:656
+#: src/components/wallet/standard/WalletStandard.tsx:674
 msgid "Wallet Status:"
 msgstr ""
 
@@ -2416,7 +2411,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/dashboard/DashboardSideBar.tsx:45
-#: src/components/wallet/Wallets.tsx:112
+#: src/components/wallet/Wallets.tsx:173
 msgid "Wallets"
 msgstr "Портфейли"
 
@@ -2567,17 +2562,17 @@ msgstr "[Грешка 13] Разрешението е отказано. Опит
 msgid "[Error 22] File not found. Most likely one of the plot folders in your config.yaml has an issue."
 msgstr "[Грешка 22] Файлът не е намерен. Най- вероятно една от папките за парцелите във вашия config.yaml има проблем."
 
-#: src/components/wallet/Wallets.tsx:77
 #: src/components/wallet/WalletStatusCard.tsx:41
+#: src/components/wallet/Wallets.tsx:143
 msgid "connections:"
 msgstr "връзки:"
 
-#: src/components/wallet/Wallets.tsx:69
 #: src/components/wallet/WalletStatusCard.tsx:33
+#: src/components/wallet/Wallets.tsx:135
 msgid "height:"
 msgstr "височина:"
 
-#: src/components/wallet/Wallets.tsx:63
+#: src/components/wallet/Wallets.tsx:129
 msgid "not synced"
 msgstr "не е синхронизиран"
 
@@ -2585,18 +2580,18 @@ msgstr "не е синхронизиран"
 msgid "p2_singleton_puzzle_hash is not defined"
 msgstr ""
 
-#: src/components/wallet/Wallets.tsx:57
 #: src/components/wallet/WalletStatusCard.tsx:27
+#: src/components/wallet/Wallets.tsx:123
 msgid "status:"
 msgstr "статус:"
 
-#: src/components/wallet/Wallets.tsx:62
 #: src/components/wallet/WalletStatusCard.tsx:29
+#: src/components/wallet/Wallets.tsx:128
 msgid "synced"
 msgstr "синхронизиран"
 
-#: src/components/wallet/Wallets.tsx:61
 #: src/components/wallet/WalletStatusCard.tsx:29
+#: src/components/wallet/Wallets.tsx:127
 msgid "syncing"
 msgstr "синхронизиране"
 
@@ -2627,3 +2622,4 @@ msgstr "{currencyCode} Такси на потребителя за транза�
 #: src/components/core/components/Amount/Amount.tsx:80
 msgid "{mojo, plural, one {mojo} other {mojos}}"
 msgstr ""
+

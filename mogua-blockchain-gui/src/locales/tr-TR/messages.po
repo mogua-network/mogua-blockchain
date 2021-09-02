@@ -8,7 +8,7 @@ msgstr ""
 "Language: tr_TR\n"
 "Project-Id-Version: mogua-blockchain\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-08-03 15:35\n"
+"PO-Revision-Date: 2021-07-17 00:01\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -29,10 +29,6 @@ msgstr "Mogua'nın bloklarını daha da keşfetmek ister misiniz? Açık kaynakl
 #: src/components/plot/add/PlotAddNFT.tsx:123
 msgid "+ Add New Plot NFT"
 msgstr "Yeni NFT Plot Ekleyin"
-
-#: src/components/wallet/Wallets.tsx:122
-msgid "+ Add Wallet"
-msgstr ""
 
 #: src/components/plot/add/PlotAddNumberOfPlots.tsx:94
 #~ msgid "0 automatically chooses bucket count"
@@ -59,9 +55,9 @@ msgstr "Kabul Et"
 msgid "Accepted at time:"
 msgstr "Şu zamanda kabul edildi:"
 
-#: src/components/plot/overview/PlotOverviewPlots.tsx:114
 #: src/components/plot/PlotsFailed.tsx:19
 #: src/components/plot/PlotsNotFound.tsx:19
+#: src/components/plot/overview/PlotOverviewPlots.tsx:114
 msgid "Action"
 msgstr "İşlem"
 
@@ -89,9 +85,9 @@ msgstr "Plot'u Sıraya Ekle"
 #~ msgstr "Add Wallet"
 
 #: src/components/farm/overview/FarmOverviewHero.tsx:46
+#: src/components/plot/PlotHeader.tsx:63
 #: src/components/plot/add/PlotAdd.tsx:160
 #: src/components/plot/overview/PlotOverviewHero.tsx:54
-#: src/components/plot/PlotHeader.tsx:63
 #: src/components/plotNFT/PlotExternalNFTCard.tsx:230
 #: src/components/plotNFT/PlotNFTCard.tsx:272
 msgid "Add a Plot"
@@ -99,7 +95,7 @@ msgstr "Plot Ekle"
 
 #: src/components/plotNFT/PlotNFTAdd.tsx:51
 msgid "Add a Plot NFT"
-msgstr "Yeni NFT Plot Ekleyin"
+msgstr "Plot NFT Ekleyin"
 
 #: src/components/plot/PlotAddDirectoryDialog.tsx:68
 msgid "Add a plot"
@@ -127,10 +123,10 @@ msgstr "Adres / Puzzle hash"
 #: src/components/core/components/Amount/Amount.tsx:96
 #: src/components/trading/CreateOffer.jsx:196
 #: src/components/trading/TradesTable.tsx:20
+#: src/components/wallet/WalletHistory.tsx:62
 #: src/components/wallet/create/createNewColouredCoin.jsx:119
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:720
 #: src/components/wallet/standard/WalletStandard.tsx:513
-#: src/components/wallet/WalletHistory.tsx:62
 msgid "Amount"
 msgstr "Miktar"
 
@@ -148,7 +144,7 @@ msgid "Are you sure you want to delete the plot? The plot cannot be recovered."
 msgstr "Bu plot'u silmek istediğinizden emin misiniz? Silinen plot kurtarılamaz."
 
 #: src/components/plotNFT/PlotNFTCard.tsx:125
-#: src/components/wallet/standard/WalletStandard.tsx:633
+#: src/components/wallet/standard/WalletStandard.tsx:632
 msgid "Are you sure you want to delete unconfirmed transactions?"
 msgstr ""
 
@@ -301,17 +297,17 @@ msgstr "Zorluk Hash Değeri"
 
 #: src/components/plotNFT/PlotNFTChangePool.tsx:111
 msgid "Change"
-msgstr "Değiştir"
+msgstr ""
 
 #: src/components/plotNFT/PlotNFTCard.tsx:408
 #: src/components/plotNFT/PlotNFTChangePool.tsx:110
 #: src/components/pool/PoolOverview.tsx:115
 msgid "Change Pool"
-msgstr "Havuzu Değiştir"
+msgstr ""
 
 #: src/electron/main.tsx:401
-msgid "Chat on KeyBase"
-msgstr "Keybase'de Sohbet Et"
+msgid "Chat on Discord"
+msgstr "Discord'de Sohbet Et"
 
 #: src/electron/main.tsx:419
 msgid "Mogua"
@@ -321,7 +317,7 @@ msgstr "Mogua"
 msgid "Mogua Blockchain Wiki"
 msgstr "Mogua Blokchain Wiki"
 
-#: src/components/wallet/standard/WalletStandard.tsx:649
+#: src/components/wallet/standard/WalletStandard.tsx:647
 msgid "Mogua Wallet"
 msgstr "Mogua Cüzdanı"
 
@@ -336,7 +332,7 @@ msgstr "Plot Büyüklüğünü Seçin"
 #: src/components/plotNFT/PlotNFTCard.tsx:384
 #: src/components/pool/PoolOverview.tsx:92
 msgid "Claim Rewards"
-msgstr "Ödülleri Al"
+msgstr ""
 
 #: src/components/plot/PlotAddDirectoryDialog.tsx:114
 #: src/components/plot/queue/PlotQueueLogDialog.tsx:89
@@ -387,9 +383,9 @@ msgid "Confirm Disconnect"
 msgstr "Bağlantıyı Kesmeyi Onayla"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:121
-#: src/components/wallet/standard/WalletStandard.tsx:629
+#: src/components/wallet/standard/WalletStandard.tsx:628
 msgid "Confirmation"
-msgstr "Doğrulama"
+msgstr ""
 
 #: src/components/trading/TradingOverview.jsx:201
 msgid "Confirmed at block:"
@@ -410,7 +406,7 @@ msgstr "Diğer eşlere bağlan"
 
 #: src/components/plotNFT/select/PlotNFTSelectBase.tsx:116
 msgid "Connect to pool"
-msgstr "Havuza Bağlan"
+msgstr ""
 
 #: src/components/core/components/FormatConnectionStatus/FormatConnectionStatus.tsx:51
 #: src/components/fullNode/card/FullNodeCardConnectionStatus.tsx:17
@@ -507,7 +503,7 @@ msgstr "Bir Yedek Oluştur"
 
 #: src/components/plot/add/PlotAddNFT.tsx:42
 msgid "Create a Plot NFT"
-msgstr "Bir NFT Plot Üret"
+msgstr ""
 
 #: src/components/selectKey/SelectKey.tsx:211
 msgid "Create a new private key"
@@ -547,7 +543,7 @@ msgstr "%@ tarafından oluşturuldu:"
 
 #: src/components/plotNFT/PlotNFTUnconfirmedCard.tsx:51
 msgid "Creating Plot NFT and Joining the Pool"
-msgstr "Bir NFT Plot Üret ve Havuza Katıl"
+msgstr ""
 
 #: src/components/plotNFT/PlotNFTUnconfirmedCard.tsx:49
 msgid "Creating Plot NFT for Self Pooling"
@@ -600,7 +596,7 @@ msgstr "Ertele"
 #: src/components/plotNFT/PlotNFTCard.tsx:122
 #: src/components/selectKey/SelectKey.tsx:67
 #: src/components/selectKey/SelectKey.tsx:109
-#: src/components/wallet/standard/WalletStandard.tsx:630
+#: src/components/wallet/standard/WalletStandard.tsx:629
 msgid "Delete"
 msgstr "Sil"
 
@@ -610,7 +606,7 @@ msgid "Delete Plot"
 msgstr "Arazi sil"
 
 #: src/components/plotNFT/PlotNFTCard.tsx:315
-#: src/components/wallet/standard/WalletStandard.tsx:674
+#: src/components/wallet/standard/WalletStandard.tsx:663
 msgid "Delete Unconfirmed Transactions"
 msgstr ""
 
@@ -704,10 +700,10 @@ msgstr ""
 msgid "Enter the 24 word mnemonic that you have saved in order to restore your Mogua wallet."
 msgstr "Mogua cüzdanınıza ulaşmak için saklamış olduğunuz 24 kelimelik şifre öbeğini girin."
 
-#: src/components/farm/card/FarmCardStatus.tsx:35
-#: src/components/farm/card/FarmCardStatus.tsx:49
 #: src/components/farm/FarmerStatus.tsx:21
 #: src/components/farm/FarmerStatus.tsx:22
+#: src/components/farm/card/FarmCardStatus.tsx:35
+#: src/components/farm/card/FarmCardStatus.tsx:49
 #: src/components/plot/PlotStatus.tsx:20
 #: src/components/plot/PlotStatus.tsx:21
 #: src/components/plot/queue/PlotQueueIndicator.tsx:22
@@ -796,9 +792,9 @@ msgstr ""
 msgid "Farmers earn block rewards and transaction fees by committing spare space to the network to help secure transactions. This is where your farm will be once you add a plot. <0>Learn more</0>"
 msgstr "Madenciler, işlemlerin güvenliğini sağlamak için ağa yedek alan ayırırlar ve bu sayede blok ödülleri ile transfer komisyonu kazanırlar. Bir plot oluşturduğunuzda burada gözükecek. <0>Daha fazlasını öğren</0>"
 
-#: src/components/farm/card/FarmCardStatus.tsx:62
 #: src/components/farm/Farm.tsx:23
 #: src/components/farm/FarmerStatus.tsx:18
+#: src/components/farm/card/FarmCardStatus.tsx:62
 #: src/components/plot/PlotStatus.tsx:17
 msgid "Farming"
 msgstr "Üretim yapılıyor"
@@ -815,13 +811,13 @@ msgstr "Üretim Durumu"
 #: src/components/plotNFT/PlotNFTAbsorbRewards.tsx:154
 #: src/components/plotNFT/select/PlotNFTSelectBase.tsx:147
 #: src/components/pool/PoolInfo.tsx:17
+#: src/components/wallet/WalletHistory.tsx:66
 #: src/components/wallet/create/createExistingColouredCoin.jsx:123
 #: src/components/wallet/create/createNewColouredCoin.jsx:132
 #: src/components/wallet/create/createRLAdmin.jsx:244
 #: src/components/wallet/create/createRLAdmin.jsx:272
 #: src/components/wallet/rateLimited/WalletRateLimited.jsx:733
 #: src/components/wallet/standard/WalletStandard.tsx:524
-#: src/components/wallet/WalletHistory.tsx:66
 msgid "Fee"
 msgstr "Ücret"
 
@@ -850,9 +846,9 @@ msgstr "Komisyon Miktarı"
 msgid "File"
 msgstr "Dosya"
 
-#: src/components/plot/overview/PlotOverviewPlots.tsx:106
 #: src/components/plot/PlotsFailed.tsx:14
 #: src/components/plot/PlotsNotFound.tsx:14
+#: src/components/plot/overview/PlotOverviewPlots.tsx:106
 msgid "Filename"
 msgstr "Dosya Adı"
 
@@ -979,7 +975,7 @@ msgstr "Gelen"
 
 #: src/components/core/components/Fee/Fee.tsx:36
 msgid "Incorrect value"
-msgstr "Yanlış değer"
+msgstr ""
 
 #: src/components/farm/FarmLatestBlockChallenges.tsx:18
 msgid "Index"
@@ -1012,7 +1008,7 @@ msgstr "Aralık"
 
 #: src/components/plotNFT/PlotNFTState.tsx:26
 msgid "Invalid state"
-msgstr "Geçersiz Durum"
+msgstr ""
 
 #: src/components/plotNFT/PlotNFTGetPoolLoginLinkDialog.tsx:90
 msgid "It is a one-time login link that can be used to log in to a pool's website. It contains a signature using the farmer's key from the plot NFT. Not all pools support this feature."
@@ -1088,7 +1084,7 @@ msgstr "Liste Görünümü"
 msgid "Loading Plot NFTs"
 msgstr ""
 
-#: src/components/wallet/Wallets.tsx:111
+#: src/components/wallet/Wallets.tsx:172
 msgid "Loading list of wallets"
 msgstr ""
 
@@ -1242,9 +1238,9 @@ msgstr ""
 msgid "None of your plots have passed the plot filter yet."
 msgstr "Henüz plot'larınızdan hiçbiri plot filtresinden geçemedi."
 
+#: src/components/farm/FarmerStatus.tsx:20
 #: src/components/farm/card/FarmCardNotAvailable.tsx:20
 #: src/components/farm/card/FarmCardNotAvailable.tsx:23
-#: src/components/farm/FarmerStatus.tsx:20
 #: src/components/plot/PlotStatus.tsx:19
 #: src/components/plotNFT/PlotNFTCard.tsx:365
 msgid "Not Available"
@@ -1532,11 +1528,11 @@ msgstr ""
 #: src/components/dashboard/DashboardSideBar.tsx:60
 #: src/components/pool/Pool.tsx:25
 msgid "Pool"
-msgstr "Havuz"
+msgstr ""
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:100
 msgid "Pool Contract Address"
-msgstr "Havuz Sözleşme Adresi"
+msgstr ""
 
 #: src/components/plot/overview/PlotOverviewPlots.tsx:81
 msgid "Pool Key"
@@ -1720,8 +1716,8 @@ msgstr "Alıcının adresi"
 msgid "Recover DID wallet"
 msgstr "Eski cüzdanınızı kurtarma"
 
-#: src/components/plot/overview/PlotOverviewHero.tsx:62
 #: src/components/plot/PlotHeader.tsx:78
+#: src/components/plot/overview/PlotOverviewHero.tsx:62
 msgid "Refresh Plots"
 msgstr "Plot'ları Yenile"
 
@@ -1948,8 +1944,8 @@ msgstr "Bölge"
 #: src/components/pool/PoolOverview.tsx:44
 #: src/components/trading/TradingOverview.jsx:128
 #: src/components/wallet/WalletHistory.tsx:55
-#: src/components/wallet/Wallets.tsx:52
 #: src/components/wallet/WalletStatusCard.tsx:22
+#: src/components/wallet/Wallets.tsx:118
 msgid "Status"
 msgstr "Durum"
 
@@ -1994,8 +1990,8 @@ msgstr "Onayla"
 msgid "Synced"
 msgstr "Senkronize Edildi"
 
-#: src/components/farm/card/FarmCardStatus.tsx:18
 #: src/components/farm/FarmerStatus.tsx:19
+#: src/components/farm/card/FarmCardStatus.tsx:18
 #: src/components/plot/PlotStatus.tsx:18
 #: src/components/wallet/WalletStatus.tsx:38
 msgid "Syncing"
@@ -2381,7 +2377,7 @@ msgid "Waiting for the transaction to be confirmed"
 msgstr ""
 
 #: src/components/pool/PoolOverview.tsx:185
-#: src/components/wallet/standard/WalletStandard.tsx:656
+#: src/components/wallet/standard/WalletStandard.tsx:674
 msgid "Wallet Status:"
 msgstr ""
 
@@ -2414,7 +2410,7 @@ msgstr ""
 #~ msgstr ""
 
 #: src/components/dashboard/DashboardSideBar.tsx:45
-#: src/components/wallet/Wallets.tsx:112
+#: src/components/wallet/Wallets.tsx:173
 msgid "Wallets"
 msgstr "Cüzdanlar"
 
@@ -2503,7 +2499,7 @@ msgstr "Grafiğe senkronize olmanıza veya bağlanmanıza gerek yoktur. Çizim i
 
 #: src/components/core/components/FormBackButton/FormBackButton.tsx:29
 msgid "You have made changes. Do you want to discard them?"
-msgstr "Kaydedilmemiş değişiklikler var. Değişiklikleri çıkarmak ister misiniz?"
+msgstr ""
 
 #: src/components/farm/card/FarmCardExpectedTimeToWin.tsx:34
 #~ msgid "You have {0}% of the space on the network, so farming a block will take {expectedTimeToWin} in expectation."
@@ -2555,7 +2551,7 @@ msgstr "Kazıcı Ağınız"
 
 #: src/components/pool/PoolOverview.tsx:160
 msgid "Your Pool Overview"
-msgstr "Maden Özetiniz"
+msgstr ""
 
 #: src/util/getDescriptiveError.ts:5
 msgid "[Error 13] Permission denied. You are trying to access a file/directory without having the necessary permissions. Most likely one of the plot folders in your config.yaml has an issue."
@@ -2565,17 +2561,17 @@ msgstr "[Error 13] İzin reddedildi. Gerekli izinlere sahip olmadan bir dosyaya 
 msgid "[Error 22] File not found. Most likely one of the plot folders in your config.yaml has an issue."
 msgstr "[Error 22] Dosya bulunamadı. Muhtemelen config.yaml dosyanızdaki çizim klasörlerinden birinde bir sorun vardır."
 
-#: src/components/wallet/Wallets.tsx:77
 #: src/components/wallet/WalletStatusCard.tsx:41
+#: src/components/wallet/Wallets.tsx:143
 msgid "connections:"
 msgstr "bağlantılar:"
 
-#: src/components/wallet/Wallets.tsx:69
 #: src/components/wallet/WalletStatusCard.tsx:33
+#: src/components/wallet/Wallets.tsx:135
 msgid "height:"
 msgstr "yükseklik:"
 
-#: src/components/wallet/Wallets.tsx:63
+#: src/components/wallet/Wallets.tsx:129
 msgid "not synced"
 msgstr "senkronize edilmedi"
 
@@ -2583,18 +2579,18 @@ msgstr "senkronize edilmedi"
 msgid "p2_singleton_puzzle_hash is not defined"
 msgstr ""
 
-#: src/components/wallet/Wallets.tsx:57
 #: src/components/wallet/WalletStatusCard.tsx:27
+#: src/components/wallet/Wallets.tsx:123
 msgid "status:"
 msgstr "durum:"
 
-#: src/components/wallet/Wallets.tsx:62
 #: src/components/wallet/WalletStatusCard.tsx:29
+#: src/components/wallet/Wallets.tsx:128
 msgid "synced"
 msgstr "senkronize edildi"
 
-#: src/components/wallet/Wallets.tsx:61
 #: src/components/wallet/WalletStatusCard.tsx:29
+#: src/components/wallet/Wallets.tsx:127
 msgid "syncing"
 msgstr "senkronize ediliyor"
 
@@ -2625,3 +2621,4 @@ msgstr "{currencyCode} Kullanıcı Transfer Ücretleri"
 #: src/components/core/components/Amount/Amount.tsx:80
 msgid "{mojo, plural, one {mojo} other {mojos}}"
 msgstr ""
+

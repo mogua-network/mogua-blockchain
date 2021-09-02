@@ -3,9 +3,6 @@ import dataclasses
 from mogua.types.blockchain_format.sized_bytes import bytes32
 from mogua.util.byte_types import hexstr_to_bytes
 from mogua.util.ints import uint8, uint32, uint64, uint128
-import logging
-
-log = logging.getLogger(__name__)
 
 
 @dataclasses.dataclass(frozen=True)
@@ -54,7 +51,7 @@ class ConsensusConstants:
     WEIGHT_PROOF_THRESHOLD: uint8
     WEIGHT_PROOF_RECENT_BLOCKS: uint32
     MAX_BLOCK_COUNT_PER_REQUESTS: uint32
-    RUST_CONDITION_CHECKER: uint64
+    INITIAL_FREEZE_END_TIMESTAMP: uint64
     BLOCKS_CACHE_SIZE: uint32
     NETWORK_TYPE: int
     MAX_GENERATOR_SIZE: uint32
@@ -69,14 +66,8 @@ class ConsensusConstants:
         Overrides str (hex) values with bytes.
         """
 
-        filtered_changes = {}
         for k, v in changes.items():
-            if not hasattr(self, k):
-                log.warn(f'invalid key in network configuration (config.yaml) "{k}". Ignoring')
-                continue
             if isinstance(v, str):
-                filtered_changes[k] = hexstr_to_bytes(v)
-            else:
-                filtered_changes[k] = v
+                changes[k] = hexstr_to_bytes(v)
 
-        return dataclasses.replace(self, **filtered_changes)
+        return dataclasses.replace(self, **changes)

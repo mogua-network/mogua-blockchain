@@ -120,6 +120,9 @@ class FullNodeAPI:
         if not (await self.full_node.synced()):
             return None
 
+        if int(time.time()) <= self.full_node.constants.INITIAL_FREEZE_END_TIMESTAMP:
+            return None
+
         # Ignore if already seen
         if self.full_node.mempool_manager.seen(transaction.transaction_id):
             return None
@@ -363,7 +366,7 @@ class FullNodeAPI:
         Receive a full block from a peer full node (or ourselves).
         """
 
-        self.log.warning(f"Received unsolicited/late block from peer {peer.get_peer_logging()}")
+        self.log.warning(f"Received unsolicited/late block from peer {peer.get_peer_info()}")
         return None
 
     @api_request

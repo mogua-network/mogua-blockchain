@@ -27,7 +27,12 @@ def parse_sexp_to_condition(
     if len(as_atoms) < 1:
         return Err.INVALID_CONDITION, None
     opcode = as_atoms[0]
-    opcode = ConditionOpcode(opcode)
+    try:
+        opcode = ConditionOpcode(opcode)
+    except ValueError:
+        # TODO: this remapping is bad, and should probably not happen
+        # it's simple enough to just store the opcode as a byte
+        opcode = ConditionOpcode.UNKNOWN
     return None, ConditionWithArgs(opcode, as_atoms[1:])
 
 

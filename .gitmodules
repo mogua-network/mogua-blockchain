@@ -1,8 +1,6 @@
-[submodule "mogua-blockchain-gui"]
-	path = mogua-blockchain-gui
-	url = https://github.com/Mogua-Network/mogua-blockchain-gui.git
-	branch = pools
 [submodule "mozilla-ca"]
 	path = mozilla-ca
 	url = https://github.com/Chia-Network/mozilla-ca.git
-        branch = main
+[submodule "mogua-blockchain-gui"]
+	path = mogua-blockchain-gui
+	url = https://github.com/Mogua-Network/mogua-blockchain-gui.git

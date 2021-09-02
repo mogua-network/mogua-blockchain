@@ -15,23 +15,19 @@ network_overrides: &network_overrides
       GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "0xb888fab8b25965172ca5f48e20f2c9c5bb85caea48f813c5ec692866e18f2c40"
       GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "0xb888fab8b25965172ca5f48e20f2c9c5bb85caea48f813c5ec692866e18f2c40"
     testnet0:
-      MIN_PLOT_SIZE: 18
       GENESIS_CHALLENGE: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       NETWORK_TYPE: 1
       GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "0xb888fab8b25965172ca5f48e20f2c9c5bb85caea48f813c5ec692866e18f2c40"
       GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "0xb888fab8b25965172ca5f48e20f2c9c5bb85caea48f813c5ec692866e18f2c40"
-    
   config:
     mainnet:
       address_prefix: "mga"
-      default_full_node_port: 6935
     testnet0:
       address_prefix: "tmga"
-      default_full_node_port: 56935
 
 selected_network: &selected_network "mainnet"
-ALERTS_URL: https://download.mogua.net/notify/mainnet_alert.txt
-MOGUA_ALERTS_PUBKEY: 89b7fd87cb56e926ecefb879a29aae308be01f31980569f6a75a69d2a9a69daefd71fb778d865f7c50d6c967e3025937
+ALERTS_URL: https://download.moguanetwork.org/notify/mainnet_alert.txt
+MOGUA_ALERTS_PUBKEY: a88dc9b53e21088dcd53347eda53b533aec7cd5ff267c3968b1dfc0dc132e39575cf401f0d6bc9952404dbbfc30731c5
 
 # public ssl ca is included in source code
 # Private ssl ca is used for trusted connections between machines user owns
@@ -53,7 +49,7 @@ daemon_ssl:
 logging: &logging
   log_stdout: False  # If True, outputs to stdout instead of a file
   log_filename: "log/debug.log"
-  log_level: "WARNING"  # Can be CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
+  log_level: "INFO"  # Can be CRITICAL, ERROR, WARNING, INFO, DEBUG, NOTSET
   log_maxfilesrotation: 7 #  Max files in rotation. Default value 7 if the key is not set
   log_syslog: False  # If True, outputs to SysLog host and port specified
   log_syslog_host: "localhost"  # Send logging messages to a remote or local Unix syslog
@@ -70,13 +66,9 @@ harvester:
   start_rpc_server: True
   rpc_port: 6960
   num_threads: 30
-  plots_refresh_parameter:
-    interval_seconds: 120 # The interval in seconds to refresh the plot file manager
-    batch_size: 30 # How many plot files the harvester processes before it waits batch_sleep_milliseconds
-    batch_sleep_milliseconds: 10 # Milliseconds the harvester sleeps between batch processing
+  plot_loading_frequency_seconds: 120
 
-
-  # If True use parallel reads in moguapos
+  # If True use parallel reads in chiapos
   parallel_read: True
 
   logging: *logging
@@ -233,7 +225,7 @@ full_node:
   # Only connect to peers who we have heard about in the last recent_peer_threshold seconds
   recent_peer_threshold: 6000
 
-  # Send to a Bluebox (sanatizing timelord) uncompact blocks once every
+  # Send to a Bluebox (sanitizing timelord) uncompact blocks once every
   # 'send_uncompact_interval' seconds. Set to 0 if you don't use this feature.
   send_uncompact_interval: 0
   # At every 'send_uncompact_interval' seconds, send blueboxes 'target_uncompact_proofs' proofs to be normalized.
@@ -251,7 +243,7 @@ full_node:
   # List of trusted DNS seeders to bootstrap from.
   # If you modify this, please change the hardcode as well from FullNode.set_server()
   dns_servers:
-    - "dns-introducer.mogua.net"
+    - "dns-introducer.moguanetwork.org"
   farmer_peer:
       host: *self_hostname
       port: 6932
@@ -259,7 +251,7 @@ full_node:
       host: *self_hostname
       port: 6933
   introducer_peer:
-      host: introducer.mogua.net  # Mogua AWS introducer IPv4/IPv6
+      host: introducer.moguanetwork.org  # Mogua AWS introducer IPv4/IPv6
       port: 6935
   wallet_peer:
     host: *self_hostname
@@ -343,7 +335,7 @@ wallet:
   recent_peer_threshold: 6000
 
   introducer_peer:
-    host: introducer.mogua.net # Mogua AWS introducer IPv4/IPv6
+    host: introducer.moguanetwork.org # Mogua AWS introducer IPv4/IPv6
     port: 6935
 
   ssl:

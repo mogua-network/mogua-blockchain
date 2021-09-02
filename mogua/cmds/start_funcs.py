@@ -6,9 +6,7 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-from mogua.cmds.passphrase_funcs import get_current_passphrase
 from mogua.daemon.client import DaemonProxy, connect_to_daemon_and_validate
-from mogua.util.keychain import KeyringMaxUnlockAttempts
 from mogua.util.service_groups import services_for_groups
 
 
@@ -16,7 +14,7 @@ def launch_start_daemon(root_path: Path) -> subprocess.Popen:
     os.environ["MOGUA_ROOT"] = str(root_path)
     # TODO: use startupinfo=subprocess.DETACHED_PROCESS on windows
     mogua = sys.argv[0]
-    process = subprocess.Popen(f"{mogua} run_daemon --wait-for-unlock".split(), stdout=subprocess.PIPE)
+    process = subprocess.Popen(f"{mogua} run_daemon".split(), stdout=subprocess.PIPE)
     return process
 
 
@@ -33,25 +31,12 @@ async def create_start_daemon_connection(root_path: Path) -> Optional[DaemonProx
         # it prints "daemon: listening"
         connection = await connect_to_daemon_and_validate(root_path)
     if connection:
-        passphrase = None
-        if await connection.is_keyring_locked():
-            passphrase = get_current_passphrase()
-
-        if passphrase:
-            print("Unlocking daemon keyring")
-            await connection.unlock_keyring(passphrase)
-
         return connection
     return None
 
 
 async def async_start(root_path: Path, group: str, restart: bool) -> None:
-    try:
-        daemon = await create_start_daemon_connection(root_path)
-    except KeyringMaxUnlockAttempts:
-        print("Failed to unlock keyring")
-        return None
-
+    daemon = await create_start_daemon_connection(root_path)
     if daemon is None:
         print("Failed to create the mogua daemon")
         return None
