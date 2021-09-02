@@ -70,7 +70,7 @@ const Spacer = styled.div`
   margin-bottom: 1rem;
 `;
 
-const url = 'https://moguanetwork.org';
+const url = 'https://mogua.net';
 
 type Props = {
   version: string;
@@ -114,7 +114,7 @@ export default function About(props: Props) {
         </StyledLink>
         <StyledSubTitle>{description}</StyledSubTitle>
         <Spacer />
-        <div className="copyright">Copyright (c) 2021 Chia Network, Mogua Network</div>
+        <div className="copyright">Copyright (c) 2021 Chia Network</div>
         <Spacer />
         <VersionsTable>
           {versions?.electron && (

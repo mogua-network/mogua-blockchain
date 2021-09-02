@@ -1,6 +1,6 @@
 from typing import Tuple
 
-from chiavdf import prove
+from moguavdf import prove
 
 from mogua.consensus.constants import ConsensusConstants
 from mogua.types.blockchain_format.classgroup import ClassgroupElement

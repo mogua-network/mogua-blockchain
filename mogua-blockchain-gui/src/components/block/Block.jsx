@@ -268,7 +268,7 @@ export default function Block() {
       value: (
         <Link
           target="_blank"
-          href={`https://www.moguaexplorer.org/blockchain/puzzlehash/${blockRecord.farmer_puzzle_hash}`}
+          href={`https://www.moguaexplorer.com/blockchain/puzzlehash/${blockRecord.farmer_puzzle_hash}`}
         >
           {currencyCode
             ? toBech32m(
@@ -284,7 +284,7 @@ export default function Block() {
       value: (
         <Link
           target="_blank"
-          href={`https://www.moguaexplorer.org/blockchain/puzzlehash/${blockRecord.pool_puzzle_hash}`}
+          href={`https://www.moguaexplorer.com/blockchain/puzzlehash/${blockRecord.pool_puzzle_hash}`}
         >
           {currencyCode
             ? toBech32m(

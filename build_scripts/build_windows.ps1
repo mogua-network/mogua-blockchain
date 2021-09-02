@@ -30,7 +30,7 @@ python -m venv venv
 python -m pip install --upgrade pip
 pip install wheel pep517
 pip install pywin32
-pip install pyinstaller==4.2
+pip install pyinstaller==4.5
 pip install setuptools_scm
 
 Write-Output "   ---"
@@ -99,7 +99,6 @@ If ($LastExitCode -gt 0){
 Write-Output "   ---"
 Write-Output "Increase the stack for mogua command for (mogua plots create) chiapos limitations"
 # editbin.exe needs to be in the path
-$env:Path +=";C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\Hostx64\x64\"
 editbin.exe /STACK:8000000 daemon\mogua.exe
 Write-Output "   ---"
 
