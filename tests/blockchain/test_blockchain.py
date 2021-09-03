@@ -34,7 +34,7 @@ from mogua.util.hash import std_hash
 from mogua.util.ints import uint8, uint64, uint32
 from mogua.util.merkle_set import MerkleSet
 from mogua.util.recursive_replace import recursive_replace
-from tests.wallet_tools import WalletTool
+from mogua.util.wallet_tools import WalletTool
 from tests.core.fixtures import default_400_blocks  # noqa: F401; noqa: F401
 from tests.core.fixtures import default_1000_blocks  # noqa: F401
 from tests.core.fixtures import default_10000_blocks  # noqa: F401
@@ -1598,72 +1598,6 @@ class TestPreValidation:
 
 class TestBodyValidation:
     @pytest.mark.asyncio
-    @pytest.mark.parametrize(
-        "opcode,lock_value,expected",
-        [
-            (ConditionOpcode.ASSERT_SECONDS_RELATIVE, -2, ReceiveBlockResult.NEW_PEAK),
-            (ConditionOpcode.ASSERT_SECONDS_RELATIVE, -1, ReceiveBlockResult.NEW_PEAK),
-            (ConditionOpcode.ASSERT_SECONDS_RELATIVE, 0, ReceiveBlockResult.NEW_PEAK),
-            (ConditionOpcode.ASSERT_SECONDS_RELATIVE, 1, ReceiveBlockResult.INVALID_BLOCK),
-            (ConditionOpcode.ASSERT_HEIGHT_RELATIVE, -2, ReceiveBlockResult.NEW_PEAK),
-            (ConditionOpcode.ASSERT_HEIGHT_RELATIVE, -1, ReceiveBlockResult.NEW_PEAK),
-            (ConditionOpcode.ASSERT_HEIGHT_RELATIVE, 0, ReceiveBlockResult.INVALID_BLOCK),
-            (ConditionOpcode.ASSERT_HEIGHT_RELATIVE, 1, ReceiveBlockResult.INVALID_BLOCK),
-            (ConditionOpcode.ASSERT_HEIGHT_ABSOLUTE, 2, ReceiveBlockResult.NEW_PEAK),
-            (ConditionOpcode.ASSERT_HEIGHT_ABSOLUTE, 3, ReceiveBlockResult.INVALID_BLOCK),
-            (ConditionOpcode.ASSERT_HEIGHT_ABSOLUTE, 4, ReceiveBlockResult.INVALID_BLOCK),
-            # genesis timestamp is 10000 and each block is 10 seconds
-            (ConditionOpcode.ASSERT_SECONDS_ABSOLUTE, 10029, ReceiveBlockResult.NEW_PEAK),
-            (ConditionOpcode.ASSERT_SECONDS_ABSOLUTE, 10030, ReceiveBlockResult.NEW_PEAK),
-            (ConditionOpcode.ASSERT_SECONDS_ABSOLUTE, 10031, ReceiveBlockResult.INVALID_BLOCK),
-            (ConditionOpcode.ASSERT_SECONDS_ABSOLUTE, 10032, ReceiveBlockResult.INVALID_BLOCK),
-        ],
-    )
-    async def test_ephemeral_timelock(self, empty_blockchain, opcode, lock_value, expected):
-        b = empty_blockchain
-        blocks = bt.get_consecutive_blocks(
-            3,
-            guarantee_transaction_block=True,
-            farmer_reward_puzzle_hash=bt.pool_ph,
-            pool_reward_puzzle_hash=bt.pool_ph,
-            genesis_timestamp=10000,
-            time_per_block=10,
-        )
-        assert (await b.receive_block(blocks[0]))[0] == ReceiveBlockResult.NEW_PEAK
-        assert (await b.receive_block(blocks[1]))[0] == ReceiveBlockResult.NEW_PEAK
-        assert (await b.receive_block(blocks[2]))[0] == ReceiveBlockResult.NEW_PEAK
-
-        wt: WalletTool = bt.get_pool_wallet_tool()
-
-        conditions = {opcode: [ConditionWithArgs(opcode, [int_to_bytes(lock_value)])]}
-
-        tx1: SpendBundle = wt.generate_signed_transaction(
-            10, wt.get_new_puzzlehash(), list(blocks[-1].get_included_reward_coins())[0]
-        )
-        coin1: Coin = tx1.additions()[0]
-        tx2: SpendBundle = wt.generate_signed_transaction(10, wt.get_new_puzzlehash(), coin1, condition_dic=conditions)
-        assert coin1 in tx2.removals()
-        coin2: Coin = tx2.additions()[0]
-
-        bundles = SpendBundle.aggregate([tx1, tx2])
-        blocks = bt.get_consecutive_blocks(
-            1,
-            block_list_input=blocks,
-            guarantee_transaction_block=True,
-            transaction_data=bundles,
-            time_per_block=10,
-        )
-        assert (await b.receive_block(blocks[-1]))[0] == expected
-
-        if expected == ReceiveBlockResult.NEW_PEAK:
-            # ensure coin1 was in fact spent
-            c = await b.coin_store.get_coin_record(coin1.name())
-            assert c is not None and c.spent
-            # ensure coin2 was NOT spent
-            c = await b.coin_store.get_coin_record(coin2.name())
-            assert c is not None and not c.spent
-
-    @pytest.mark.asyncio
     async def test_not_tx_block_but_has_data(self, empty_blockchain):
         # 1
         b = empty_blockchain
@@ -1821,7 +1755,7 @@ class TestBodyValidation:
             guarantee_transaction_block=True,
             pool_reward_puzzle_hash=bt.pool_ph,
             farmer_reward_puzzle_hash=bt.pool_ph,
-            genesis_timestamp=0,
+            genesis_timestamp=time.time() - 1000,
         )
         assert (await b.receive_block(blocks[0]))[0] == ReceiveBlockResult.NEW_PEAK
         assert (await b.receive_block(blocks[1]))[0] == ReceiveBlockResult.NEW_PEAK
@@ -2414,35 +2348,7 @@ class TestBodyValidation:
 
     @pytest.mark.asyncio
     async def test_minting_coin(self, empty_blockchain):
-        # 16 Minting coin check
-        b = empty_blockchain
-        blocks = bt.get_consecutive_blocks(
-            3,
-            guarantee_transaction_block=True,
-            farmer_reward_puzzle_hash=bt.pool_ph,
-            pool_reward_puzzle_hash=bt.pool_ph,
-        )
-        assert (await b.receive_block(blocks[0]))[0] == ReceiveBlockResult.NEW_PEAK
-        assert (await b.receive_block(blocks[1]))[0] == ReceiveBlockResult.NEW_PEAK
-        assert (await b.receive_block(blocks[2]))[0] == ReceiveBlockResult.NEW_PEAK
-
-        wt: WalletTool = bt.get_pool_wallet_tool()
-
-        spend = list(blocks[-1].get_included_reward_coins())[0]
-        print("spend=", spend)
-        # this create coin will spend all of the coin, so the 10 mojos below
-        # will be "minted".
-        output = ConditionWithArgs(ConditionOpcode.CREATE_COIN, [bt.pool_ph, int_to_bytes(spend.amount)])
-        condition_dict = {ConditionOpcode.CREATE_COIN: [output]}
-
-        tx: SpendBundle = wt.generate_signed_transaction(
-            10, wt.get_new_puzzlehash(), spend, condition_dic=condition_dict
-        )
-
-        blocks = bt.get_consecutive_blocks(
-            1, block_list_input=blocks, guarantee_transaction_block=True, transaction_data=tx
-        )
-        assert (await b.receive_block(blocks[-1]))[1] == Err.MINTING_COIN
+        # 16 TODO
         # 17 is tested in mempool tests
         pass
 

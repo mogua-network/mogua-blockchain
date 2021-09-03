@@ -1,37 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import {
-  Button,
-  Paper,
-  TableRow,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-} from '@material-ui/core';
+import { Button, Paper, TableRow, Table, TableBody, TableCell, TableContainer } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import { Trans } from '@lingui/macro';
 import { useParams, useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import {
-  Card,
-  FormatLargeNumber,
-  Link,
-  Loading,
-  TooltipIcon,
-  Flex,
-} from '@mogua/core';
+import { Card, FormatLargeNumber, Link, Loading, TooltipIcon, Flex } from '@mogua/core';
 import {
   unix_to_short_date,
   hex_to_array,
   arr_to_hex,
   sha256,
 } from '../../util/utils';
-import { getBlockRecord, getBlock } from '../../modules/fullnodeMessages';
-import { mojo_to_mogua } from '../../util/mogua';
 import {
-  calculatePoolReward,
-  calculateBaseFarmerReward,
-} from '../../util/blockRewards';
+  getBlockRecord,
+  getBlock,
+} from '../../modules/fullnodeMessages';
+import { mojo_to_mogua } from '../../util/mogua';
+import { calculatePoolReward, calculateBaseFarmerReward } from '../../util/blockRewards';
 import LayoutMain from '../layout/LayoutMain';
 import toBech32m from '../../util/toBech32m';
 import BlockTitle from './BlockTitle';
@@ -40,8 +25,7 @@ import useCurrencyCode from '../../hooks/useCurrencyCode';
 /* global BigInt */
 
 async function computeNewPlotId(block) {
-  const { pool_public_key, plot_public_key } =
-    block.reward_chain_block.proof_of_space;
+  const { pool_public_key, plot_public_key } = block.reward_chain_block.proof_of_space;
   if (!pool_public_key) {
     return undefined;
   }
@@ -88,9 +72,7 @@ export default function Block() {
       setBlockRecord(blockRecord);
 
       if (blockRecord?.prev_hash && !!blockRecord?.height) {
-        const prevBlockRecord = await dispatch(
-          getBlockRecord(blockRecord?.prev_hash),
-        );
+        const prevBlockRecord = await dispatch(getBlockRecord(blockRecord?.prev_hash));
         setPrevBlockRecord(prevBlockRecord);
       }
     } catch (e) {
@@ -126,23 +108,33 @@ export default function Block() {
 
   if (loading) {
     return (
-      <LayoutMain title={<Trans>Block</Trans>}>
-        <Loading center />
+      <LayoutMain
+        title={<Trans>Block</Trans>}
+      >
+        <Flex justifyContent="center">
+          <Loading />
+        </Flex>
       </LayoutMain>
     );
   }
 
   if (error) {
     return (
-      <LayoutMain title={<Trans>Block Test</Trans>}>
+      <LayoutMain
+        title={<Trans>Block Test</Trans>}
+      >
         <Card
-          title={
+          title={(
             <BlockTitle>
-              <Trans>Block with hash {headerHash}</Trans>
+              <Trans>
+                Block with hash {headerHash}
+              </Trans>
             </BlockTitle>
-          }
+          )}
         >
-          <Alert severity="error">{error.message}</Alert>
+          <Alert severity="error">
+            {error.message}
+          </Alert>
         </Card>
       </LayoutMain>
     );
@@ -150,31 +142,34 @@ export default function Block() {
 
   if (!block) {
     return (
-      <LayoutMain title={<Trans>Block</Trans>}>
+      <LayoutMain
+        title={<Trans>Block</Trans>}
+      >
         <Card
-          title={
+          title={(
             <BlockTitle>
-              <Trans>Block</Trans>
+              <Trans>
+                Block
+              </Trans>
             </BlockTitle>
-          }
+          )}
         >
           <Alert severity="warning">
-            <Trans>Block with hash {headerHash} does not exist.</Trans>
+            <Trans>
+              Block with hash {headerHash} does not exist.
+            </Trans>
           </Alert>
         </Card>
       </LayoutMain>
     );
   }
 
-  const difficulty =
-    prevBlockRecord && blockRecord
-      ? blockRecord.weight - prevBlockRecord.weight
-      : blockRecord?.weight ?? 0;
+  const difficulty = prevBlockRecord && blockRecord
+    ? blockRecord.weight - prevBlockRecord.weight
+    : blockRecord?.weight ?? 0;
 
   const poolReward = mojo_to_mogua(calculatePoolReward(blockRecord.height));
-  const baseFarmerReward = mojo_to_mogua(
-    calculateBaseFarmerReward(blockRecord.height),
-  );
+  const baseFarmerReward = mojo_to_mogua(calculateBaseFarmerReward(blockRecord.height));
 
   const moguaFees = blockRecord.fees
     ? mojo_to_mogua(BigInt(blockRecord.fees))
@@ -187,9 +182,7 @@ export default function Block() {
     },
     {
       name: <Trans>Timestamp</Trans>,
-      value: blockRecord.timestamp
-        ? unix_to_short_date(blockRecord.timestamp)
-        : null,
+      value: blockRecord.timestamp ? unix_to_short_date(blockRecord.timestamp) : null,
       tooltip: (
         <Trans>
           This is the time the block was created by the farmer, which is before
@@ -206,15 +199,17 @@ export default function Block() {
       value: <FormatLargeNumber value={blockRecord.weight} />,
       tooltip: (
         <Trans>
-          Weight is the total added difficulty of all sub blocks up to and
-          including this one
+          Weight is the total added difficulty of all sub blocks up to and including
+          this one
         </Trans>
       ),
     },
     {
       name: <Trans>Previous Header Hash</Trans>,
       value: (
-        <Link onClick={handleShowPreviousBlock}>{blockRecord.prev_hash}</Link>
+        <Link onClick={handleShowPreviousBlock}>
+          {blockRecord.prev_hash}
+        </Link>
       ),
     },
     {
@@ -233,13 +228,7 @@ export default function Block() {
     },
     {
       name: <Trans>Block VDF Iterations</Trans>,
-      value: (
-        <FormatLargeNumber
-          value={
-            block.reward_chain_block.challenge_chain_ip_vdf.number_of_iterations
-          }
-        />
-      ),
+      value: <FormatLargeNumber value={block.reward_chain_block.challenge_chain_ip_vdf.number_of_iterations} />,
       tooltip: (
         <Trans>
           The total number of VDF (verifiable delay function) or proof of time
@@ -249,11 +238,7 @@ export default function Block() {
     },
     {
       name: <Trans>Proof of Space Size</Trans>,
-      value: (
-        <FormatLargeNumber
-          value={block.reward_chain_block.proof_of_space.size}
-        />
-      ),
+      value: <FormatLargeNumber value={block.reward_chain_block.proof_of_space.size} />,
     },
     {
       name: <Trans>Plot Public Key</Trans>,
@@ -266,32 +251,16 @@ export default function Block() {
     {
       name: <Trans>Farmer Puzzle Hash</Trans>,
       value: (
-        <Link
-          target="_blank"
-          href={`https://www.moguaexplorer.org/blockchain/puzzlehash/${blockRecord.farmer_puzzle_hash}`}
-        >
-          {currencyCode
-            ? toBech32m(
-                blockRecord.farmer_puzzle_hash,
-                currencyCode.toLowerCase(),
-              )
-            : ''}
+        <Link>
+          {currencyCode ? toBech32m(blockRecord.farmer_puzzle_hash, currencyCode.toLowerCase()) : ''}
         </Link>
       ),
     },
     {
       name: <Trans>Pool Puzzle Hash</Trans>,
       value: (
-        <Link
-          target="_blank"
-          href={`https://www.moguaexplorer.org/blockchain/puzzlehash/${blockRecord.pool_puzzle_hash}`}
-        >
-          {currencyCode
-            ? toBech32m(
-                blockRecord.pool_puzzle_hash,
-                currencyCode.toLowerCase(),
-              )
-            : ''}
+        <Link>
+          {currencyCode ? toBech32m(blockRecord.pool_puzzle_hash, currencyCode.toLowerCase()) : ''}
         </Link>
       ),
     },
@@ -300,13 +269,17 @@ export default function Block() {
       value: newPlotId,
       tooltip: (
         <Trans>
-          The seed used to create the plot. This depends on the pool pk and plot
-          pk.
+          The seed used to create the plot.
+          This depends on the pool pk and plot pk.
         </Trans>
       ),
     },
     {
-      name: <Trans>Transactions Filter Hash</Trans>,
+      name: (
+        <Trans>
+          Transactions Filter Hash
+        </Trans>
+      ),
       value: block.foliage_transaction_block?.filter_hash,
     },
     {
@@ -329,28 +302,32 @@ export default function Block() {
   ];
 
   return (
-    <LayoutMain title={<Trans>Block</Trans>}>
+    <LayoutMain
+      title={<Trans>Block</Trans>}
+    >
       <Card
-        title={
+        title={(
           <BlockTitle>
             <Trans>
-              Block at height {blockRecord.height} in the Mogua blockchain
+              Block at height {blockRecord.height} in the MoGua
+              blockchain
             </Trans>
           </BlockTitle>
-        }
-        action={
+        )}
+        action={(
           <Flex gap={1}>
-            <Button
-              onClick={handleShowPreviousBlock}
-              disabled={!hasPreviousBlock}
-            >
-              <Trans>Previous</Trans>
+            <Button onClick={handleShowPreviousBlock} disabled={!hasPreviousBlock}>
+              <Trans>
+                Previous
+              </Trans>
             </Button>
             <Button onClick={handleShowNextBlock} disabled={!hasNextBlock}>
-              <Trans>Next</Trans>
+              <Trans>
+                Next
+              </Trans>
             </Button>
           </Flex>
-        }
+        )}
       >
         <TableContainer component={Paper}>
           <Table>
@@ -359,9 +336,16 @@ export default function Block() {
                 <TableRow key={index}>
                   <TableCell component="th" scope="row">
                     {row.name}{' '}
-                    {row.tooltip && <TooltipIcon>{row.tooltip}</TooltipIcon>}
+                    {row.tooltip && (
+                      <TooltipIcon>
+                        {row.tooltip}
+                      </TooltipIcon>
+                    )}
                   </TableCell>
-                  <TableCell onClick={row.onClick} align="right">
+                  <TableCell
+                    onClick={row.onClick}
+                    align="right"
+                  >
                     {row.value}
                   </TableCell>
                 </TableRow>

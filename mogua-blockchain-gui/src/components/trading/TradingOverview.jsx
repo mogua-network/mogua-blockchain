@@ -17,7 +17,7 @@ import Grid from '@material-ui/core/Grid';
 import HelpIcon from '@material-ui/icons/Help';
 import { unix_to_short_date } from '../../util/utils';
 import { presetOverview, presentTrade } from '../../modules/trade';
-import { mojo_to_mogua_string } from '../../util/mogua';
+import { mojo_to_mogua_string, mojo_to_colouredcoin_string } from '../../util/mogua';
 import {
   get_all_trades,
   cancel_trade_with_spend_action,
@@ -284,8 +284,9 @@ const OfferRow = (props) => {
     multiplier = -1;
   }
 
-  const side =
-    amount * multiplier < 0 ? <Trans>Sell</Trans> : <Trans>Buy</Trans>;
+  const side = amount * multiplier < 0 ? <Trans>Sell</Trans> : <Trans>Buy</Trans>;
+  const displayAmount = name.startsWith("ff02ffff01ff02ffff03ffff09ff5bff8080ffff01ff0101ffff01ff02ffff03ffff09ff13ff0280ffff01ff0101ff8080ff018080ff0180ffff04ffff01a0") ? 
+    mojo_to_colouredcoin_string(Math.abs(amount)) : mojo_to_mogua_string(Math.abs(amount));
 
   return (
     <Box display="flex" style={{ minWidth: '100%' }}>
@@ -301,7 +302,7 @@ const OfferRow = (props) => {
       </Box>
       <Box flexGrow={1}>{side}</Box>
       <Box flexGrow={1} style={{ textAlign: 'right' }}>
-        {mojo_to_mogua_string(amount)}
+        {displayAmount}
       </Box>
     </Box>
   );

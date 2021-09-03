@@ -24,7 +24,7 @@ from mogua.protocols.wallet_protocol import PuzzleSolutionResponse, RespondPuzzl
 from mogua.types.blockchain_format.coin import Coin
 from mogua.types.blockchain_format.program import Program
 from mogua.types.blockchain_format.sized_bytes import bytes32
-from mogua.types.coin_spend import CoinSpend
+from mogua.types.coin_solution import CoinSolution
 from mogua.types.full_block import FullBlock
 from mogua.types.header_block import HeaderBlock
 from mogua.types.mempool_inclusion_status import MempoolInclusionStatus
@@ -59,7 +59,7 @@ from mogua.wallet.wallet_puzzle_store import WalletPuzzleStore
 from mogua.wallet.wallet_sync_store import WalletSyncStore
 from mogua.wallet.wallet_transaction_store import WalletTransactionStore
 from mogua.wallet.wallet_user_store import WalletUserStore
-from mogua.server.server import MoguaServer
+from mogua.server.server import MoGuaServer
 from mogua.wallet.did_wallet.did_wallet import DIDWallet
 
 
@@ -107,7 +107,7 @@ class WalletStateManager:
     interested_store: WalletInterestedStore
     pool_store: WalletPoolStore
     weight_proof_handler: Any
-    server: MoguaServer
+    server: MoGuaServer
     root_path: Path
 
     @staticmethod
@@ -116,7 +116,7 @@ class WalletStateManager:
         config: Dict,
         db_path: Path,
         constants: ConsensusConstants,
-        server: MoguaServer,
+        server: MoGuaServer,
         root_path: Path,
         name: str = None,
     ):
@@ -567,7 +567,7 @@ class WalletStateManager:
         removals: List[Coin],
         additions: List[Coin],
         block: BlockRecord,
-        additional_coin_spends: List[CoinSpend],
+        additional_coin_spends: List[CoinSolution],
     ):
         height: uint32 = block.height
         for coin in additions:
@@ -1213,7 +1213,7 @@ class WalletStateManager:
     def get_peak(self) -> Optional[BlockRecord]:
         return self.blockchain.get_peak()
 
-    async def get_next_interesting_coin_ids(self, spend: CoinSpend, in_transaction: bool) -> List[bytes32]:
+    async def get_next_interesting_coin_ids(self, spend: CoinSolution, in_transaction: bool) -> List[bytes32]:
         pool_wallet_interested: List[bytes32] = PoolWallet.get_next_interesting_coin_ids(spend)
         for coin_id in pool_wallet_interested:
             await self.interested_store.add_interested_coin_id(coin_id, in_transaction)

@@ -32,6 +32,7 @@ const StyledFlexContainer = styled(({ color: Color, ...rest }) => (
   color: ${({ color }) => color};
 `;
 
+
 export default function FarmerStatusComponent() {
   const farmerStatus = useFarmerStatus();
   const color = Color[farmerStatus];

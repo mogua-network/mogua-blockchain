@@ -1,21 +1,22 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Trans } from '@lingui/macro';
-// import styled from 'styled-components';
+import styled from 'styled-components';
+
 import {
   Box,
-  /*
-  List,
   Divider,
+  Grid,
+  List,
   ListItem,
   ListItemText,
-  */
-  Typography,
+  Typography
 } from '@material-ui/core';
-// import { useRouteMatch, useHistory } from 'react-router';
-import { /*useDispatch, */ useSelector } from 'react-redux';
-import { FormatLargeNumber } from '@mogua/core';
+import { Route, Switch, useRouteMatch, useHistory } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
+import { Flex, FormatLargeNumber } from '@mogua/core';
+
 import StandardWallet from './standard/WalletStandard';
-/*
+
 import {
   changeWalletMenu,
   standardWallet,
@@ -23,12 +24,19 @@ import {
   RLWallet,
   DIDWallet,
 } from '../../modules/walletMenu';
-*/
+
+import { CreateWalletView } from './create/WalletCreate';
+import ColouredWallet from './coloured/WalletColoured';
+import RateLimitedWallet from './rateLimited/WalletRateLimited';
+import DistributedWallet from './did/DIDWallet';
 import type { RootState } from '../../modules/rootReducer';
 import WalletType from '../../constants/WalletType';
-import LayoutMain from '../layout/LayoutMain';
+import LayoutSidebar from '../layout/LayoutSidebar';
 
-/*
+const StyledList = styled(List)`
+  width: 100%;
+`;
+
 const WalletItem = (props: any) => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -47,13 +55,13 @@ const WalletItem = (props: any) => {
 
   let mainLabel = <></>;
   if (type === WalletType.STANDARD_WALLET) {
-    mainLabel = <Trans>Mogua Wallet</Trans>;
-    name = 'Mogua';
+    mainLabel = <Trans>MoGua Wallet</Trans>;
+    name = 'MoGua';
   } else if (type === WalletType.COLOURED_COIN) {
     mainLabel = <Trans>CC Wallet</Trans>;
   } else if (type === WalletType.RATE_LIMITED) {
     mainLabel = <Trans>RL Wallet</Trans>;
-  } else if (wtype === WalletType.DISTRIBUTED_ID) {
+  } else if (type === WalletType.DISTRIBUTED_ID) {
     mainLabel = <Trans>DID Wallet</Trans>;
   }
 
@@ -95,7 +103,6 @@ const CreateWallet = () => {
     </div>
   );
 };
-*/
 
 export function StatusCard() {
   const syncing = useSelector(
@@ -152,32 +159,16 @@ export function StatusCard() {
 }
 
 export default function Wallets() {
-  // const { path } = useRouteMatch();
+  const { path } = useRouteMatch();
   const wallets = useSelector((state: RootState) => state.wallet_state.wallets);
   const id = useSelector((state: RootState) => state.wallet_menu.id);
   const wallet = wallets?.find((wallet) => wallet && wallet.id === id);
-  /*
   const visibleWallets = useMemo(() => {
     return (
       wallets?.filter((wallet) => wallet.type !== WalletType.POOLING_WALLET) ??
       []
     );
   }, [wallets]);
-  */
-  const loading = !wallets;
-
-  return (
-    <LayoutMain
-      loading={loading}
-      loadingTitle={<Trans>Loading list of wallets</Trans>}
-      title={<Trans>Wallets</Trans>}
-    >
-      {!!wallet && wallet.type === WalletType.STANDARD_WALLET && (
-        <StandardWallet wallet_id={id} />
-      )}
-    </LayoutMain>
-  );
-  /*
 
   return (
     <LayoutSidebar
@@ -197,9 +188,7 @@ export default function Wallets() {
               ))}
             </StyledList>
           </Flex>
-          {localTest && (
-            <CreateWallet />
-          )}
+          <CreateWallet />
         </Flex>
       }
     >
@@ -229,5 +218,4 @@ export default function Wallets() {
       </Grid>
     </LayoutSidebar>
   );
-  */
 }

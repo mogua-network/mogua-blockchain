@@ -4,12 +4,14 @@ import { useHistory } from 'react-router-dom';
 import { Button, Divider, Grid, Typography } from '@material-ui/core';
 import styled from 'styled-components';
 import { CardHero, Link } from '@mogua/core';
-import heroSrc from './images/hero.svg';
+import heroSrc from './images/duck-hunt.svg';
 import PlotAddDirectoryDialog from '../../plot/PlotAddDirectoryDialog';
 import useOpenDialog from '../../../hooks/useOpenDialog';
 
 const StyledImage = styled('img')`
-  max-width: 7rem;
+  max-width: 777px;
+  width: 454px;
+  height: 112px;
 `;
 
 export default function FarmOverviewHero() {
@@ -36,7 +38,7 @@ export default function FarmOverviewHero() {
               where your farm will be once you add a plot.{' '}
               <Link
                 target="_blank"
-                href="https://github.com/Mogua-Network/mogua-blockchain/wiki/Network-Architecture"
+                href="https://github.com/MoGua/mogua-blockchain/wiki/Network-Architecture"
               >
                 Learn more
               </Link>

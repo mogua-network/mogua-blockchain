@@ -3,7 +3,7 @@ import sys
 import time
 from datetime import datetime
 from decimal import Decimal
-from typing import Callable, List, Optional, Tuple, Dict
+from typing import Callable, List, Optional, Tuple
 
 import aiohttp
 
@@ -190,7 +190,7 @@ async def get_wallet(wallet_client: WalletRpcClient, fingerprint: int = None) ->
             use_cloud = True
             if "backup_path" in log_in_response:
                 path = log_in_response["backup_path"]
-                print(f"Backup file from backup.moguanetwork.org downloaded and written to: {path}")
+                print(f"Backup file from backup.mogua.org downloaded and written to: {path}")
                 val = input("Do you want to use this file to restore from backup? (Y/N) ")
                 if val.lower() == "y":
                     log_in_response = await wallet_client.log_in_and_restore(fingerprint, path)
@@ -223,9 +223,7 @@ async def get_wallet(wallet_client: WalletRpcClient, fingerprint: int = None) ->
     return wallet_client, fingerprint
 
 
-async def execute_with_wallet(
-    wallet_rpc_port: Optional[int], fingerprint: int, extra_params: Dict, function: Callable
-) -> None:
+async def execute_with_wallet(wallet_rpc_port: int, fingerprint: int, extra_params: dict, function: Callable) -> None:
     try:
         config = load_config(DEFAULT_ROOT_PATH, "config.yaml")
         self_hostname = config["self_hostname"]
@@ -251,3 +249,20 @@ async def execute_with_wallet(
             print(f"Exception from 'wallet' {e}")
     wallet_client.close()
     await wallet_client.await_closed()
+
+async def create_new_wallet(args: dict, wallet_client: WalletRpcClient, fingerprint: int) -> None:
+    data = await wallet_client.create_new_wallet(args["wallet_type"], args["data"])
+    if data and data["success"]:
+        if args["wallet_type"] == "cc_wallet":
+            if args["data"]["mode"] == "new":
+                print("New colour created: ", data["colour"])
+            elif args["data"]["mode"] == "existing":
+                print("New colour wallet created.")
+        elif args["wallet_type"] == "rl_wallet":
+            if args["data"]["rl_type"] == "user":
+                print("Public key:", data["pubkey"])
+                print("Send this information to your rate limited wallet admin.")
+            elif args["data"]["rl_type"] == "admin":
+                print("Rate limited wallet created.")
+    else:
+        print("Unable to create the new wallet")

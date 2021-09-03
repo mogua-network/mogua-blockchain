@@ -1,3 +1,5 @@
+import type { ButtonProps } from './Button';
+
 export { default as Accordion } from './Accordion';
 export { default as Address } from './Address';
 export { default as AdvancedOptions } from './AdvancedOptions';
@@ -5,7 +7,8 @@ export { default as AlertDialog } from './AlertDialog';
 export { default as Amount } from './Amount';
 export { default as AspectRatio } from './AspectRatio';
 export { default as Autocomplete } from './Autocomplete';
-export { default as Button, ButtonProps } from './Button';
+export { default as Button } from './Button';
+export type { ButtonProps };
 export { default as ButtonLoading } from './ButtonLoading';
 export { default as ButtonSelected } from './ButtonSelected';
 export { default as Card } from './Card';

@@ -11,6 +11,7 @@
       "@mogua/*": ["./components/*"]
     },
     "allowJs": true,
+    "sourceMap": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,

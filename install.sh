@@ -18,9 +18,9 @@ fi
 if [ "$(uname -m)" = "armv7l" ]; then
   echo ""
 	echo "WARNING:"
-	echo "The Mogua Blockchain requires a 64 bit OS and this is 32 bit armv7l"
+	echo "The MoGua Blockchain requires a 64 bit OS and this is 32 bit armv7l"
 	echo "For more information, see"
-	echo "https://github.com/Mogua-Network/mogua-blockchain/wiki/Raspberry-Pi"
+	echo "https://github.com/MoGua/mogua-blockchain/wiki/Raspberry-Pi"
 	echo "Exiting."
 	exit 1
 fi
@@ -120,12 +120,12 @@ python -m pip install --extra-index-url https://pypi.chia.net/simple/ miniupnpc=
 python -m pip install -e . --extra-index-url https://pypi.chia.net/simple/
 
 echo ""
-echo "Mogua blockchain install.sh complete."
-echo "For assistance join us on Discord in the #support chat channel:"
-echo "https://discord.gg/TgJyxsEFFc"
+echo "MoGua blockchain install.sh complete."
+echo "For assistance join us on Discord in the #testnet chat channel:"
+echo "https://discord.gg/FmzdcUJz"
 echo ""
 echo "Try the Quick Start Guide to running mogua-blockchain:"
-echo "https://github.com/Mogua-Network/mogua-blockchain/wiki/Quick-Start-Guide"
+echo "https://github.com/MoGua/mogua-blockchain/wiki/Quick-Start-Guide"
 echo ""
 echo "To install the GUI type 'sh install-gui.sh' after '. ./activate'."
 echo ""

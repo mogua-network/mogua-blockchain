@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { orderBy } from 'lodash';
+import orderBy from 'lodash/orderBy';
 import Wallet from '../types/Wallet';
 import Transaction from '../types/Transaction';
 import type { RootState } from '../modules/rootReducer';

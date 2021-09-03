@@ -11,8 +11,7 @@ export default function AppTimeBomb() {
   const [timeoutId, setTimeoutId] = useState<number | undefined>();
 
   const peakHeight = useSelector(
-    (state: RootState) =>
-      state.full_node_state.blockchain_state?.peak?.height ?? 0,
+    (state: RootState) => state.full_node_state.blockchain_state?.peak?.height ?? 0,
   );
 
   async function informUser() {
@@ -23,13 +22,10 @@ export default function AppTimeBomb() {
     setShowed(true);
 
     // @ts-ignore
-    await window.remote.dialog.showMessageBox(
-      window.remote.getCurrentWindow(),
-      {
-        type: 'warning',
-        message: t`The application will stop working at block height 193536.`,
-      },
-    );
+    await window.remote.dialog.showMessageBox(window.remote.getCurrentWindow(), {
+      type: 'warning',
+      message: t`The application will stop working at block height 193536.`,
+    });
 
     const newTimeoutId = setTimeout(() => {
       setShowed(false);
@@ -46,7 +42,7 @@ export default function AppTimeBomb() {
       if (timeoutId) {
         clearTimeout(timeoutId);
       }
-    };
+    }
   }, [peakHeight, showed, timeoutId]);
 
   return null;

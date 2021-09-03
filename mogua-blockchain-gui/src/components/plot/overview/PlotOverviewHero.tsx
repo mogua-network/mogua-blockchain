@@ -34,11 +34,11 @@ export default function PlotOverviewHero() {
           <Typography variant="body1">
             <Trans>
               {
-                'Plots are allocated space on your hard drive used to farm and earn Mogua. '
+                'Plots are allocated space on your hard drive used to farm and earn MoGua. '
               }
               <Link
                 target="_blank"
-                href="https://github.com/Mogua-Network/mogua-blockchain/wiki/Network-Architecture"
+                href="https://github.com/MoGua/mogua-blockchain/wiki/Network-Architecture"
               >
                 Learn more
               </Link>

@@ -91,24 +91,27 @@ export default function FarmFullNodeConnections() {
   );
 
   return (
-    <Card
-      title={<Trans>Your Full Node Connection</Trans>}
-      tooltip={
+    <Card 
+      title={(
+        <Trans>
+          Your Full Node Connection
+        </Trans>
+      )}
+      tooltip={(
         <Trans>
           {'The full node that your farmer is connected to is below. '}
-          <Link
-            target="_blank"
-            href="https://github.com/Mogua-Network/mogua-blockchain/wiki/Network-Architecture"
-          >
+          <Link target="_blank" href="https://github.com/MoGua/mogua-blockchain/wiki/Network-Architecture">
             Learn more
           </Link>
         </Trans>
-      }
+      )}
       interactive
     >
       <Flex justifyContent="flex-end" gap={1}>
         <Typography variant="caption" color="textSecondary">
-          <Trans>Connection Status:</Trans>
+          <Trans>
+            Connection Status:
+          </Trans>
         </Typography>
         <FormatConnectionStatus connected={connected} />
       </Flex>

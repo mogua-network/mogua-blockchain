@@ -1,13 +1,24 @@
 {
   "name": "mogua-blockchain",
-  "author": "Mogua Network <hello@moguanetwork.org> (https://moguanetwork.org/)",
-  "description": "GUI for Mogua Blockchain",
-  "productName": "Mogua Blockchain",
+  "author": "MoGua Network <hello@mogua.org> (https://mogua.org/)",
+  "description": "GUI for MoGua Blockchain",
+  "productName": "MoGua Blockchain",
   "private": true,
   "homepage": "./",
   "main": "build/electron/main.js",
   "engines": {
     "node": ">=12.13.0"
+  },
+  "build": {
+    "appId": "ord.mogua.fullnode",
+    "productName": "MoGua",
+    "copyright": "Copyright © 2021 MoGua",
+    "mac": {
+      "icon": "./assets/img/mogua.icns"
+    },
+    "win": {
+      "icon": "./assets/img/mogua.png"
+    }
   },
   "scripts": {
     "start": "cross-env NODE_ENV=development webpack serve --config ./webpack.react.babel.ts",

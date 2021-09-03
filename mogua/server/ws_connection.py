@@ -23,7 +23,7 @@ from mogua.util.network import class_for_type, is_localhost
 LENGTH_BYTES: int = 4
 
 
-class WSMoguaConnection:
+class WSMoGuaConnection:
     """
     Represents a connection to another node. Local host and port are ours, while peer host and
     port are the host and port of the peer that we are connected to. Node_id and connection_type are
@@ -56,7 +56,7 @@ class WSMoguaConnection:
 
         peername = self.ws._writer.transport.get_extra_info("peername")
         if peername is None:
-            raise ValueError(f"Was not able to get peername from {self.peer_host}")
+            raise ValueError(f"Was not able to get peername from {self.ws_witer} at {self.peer_host}")
 
         connection_port = peername[1]
         self.peer_port = connection_port
@@ -69,7 +69,7 @@ class WSMoguaConnection:
         self.is_outbound = is_outbound
         self.is_feeler = is_feeler
 
-        # MoguaConnection metrics
+        # MoGuaConnection metrics
         self.creation_time = time.time()
         self.bytes_read = 0
         self.bytes_written = 0

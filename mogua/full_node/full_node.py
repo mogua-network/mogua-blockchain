@@ -38,7 +38,7 @@ from mogua.protocols.full_node_protocol import (
 from mogua.protocols.protocol_message_types import ProtocolMessageTypes
 from mogua.server.node_discovery import FullNodePeers
 from mogua.server.outbound_message import Message, NodeType, make_msg
-from mogua.server.server import MoguaServer
+from mogua.server.server import MoGuaServer
 from mogua.types.blockchain_format.classgroup import ClassgroupElement
 from mogua.types.blockchain_format.pool_target import PoolTarget
 from mogua.types.blockchain_format.sized_bytes import bytes32
@@ -174,7 +174,7 @@ class FullNode:
         if peak is not None:
             await self.weight_proof_handler.create_sub_epoch_segments()
 
-    def set_server(self, server: MoguaServer):
+    def set_server(self, server: MoGuaServer):
         self.server = server
         dns_servers = []
         try:
@@ -185,9 +185,9 @@ class FullNode:
             default_port = None
         if "dns_servers" in self.config:
             dns_servers = self.config["dns_servers"]
-        elif self.config["port"] == 6935:
+        elif self.config["port"] == 42069:
             # If `dns_servers` misses from the `config`, hardcode it if we're running mainnet.
-            dns_servers.append("dns-introducer.moguanetwork.org")
+            dns_servers.append("dns-introducer.mogua.org")
         try:
             self.full_node_peers = FullNodePeers(
                 self.server,
@@ -212,7 +212,7 @@ class FullNode:
         if self.state_changed_callback is not None:
             self.state_changed_callback(change)
 
-    async def short_sync_batch(self, peer: ws.WSMoguaConnection, start_height: uint32, target_height: uint32) -> bool:
+    async def short_sync_batch(self, peer: ws.WSMoGuaConnection, start_height: uint32, target_height: uint32) -> bool:
         """
         Tries to sync to a chain which is not too far in the future, by downloading batches of blocks. If the first
         block that we download is not connected to our chain, we return False and do an expensive long sync instead.
@@ -282,7 +282,7 @@ class FullNode:
         return True
 
     async def short_sync_backtrack(
-        self, peer: ws.WSMoguaConnection, peak_height: uint32, target_height: uint32, target_unf_hash: bytes32
+        self, peer: ws.WSMoGuaConnection, peak_height: uint32, target_height: uint32, target_unf_hash: bytes32
     ):
         """
         Performs a backtrack sync, where blocks are downloaded one at a time from newest to oldest. If we do not
@@ -338,7 +338,7 @@ class FullNode:
             await asyncio.sleep(sleep_before)
         self._state_changed("peer_changed_peak")
 
-    async def new_peak(self, request: full_node_protocol.NewPeak, peer: ws.WSMoguaConnection):
+    async def new_peak(self, request: full_node_protocol.NewPeak, peer: ws.WSMoGuaConnection):
         """
         We have received a notification of a new peak from a peer. This happens either when we have just connected,
         or when the peer has updated their peak.
@@ -416,7 +416,7 @@ class FullNode:
             self._sync_task = asyncio.create_task(self._sync())
 
     async def send_peak_to_timelords(
-        self, peak_block: Optional[FullBlock] = None, peer: Optional[ws.WSMoguaConnection] = None
+        self, peak_block: Optional[FullBlock] = None, peer: Optional[ws.WSMoGuaConnection] = None
     ):
         """
         Sends current peak to timelords
@@ -489,7 +489,7 @@ class FullNode:
         else:
             return True
 
-    async def on_connect(self, connection: ws.WSMoguaConnection):
+    async def on_connect(self, connection: ws.WSMoGuaConnection):
         """
         Whenever we connect to another node / wallet, send them our current heads. Also send heads to farmers
         and challenges to timelords.
@@ -541,7 +541,7 @@ class FullNode:
             elif connection.connection_type is NodeType.TIMELORD:
                 await self.send_peak_to_timelords()
 
-    def on_disconnect(self, connection: ws.WSMoguaConnection):
+    def on_disconnect(self, connection: ws.WSMoGuaConnection):
         self.log.info(f"peer disconnected {connection.get_peer_info()}")
         self._state_changed("close_connection")
         self._state_changed("sync_mode")
@@ -809,7 +809,7 @@ class FullNode:
     async def receive_block_batch(
         self,
         all_blocks: List[FullBlock],
-        peer: ws.WSMoguaConnection,
+        peer: ws.WSMoGuaConnection,
         fork_point: Optional[uint32],
         wp_summaries: Optional[List[SubEpochSummary]] = None,
     ) -> Tuple[bool, bool, Optional[uint32]]:
@@ -879,7 +879,7 @@ class FullNode:
 
             peak_fb: FullBlock = await self.blockchain.get_full_peak()
             if peak is not None:
-                await self.peak_post_processing(peak_fb, peak, max(peak.height - 1, 0), None)
+                await self.peak_post_processing(peak_fb, peak, peak.height - 1, None)
 
         if peak is not None and self.weight_proof_handler is not None:
             await self.weight_proof_handler.get_proof_of_weight(peak.header_hash)
@@ -903,7 +903,7 @@ class FullNode:
     async def signage_point_post_processing(
         self,
         request: full_node_protocol.RespondSignagePoint,
-        peer: ws.WSMoguaConnection,
+        peer: ws.WSMoGuaConnection,
         ip_sub_slot: Optional[EndOfSubSlotBundle],
     ):
         self.log.info(
@@ -957,7 +957,7 @@ class FullNode:
         await self.server.send_to_all([msg], NodeType.FARMER)
 
     async def peak_post_processing(
-        self, block: FullBlock, record: BlockRecord, fork_height: uint32, peer: Optional[ws.WSMoguaConnection]
+        self, block: FullBlock, record: BlockRecord, fork_height: uint32, peer: Optional[ws.WSMoGuaConnection]
     ):
         """
         Must be called under self.blockchain.lock. This updates the internal state of the full node with the
@@ -1106,7 +1106,7 @@ class FullNode:
     async def respond_block(
         self,
         respond_block: full_node_protocol.RespondBlock,
-        peer: Optional[ws.WSMoguaConnection] = None,
+        peer: Optional[ws.WSMoGuaConnection] = None,
     ) -> Optional[Message]:
         """
         Receive a full block from a peer full node (or ourselves).
@@ -1267,7 +1267,7 @@ class FullNode:
     async def respond_unfinished_block(
         self,
         respond_unfinished_block: full_node_protocol.RespondUnfinishedBlock,
-        peer: Optional[ws.WSMoguaConnection],
+        peer: Optional[ws.WSMoGuaConnection],
         farmed_block: bool = False,
     ):
         """
@@ -1424,7 +1424,7 @@ class FullNode:
         self._state_changed("unfinished_block")
 
     async def new_infusion_point_vdf(
-        self, request: timelord_protocol.NewInfusionPointVDF, timelord_peer: Optional[ws.WSMoguaConnection] = None
+        self, request: timelord_protocol.NewInfusionPointVDF, timelord_peer: Optional[ws.WSMoGuaConnection] = None
     ) -> Optional[Message]:
         # Lookup unfinished blocks
         unfinished_block: Optional[UnfinishedBlock] = self.full_node_store.get_unfinished_block(
@@ -1527,7 +1527,7 @@ class FullNode:
         return None
 
     async def respond_end_of_sub_slot(
-        self, request: full_node_protocol.RespondEndOfSubSlot, peer: ws.WSMoguaConnection
+        self, request: full_node_protocol.RespondEndOfSubSlot, peer: ws.WSMoGuaConnection
     ) -> Tuple[Optional[Message], bool]:
 
         fetched_ss = self.full_node_store.get_sub_slot(request.end_of_slot_bundle.challenge_chain.get_hash())
@@ -1615,7 +1615,7 @@ class FullNode:
         self,
         transaction: SpendBundle,
         spend_name: bytes32,
-        peer: Optional[ws.WSMoguaConnection] = None,
+        peer: Optional[ws.WSMoGuaConnection] = None,
         test: bool = False,
     ) -> Tuple[MempoolInclusionStatus, Optional[Err]]:
         if self.sync_store.get_sync_mode():
@@ -1827,7 +1827,7 @@ class FullNode:
         if self.server is not None:
             await self.server.send_to_all([msg], NodeType.FULL_NODE)
 
-    async def new_compact_vdf(self, request: full_node_protocol.NewCompactVDF, peer: ws.WSMoguaConnection):
+    async def new_compact_vdf(self, request: full_node_protocol.NewCompactVDF, peer: ws.WSMoGuaConnection):
         is_fully_compactified = await self.block_store.is_fully_compactified(request.header_hash)
         if is_fully_compactified is None or is_fully_compactified:
             return False
@@ -1845,7 +1845,7 @@ class FullNode:
             if response is not None and isinstance(response, full_node_protocol.RespondCompactVDF):
                 await self.respond_compact_vdf(response, peer)
 
-    async def request_compact_vdf(self, request: full_node_protocol.RequestCompactVDF, peer: ws.WSMoguaConnection):
+    async def request_compact_vdf(self, request: full_node_protocol.RequestCompactVDF, peer: ws.WSMoGuaConnection):
         header_block = await self.blockchain.get_header_block_by_height(
             request.height, request.header_hash, tx_filter=False
         )
@@ -1889,7 +1889,7 @@ class FullNode:
         msg = make_msg(ProtocolMessageTypes.respond_compact_vdf, compact_vdf)
         await peer.send_message(msg)
 
-    async def respond_compact_vdf(self, request: full_node_protocol.RespondCompactVDF, peer: ws.WSMoguaConnection):
+    async def respond_compact_vdf(self, request: full_node_protocol.RespondCompactVDF, peer: ws.WSMoGuaConnection):
         field_vdf = CompressibleVDFField(int(request.field_vdf))
         if not await self._can_accept_compact_proof(
             request.vdf_info, request.vdf_proof, request.height, request.header_hash, field_vdf
@@ -1912,6 +1912,7 @@ class FullNode:
     async def broadcast_uncompact_blocks(
         self, uncompact_interval_scan: int, target_uncompact_proofs: int, sanitize_weight_proof_only: bool
     ):
+        min_height: Optional[int] = 0
         try:
             while not self._shut_down:
                 while self.sync_store.get_sync_mode():
@@ -1920,30 +1921,33 @@ class FullNode:
                     await asyncio.sleep(30)
 
                 broadcast_list: List[timelord_protocol.RequestCompactProofOfTime] = []
+                new_min_height = None
                 max_height = self.blockchain.get_peak_height()
                 if max_height is None:
                     await asyncio.sleep(30)
                     continue
-                assert max_height is not None
-                self.log.info("Getting minimum bluebox work height")
-                min_height = await self.block_store.get_first_not_compactified()
+                # Calculate 'min_height' correctly the first time this task is launched, using the db
+                assert min_height is not None
+                min_height = await self.block_store.get_first_not_compactified(min_height)
                 if min_height is None or min_height > max(0, max_height - 1000):
                     min_height = max(0, max_height - 1000)
-                assert min_height is not None
-                max_height = uint32(min(max_height, min_height + 2000))
                 batches_finished = 0
-                self.log.info(f"Scanning the blockchain for uncompact blocks. Range: {min_height}..{max_height}")
+                self.log.info("Scanning the blockchain for uncompact blocks.")
+                assert max_height is not None
+                assert min_height is not None
                 for h in range(min_height, max_height, 100):
                     # Got 10 times the target header count, sampling the target headers should contain
                     # enough randomness to split the work between blueboxes.
                     if len(broadcast_list) > target_uncompact_proofs * 10:
                         break
                     stop_height = min(h + 99, max_height)
-                    headers = await self.blockchain.get_header_blocks_in_range(h, stop_height, tx_filter=False)
+                    assert min_height is not None
+                    headers = await self.blockchain.get_header_blocks_in_range(min_height, stop_height, tx_filter=False)
                     records: Dict[bytes32, BlockRecord] = {}
                     if sanitize_weight_proof_only:
-                        records = await self.blockchain.get_block_records_in_range(h, stop_height)
+                        records = await self.blockchain.get_block_records_in_range(min_height, stop_height)
                     for header in headers.values():
+                        prev_broadcast_list_len = len(broadcast_list)
                         expected_header_hash = self.blockchain.height_to_hash(header.height)
                         if header.header_hash != expected_header_hash:
                             continue
@@ -1980,6 +1984,14 @@ class FullNode:
                         # unless this is a challenge block.
                         if sanitize_weight_proof_only:
                             if not record.is_challenge_block(self.constants):
+                                # Calculates 'new_min_height' as described below.
+                                if (
+                                    prev_broadcast_list_len == 0
+                                    and len(broadcast_list) > 0
+                                    and h <= max(0, max_height - 1000)
+                                ):
+                                    new_min_height = header.height
+                                # Skip calculations for CC_SP_VDF and CC_IP_VDF.
                                 continue
                         if header.challenge_chain_sp_proof is not None and (
                             header.challenge_chain_sp_proof.witness_type > 0
@@ -2007,13 +2019,21 @@ class FullNode:
                                     uint8(CompressibleVDFField.CC_IP_VDF),
                                 )
                             )
+                        # This is the first header with uncompact proofs. Store its height so next time we iterate
+                        # only from here. Fix header block iteration window to at least 1000, so reorgs will be
+                        # handled correctly.
+                        if prev_broadcast_list_len == 0 and len(broadcast_list) > 0 and h <= max(0, max_height - 1000):
+                            new_min_height = header.height
 
                     # Small sleep between batches.
                     batches_finished += 1
                     if batches_finished % 10 == 0:
                         await asyncio.sleep(1)
 
-                # sample work randomly from the uncompact blocks we found
+                # We have no uncompact blocks, but mentain the block iteration window to at least 1000 blocks.
+                if new_min_height is None:
+                    new_min_height = max(0, max_height - 1000)
+                min_height = new_min_height
                 if len(broadcast_list) > target_uncompact_proofs:
                     random.shuffle(broadcast_list)
                     broadcast_list = broadcast_list[:target_uncompact_proofs]

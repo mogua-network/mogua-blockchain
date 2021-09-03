@@ -8,18 +8,14 @@ const CRITICAL_HEIGHT = 4608 * 42; // 6 weeks
 
 export default function AppTimeBomb() {
   const peakHeight = useSelector(
-    (state: RootState) =>
-      state.full_node_state.blockchain_state?.peak?.height ?? 0,
+    (state: RootState) => state.full_node_state.blockchain_state?.peak?.height ?? 0,
   );
 
   const isVisible = peakHeight >= CRITICAL_HEIGHT;
   if (isVisible) {
     return (
       <Alert severity="warning">
-        <Trans>
-          This version of Mogua is no longer compatible with the blockchain and
-          can not safely farm.
-        </Trans>
+        <Trans>This version of MoGua is no longer compatible with the blockchain and can not safely farm.</Trans>
       </Alert>
     );
   }

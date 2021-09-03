@@ -274,15 +274,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const RecoveryCard = (props) => {
-  const id = props.wallet_id;
+  const id = props.wallet_id - 1;
   console.log(id);
-  const mydid = useSelector((state) => state.wallet_state.wallets[id].mydid);
+  const mydid = useSelector((state) => state.wallet_state.wallets[id - 1].mydid);
   console.log(mydid);
   let backup_did_list = useSelector(
-    (state) => state.wallet_state.wallets[id].backup_dids,
+    (state) => state.wallet_state.wallets[id - 1].backup_dids,
   );
   let dids_num_req = useSelector(
-    (state) => state.wallet_state.wallets[id].dids_num_req,
+    (state) => state.wallet_state.wallets[id - 1].dids_num_req,
   );
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -366,7 +366,7 @@ const RecoveryCard = (props) => {
 const MyDIDCard = (props) => {
   const id = props.wallet_id;
   console.log(id);
-  const mydid = useSelector((state) => state.wallet_state.wallets[id].mydid);
+  const mydid = useSelector((state) => state.wallet_state.wallets[id - 1].mydid);
   console.log(mydid);
   let filename_input = null;
   const classes = useStyles();
@@ -484,19 +484,17 @@ const BalanceCardSubSection = (props) => {
 };
 
 const BalanceCard = (props) => {
-  var id = props.wallet_id;
+  var id = props.wallet_id - 1;
   const balance = useSelector(
-    (state) => state.wallet_state.wallets[id].balance_total,
+    (state) => state.wallet_state.wallets[id - 1].wallet_balance.confirmed_wallet_balance
   );
   var balance_spendable = useSelector(
-    (state) => state.wallet_state.wallets[id].balance_spendable,
+    (state) => state.wallet_state.wallets[id - 1].wallet_balance.spendable_balance
   );
   const balance_pending = useSelector(
-    (state) => state.wallet_state.wallets[id].balance_pending,
+    (state) => state.wallet_state.wallets[id - 1].wallet_balance.pending_balance
   );
-  const balance_change = useSelector(
-    (state) => state.wallet_state.wallets[id].balance_change,
-  );
+
   const balance_ptotal = balance + balance_pending;
   const classes = useStyles();
 
@@ -544,11 +542,6 @@ const BalanceCard = (props) => {
                       <BalanceCardSubSection
                         title="Pending Balance"
                         balance={balance_pending}
-                        tooltip={''}
-                      />
-                      <BalanceCardSubSection
-                        title="Pending Change"
-                        balance={balance_change}
                         tooltip={''}
                       />
                     </Grid>
@@ -629,10 +622,10 @@ const ManageDIDsCard = (props) => {
   var pending = useSelector((state) => state.create_options.pending);
   var created = useSelector((state) => state.create_options.created);
   let backup_did_list = useSelector(
-    (state) => state.wallet_state.wallets[id].backup_dids,
+    (state) => state.wallet_state.wallets[id - 1].backup_dids,
   );
   let dids_num_req = useSelector(
-    (state) => state.wallet_state.wallets[id].dids_num_req,
+    (state) => state.wallet_state.wallets[id - 1].dids_num_req,
   );
   const { handleSubmit, control } = useForm();
   const { fields, append, remove } = useFieldArray({
@@ -753,7 +746,7 @@ const CreateAttest = (props) => {
   let pubkey_input = null;
   let puzhash_input = null;
   const attest_packet = useSelector(
-    (state) => state.wallet_state.wallets[id].did_attest,
+    (state) => state.wallet_state.wallets[id - 1].did_attest,
   );
   const classes = useStyles();
   const dispatch = useDispatch;
@@ -776,8 +769,8 @@ const CreateAttest = (props) => {
       return;
     }
     let address = puzhash_input.value.trim();
-    if (address.substring(0, 12) === 'mogua_addr://') {
-      address = address.substring(12);
+    if (address.substring(0, 16) === 'mogua_addr://') {
+      address = address.substring(16);
     }
     if (address.startsWith('0x') || address.startsWith('0X')) {
       address = address.substring(2);
@@ -876,7 +869,7 @@ const CreateAttest = (props) => {
                   fullWidth
                   label="Attest Packet"
                   value={attest_packet}
-                  variant="filled"
+                  variant="outlined"
                 />
               </Box>
               <Box>
@@ -989,7 +982,7 @@ export default function DistributedWallet(props) {
   const classes = useStyles();
   const id = useSelector((state) => state.wallet_menu.id);
   const wallets = useSelector((state) => state.wallet_state.wallets ?? []);
-  const data = useSelector((state) => state.wallet_state.wallets[id].data);
+  const data = useSelector((state) => state.wallet_state.wallets[id - 1].data);
   const data_parsed = JSON.parse(data);
   console.log('DID DATA PARSED');
   console.log(data_parsed);
@@ -997,7 +990,7 @@ export default function DistributedWallet(props) {
   console.log('TEMP COIN');
   console.log(temp_coin);
 
-  if (wallets.length > props.wallet_id) {
+  if (wallets.length >= props.wallet_id) {
     if (temp_coin) {
       console.log('YES TEMP COIN');
       return wallets.length > props.wallet_id ? (

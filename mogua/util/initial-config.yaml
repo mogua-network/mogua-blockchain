@@ -15,8 +15,8 @@ network_overrides: &network_overrides
       GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "0xb888fab8b25965172ca5f48e20f2c9c5bb85caea48f813c5ec692866e18f2c40"
       GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "0xb888fab8b25965172ca5f48e20f2c9c5bb85caea48f813c5ec692866e18f2c40"
     testnet0:
-      GENESIS_CHALLENGE: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       NETWORK_TYPE: 1
+      GENESIS_CHALLENGE: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       GENESIS_PRE_FARM_POOL_PUZZLE_HASH: "0xb888fab8b25965172ca5f48e20f2c9c5bb85caea48f813c5ec692866e18f2c40"
       GENESIS_PRE_FARM_FARMER_PUZZLE_HASH: "0xb888fab8b25965172ca5f48e20f2c9c5bb85caea48f813c5ec692866e18f2c40"
   config:
@@ -26,7 +26,7 @@ network_overrides: &network_overrides
       address_prefix: "tmga"
 
 selected_network: &selected_network "mainnet"
-ALERTS_URL: https://download.moguanetwork.org/notify/mainnet_alert.txt
+ALERTS_URL: https://download.mogua.org/notify/mainnet_alert.txt
 MOGUA_ALERTS_PUBKEY: a88dc9b53e21088dcd53347eda53b533aec7cd5ff267c3968b1dfc0dc132e39575cf401f0d6bc9952404dbbfc30731c5
 
 # public ssl ca is included in source code
@@ -67,9 +67,6 @@ harvester:
   rpc_port: 6960
   num_threads: 30
   plot_loading_frequency_seconds: 120
-
-  # If True use parallel reads in chiapos
-  parallel_read: True
 
   logging: *logging
   network_overrides: *network_overrides
@@ -243,7 +240,7 @@ full_node:
   # List of trusted DNS seeders to bootstrap from.
   # If you modify this, please change the hardcode as well from FullNode.set_server()
   dns_servers:
-    - "dns-introducer.moguanetwork.org"
+    - "dns-introducer.mogua.org"
   farmer_peer:
       host: *self_hostname
       port: 6932
@@ -251,7 +248,7 @@ full_node:
       host: *self_hostname
       port: 6933
   introducer_peer:
-      host: introducer.moguanetwork.org  # Mogua AWS introducer IPv4/IPv6
+      host: introducer.mogua.org  # MoGua AWS introducer IPv4/IPv6
       port: 6935
   wallet_peer:
     host: *self_hostname
@@ -335,7 +332,7 @@ wallet:
   recent_peer_threshold: 6000
 
   introducer_peer:
-    host: introducer.moguanetwork.org # Mogua AWS introducer IPv4/IPv6
+    host: introducer.mogua.org # MoGua AWS introducer IPv4/IPv6
     port: 6935
 
   ssl:

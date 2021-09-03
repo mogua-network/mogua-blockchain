@@ -37,7 +37,7 @@ from mogua.util.hash import std_hash
 from mogua.util.ints import uint8, uint16, uint32, uint64
 from mogua.util.recursive_replace import recursive_replace
 from mogua.util.vdf_prover import get_vdf_info_and_proof
-from tests.wallet_tools import WalletTool
+from mogua.util.wallet_tools import WalletTool
 from tests.core.fixtures import empty_blockchain  # noqa: F401
 from mogua.wallet.cc_wallet.cc_wallet import CCWallet
 from mogua.wallet.transaction_record import TransactionRecord

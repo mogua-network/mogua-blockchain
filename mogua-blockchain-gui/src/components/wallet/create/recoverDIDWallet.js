@@ -3,7 +3,7 @@ import React, { useMemo } from 'react';
 import { Dropzone } from '@mogua/core';
 import { Trans } from '@lingui/macro';
 import {
-  CssBaseline,
+  CssBaseline, 
   Container,
   Typography,
   Paper,
@@ -268,7 +268,7 @@ export const RecoverDIDWallet = () => {
     const recovery_file_path = acceptedFiles[0].path;
     const recovery_name = recovery_file_path.replace(/^.*[\\/]/, '');
     dispatch(recover_did_action(recovery_file_path));
-  }
+  };
 
   function goBack() {
     dispatch(changeCreateWallet(CREATE_DID_WALLET_OPTIONS));

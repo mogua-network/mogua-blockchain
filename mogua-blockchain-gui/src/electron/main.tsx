@@ -195,7 +195,8 @@ if (!handleSquirrelEvent()) {
             title: i18n._(/* i18n */ { id: 'Confirm' }),
             message: i18n._(
               /* i18n */ {
-                id: 'Are you sure you want to quit? GUI Plotting and farming will stop.',
+                id:
+                  'Are you sure you want to quit? GUI Plotting and farming will stop.',
               },
             ),
           });
@@ -223,7 +224,7 @@ if (!handleSquirrelEvent()) {
       app.applicationMenu = createMenu();
       // if the daemon isn't local we aren't going to try to start/stop it
       if (moguaConfig.manageDaemonLifetime()) {
-        moguaEnvironment.startMoguaDaemon();
+        moguaEnvironment.startMoGuaDaemon();
       }
     };
 
@@ -355,10 +356,10 @@ if (!handleSquirrelEvent()) {
         role: 'help',
         submenu: [
           {
-            label: i18n._(/* i18n */ { id: 'Mogua Blockchain Wiki' }),
+            label: i18n._(/* i18n */ { id: 'MoGua Blockchain Wiki' }),
             click: () => {
               openExternal(
-                'https://github.com/Mogua-Network/mogua-blockchain/wiki',
+                'https://github.com/MoGua/doge-chia/wiki',
               );
             },
           },
@@ -366,7 +367,7 @@ if (!handleSquirrelEvent()) {
             label: i18n._(/* i18n */ { id: 'Frequently Asked Questions' }),
             click: () => {
               openExternal(
-                'https://github.com/Mogua-Network/mogua-blockchain/wiki/FAQ',
+                'https://github.com/MoGua/doge-chia/wiki/FAQ',
               );
             },
           },
@@ -374,7 +375,7 @@ if (!handleSquirrelEvent()) {
             label: i18n._(/* i18n */ { id: 'Release Notes' }),
             click: () => {
               openExternal(
-                'https://github.com/Mogua-Network/mogua-blockchain/releases',
+                'https://github.com/MoGua/doge-chia/releases',
               );
             },
           },
@@ -382,7 +383,7 @@ if (!handleSquirrelEvent()) {
             label: i18n._(/* i18n */ { id: 'Contribute on GitHub' }),
             click: () => {
               openExternal(
-                'https://github.com/Mogua-Network/mogua-blockchain/blob/master/CONTRIBUTING.md',
+                'https://github.com/MoGua/doge-chia/blob/main/CONTRIBUTING.md',
               );
             },
           },
@@ -393,20 +394,20 @@ if (!handleSquirrelEvent()) {
             label: i18n._(/* i18n */ { id: 'Report an Issue...' }),
             click: () => {
               openExternal(
-                'https://github.com/Mogua-Network/mogua-blockchain/issues',
+                'https://github.com/MoGua/doge-chia/issues',
               );
             },
           },
           {
             label: i18n._(/* i18n */ { id: 'Chat on Discord' }),
             click: () => {
-              openExternal('https://discord.gg/TgJyxsEFFc');
+              openExternal('https://discord.gg/cvkMX6shgE');
             },
           },
           {
             label: i18n._(/* i18n */ { id: 'Follow on Twitter' }),
             click: () => {
-              openExternal('https://twitter.com/mogua_project');
+              openExternal('https://twitter.com/mogua');
             },
           },
         ],
@@ -414,12 +415,12 @@ if (!handleSquirrelEvent()) {
     ];
 
     if (process.platform === 'darwin') {
-      // Mogua Blockchain menu (Mac)
+      // MoGua Blockchain menu (Mac)
       template.unshift({
-        label: i18n._(/* i18n */ { id: 'Mogua' }),
+        label: i18n._(/* i18n */ { id: 'MoGua' }),
         submenu: [
           {
-            label: i18n._(/* i18n */ { id: 'About Mogua Blockchain' }),
+            label: i18n._(/* i18n */ { id: 'About MoGua Blockchain' }),
             click: () => {
               openAbout();
             },
@@ -506,7 +507,7 @@ if (!handleSquirrelEvent()) {
           type: 'separator',
         },
         {
-          label: i18n._(/* i18n */ { id: 'About Mogua Blockchain' }),
+          label: i18n._(/* i18n */ { id: 'About MoGua Blockchain' }),
           click() {
             openAbout();
           },

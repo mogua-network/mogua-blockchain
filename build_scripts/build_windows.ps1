@@ -10,9 +10,8 @@ git status
 Write-Output "   ---"
 Write-Output "curl miniupnpc"
 Write-Output "   ---"
-Invoke-WebRequest -Uri "https://pypi.chia.net/simple/miniupnpc/miniupnpc-2.2.2-cp39-cp39-win_amd64.whl" -OutFile "miniupnpc-2.2.2-cp39-cp39-win_amd64.whl"
-Write-Output "Using win_amd64 python 3.9 wheel from https://github.com/miniupnp/miniupnp/pull/475 (2.2.0-RC1)"
-Write-Output "Actual build from https://github.com/miniupnp/miniupnp/commit/7783ac1545f70e3341da5866069bde88244dd848"
+Invoke-WebRequest -Uri "https://pypi.chia.net/simple/miniupnpc/miniupnpc-2.1-cp37-cp37m-win_amd64.whl" -OutFile "miniupnpc-2.1-cp37-cp37m-win_amd64.whl"
+Write-Output "Using win_amd64 python 3.7 wheel from https://github.com/miniupnp/miniupnp/pull/475 (2.2.0-RC1)"
 If ($LastExitCode -gt 0){
     Throw "Failed to download miniupnpc!"
 }
@@ -23,7 +22,7 @@ else
 }
 
 Write-Output "   ---"
-Write-Output "Create venv - python3.9 is required in PATH"
+Write-Output "Create venv - python3.7 or 3.8 is required in PATH"
 Write-Output "   ---"
 python -m venv venv
 . .\venv\Scripts\Activate.ps1
@@ -42,7 +41,7 @@ if (-not (Test-Path env:MOGUA_INSTALLER_VERSION)) {
   $env:MOGUA_INSTALLER_VERSION = '0.0.0'
   Write-Output "WARNING: No environment variable MOGUA_INSTALLER_VERSION set. Using 0.0.0"
   }
-Write-Output "Mogua Version is: $env:MOGUA_INSTALLER_VERSION"
+Write-Output "MoGua Version is: $env:MOGUA_INSTALLER_VERSION"
 Write-Output "   ---"
 
 Write-Output "   ---"
@@ -80,7 +79,6 @@ git status
 Write-Output "   ---"
 Write-Output "Prepare Electron packager"
 Write-Output "   ---"
-$Env:NODE_OPTIONS = "--max-old-space-size=3000"
 npm install --save-dev electron-winstaller
 npm install -g electron-packager
 npm install
@@ -103,13 +101,13 @@ editbin.exe /STACK:8000000 daemon\mogua.exe
 Write-Output "   ---"
 
 $packageVersion = "$env:MOGUA_INSTALLER_VERSION"
-$packageName = "Mogua-$packageVersion"
+$packageName = "MoGua-$packageVersion"
 
 Write-Output "packageName is $packageName"
 
 Write-Output "   ---"
 Write-Output "electron-packager"
-electron-packager . Mogua --asar.unpack="**\daemon\**" --overwrite --icon=.\src\assets\img\mogua.ico --app-version=$packageVersion
+electron-packager . MoGua --asar.unpack="**\daemon\**" --overwrite --icon=.\src\assets\img\mogua.ico --app-version=$packageVersion
 Write-Output "   ---"
 
 Write-Output "   ---"
@@ -123,8 +121,8 @@ If ($env:HAS_SECRET) {
    Write-Output "   ---"
    Write-Output "Add timestamp and verify signature"
    Write-Output "   ---"
-   signtool.exe timestamp /v /t http://timestamp.comodoca.com/ .\release-builds\windows-installer\MoguaSetup-$packageVersion.exe
-   signtool.exe verify /v /pa .\release-builds\windows-installer\MoguaSetup-$packageVersion.exe
+   signtool.exe timestamp /v /t http://timestamp.comodoca.com/ .\release-builds\windows-installer\MoGuaSetup-$packageVersion.exe
+   signtool.exe verify /v /pa .\release-builds\windows-installer\MoGuaSetup-$packageVersion.exe
    }   Else    {
    Write-Output "Skipping timestamp and verify signatures - no authorization to install certificates"
 }

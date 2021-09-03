@@ -6,7 +6,7 @@ import FarmCard from './FarmCard';
 import { mojo_to_mogua } from '../../../util/mogua';
 import useCurrencyCode from '../../../hooks/useCurrencyCode';
 
-export default function FarmCardTotalMoguaFarmed() {
+export default function FarmCardTotalMoGuaFarmed() {
   const currencyCode = useCurrencyCode();
 
   const loading = useSelector(
@@ -17,7 +17,7 @@ export default function FarmCardTotalMoguaFarmed() {
     (state: RootState) => state.wallet_state.farmed_amount?.farmed_amount,
   );
 
-  const totalMoguaFarmed = useMemo(() => {
+  const totalMoGuaFarmed = useMemo(() => {
     if (farmedAmount !== undefined) {
       const val = BigInt(farmedAmount.toString());
       return mojo_to_mogua(val);
@@ -26,8 +26,8 @@ export default function FarmCardTotalMoguaFarmed() {
 
   return (
     <FarmCard
-      title={<Trans>{currencyCode} Total Mogua Farmed</Trans>}
-      value={totalMoguaFarmed}
+      title={<Trans>{currencyCode} Total MoGua Farmed</Trans>}
+      value={totalMoGuaFarmed}
       loading={loading}
     />
   );

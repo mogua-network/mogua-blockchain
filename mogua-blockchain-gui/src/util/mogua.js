@@ -12,7 +12,7 @@ const convert = (amount, from, to) => {
   return Number.parseFloat(amountInFromUnit.div(units.getUnit(to)));
 };
 
-class Mogua {
+class MoGua {
   constructor(value, unit) {
     this._value = value;
     this._unit = unit;
@@ -73,7 +73,7 @@ class Mogua {
   }
 }
 
-export const mogua_formatter = (value, unit) => new Mogua(value, unit);
+export const mogua_formatter = (value, unit) => new MoGua(value, unit);
 
 mogua_formatter.convert = convert;
 mogua_formatter.setDisplay = units.setDisplay;

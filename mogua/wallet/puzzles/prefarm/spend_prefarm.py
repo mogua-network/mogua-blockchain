@@ -6,7 +6,7 @@ from clvm_tools import binutils
 from mogua.consensus.block_rewards import calculate_base_farmer_reward, calculate_pool_reward
 from mogua.rpc.full_node_rpc_client import FullNodeRpcClient
 from mogua.types.blockchain_format.program import Program
-from mogua.types.coin_spend import CoinSpend
+from mogua.types.coin_solution import CoinSolution
 from mogua.types.condition_opcodes import ConditionOpcode
 from mogua.types.spend_bundle import SpendBundle
 from mogua.util.bech32m import decode_puzzle_hash
@@ -18,8 +18,10 @@ from mogua.util.ints import uint32, uint16
 
 def print_conditions(spend_bundle: SpendBundle):
     print("\nConditions:")
-    for coin_spend in spend_bundle.coin_spends:
-        result = Program.from_bytes(bytes(coin_spend.puzzle_reveal)).run(Program.from_bytes(bytes(coin_spend.solution)))
+    for coin_solution in spend_bundle.coin_solutions:
+        result = Program.from_bytes(bytes(coin_solution.puzzle_reveal)).run(
+            Program.from_bytes(bytes(coin_solution.solution))
+        )
         error, result_human = parse_sexp_to_conditions(result)
         assert error is None
         assert result_human is not None
@@ -58,13 +60,13 @@ async def main() -> None:
 
         print(f"Ph1: {ph1.hex()}")
         print(f"Ph2: {ph2.hex()}")
-        assert ph1.hex() == "1b7ab2079fa635554ad9bd4812c622e46ee3b1875a7813afba127bb0cc9794f9"
-        assert ph2.hex() == "6f184a7074c925ef8688ce56941eb8929be320265f824ec7e351356cc745d38a"
+        assert ph1.hex() == "c2260fd65c3d7ee25389881be08cb3f3923934ba0f2256d281c0609b1817ecdf"
+        assert ph2.hex() == "eb5689674fd648ab66a9393e73bc8dcec63148b5c3f3597d597c01f319863e3f"
 
         p_solution = Program.to(binutils.assemble("()"))
 
-        sb_farmer = SpendBundle([CoinSpend(farmer_prefarm, p_farmer_2, p_solution)], G2Element())
-        sb_pool = SpendBundle([CoinSpend(pool_prefarm, p_pool_2, p_solution)], G2Element())
+        sb_farmer = SpendBundle([CoinSolution(farmer_prefarm, p_farmer_2, p_solution)], G2Element())
+        sb_pool = SpendBundle([CoinSolution(pool_prefarm, p_pool_2, p_solution)], G2Element())
 
         print("\n\n\nConditions")
         print_conditions(sb_pool)

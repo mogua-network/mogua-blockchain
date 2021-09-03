@@ -5,7 +5,7 @@ import {
   Amount,
   Fee,
   Form,
-  TextField as MoguaTextField,
+  TextField as ChiaTextField,
   AlertDialog,
   CopyToClipboard,
   Flex,
@@ -213,145 +213,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-/*
-type BalanceCardSubSectionProps = {
-  title: ReactNode;
-  tooltip?: ReactNode;
-  balance: number;
-};
-
-function BalanceCardSubSection(props: BalanceCardSubSectionProps) {
-  const currencyCode = useCurrencyCode();
-
-  return (
-    <Grid item xs={12}>
-      <Box display="flex">
-        <Box flexGrow={1}>
-          <Typography variant="subtitle1">
-            {props.title}
-            {props.tooltip && (
-              <Tooltip title={props.tooltip}>
-                <HelpIcon style={{ color: '#c8c8c8', fontSize: 12 }} />
-              </Tooltip>
-            )}
-          </Typography>
-        </Box>
-        <Box>
-          <Typography variant="subtitle1">
-            {mojo_to_mogua_string(props.balance)} {currencyCode}
-          </Typography>
-        </Box>
-      </Box>
-    </Grid>
-  );
-}
-
-type BalanceCardProps = {
-  wallet_id: number;
-};
-
-function BalanceCard(props: BalanceCardProps) {
-  const { wallet_id } = props;
-
-  const wallet = useSelector((state: RootState) =>
-    state.wallet_state.wallets?.find((item) => item.id === wallet_id),
-  );
-
-  const balance = wallet?.wallet_balance?.confirmed_wallet_balance;
-  const balance_spendable = wallet?.wallet_balance?.spendable_balance;
-  const balance_pending = wallet?.wallet_balance?.pending_balance;
-  const pending_change = wallet?.wallet_balance?.pending_change;
-
-  const balance_ptotal = balance + balance_pending;
-
-  const classes = useStyles();
-
-  return (
-    <Card title={<Trans>Balance</Trans>}>
-      <BalanceCardSubSection
-        title={<Trans>Total Balance</Trans>}
-        balance={balance}
-        tooltip={
-          <Trans>
-            This is the total amount of mogua in the blockchain at the current
-            peak sub block that is controlled by your private keys. It includes
-            frozen farming rewards, but not pending incoming and outgoing
-            transactions.
-          </Trans>
-        }
-      />
-      <BalanceCardSubSection
-        title={<Trans>Spendable Balance</Trans>}
-        balance={balance_spendable}
-        tooltip={
-          <Trans>
-            This is the amount of Mogua that you can currently use to make
-            transactions. It does not include pending farming rewards, pending
-            incoming transactions, and Mogua that you have just spent but is not
-            yet in the blockchain.
-          </Trans>
-        }
-      />
-      <Grid item xs={12}>
-        <Box display="flex">
-          <Box flexGrow={1}>
-            <Accordion className={classes.front}>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography className={classes.heading}>
-                  <Trans>View pending balances</Trans>
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Grid container spacing={0}>
-                  <BalanceCardSubSection
-                    title={<Trans>Pending Total Balance</Trans>}
-                    balance={balance_ptotal}
-                    tooltip={
-                      <Trans>
-                        This is the total balance + pending balance: it is what
-                        your balance will be after all pending transactions are
-                        confirmed.
-                      </Trans>
-                    }
-                  />
-                  <BalanceCardSubSection
-                    title={<Trans>Pending Balance</Trans>}
-                    balance={balance_pending}
-                    tooltip={
-                      <Trans>
-                        This is the sum of the incoming and outgoing pending
-                        transactions (not yet included into the blockchain).
-                        This does not include farming rewards.
-                      </Trans>
-                    }
-                  />
-                  <BalanceCardSubSection
-                    title={<Trans>Pending Change</Trans>}
-                    balance={pending_change}
-                    tooltip={
-                      <Trans>
-                        This is the pending change, which are change coins which
-                        you have sent to yourself, but have not been confirmed
-                        yet.
-                      </Trans>
-                    }
-                  />
-                </Grid>
-              </AccordionDetails>
-            </Accordion>
-          </Box>
-        </Box>
-      </Grid>
-      <WalletGraph walletId={wallet_id} />
-    </Card>
-  );
-}
-*/
-
 type SendCardProps = {
   wallet_id: number;
 };
@@ -454,8 +315,7 @@ function SendCard(props: SendCardProps) {
         openDialog(
           <AlertDialog>
             <Trans>
-              Error: Cannot send mogua to coloured address. Please enter a mogua
-              address.
+              Error: Cannot send mogua to coloured address. Please enter a mogua address.
             </Trans>
           </AlertDialog>,
         ),
@@ -463,8 +323,8 @@ function SendCard(props: SendCardProps) {
       return;
     }
 
-    if (address.slice(0, 12) === 'mogua_addr://') {
-      address = address.slice(12);
+    if (address.slice(0, 16) === 'mogua_addr://') {
+      address = address.slice(16);
     }
     if (address.startsWith('0x') || address.startsWith('0X')) {
       address = address.slice(2);
@@ -494,7 +354,7 @@ function SendCard(props: SendCardProps) {
       <Form methods={methods} onSubmit={handleSubmit}>
         <Grid spacing={2} container>
           <Grid xs={12} item>
-            <MoguaTextField
+            <ChiaTextField
               name="address"
               variant="filled"
               color="secondary"
@@ -644,7 +504,7 @@ export default function StandardWallet(props: StandardWalletProps) {
       <Flex gap={1} alignItems="center">
         <Flex flexGrow={1}>
           <Typography variant="h5" gutterBottom>
-            <Trans>Mogua Wallet</Trans>
+            <Trans>MoGua Wallet</Trans>
           </Typography>
         </Flex>
         <More>

@@ -108,7 +108,7 @@ test_constants = DEFAULT_CONSTANTS.replace(
         * 10,  # Allows creating blockchains with timestamps up to 10 days in the future, for testing
         "COST_PER_BYTE": 1337,
         "MEMPOOL_BLOCK_BUFFER": 6,
-        "INITIAL_FREEZE_END_TIMESTAMP": 1000,
+        "INITIAL_FREEZE_END_TIMESTAMP": int(time.time()) - 1,
         "NETWORK_TYPE": 1,
     }
 )
@@ -153,8 +153,8 @@ class BlockTools:
         self.all_sks: List[PrivateKey] = [sk for sk, _ in self.keychain.get_all_private_keys()]
         self.pool_pubkeys: List[G1Element] = [master_sk_to_pool_sk(sk).get_g1() for sk in self.all_sks]
 
-        self.farmer_pubkeys: List[G1Element] = [master_sk_to_farmer_sk(sk).get_g1() for sk in self.all_sks]
-        if len(self.pool_pubkeys) == 0 or len(self.farmer_pubkeys) == 0:
+        farmer_pubkeys: List[G1Element] = [master_sk_to_farmer_sk(sk).get_g1() for sk in self.all_sks]
+        if len(self.pool_pubkeys) == 0 or len(farmer_pubkeys) == 0:
             raise RuntimeError("Keys not generated. Run `mogua generate keys`")
 
         self.load_plots()
@@ -1557,10 +1557,6 @@ def create_test_foliage(
             for coin in additions:
                 addition_amount += coin.amount
             spend_bundle_fees = removal_amount - addition_amount
-            # in order to allow creating blocks that mint coins, clamp the fee
-            # to 0, if it ends up being negative
-            if spend_bundle_fees < 0:
-                spend_bundle_fees = 0
         else:
             spend_bundle_fees = 0
 

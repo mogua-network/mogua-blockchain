@@ -11,7 +11,9 @@ const cols = [
     minWidth: '200px',
     tooltip: true,
     field: 'signage_point.challenge_hash',
-    title: <Trans>Challenge Hash</Trans>,
+    title: (
+      <Trans>Challenge Hash</Trans>
+    ),
   },
   {
     field: (row: Row) => row.signage_point.signage_point_index,
@@ -33,16 +35,18 @@ export default function FarmLatestBlockChallenges() {
 
   return (
     <Card
-      title={<Trans>Latest Block Challenges</Trans>}
-      tooltip={
-        hasPlots ? (
-          <Trans>
-            Below are the current block challenges. You may or may not have a
-            proof of space for these challenges. These blocks do not currently
-            contain a proof of time.
-          </Trans>
-        ) : undefined
-      }
+      title={(
+        <Trans>
+          Latest Block Challenges
+        </Trans>
+      )}
+      tooltip={hasPlots ? (
+        <Trans>
+          Below are the current block challenges. You may or may not have
+          a proof of space for these challenges. These blocks do not
+          currently contain a proof of time.
+        </Trans>
+      ): undefined}
     >
       {!hasPlots && (
         <Typography variant="body2">
@@ -62,13 +66,13 @@ export default function FarmLatestBlockChallenges() {
       />
       <Typography variant="caption">
         <Trans>
-          *Want to explore Mogua’s blocks further? Check out{' '}
+          *Want to explore MoGua’s blocks further? Check out{' '}
           <Link
             color="primary"
-            href="https://www.moguaexplorer.org/"
+            href="https://mogua.posat.io/"
             target="_blank"
           >
-            Mogua Explorer
+            MoGua Explorer
           </Link>{' '}
           built by an open source developer.
         </Trans>

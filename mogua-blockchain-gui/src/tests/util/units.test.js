@@ -22,8 +22,8 @@ describe('units', () => {
 
       expect(result).toBe(1);
     });
-    it('gets unit of mogua using alias', () => {
-      const result = units.getUnit('ch');
+    it('gets unit of chia using alias', () => {
+      const result = units.getUnit('mga');
 
       expect(result).toBe(1);
     });
@@ -50,7 +50,7 @@ describe('units', () => {
       const result = units.getDisplay('mogua');
 
       expect(result).toEqual({
-        format: '{amount} CH',
+        format: '{amount} MGA',
         fractionDigits: 12,
       });
     });

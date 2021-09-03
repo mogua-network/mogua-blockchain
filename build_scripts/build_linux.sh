@@ -5,6 +5,7 @@ if [ ! "$1" ]; then
 	exit 1
 elif [ "$1" = "amd64" ]; then
 	PLATFORM="$1"
+	REDHAT_PLATFORM="x86_64"
 	DIR_NAME="mogua-blockchain-linux-x64"
 else
 	PLATFORM="$1"
@@ -21,11 +22,12 @@ if [ ! "$MOGUA_INSTALLER_VERSION" ]; then
 	echo "WARNING: No environment variable MOGUA_INSTALLER_VERSION set. Using 0.0.0."
 	MOGUA_INSTALLER_VERSION="0.0.0"
 fi
-echo "Mogua Installer Version is: $MOGUA_INSTALLER_VERSION"
+echo "MoGua Installer Version is: $MOGUA_INSTALLER_VERSION"
 
 echo "Installing npm and electron packagers"
 npm install electron-packager -g
 npm install electron-installer-debian -g
+npm install electron-installer-redhat -g
 
 echo "Create dist/"
 rm -rf dist
@@ -56,7 +58,7 @@ if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 fi
 
 electron-packager . mogua-blockchain --asar.unpack="**/daemon/**" --platform=linux \
---icon=src/assets/img/Mogua.icns --overwrite --app-bundle-id=net.mogua.blockchain \
+--icon=src/assets/img/MoGua.icns --overwrite --app-bundle-id=net.mogua.blockchain \
 --appVersion=$MOGUA_INSTALLER_VERSION
 LAST_EXIT_CODE=$?
 if [ "$LAST_EXIT_CODE" -ne 0 ]; then
@@ -76,6 +78,18 @@ LAST_EXIT_CODE=$?
 if [ "$LAST_EXIT_CODE" -ne 0 ]; then
 	echo >&2 "electron-installer-debian failed!"
 	exit $LAST_EXIT_CODE
+fi
+
+if [ "$REDHAT_PLATFORM" = "x86_64" ]; then
+	echo "Create mogua-blockchain-$MOGUA_INSTALLER_VERSION.rpm"
+  electron-installer-redhat --src dist/$DIR_NAME/ --dest final_installer/ \
+  --arch "$REDHAT_PLATFORM" --options.version $MOGUA_INSTALLER_VERSION \
+  --license ../LICENSE
+  LAST_EXIT_CODE=$?
+  if [ "$LAST_EXIT_CODE" -ne 0 ]; then
+	  echo >&2 "electron-installer-redhat failed!"
+	  exit $LAST_EXIT_CODE
+  fi
 fi
 
 ls final_installer/

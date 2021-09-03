@@ -16,7 +16,7 @@ from mogua.protocols.protocol_message_types import ProtocolMessageTypes
 from mogua.server.address_manager import AddressManager, ExtendedPeerInfo
 from mogua.server.address_manager_store import AddressManagerStore
 from mogua.server.outbound_message import NodeType, make_msg
-from mogua.server.server import MoguaServer
+from mogua.server.server import MoGuaServer
 from mogua.types.peer_info import PeerInfo, TimestampedPeerInfo
 from mogua.util.hash import std_hash
 from mogua.util.ints import uint64
@@ -26,9 +26,7 @@ MAX_PEERS_RECEIVED_PER_REQUEST = 1000
 MAX_TOTAL_PEERS_RECEIVED = 3000
 MAX_CONCURRENT_OUTBOUND_CONNECTIONS = 70
 NETWORK_ID_DEFAULT_PORTS = {
-    "mainnet": 6935,
-    "testnet7": 58444,
-    "testnet8": 58445,
+    "mainnet": 42069
 }
 
 
@@ -37,7 +35,7 @@ class FullNodeDiscovery:
 
     def __init__(
         self,
-        server: MoguaServer,
+        server: MoGuaServer,
         root_path: Path,
         target_outbound_count: int,
         peer_db_path: str,
@@ -48,7 +46,7 @@ class FullNodeDiscovery:
         default_port: Optional[int],
         log,
     ):
-        self.server: MoguaServer = server
+        self.server: MoGuaServer = server
         self.message_queue: asyncio.Queue = asyncio.Queue()
         self.is_closed = False
         self.target_outbound_count = target_outbound_count
@@ -127,7 +125,7 @@ class FullNodeDiscovery:
     def add_message(self, message, data):
         self.message_queue.put_nowait((message, data))
 
-    async def on_connect(self, peer: ws.WSMoguaConnection):
+    async def on_connect(self, peer: ws.WSMoGuaConnection):
         if (
             peer.is_outbound is False
             and peer.peer_server_port is not None
@@ -154,7 +152,7 @@ class FullNodeDiscovery:
             await peer.send_message(msg)
 
     # Updates timestamps each time we receive a message for outbound connections.
-    async def update_peer_timestamp_on_message(self, peer: ws.WSMoguaConnection):
+    async def update_peer_timestamp_on_message(self, peer: ws.WSMoGuaConnection):
         if (
             peer.is_outbound
             and peer.peer_server_port is not None
@@ -192,7 +190,7 @@ class FullNodeDiscovery:
         if self.introducer_info is None:
             return None
 
-        async def on_connect(peer: ws.WSMoguaConnection):
+        async def on_connect(peer: ws.WSMoGuaConnection):
             msg = make_msg(ProtocolMessageTypes.request_peers_introducer, introducer_protocol.RequestPeersIntroducer())
             await peer.send_message(msg)
 

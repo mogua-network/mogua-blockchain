@@ -16,6 +16,7 @@ import {
 } from '../../modules/trade_messages';
 import { Card } from '@mogua/core';
 import TradesTable from './TradesTable';
+import WalletType from '../../constants/WalletType';
 
 /* global BigInt */
 
@@ -59,6 +60,7 @@ export const OfferView = () => {
     return Object.keys(offer).map((name) => ({
       amount: offer[name],
       name,
+      type: name.startsWith("ff02ffff01ff02ffff03ffff09ff5bff8080ffff01ff0101ffff01ff02ffff03ffff09ff13ff0280ffff01ff0101ff8080ff018080ff0180ffff04ffff01a0") ? WalletType.COLOURED_COIN : WalletType.STANDARD_WALLET
     }));
   }, offer);
 

@@ -54,7 +54,6 @@ class Harvester:
         self.state_changed_callback: Optional[Callable] = None
         self.last_load_time: float = 0
         self.plot_load_frequency = config.get("plot_loading_frequency_seconds", 120)
-        self.parallel_read: bool = config.get("parallel_read", True)
 
     async def _start(self):
         self._refresh_lock = asyncio.Lock()
@@ -73,7 +72,7 @@ class Harvester:
         if self.state_changed_callback is not None:
             self.state_changed_callback(change)
 
-    def on_disconnect(self, connection: ws.WSMoguaConnection):
+    def on_disconnect(self, connection: ws.WSMoGuaConnection):
         self.log.info(f"peer disconnected {connection.get_peer_info()}")
         self._state_changed("close_connection")
 

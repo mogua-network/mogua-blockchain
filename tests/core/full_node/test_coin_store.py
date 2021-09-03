@@ -18,7 +18,7 @@ from mogua.types.full_block import FullBlock
 from mogua.types.generator_types import BlockGenerator
 from mogua.util.generator_tools import tx_removals_and_additions
 from mogua.util.ints import uint64, uint32
-from tests.wallet_tools import WalletTool
+from mogua.util.wallet_tools import WalletTool
 from mogua.util.db_wrapper import DBWrapper
 from tests.setup_nodes import bt, test_constants
 

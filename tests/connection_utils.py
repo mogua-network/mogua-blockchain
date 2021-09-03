@@ -9,8 +9,8 @@ from cryptography.hazmat.primitives import hashes, serialization
 
 from mogua.protocols.shared_protocol import protocol_version
 from mogua.server.outbound_message import NodeType
-from mogua.server.server import MoguaServer, ssl_context_for_client
-from mogua.server.ws_connection import WSMoguaConnection
+from mogua.server.server import MoGuaServer, ssl_context_for_client
+from mogua.server.ws_connection import WSMoGuaConnection
 from mogua.ssl.create_ssl import generate_ca_signed_cert
 from mogua.types.blockchain_format.sized_bytes import bytes32
 from mogua.types.peer_info import PeerInfo
@@ -21,14 +21,14 @@ from tests.time_out_assert import time_out_assert
 log = logging.getLogger(__name__)
 
 
-async def disconnect_all_and_reconnect(server: MoguaServer, reconnect_to: MoguaServer) -> bool:
+async def disconnect_all_and_reconnect(server: MoGuaServer, reconnect_to: MoGuaServer) -> bool:
     cons = list(server.all_connections.values())[:]
     for con in cons:
         await con.close()
     return await server.start_client(PeerInfo(self_hostname, uint16(reconnect_to._port)), None)
 
 
-async def add_dummy_connection(server: MoguaServer, dummy_port: int) -> Tuple[asyncio.Queue, bytes32]:
+async def add_dummy_connection(server: MoGuaServer, dummy_port: int) -> Tuple[asyncio.Queue, bytes32]:
     timeout = aiohttp.ClientTimeout(total=10)
     session = aiohttp.ClientSession(timeout=timeout)
     incoming_queue: asyncio.Queue = asyncio.Queue()
@@ -45,7 +45,7 @@ async def add_dummy_connection(server: MoguaServer, dummy_port: int) -> Tuple[as
     peer_id = bytes32(der_cert.fingerprint(hashes.SHA256()))
     url = f"wss://{self_hostname}:{server._port}/ws"
     ws = await session.ws_connect(url, autoclose=True, autoping=True, ssl=ssl_context)
-    wsc = WSMoguaConnection(
+    wsc = WSMoGuaConnection(
         NodeType.FULL_NODE,
         ws,
         server._port,
@@ -64,7 +64,7 @@ async def add_dummy_connection(server: MoguaServer, dummy_port: int) -> Tuple[as
     return incoming_queue, peer_id
 
 
-async def connect_and_get_peer(server_1: MoguaServer, server_2: MoguaServer) -> WSMoguaConnection:
+async def connect_and_get_peer(server_1: MoGuaServer, server_2: MoGuaServer) -> WSMoGuaConnection:
     """
     Connect server_2 to server_1, and get return the connection in server_1.
     """

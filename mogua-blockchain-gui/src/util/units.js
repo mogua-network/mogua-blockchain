@@ -5,14 +5,14 @@ const units = {
 };
 
 const aliases = {
-  mogua: ['ch', 'mogua', 'Mogua'],
+  mogua: ['mga', 'mogua', 'MoGua'],
   mojo: ['mj', 'mojo'],
   colouredcoin: ['cc', 'colouredcoin'],
 };
 
 const display = {
   mogua: {
-    format: '{amount} CH',
+    format: '{amount} MGA',
     fractionDigits: 12,
   },
   mojo: {

@@ -66,7 +66,7 @@ export default function PlotAddChooseSize() {
           }
           <Link
             target="_blank"
-            href="https://github.com/Mogua-Network/mogua-blockchain/wiki/k-sizes"
+            href="https://github.com/MoGua/mogua-blockchain/wiki/k-sizes"
           >
             Learn more
           </Link>

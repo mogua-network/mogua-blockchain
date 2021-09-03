@@ -4,7 +4,7 @@ from pathlib import Path
 from blspy import AugSchemeMPL, PrivateKey
 
 from mogua.pools.pool_config import PoolWalletConfig
-from mogua.util.config import load_config, save_config, create_default_mogua_config
+from mogua.util.config import load_config, save_config, create_default_chia_config
 
 
 def test_pool_config():

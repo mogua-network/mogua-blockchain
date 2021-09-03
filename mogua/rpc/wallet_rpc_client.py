@@ -12,9 +12,9 @@ from mogua.wallet.transaction_record import TransactionRecord
 
 class WalletRpcClient(RpcClient):
     """
-    Client to Mogua RPC, connects to a local wallet. Uses HTTP/JSON, and converts back from
+    Client to MoGua RPC, connects to a local wallet. Uses HTTP/JSON, and converts back from
     JSON into native python objects before returning. All api calls use POST requests.
-    Note that this is not the same as the peer protocol, or wallet protocol (which run Mogua's
+    Note that this is not the same as the peer protocol, or wallet protocol (which run MoGua's
     protocol on top of TCP), it's a separate protocol on top of HTTP that provides easy access
     to the full node.
     """
@@ -24,7 +24,7 @@ class WalletRpcClient(RpcClient):
         try:
             return await self.fetch(
                 "log_in",
-                {"host": "https://backup.moguanetwork.org", "fingerprint": fingerprint, "type": "start"},
+                {"host": "https://backup.mogua.org", "fingerprint": fingerprint, "type": "start"},
             )
 
         except ValueError as e:
@@ -35,7 +35,7 @@ class WalletRpcClient(RpcClient):
             return await self.fetch(
                 "log_in",
                 {
-                    "host": "https://backup.moguanetwork.org",
+                    "host": "https://backup.mogua.org",
                     "fingerprint": fingerprint,
                     "type": "restore_backup",
                     "file_path": file_path,
@@ -48,7 +48,7 @@ class WalletRpcClient(RpcClient):
         try:
             return await self.fetch(
                 "log_in",
-                {"host": "https://backup.moguanetwork.org", "fingerprint": fingerprint, "type": "skip"},
+                {"host": "https://backup.mogua.org", "fingerprint": fingerprint, "type": "skip"},
             )
         except ValueError as e:
             return e.args[0]
@@ -160,6 +160,16 @@ class WalletRpcClient(RpcClient):
 
     async def get_farmed_amount(self) -> Dict:
         return await self.fetch("get_farmed_amount", {})
+
+    async def create_new_wallet(self, wallet_type: str, data: Dict[str, Any]) -> None:
+        return await self.fetch(
+            "create_new_wallet",
+            {
+                "wallet_type": wallet_type,
+                "host": "https://backup.mogua.org",
+                **data,
+            },
+        )
 
     async def create_signed_transaction(
         self, additions: List[Dict], coins: List[Coin] = None, fee: uint64 = uint64(0)

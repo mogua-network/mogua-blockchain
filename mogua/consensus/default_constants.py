@@ -28,14 +28,14 @@ testnet_kwargs = {
     # Used as the initial cc rc challenges, as well as first block back pointers, and first SES back pointer
     # We override this value based on the chain being run (testnet0, testnet1, mainnet, etc)
     # Default used for tests is std_hash(b'')
-    "GENESIS_CHALLENGE": bytes.fromhex("e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"),
+    "GENESIS_CHALLENGE": bytes.fromhex("2e50faa7f43be3623979660254718e08f0983b9266f0fc10a7476d56137ca48a"),
     # Forks of mogua should change this value to provide replay attack protection. This is set to mainnet genesis chall
-    "AGG_SIG_ME_ADDITIONAL_DATA": bytes.fromhex("9b9ffca948750d8b41ac755da213461e9d2253ec7bfce80695d78f7fe7d55112"),
+    "AGG_SIG_ME_ADDITIONAL_DATA": bytes.fromhex("c9c3ba2d62e4358c204fc513092f0c020117f0a360c11b11496df75fed2adf4c"),
     "GENESIS_PRE_FARM_POOL_PUZZLE_HASH": bytes.fromhex(
-        "e8e245e2e6536e17fd7cbc2e3bd90de06f55362ee3c84cea5a68391e5bad7ef6"
+        "d8a2c7c1345134a0c583f7c4b58d4c5f92590680a364422e55a4e6bf19bbb7a0"
     ),
     "GENESIS_PRE_FARM_FARMER_PUZZLE_HASH": bytes.fromhex(
-        "e8e245e2e6536e17fd7cbc2e3bd90de06f55362ee3c84cea5a68391e5bad7ef6"
+        "d8a2c7c1345134a0c583f7c4b58d4c5f92590680a364422e55a4e6bf19bbb7a0"
     ),
     "MAX_VDF_WITNESS_SIZE": 64,
     # Size of mempool = 50x the size of block

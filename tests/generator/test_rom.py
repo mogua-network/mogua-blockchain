@@ -1,3 +1,5 @@
+from unittest import TestCase
+
 from clvm_tools import binutils
 from clvm_tools.clvmc import compile_clvm_text
 
@@ -82,7 +84,7 @@ EXPECTED_OUTPUT = (
 )
 
 
-class TestROM:
+class TestROM(TestCase):
     def test_rom_inputs(self):
         # this test checks that the generator just works
         # It's useful for debugging the generator prior to having the ROM invoke it.
@@ -124,7 +126,7 @@ class TestROM:
         coin_spends = r.first()
         for coin_spend in coin_spends.as_iter():
             extra_data = coin_spend.rest().rest().rest().rest()
-            assert extra_data.as_atom_list() == b"extra data for coin".split()
+            self.assertEqual(extra_data.as_atom_list(), b"extra data for coin".split())
 
     def test_block_extras(self):
         # the ROM supports extra data after the coin spend list. This test checks that it actually gets passed through
@@ -132,4 +134,4 @@ class TestROM:
         gen = block_generator()
         cost, r = run_generator(gen, max_cost=MAX_COST)
         extra_block_data = r.rest()
-        assert extra_block_data.as_atom_list() == b"extra data for block".split()
+        self.assertEqual(extra_block_data.as_atom_list(), b"extra data for block".split())

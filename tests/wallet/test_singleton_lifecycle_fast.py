@@ -8,7 +8,7 @@ from mogua.types.blockchain_format.program import Program, SerializedProgram
 from mogua.types.announcement import Announcement
 from mogua.types.blockchain_format.coin import Coin
 from mogua.types.blockchain_format.sized_bytes import bytes32
-from mogua.types.coin_spend import CoinSpend
+from mogua.types.coin_solution import CoinSolution as CoinSpend
 from mogua.types.spend_bundle import SpendBundle
 from mogua.util.condition_tools import ConditionOpcode
 from mogua.util.ints import uint64
@@ -419,7 +419,7 @@ def spend_coin_to_singleton(
 
     additions, removals = coin_store.update_coin_store_for_spend_bundle(spend_bundle, now, MAX_BLOCK_COST_CLVM)
 
-    launcher_coin = launcher_spend_bundle.coin_spends[0].coin
+    launcher_coin = launcher_spend_bundle.coin_solutions[0].coin
 
     assert_coin_spent(coin_store, launcher_coin)
     assert_coin_spent(coin_store, farmed_coin)

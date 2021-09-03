@@ -4,7 +4,7 @@ from typing import Dict, List, Optional, Any
 
 import aiohttp
 
-from mogua.server.server import NodeType, ssl_context_for_client
+from mogua.server.server import ssl_context_for_client
 from mogua.server.ssl_context import private_ssl_ca_paths
 from mogua.types.blockchain_format.sized_bytes import bytes32
 from mogua.util.byte_types import hexstr_to_bytes
@@ -13,9 +13,9 @@ from mogua.util.ints import uint16
 
 class RpcClient:
     """
-    Client to Mogua RPC, connects to a local service. Uses HTTP/JSON, and converts back from
+    Client to MoGua RPC, connects to a local service. Uses HTTP/JSON, and converts back from
     JSON into native python objects before returning. All api calls use POST requests.
-    Note that this is not the same as the peer protocol, or wallet protocol (which run Mogua's
+    Note that this is not the same as the peer protocol, or wallet protocol (which run MoGua's
     protocol on top of TCP), it's a separate protocol on top of HTTP thats provides easy access
     to the full node.
     """
@@ -45,11 +45,8 @@ class RpcClient:
                 raise ValueError(res_json)
             return res_json
 
-    async def get_connections(self, node_type: Optional[NodeType] = None) -> List[Dict]:
-        request = {}
-        if node_type is not None:
-            request["node_type"] = node_type.value
-        response = await self.fetch("get_connections", request)
+    async def get_connections(self) -> List[Dict]:
+        response = await self.fetch("get_connections", {})
         for connection in response["connections"]:
             connection["node_id"] = hexstr_to_bytes(connection["node_id"])
         return response["connections"]

@@ -28,11 +28,11 @@ from mogua.protocols.wallet_protocol import (
 )
 from mogua.server.node_discovery import WalletPeers
 from mogua.server.outbound_message import Message, NodeType, make_msg
-from mogua.server.server import MoguaServer
-from mogua.server.ws_connection import WSMoguaConnection
+from mogua.server.server import MoGuaServer
+from mogua.server.ws_connection import WSMoGuaConnection
 from mogua.types.blockchain_format.coin import Coin, hash_coin_list
 from mogua.types.blockchain_format.sized_bytes import bytes32
-from mogua.types.coin_spend import CoinSpend
+from mogua.types.coin_solution import CoinSolution
 from mogua.types.header_block import HeaderBlock
 from mogua.types.mempool_inclusion_status import MempoolInclusionStatus
 from mogua.types.peer_info import PeerInfo
@@ -59,7 +59,7 @@ class WalletNode:
     key_config: Dict
     config: Dict
     constants: ConsensusConstants
-    server: Optional[MoguaServer]
+    server: Optional[MoGuaServer]
     log: logging.Logger
     wallet_peers: WalletPeers
     # Maintains the state of the wallet (blockchain and transactions), handles DB connections
@@ -318,7 +318,7 @@ class WalletNode:
 
         return messages
 
-    def set_server(self, server: MoguaServer):
+    def set_server(self, server: MoGuaServer):
         self.server = server
         DNS_SERVERS_EMPTY: list = []
         # TODO: Perhaps use a different set of DNS seeders for wallets, to split the traffic.
@@ -335,7 +335,7 @@ class WalletNode:
             self.log,
         )
 
-    async def on_connect(self, peer: WSMoguaConnection):
+    async def on_connect(self, peer: WSMoGuaConnection):
         if self.wallet_state_manager is None or self.backup_initialized is False:
             return None
         messages_peer_ids = await self._messages_to_resend()
@@ -380,7 +380,7 @@ class WalletNode:
                 return True
         return False
 
-    async def complete_blocks(self, header_blocks: List[HeaderBlock], peer: WSMoguaConnection):
+    async def complete_blocks(self, header_blocks: List[HeaderBlock], peer: WSMoGuaConnection):
         if self.wallet_state_manager is None:
             return None
         header_block_records: List[HeaderBlockRecord] = []
@@ -405,7 +405,7 @@ class WalletNode:
                         raise ValueError("Failed to fetch removals")
 
                     # If there is a launcher created, or we have a singleton spent, fetches the required solutions
-                    additional_coin_spends: List[CoinSpend] = await self.get_additional_coin_spends(
+                    additional_coin_spends: List[CoinSolution] = await self.get_additional_coin_spends(
                         peer, block, added_coins, removed_coins
                     )
 
@@ -430,7 +430,7 @@ class WalletNode:
                 else:
                     self.log.debug(f"Result: {result}")
 
-    async def new_peak_wallet(self, peak: wallet_protocol.NewPeakWallet, peer: WSMoguaConnection):
+    async def new_peak_wallet(self, peak: wallet_protocol.NewPeakWallet, peer: WSMoGuaConnection):
         if self.wallet_state_manager is None:
             return
 
@@ -618,7 +618,7 @@ class WalletNode:
             self.log.info("Not performing sync, already caught up.")
             return None
 
-        peers: List[WSMoguaConnection] = self.server.get_full_node_connections()
+        peers: List[WSMoGuaConnection] = self.server.get_full_node_connections()
         if len(peers) == 0:
             self.log.info("No peers to sync to")
             return None
@@ -661,7 +661,7 @@ class WalletNode:
 
     async def fetch_blocks_and_validate(
         self,
-        peer: WSMoguaConnection,
+        peer: WSMoGuaConnection,
         height_start: uint32,
         height_end: uint32,
         fork_point_with_peak: Optional[uint32],
@@ -715,7 +715,7 @@ class WalletNode:
                     raise ValueError("Failed to fetch removals")
 
                 # If there is a launcher created, or we have a singleton spent, fetches the required solutions
-                additional_coin_spends: List[CoinSpend] = await self.get_additional_coin_spends(
+                additional_coin_spends: List[CoinSolution] = await self.get_additional_coin_spends(
                     peer, header_block, added_coins, removed_coins
                 )
 
@@ -860,19 +860,19 @@ class WalletNode:
                         return False
         return True
 
-    async def fetch_puzzle_solution(self, peer, height: uint32, coin: Coin) -> CoinSpend:
+    async def fetch_puzzle_solution(self, peer, height: uint32, coin: Coin) -> CoinSolution:
         solution_response = await peer.request_puzzle_solution(
             wallet_protocol.RequestPuzzleSolution(coin.name(), height)
         )
         if solution_response is None or not isinstance(solution_response, wallet_protocol.RespondPuzzleSolution):
             raise ValueError(f"Was not able to obtain solution {solution_response}")
-        return CoinSpend(coin, solution_response.response.puzzle, solution_response.response.solution)
+        return CoinSolution(coin, solution_response.response.puzzle, solution_response.response.solution)
 
     async def get_additional_coin_spends(
         self, peer, block, added_coins: List[Coin], removed_coins: List[Coin]
-    ) -> List[CoinSpend]:
+    ) -> List[CoinSolution]:
         assert self.wallet_state_manager is not None
-        additional_coin_spends: List[CoinSpend] = []
+        additional_coin_spends: List[CoinSolution] = []
         if len(removed_coins) > 0:
             removed_coin_ids = set([coin.name() for coin in removed_coins])
             all_added_coins = await self.get_additions(peer, block, [], get_all_additions=True)
@@ -882,7 +882,7 @@ class WalletNode:
                 for coin in all_added_coins:
                     # This searches specifically for a launcher being created, and adds the solution of the launcher
                     if coin.puzzle_hash == SINGLETON_LAUNCHER_HASH and coin.parent_coin_info in removed_coin_ids:
-                        cs: CoinSpend = await self.fetch_puzzle_solution(peer, block.height, coin)
+                        cs: CoinSolution = await self.fetch_puzzle_solution(peer, block.height, coin)
                         additional_coin_spends.append(cs)
                         # Apply this coin solution, which might add things to interested list
                         await self.wallet_state_manager.get_next_interesting_coin_ids(cs, False)
@@ -914,7 +914,7 @@ class WalletNode:
         return additional_coin_spends
 
     async def get_additions(
-        self, peer: WSMoguaConnection, block_i, additions: Optional[List[bytes32]], get_all_additions: bool = False
+        self, peer: WSMoGuaConnection, block_i, additions: Optional[List[bytes32]], get_all_additions: bool = False
     ) -> Optional[List[Coin]]:
         if (additions is not None and len(additions) > 0) or get_all_additions:
             if get_all_additions:
@@ -948,7 +948,7 @@ class WalletNode:
             return []  # No added coins
 
     async def get_removals(
-        self, peer: WSMoguaConnection, block_i, additions, removals, request_all_removals=False
+        self, peer: WSMoGuaConnection, block_i, additions, removals, request_all_removals=False
     ) -> Optional[List[Coin]]:
         assert self.wallet_state_manager is not None
         # Check if we need all removals
