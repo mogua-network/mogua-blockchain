@@ -143,7 +143,7 @@ export default function About(props: Props) {
           )}
         </VersionsTable>
 
-        <BugReport href="https://github.com/MoGua/doge-chia/issues" target="_blank">
+        <BugReport href="https://github.com/MoGua-network/mogua-blockchain/issues" target="_blank">
           Report an issue
         </BugReport>
         {'{{CSS}}'}
