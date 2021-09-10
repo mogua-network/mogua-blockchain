@@ -122,7 +122,7 @@ python -m pip install -e . --extra-index-url https://pypi.chia.net/simple/
 echo ""
 echo "MoGua blockchain install.sh complete."
 echo "For assistance join us on Discord in the #testnet chat channel:"
-echo "https://discord.gg/FmzdcUJz"
+echo "https://discord.gg/5P6vBBbQ"
 echo ""
 echo "Try the Quick Start Guide to running mogua-blockchain:"
 echo "https://github.com/MoGua/mogua-blockchain/wiki/Quick-Start-Guide"

@@ -1,7 +1,11 @@
 # mogua-blockchain
 
-**MoGua** is a modern community-centric green cryptocurrency based on a proof-of-space-and-time consensus algorithm. It is a community supported fork of the [Chia Network](https://github.com/Chia-Network/chia-blockchain) codebase.
+**MoGua** is a community-centric green cryptocurrency based on a consensus algorithm for proof of time and space. It is a community support branch of the [ChiaNetwork]blockchain) code base.
 
-the mogua cli mode is running ~
+mogua is magic
+Lift up your life
+Make everyone a happy magic gourd~
 
-For more information, see our website and downloads at https://mogua.xyz.
+mogua cli mode is running~
+
+For more information, please visit our website and download https://mogua.xyz.

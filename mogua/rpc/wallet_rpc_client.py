@@ -24,7 +24,7 @@ class WalletRpcClient(RpcClient):
         try:
             return await self.fetch(
                 "log_in",
-                {"host": "https://backup.mogua.org", "fingerprint": fingerprint, "type": "start"},
+                {"host": "https://backup.mogua.xyz", "fingerprint": fingerprint, "type": "start"},
             )
 
         except ValueError as e:
@@ -35,7 +35,7 @@ class WalletRpcClient(RpcClient):
             return await self.fetch(
                 "log_in",
                 {
-                    "host": "https://backup.mogua.org",
+                    "host": "https://backup.mogua.xyz",
                     "fingerprint": fingerprint,
                     "type": "restore_backup",
                     "file_path": file_path,
@@ -48,7 +48,7 @@ class WalletRpcClient(RpcClient):
         try:
             return await self.fetch(
                 "log_in",
-                {"host": "https://backup.mogua.org", "fingerprint": fingerprint, "type": "skip"},
+                {"host": "https://backup.mogua.xyz", "fingerprint": fingerprint, "type": "skip"},
             )
         except ValueError as e:
             return e.args[0]
@@ -166,7 +166,7 @@ class WalletRpcClient(RpcClient):
             "create_new_wallet",
             {
                 "wallet_type": wallet_type,
-                "host": "https://backup.mogua.org",
+                "host": "https://backup.mogua.xyz",
                 **data,
             },
         )

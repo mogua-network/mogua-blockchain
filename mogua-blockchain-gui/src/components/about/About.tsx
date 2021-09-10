@@ -70,7 +70,7 @@ const Spacer = styled.div`
   margin-bottom: 1rem;
 `;
 
-const url = 'https://mogua.org';
+const url = 'https://mogua.xyz';
 
 type Props = {
   version: string;
