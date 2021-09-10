@@ -12,4 +12,4 @@ mogua cli mode is running~
 For more information, please visit us
 https://discord.gg/5P6vBBbQ
 
-https://mogua.xyz.
+https://mogua.org.

@@ -44,9 +44,9 @@ dev_dependencies = [
 kwargs = dict(
     name="mogua-blockchain",
     author="Mariano Sorgente",
-    author_email="mariano@mogua.xyz",
+    author_email="mariano@mogua.org",
     description="MoGua blockchain full node, farmer, timelord, and wallet.",
-    url="https://mogua.xyz/",
+    url="https://mogua.org/",
     license="Apache License",
     python_requires=">=3.7, <4",
     keywords="mogua blockchain node",

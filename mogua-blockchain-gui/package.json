@@ -1,6 +1,6 @@
 {
   "name": "mogua-blockchain",
-  "author": "MoGua Network <hello@mogua.xyz> (https://mogua.xyz/)",
+  "author": "MoGua Network <hello@mogua.org> (https://mogua.org/)",
   "description": "GUI for MoGua Blockchain",
   "productName": "MoGua Blockchain",
   "private": true,
