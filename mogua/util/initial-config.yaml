@@ -249,7 +249,7 @@ full_node:
       port: 6933
   introducer_peer:
       host: introducer.mogua.org  # MoGua AWS introducer IPv4/IPv6
-      port: 6935
+      port: 6936
   wallet_peer:
     host: *self_hostname
     port: 6930
@@ -333,7 +333,7 @@ wallet:
 
   introducer_peer:
     host: introducer.mogua.org # MoGua AWS introducer IPv4/IPv6
-    port: 6935
+    port: 6936
 
   ssl:
     private_crt:  "config/ssl/wallet/private_wallet.crt"
