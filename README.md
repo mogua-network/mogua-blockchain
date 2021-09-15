@@ -9,7 +9,7 @@ moga is magic
 Make everyone a happy　
 ｍｏｇｕａ
 
-＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊＊
+***************
 
 mogua cli mode is running~
 
