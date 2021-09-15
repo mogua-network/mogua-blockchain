@@ -111,7 +111,7 @@ def configure(
         elif testnet == "false" or testnet == "f":
             print("Setting Mainnet")
             mainnet_port = "42069"
-            mainnet_introducer = "introducer.mogua.org"
+            mainnet_introducer = "introducer.mogua.xyz"
             net = "mainnet"
             config["full_node"]["port"] = int(mainnet_port)
             config["full_node"]["introducer_peer"]["port"] = int(mainnet_port)
