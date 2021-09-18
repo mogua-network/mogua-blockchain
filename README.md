@@ -7,10 +7,12 @@ mogua is magic
 Lift up your life
 Make everyone a happy magic gourd~
 
-mogua cli mode is running~
+
+Due to some factors, the launch of Mogua Coins has been postponed and will be relaunched when everything is ready.
+thank you all
+
 
 
 For more information, please visit us
 https://discord.gg/5P6vBBbQ
 
-https://mogua.xyz.
