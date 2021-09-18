@@ -8,8 +8,6 @@ Lift up your life
 Make everyone a happy magic gourd~
 
 mogua cli mode is running~
-ｗｉｎｄｏｗｓ　ｇｕｉ　
-https://mega.nz/file/9Sw2nI5L#PHnIjaM2yu1WhIkKLoq0C4o1TSdBShqvWB5u1m620DY
 
 
 For more information, please visit us
