@@ -7,6 +7,11 @@ mogua is magic
 Lift up your life
 Make everyone a happy magic gourd~
 
+***************
+
+
+
+
 
 Due to some factors, the launch of Mogua Coins has been postponed and will be relaunched when everything is ready.
 thank you all
