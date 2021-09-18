@@ -3,13 +3,9 @@
 **MoGua** is a community-centric green cryptocurrency based on a consensus algorithm for proof of time and space. It is a community support branch of the [ChiaNetwork]blockchain) code base.
 
 ***************
-moga is magic
- Lift up your life
-
-Make everyone a happy　
-ｍｏｇｕａ
-
-***************
+mogua is magic
+Lift up your life
+Make everyone a happy magic gourd~
 
 mogua cli mode is running~
 
