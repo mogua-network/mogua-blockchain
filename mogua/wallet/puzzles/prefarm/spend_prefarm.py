@@ -60,8 +60,8 @@ async def main() -> None:
 
         print(f"Ph1: {ph1.hex()}")
         print(f"Ph2: {ph2.hex()}")
-        assert ph1.hex() == "c2260fd65c3d7ee25389881be08cb3f3923934ba0f2256d281c0609b1817ecdf"
-        assert ph2.hex() == "eb5689674fd648ab66a9393e73bc8dcec63148b5c3f3597d597c01f319863e3f"
+        assert ph1.hex() == "11989280bd005672f49abd4b91fabfb991ea43716d4ed7311782b70564619e24"
+        assert ph2.hex() == "11989280bd005672f49abd4b91fabfb991ea43716d4ed7311782b70564619e24"
 
         p_solution = Program.to(binutils.assemble("()"))
 
