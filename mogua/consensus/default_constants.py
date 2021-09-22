@@ -10,7 +10,7 @@ testnet_kwargs = {
     "SUB_SLOT_ITERS_STARTING": 2 ** 27,
     # DIFFICULTY_STARTING is the starting difficulty for the first epoch, which is then further
     # multiplied by another factor of DIFFICULTY_CONSTANT_FACTOR, to be used in the VDF iter calculation formula.
-    "DIFFICULTY_CONSTANT_FACTOR": 2 ** 62,
+    "DIFFICULTY_CONSTANT_FACTOR": 2 ** 65,
     "DIFFICULTY_STARTING": 7,
     "DIFFICULTY_CHANGE_MAX_FACTOR": 3,  # The next difficulty is truncated to range [prev / FACTOR, prev * FACTOR]
     # These 3 constants must be changed at the same time
@@ -32,10 +32,10 @@ testnet_kwargs = {
     # Forks of mogua should change this value to provide replay attack protection. This is set to mainnet genesis chall
     "AGG_SIG_ME_ADDITIONAL_DATA": bytes.fromhex("c9c3ba2d62e4358c204fc513092f0c020117f0a360c11b11496df75fed2adf4c"),
     "GENESIS_PRE_FARM_POOL_PUZZLE_HASH": bytes.fromhex(
-        "11989280bd005672f49abd4b91fabfb991ea43716d4ed7311782b70564619e24"
+        "ede8960257a099fee2b81e6a05a1f53b7f3e3047b94e6a9a60190b4ef7d134fa"
     ),
     "GENESIS_PRE_FARM_FARMER_PUZZLE_HASH": bytes.fromhex(
-        "11989280bd005672f49abd4b91fabfb991ea43716d4ed7311782b70564619e24"
+        "ede8960257a099fee2b81e6a05a1f53b7f3e3047b94e6a9a60190b4ef7d134fa"
     ),
     "MAX_VDF_WITNESS_SIZE": 64,
     # Size of mempool = 50x the size of block
