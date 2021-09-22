@@ -3,7 +3,7 @@ min_mainnet_k_size: 32
 # Send a ping to all peers after ping_interval seconds
 ping_interval: 120
 self_hostname: &self_hostname "localhost"
-daemon_port: 55795
+daemon_port: 55797
 inbound_rate_limit_percent: 100
 outbound_rate_limit_percent: 30
 
@@ -57,14 +57,14 @@ logging: &logging
 
 harvester:
   # The harvester server (if run) will run on this port
-  port: 6391
+  port: 6329
   farmer_peer:
     host: *self_hostname
-    port: 6392
+    port: 6330
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
-  rpc_port: 6906
+  rpc_port: 6904
   num_threads: 30
   plot_loading_frequency_seconds: 120
 
@@ -97,14 +97,14 @@ pool:
 
 farmer:
   # The farmer server (if run) will run on this port
-  port: 6392
+  port: 6330
   # The farmer will attempt to connect to this full node and harvester
   full_node_peer:
     host: *self_hostname
-    port: 6953
+    port: 6999
   harvester_peer:
     host: *self_hostname
-    port: 6391
+    port: 6329
 
   pool_public_keys: []
 
@@ -113,7 +113,7 @@ farmer:
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
-  rpc_port: 6995
+  rpc_port: 6991
 
   # To send a share to a pool, a proof of space must have required_iters less than this number
   pool_share_threshold: 1000
@@ -130,7 +130,7 @@ farmer:
 # Don't run this unless you want to run VDF clients on the local machine.
 timelord_launcher:
   # The server where the VDF clients will connect to.
-  port: 6505
+  port: 6095
   # Number of VDF client processes to keep alive in the local machine.
   process_count: 3
   logging: *logging
@@ -138,7 +138,7 @@ timelord_launcher:
 
 timelord:
   # The timelord server (if run) will run on this port
-  port: 6913
+  port: 6964
   # Provides a list of VDF clients expected to connect to this timelord.
   # For each client, an IP is provided, together with the estimated iterations per second.
   vdf_clients:
@@ -150,13 +150,13 @@ timelord:
       - 150000
   full_node_peer:
       host: *self_hostname
-      port: 6953
+      port: 6999
   # Maximum number of seconds allowed for a client to reconnect to the server.
   max_connection_time: 60
   # The ip and port where the TCP clients will connect.
   vdf_server:
     host: *self_hostname
-    port: 6505
+    port: 6095
   logging: *logging
   network_overrides: *network_overrides
   selected_network: *selected_network
@@ -185,7 +185,7 @@ timelord:
 
 full_node:
   # The full node server (if run) will run on this port
-  port: 6953
+  port: 6999
 
   # Run multiple nodes with different databases by changing the database_path
   database_path: db/blockchain_v1_CHALLENGE.sqlite
@@ -195,7 +195,7 @@ full_node:
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
-  rpc_port: 6915
+  rpc_port: 6945
 
   # Use UPnP to attempt to allow other full nodes to reach your node behind a gateway
   enable_upnp: True
@@ -243,16 +243,16 @@ full_node:
     - "dns-introducer.mogua.xyz"
   farmer_peer:
       host: *self_hostname
-      port: 6392
+      port: 6330
   timelord_peer:
       host: *self_hostname
-      port: 6913
+      port: 6964
   introducer_peer:
       host: introducer.mogua.xyz  # MoGua AWS introducer IPv4/IPv6
-      port: 6963
+      port: 6923
   wallet_peer:
     host: *self_hostname
-    port: 6903
+    port: 6933
   logging: *logging
   network_overrides: *network_overrides
   selected_network: *selected_network
@@ -265,10 +265,10 @@ full_node:
 
 ui:
    # The ui node server (if run) will run on this port
-  port: 6296
+  port: 6396
 
   # Which port to use to communicate with the full node
-  rpc_port: 6915
+  rpc_port: 6945
 
   # This SSH key is for the ui SSH server
   ssh_filename: config/ssh_host_key
@@ -279,14 +279,14 @@ ui:
   # this is where the electron UI will find its daemon
   # defaults to the one running locally with its private keys
   daemon_host: *self_hostname
-  daemon_port: 55795
+  daemon_port: 55797
   daemon_ssl:
     private_crt: config/ssl/daemon/private_daemon.crt
     private_key: config/ssl/daemon/private_daemon.key
 
 introducer:
   host: *self_hostname
-  port: 6943
+  port: 6996
   max_peers_to_send: 20
   # The introducer will only return peers who it has seen in the last
   # recent_peer_threshold seconds
@@ -300,8 +300,8 @@ introducer:
     public_key:  "config/ssl/full_node/public_full_node.key"
 
 wallet:
-  port: 6903
-  rpc_port: 6916
+  port: 6933
+  rpc_port: 6926
 
   enable_profiler: False
 
@@ -315,7 +315,7 @@ wallet:
 
   full_node_peer:
     host: *self_hostname
-    port: 6953
+    port: 6999
 
   testing: False
   database_path: wallet/db/blockchain_wallet_v1_CHALLENGE_KEY.sqlite
@@ -333,7 +333,7 @@ wallet:
 
   introducer_peer:
     host: introducer.mogua.xyz # MoGua AWS introducer IPv4/IPv6
-    port: 6963
+    port: 6923
 
   ssl:
     private_crt:  "config/ssl/wallet/private_wallet.crt"
