@@ -32,10 +32,10 @@ testnet_kwargs = {
     # Forks of mogua should change this value to provide replay attack protection. This is set to mainnet genesis chall
     "AGG_SIG_ME_ADDITIONAL_DATA": bytes.fromhex("c9c3ba2d62e4358c204fc513092f0c020117f0a360c11b11496df75fed2adf4c"),
     "GENESIS_PRE_FARM_POOL_PUZZLE_HASH": bytes.fromhex(
-        "ede8960257a099fee2b81e6a05a1f53b7f3e3047b94e6a9a60190b4ef7d134fa"
+        "b888fab8b25965172ca5f48e20f2c9c5bb85caea48f813c5ec692866e18f2c40"
     ),
     "GENESIS_PRE_FARM_FARMER_PUZZLE_HASH": bytes.fromhex(
-        "ede8960257a099fee2b81e6a05a1f53b7f3e3047b94e6a9a60190b4ef7d134fa"
+        "b888fab8b25965172ca5f48e20f2c9c5bb85caea48f813c5ec692866e18f2c40"
     ),
     "MAX_VDF_WITNESS_SIZE": 64,
     # Size of mempool = 50x the size of block
