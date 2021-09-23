@@ -130,7 +130,7 @@ farmer:
 # Don't run this unless you want to run VDF clients on the local machine.
 timelord_launcher:
   # The server where the VDF clients will connect to.
-  port: 6095
+  port: 6195
   # Number of VDF client processes to keep alive in the local machine.
   process_count: 3
   logging: *logging
@@ -156,7 +156,7 @@ timelord:
   # The ip and port where the TCP clients will connect.
   vdf_server:
     host: *self_hostname
-    port: 6095
+    port: 6195
   logging: *logging
   network_overrides: *network_overrides
   selected_network: *selected_network
@@ -195,7 +195,7 @@ full_node:
 
   # If True, starts an RPC server at the following port
   start_rpc_server: True
-  rpc_port: 6945
+  rpc_port: 6948
 
   # Use UPnP to attempt to allow other full nodes to reach your node behind a gateway
   enable_upnp: True
@@ -249,7 +249,7 @@ full_node:
       port: 6964
   introducer_peer:
       host: introducer.mogua.xyz  # MoGua AWS introducer IPv4/IPv6
-      port: 6923
+      port: 6999
   wallet_peer:
     host: *self_hostname
     port: 6933
@@ -268,7 +268,7 @@ ui:
   port: 6396
 
   # Which port to use to communicate with the full node
-  rpc_port: 6945
+  rpc_port: 6948
 
   # This SSH key is for the ui SSH server
   ssh_filename: config/ssh_host_key
@@ -333,7 +333,7 @@ wallet:
 
   introducer_peer:
     host: introducer.mogua.xyz # MoGua AWS introducer IPv4/IPv6
-    port: 6923
+    port: 6999
 
   ssl:
     private_crt:  "config/ssl/wallet/private_wallet.crt"
