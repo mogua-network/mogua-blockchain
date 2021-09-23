@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="32"
+   height="33"
+   viewBox="0 0 32 33"
+   fill="none"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="help_sidebar.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     id="namedview6"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="19.757576"
+     inkscape:cx="16.019172"
+     inkscape:cy="16.525307"
+     inkscape:window-width="1600"
+     inkscape:window-height="837"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <path
+     d="M32 16.0045C32 7.12929 24.798 0 15.9955 0C11.7033 0 7.62947 1.74595 4.64681 4.80136C4.64681 4.80136 4.64681 4.80136 4.57406 4.80136V4.87411C-1.53676 11.0577 -1.53676 21.0969 4.64681 27.2804V27.3532H4.71956C10.9031 33.5368 20.8696 33.6095 27.1259 27.4987H27.1986C27.1986 27.4987 27.1986 27.4987 27.1986 27.4259C30.2541 24.3705 32 20.2966 32 16.0045ZM26.6894 25.8255L21.5243 20.6604C23.7795 17.9687 23.8522 14.0403 21.5971 11.3487L26.7622 6.18357C31.8545 11.8579 31.7818 20.3694 26.6894 25.8255ZM11.9216 20.1512C9.73916 17.8232 9.81191 14.1131 12.1398 11.9306C14.395 9.82096 17.8869 9.82096 20.1421 11.9306C22.3245 14.2586 22.2518 17.9687 19.9239 20.1512C17.6687 22.2608 14.104 22.2608 11.9216 20.1512ZM25.6709 5.23784L20.5058 10.4029C17.8142 8.22051 13.8858 8.22051 11.1941 10.4757L6.10177 5.31059C11.6306 0.218244 20.1421 0.145496 25.6709 5.23784ZM5.15604 6.40181L10.3211 11.5669C8.21145 14.2586 8.2842 18.0415 10.3939 20.6604L5.22879 25.8255C0.20919 20.2966 0.209191 11.9306 5.15604 6.40181ZM6.24726 26.7712L11.4124 21.6061C14.0313 23.7158 17.8142 23.7885 20.5058 21.6789L25.6709 26.844C20.0694 31.8636 11.7034 31.7908 6.24726 26.7712Z"
+     fill="#66666B"
+     id="path2" />
+  <ellipse
+     style="fill:#00ff00;stroke:#00c800"
+     id="path847"
+     cx="6.4785275"
+     cy="15.867332"
+     rx="1.2653375"
+     ry="0.63266873" />
+  <ellipse
+     style="fill:#00ff00;stroke:#00c800"
+     id="path849"
+     cx="25.964724"
+     cy="16.449387"
+     rx="0.75920248"
+     ry="0.30368099" />
+  <ellipse
+     style="fill:#00ff00;stroke:#00c800"
+     id="path851"
+     cx="16.221626"
+     cy="16.145706"
+     rx="1.0881902"
+     ry="0.35429448" />
+  <ellipse
+     style="fill:#00ff00;stroke:#00c800"
+     id="path853"
+     cx="15.968558"
+     cy="5.4915643"
+     rx="1.3412577"
+     ry="0.88573617" />
+  <ellipse
+     style="fill:#00ff00;stroke:#00c800"
+     id="path859"
+     cx="16.5"
+     cy="28.419479"
+     rx="1.6702454"
+     ry="1.4424846" />
+  <ellipse
+     style="fill:#00ff00;stroke:#00c800"
+     id="path861"
+     cx="16.171013"
+     cy="14.601994"
+     rx="1.2400306"
+     ry="0.37960124" />
+  <ellipse
+     style="fill:#00ff00;stroke:#00c800"
+     id="path863"
+     cx="16.373466"
+     cy="18.322086"
+     rx="1.1894171"
+     ry="0.50613499" />
+  <ellipse
+     style="fill:#00ff00;stroke:#00c800"
+     id="path865"
+     cx="27.55905"
+     cy="13.792178"
+     rx="0.93634969"
+     ry="0.6832822" />
+  <ellipse
+     style="fill:#00ff00;stroke:#00c800"
+     id="path867"
+     cx="3.9984663"
+     cy="13.083589"
+     rx="0.96165645"
+     ry="0.43021473" />
+  <ellipse
+     style="fill:#00ff00;stroke:#00c800"
+     id="path869"
+     cx="20.625"
+     cy="5.3903375"
+     rx="0.73389572"
+     ry="0.48082823" />
+  <ellipse
+     style="fill:#00ff00;stroke:#00c800"
+     id="path871"
+     cx="10.223927"
+     cy="6.2507668"
+     rx="1.01227"
+     ry="0.48082823" />
+  <ellipse
+     style="fill:#00ff00;stroke:#00c800"
+     id="path873"
+     cx="6.2507668"
+     cy="21.460123"
+     rx="0.32898772"
+     ry="0.35429448" />
+  <ellipse
+     style="fill:#00ff00;stroke:#00c800"
+     id="path875"
+     cx="26.091257"
+     cy="21.814417"
+     rx="0.98696321"
+     ry="0.55674845" />
+  <ellipse
+     style="fill:#00ff00;stroke:#00c800"
+     id="path877"
+     cx="11.51457"
+     cy="25.559816"
+     rx="1.3412577"
+     ry="0.65797544" />
+  <ellipse
+     style="fill:#00ff00;stroke:#00c800"
+     id="path879"
+     cx="20.675613"
+     cy="26.445553"
+     rx="0.98696321"
+     ry="0.58205521" />
+</svg>
