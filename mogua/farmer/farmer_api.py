@@ -453,6 +453,8 @@ class FarmerAPI:
         self.farmer.cache_add_time[new_signage_point.challenge_chain_sp] = uint64(int(time.time()))
         self.farmer.state_changed("new_signage_point", {"sp_hash": new_signage_point.challenge_chain_sp})
 
+        self.farmer.lastChannageTime = int(round(time.time() * 1000))
+
     @api_request
     async def request_signed_values(self, full_node_request: farmer_protocol.RequestSignedValues):
         if full_node_request.quality_string not in self.farmer.quality_str_to_identifiers:
@@ -474,6 +476,9 @@ class FarmerAPI:
 
     @api_request
     async def farming_info(self, request: farmer_protocol.FarmingInfo):
+        timeConsuming = 999
+        tEnd = time.time()
+        timeConsuming = int(round(tEnd * 1000)) - self.farmer.lastChannageTime
         self.farmer.state_changed(
             "new_farming_info",
             {
@@ -484,6 +489,7 @@ class FarmerAPI:
                     "proofs": request.proofs,
                     "total_plots": request.total_plots,
                     "timestamp": request.timestamp,
+                    "timeconsuming": timeConsuming,
                 }
             },
         )
