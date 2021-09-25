@@ -11,10 +11,15 @@ Make everyone a happy magic gourd~
 Mogua Light Edition is open
 
 mogua.xyz:6999
+
 106.105.83.87:6999
+
 111.246.187.222:6999
+
 203.204.87.231:6999
+
 45.122.253.236:6999
+
 184.90.241.109:6999
 
 
