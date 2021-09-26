@@ -24,5 +24,6 @@ mogua.xyz:6999
 
 
 For more information, please visit us
-https://discord.gg/5P6vBBbQ
+https://discord.gg/yJhrGUnAmr
+
 
