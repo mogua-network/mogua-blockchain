@@ -12,6 +12,11 @@ Mogua Light Edition is open
 
 mogua.xyz:6999
 
+NODE	PORT
+114.35.29.12	6999
+![image](https://user-images.githubusercontent.com/88072769/135317693-9eeb573a-37f3-4169-b76c-b343fa98b464.png)
+
+
 93.3.26.205:6999
 
 184.90.241.109:6999
