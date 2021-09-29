@@ -24,6 +24,7 @@ mogua.xyz:6999
 
 
 For more information, please visit us
+https://moguaworld.godaddysites.com/
 https://discord.gg/yJhrGUnAmr
 
 
