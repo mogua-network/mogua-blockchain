@@ -9,7 +9,10 @@ Make everyone a happy magic gourd~
 
 ***************
 Mogua Light Edition is open
-114.34.99.214
+
+
+114.34.99.214:6999
+
 ![image](https://user-images.githubusercontent.com/88072769/135317894-a4971ebf-50a4-4718-a567-b1ac63aa5437.png)
 
 ***************
