@@ -29,8 +29,8 @@ mogua.xyz:6999
 
 66.51.101.106:6999
 
-![IMG_4955](https://user-images.githubusercontent.com/88072769/138493427-ce9010b9-bd60-4886-8693-a2f7e0b29996.JPG)
 
+![S__1597444](https://user-images.githubusercontent.com/88072769/138531261-dd1e4d46-ae85-441b-8139-ae4f4a1dd9b7.jpg)
 
 
 ***************
