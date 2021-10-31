@@ -38,6 +38,8 @@ mogua.xyz:6999
 
 For more information, please visit us
 
+https://mogua-blockchain.mystrikingly.com/
+
 https://moguaworld.godaddysites.com/
 
 https://discord.gg/yJhrGUnAmr
